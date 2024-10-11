@@ -1,11 +1,45 @@
 ---
-title: "jgoliv.github.io"
+title: "About me"
+image: www/images/profile.jpeg
+about:
+  template: jolla
+  links:
+    - icon: linkedin
+      text: Linkedin
+      href: https://linkedin.com/in/joão-gabriel-oliveira-jesus
+    - icon: github
+      text: Github
+      href: https://github.com/jgoliv 
+listing: 
+  - id: projects-links
+    type: grid
+    page-size: 40
+    contents:
+      - "../articles/price_tracking_with_py_selenium/*.qmd"
+      - "../articles/visualizing_proportions_with_echarts4r/*.qmd"
+    # - "../articles/survival_analysis_with_tidymodels/*.qmd"
 ---
 
-This is a Quarto website.
+Hi! I'm João Gabriel, a data scientist with a strong passion for problem-solving, currently located in São Paulo, Brazil.
 
-To learn more about Quarto websites visit <https://quarto.org/docs/websites>.
+I have a deep interest in programming, particularly in data science, machine learning, and artificial intelligence, as well as in developing interactive applications for data visualization. My strong background in mathematics and statistics enables me to ensure the consistency and optimization of my code while deepening my understanding of concepts that arise in my daily work and projects.
 
-```{r}
-1 + 1
-```
+Currently, I work as a data scientist, primarily using Python, R, SQL, Julia, and Markdown for data manipulation and the creation of analytical reports. In the field of machine learning, I utilize libraries such as `scikit-learn` (Python) and `tidymodels` (R) for model building and evaluation. I also develop applications with Shiny, focusing on data visualization through interactive dashboards and platforms for monitoring and tracking the performance of models in production.
+
+Besides that, I'm also an amateur jazz pianist and guitarist.
+
+Here, I'll share some insights into my personal projects, ranging from math and machine learning to automation, data science, and visualization.
+
+## Academic education
+
+I have a bachelor's degree in mathematics from State University of São Paulo (UNESP) and a master's degree in mathematics from State University of Campinas (UNICAMP) in the area of Algebra and Number Theory. Some of my articles are listed below, as well as my master's thesis:
+
+> -   Diagonal 2 × 2 Space-Time Block Codes with Good Normalized Densities [ ](https://biblioteca.sbrt.org.br/articles/2376)
+> -   Master's thesis [ ](https://www.repositorio.unicamp.br/acervo/detalhe/1362433?guid=1717532227060&returnUrl=/resultado/listar%3Fguid%3D1717532227060%26quantidadePaginas%3D1%26codigoRegistro%3D1362433%231362433&i=1)
+
+For further details, check my [Lattes CV](http://lattes.cnpq.br/8672515384152520) !
+
+## Some of my projects
+
+::: {#project-links}
+:::

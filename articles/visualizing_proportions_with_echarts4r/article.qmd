@@ -1,0 +1,204 @@
+---
+title: "Visualizing proportions with `echarts4r`"
+date: "2024-06-22"
+date-modified: "2024-06-22"
+image: "image.png"
+bibliography: references.bib
+nocite: |
+  @*
+---
+
+On this article, we'll debate some issues of representing proportion, using some features of `echarts4r`, which is an R package that provides an interface to the ECharts JavaScript library, making it accessible for users to create highly configurable and interactive charts directly from R.
+
+For installing instructions and learning the basic syntax, check their official website [see @echarts4r_get_started].
+
+First, we load the packages we'll be using.
+
+```{r, message=FALSE}
+library(echarts4r)
+library(dplyr)
+```
+
+## Pie-like charts
+
+The most simple chart we can make to represent proportions is the standard pie chart. On echarts, the basic syntax goes like:
+
+```{r, include=FALSE}
+df <- 
+  tibble(
+    Group = c("A", "B", "C", "D", "E")
+    ,Total = c(70, 85, 50, 55, 25)
+  )
+```
+
+```{r}
+df |> 
+  e_chart(Group) |> 
+  e_pie(Total) |> 
+  e_theme("caravan")
+```
+
+In this crude form, this chart may not be that interesting. In fact, it can be misleading: Notice how the minor difference between groups "C" and "D" is hardly perceived --- this is a common issue when using pie-like charts.
+
+The most natural way to solve this would be to include a label, that we can do using the `label` argument in the `e_pie` function, in which you can specify the label in any form you wish via the `formatter` argument, that accepts any javascript function.
+
+However, this doesn't really change the appearance of the plot. We still cannot visually perceive this difference. In this aspect, we can set the `roseType = "radius"` argument to scale the radius of each slice according to its value.
+
+```{r}
+formatter <-
+  htmlwidgets::JS(
+    "function(params) {
+       return params.name + ' : ' + params.value + ' (' + params.percent + '%)';
+    }"
+  )
+
+df |> 
+  e_chart(Group) |> 
+  e_pie(Total, roseType = "radius", label = list(formatter = formatter)) |> 
+  e_theme("caravan")
+```
+
+With these adjustments, we can visualize the proportions more clearly, getting insights faster, while we can see more details in the label.
+
+With donut charts, we'll have about the same issues. You can do it in `echarts4r` by passing any vector of the form `c("55%", "60%")` to the `radius` argument in the same `e_pie` function:
+
+```{r, echo=FALSE}
+df |>
+  e_chart(Group) |> 
+  e_pie(
+    Total
+    ,radius = c("50%", "70%")
+    ,label = 
+      list(
+        formatter = 
+          htmlwidgets::JS(
+            "function(params) {return params.name + ' : ' + params.value + ' (' + params.percent + '%)';}"
+          )
+      )
+    ,itemStyle = 
+      list(
+        borderRadius = 11
+        ,borderWidth = 2
+        ,borderColor = "#fff"
+      )
+  ) |> 
+  e_theme("caravan")
+```
+
+As *Cole Nussbaumer* says in *Storytelling with data*[^1],
+
+[^1]: [Storytelling with data](https://www.storytellingwithdata.com/)
+
+> With pies, we are asking our audience to compare angles and areas. With a donut chart, we are asking our audience to compare one arc length to another arc length.
+
+It may be hard for us to attribute quantitative values in two-dimensional spaces. Simply speaking, even when we can say which category has a "bigger" value based on the size of a segment, angle, arch-lenght or area, it is hard to know by **"how much"**.
+
+One approach to solve this "how much" issue is using horizontal bar charts. However, is worth to observe that the pie-like charts do give us a notion of the "parts of a whole" kind of a thing --- that we'll lose using bar charts.
+
+We discuss this now.
+
+## Bar charts
+
+For a basic horizontal bar chart, we can use the `e_bar` and `e_flip_coords`functions:
+
+```{r}
+df |> 
+  arrange(Total) |> 
+  e_charts(Group) |> 
+  e_bar(Total, legend = FALSE, label = list(show = TRUE, position = "right")) |> 
+  e_flip_coords() |> 
+  e_theme("caravan")
+```
+
+Observe that now the "how much" issue is a matter of subtracting or completing the bars to get an intuition of the difference (or the actual difference if you subtract the values on the label 😄).
+
+However is not that easy to get the "parts of a whole" intuition just by looking to the bar sizes --- we would have to mentally add their length.
+
+So far, the simple example we dealt with contains only one layer, i.e, it had only the groups and the total of observations of each one. Bar charts also are very good at dealing with multi-layered data, for example: Consider this `pizza` dataset containing 5 pizzeria and their sales amount by flavour:
+
+```{r, include=FALSE}
+pizza <- 
+  tibble(
+    Pizzeria = c(
+      "A", "A", "A",
+      "B", "B", "B",
+      "C", "C", "C"
+    ),
+    Flavour = c(
+      "Brocolli", "Margherita", "Pepperoni",
+      "Brocolli", "Margherita", "Pepperoni",
+      "Brocolli", "Margherita", "Pepperoni"
+    ),
+    Sales_amount = c(
+      175, 65, 102,
+      110, 95, 80,
+      130, 88, 100
+    )
+  )
+```
+
+```{r, echo=FALSE}
+pizza |> 
+  reactable::reactable()
+```
+
+\
+
+Here, we got two categories represent: the Pizzeria and Flavour groups. Using the stacked bar chart, we can better visualize each layering. To do this in `echarts4r`, just pass the grouped data and explicit the `stack = "grp"` argument in the `e_bar` function. We can display it both vertically or horizontally:
+
+```{r, echo=FALSE}
+chart_1 <- 
+  pizza |> 
+  group_by(Flavour) |> 
+  e_charts(Pizzeria) |> 
+  e_bar(Sales_amount, stack = "grp", label = list(show = TRUE)) |> 
+  e_theme("caravan")
+
+chart_2 <-
+  pizza |> 
+  group_by(Pizzeria) |> 
+  mutate(Total = sum(Sales_amount)) |>
+  ungroup() |> 
+  arrange(Total) |> 
+  group_by(Flavour) |> 
+  e_charts(Pizzeria) |> 
+  e_bar(Sales_amount, stack = "grp", label = list(show = TRUE)) |> 
+  e_flip_coords() |> 
+  e_theme("caravan")
+
+htmltools::div(
+  style = "display: flex; justify-content: space-between;"
+  ,htmltools::div(style = "width: 48%;", chart_1)
+  ,htmltools::div(style = "width: 48%;", chart_2)
+)
+```
+
+In some cases, it might be better to unstack the bars (usually, to see some trends in data):
+
+```{r, echo=FALSE}
+pizza |> 
+  group_by(Flavour) |> 
+  e_charts(Pizzeria) |> 
+  e_bar(Sales_amount, label = list(show = TRUE)) |> 
+  e_theme("caravan")
+```
+
+## Extra: Sankey charts
+
+While pie and bar charts are some fundamental tools for visualizing proportions, there are other type of visualization that I want to mention.
+
+Sankey diagrams are typically used to visualize flows and the distribution of the quantities between different "stages". In our context, they are particularly effective for illustrating proportions in data with multiple layers (more than two, especially).
+
+```{r, echo=FALSE}
+sankey <- data.frame(
+  source = c("A", "A", "A", "B", "B", "C", "C", "D", "E", "F", "G", "H", "I"),
+  target = c("B", "C", "D", "E", "F", "G", "H", "I", "J", "J", "K", "K", "L"),
+  value = c(10, 15, 20, 25, 30, 20, 25, 30, 35, 40, 15, 20, 25),
+  stringsAsFactors = FALSE
+)
+
+sankey |> 
+  e_charts() |> 
+  e_sankey(source, target, value) |> 
+  e_theme("caravan")
+```

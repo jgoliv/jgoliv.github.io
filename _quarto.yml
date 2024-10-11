@@ -2,18 +2,48 @@ project:
   type: website
 
 website:
-  title: "jgoliv.github.io"
-  navbar:
-    left:
-      - href: index.qmd
-        text: Home
-      - about.qmd
+  page-navigation: true
+  open-graph: true
+
+  sidebar:
+    style: "floating"
+    search: true
+    title: "João Gabriel Oliveira"
+    logo: www/images/logo.svg
+    logo-alt: "João Gabriel Oliveira"
+    logo-href: /index.qmd
+
+    tools:
+      - icon: github
+        href: https://github.com/jgoliv
+      - icon: linkedin
+        href: https://linkedin.com/in/joão-gabriel-oliveira-jesus
+
+    contents:
+      - index.qmd
+      - section: "Projects"
+      - section: "Articles"
+        contents: 
+          - section: "Automation"
+            contents: 
+              - articles/price_tracking_with_py_selenium/article.qmd
+          - section: "Data visualization"
+            contents:
+              - articles/visualizing_proportions_with_echarts4r/article.qmd
+          - section: "ML & AI"
+            contents:
+             # - articles/survival_analysis_with_tidymodels/article.qmd
 
 format:
   html:
-    theme: cosmo
-    css: styles.css
+    link-external-icon: true
+    link-external-newwindow: true
+    code-copy: true
+    smooth-scroll: true
+    theme: [cosmo, www/css/theme.scss]
     toc: true
+    grid:
+      sidebar-width: 300px
+      body-width: 850px
 
-
-
+editor: visual
