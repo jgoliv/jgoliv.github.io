@@ -2,12 +2,13 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.5.57">
+<meta name="generator" content="quarto-1.5.47">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
+<meta name="dcterms.date" content="2024-06-26">
 
-<title>About – jgoliv.github.io</title>
+<title>Survival analysis with tidymodels</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -54,31 +55,51 @@ div.sourceCode
 @media screen {
 pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
-</style>
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+  margin-bottom: 0em;
+}
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
 
 
-<script src="site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="site_libs/quarto-nav/headroom.min.js"></script>
-<script src="site_libs/clipboard/clipboard.min.js"></script>
-<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="site_libs/quarto-search/fuse.min.js"></script>
-<script src="site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="./">
-<script src="site_libs/quarto-html/quarto.js"></script>
-<script src="site_libs/quarto-html/popper.min.js"></script>
-<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="site_libs/quarto-html/anchor.min.js"></script>
-<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
-<script src="site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<script src="../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
-  "location": "navbar",
+  "location": "sidebar",
   "copy-button": false,
   "collapse-after": 3,
-  "panel-placement": "end",
-  "type": "overlay",
+  "panel-placement": "start",
+  "type": "textbox",
   "limit": 50,
   "keyboard-shortcut": [
     "f",
@@ -100,56 +121,75 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     "search-label": "Search"
   }
 }</script>
+<style>html{ scroll-behavior: smooth; }</style>
+<script src="../../site_libs/core-js-2.5.3/shim.min.js"></script>
+<script src="../../site_libs/react-18.2.0/react.min.js"></script>
+<script src="../../site_libs/react-18.2.0/react-dom.min.js"></script>
+<script src="../../site_libs/reactwidget-2.0.0/react-tools.js"></script>
+<link href="../../site_libs/htmltools-fill-0.5.8.1/fill.css" rel="stylesheet">
+<script src="../../site_libs/htmlwidgets-1.6.4/htmlwidgets.js"></script>
+<link href="../../site_libs/reactable-0.4.4/reactable.css" rel="stylesheet">
+<script src="../../site_libs/reactable-binding-0.4.4/reactable.js"></script>
 
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
-<link rel="stylesheet" href="styles.css">
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+<meta property="og:title" content="Survival analysis with tidymodels">
+<meta property="og:description" content="">
 </head>
 
-<body class="nav-fixed">
+<body>
 
 <div id="quarto-search-results"></div>
-  <header id="quarto-header" class="headroom fixed-top">
-    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
-      <div class="navbar-container container-fluid">
-      <div class="navbar-brand-container mx-auto">
-    <a class="navbar-brand" href="./index.html">
-    <span class="navbar-title">jgoliv.github.io</span>
-    </a>
-  </div>
-            <div id="quarto-search" class="" title="Search"></div>
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
-  <span class="navbar-toggler-icon"></span>
-</button>
-          <div class="collapse navbar-collapse" id="navbarCollapse">
-            <ul class="navbar-nav navbar-nav-scroll me-auto">
-  <li class="nav-item">
-    <a class="nav-link" href="./index.html"> 
-<span class="menu-text">Home</span></a>
-  </li>  
-  <li class="nav-item">
-    <a class="nav-link active" href="./about.html" aria-current="page"> 
-<span class="menu-text">About</span></a>
-  </li>  
-</ul>
-          </div> <!-- /navcollapse -->
-            <div class="quarto-navbar-tools">
-</div>
-      </div> <!-- /container-fluid -->
-    </nav>
-</header>
 <!-- content -->
-<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
 <!-- sidebar -->
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
-        
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#introducing-survival-analysis" id="toc-introducing-survival-analysis" class="nav-link active" data-scroll-target="#introducing-survival-analysis">Introducing survival analysis</a></li>
+  <li><a href="#the-data" id="toc-the-data" class="nav-link" data-scroll-target="#the-data">The data</a></li>
+  <li><a href="#exploratory-data-analysis" id="toc-exploratory-data-analysis" class="nav-link" data-scroll-target="#exploratory-data-analysis">Exploratory data analysis</a></li>
+  <li><a href="#metrics" id="toc-metrics" class="nav-link" data-scroll-target="#metrics">Metrics</a></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">About</h1>
+<h1 class="title">Survival analysis with <code>tidymodels</code></h1>
 </div>
 
 
@@ -157,7 +197,19 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="quarto-title-meta">
 
     
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">June 26, 2024</p>
+    </div>
+  </div>
   
+    <div>
+    <div class="quarto-title-meta-heading">Modified</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date-modified">June 26, 2024</p>
+    </div>
+  </div>
     
   </div>
   
@@ -166,17 +218,78 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<p>About this site</p>
+<section id="introducing-survival-analysis" class="level2">
+<h2 class="anchored" data-anchor-id="introducing-survival-analysis">Introducing survival analysis</h2>
+<p>Survival analysis is an important field in statistics and modeling that studies the expected duration until the occurrence of one or more specified events. Although it may seem like a regular time-to-event analysis, survival methods consider observations where the event of interest may not have occurred yet, i.e, it considers <strong>censored</strong> data.</p>
+<p>The key concepts in survival analysis are:</p>
+<ul>
+<li><p><strong>event:</strong> The occurrence of the outcome of interest, such as death or relapse of a disease.</p></li>
+<li><p><strong>time:</strong> Interval from the start of an observation period until one of the following: occurrence of an event, end of the study, or loss of contact or withdrawal from the study.</p></li>
+<li><p><strong>censoring:</strong> Occurs when a subject does not experience the event during the observation period. This implies that a censored subject may or may not experience the event after the end of the observation period.</p></li>
+</ul>
+<p>There are two main statistics that describe survival data: <strong>survival probability</strong> and <strong>hazard probability</strong>.</p>
+<p>Survival probability denotes the likelihood that an subject will not experience the event of interest from a given time origin up to a future time <span class="math inline">\(t\)</span> (survive). On the other hand, hazard probability represents the likelihood that an individual under observation at time <span class="math inline">\(t\)</span> will experience the event at that moment.</p>
+<p>Unlike survival probability, which emphasizes the absence of an event, the hazard probability focuses on the occurrence of the event. Essentially, the hazard describes the current rate of events, while survival reflects the cumulative non-occurrence over time.</p>
+<p>For a more detailed approach to the basics of survival analysis, see <span class="citation" data-cites="clark_survival">(<a href="#ref-clark_survival" role="doc-biblioref">Clark et al. 2003</a>)</span>.</p>
+</section>
+<section id="the-data" class="level2">
+<h2 class="anchored" data-anchor-id="the-data">The data</h2>
+<p>Survival data are time-to-event data with distinct start time and end time. In this article, we’ll use the <code>building complaints</code> dataset of the <code>modeldatatoo</code> package. You can see more information about the data set <a href="https://data.cityofnewyork.us/Housing-Development/DOB-Complaints-Received/eabe-havv/about_data">here</a>.</p>
+<p>This is the same dataset used in the survival case study <a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a> and survival metrics<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a> tidymodels articles. It includes information about complaints received by the Department of Buildings in New York city, such as type of the complaint, the date that it was entered in their records, the date it was dispositioned, the location and the neighborhood of the building, and the status of the complaint.</p>
+</section>
+<section id="exploratory-data-analysis" class="level2">
+<h2 class="anchored" data-anchor-id="exploratory-data-analysis">Exploratory data analysis</h2>
+<p>First, we’ll have a look on the data structure and in it’s firsts rows:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="dv">1</span> <span class="sc">+</span> <span class="dv">1</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> modeldatatoo<span class="sc">::</span>building_complaints</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 2</code></pre>
+<pre><code>Rows: 4,234
+Columns: 11
+$ days_to_disposition &lt;dbl&gt; 72, 1, 41, 45, 16, 62, 56, 11, 35, 38, 39, 106, 1,…
+$ status              &lt;chr&gt; "ACTIVE", "ACTIVE", "ACTIVE", "ACTIVE", "ACTIVE", …
+$ year_entered        &lt;fct&gt; 2023, 2023, 2023, 2023, 2023, 2023, 2023, 2023, 20…
+$ latitude            &lt;dbl&gt; 40.66173, 40.57668, 40.73242, 40.68245, 40.63156, …
+$ longitude           &lt;dbl&gt; -73.98297, -74.00453, -73.87630, -73.79367, -73.99…
+$ borough             &lt;fct&gt; Brooklyn, Brooklyn, Queens, Queens, Brooklyn, Quee…
+$ special_district    &lt;fct&gt; None, None, None, None, None, None, None, None, No…
+$ unit                &lt;fct&gt; Q-L, Q-L, SPOPS, Q-L, BKLYN, Q-L, Q-L, SPOPS, Q-L,…
+$ community_board     &lt;fct&gt; 307, 313, 404, 412, 312, 406, 306, 306, 409, 404, …
+$ complaint_category  &lt;fct&gt; 45, 45, 49, 45, 31, 45, 45, 49, 45, 45, 45, 4A, 31…
+$ complaint_priority  &lt;fct&gt; B, B, C, B, C, B, B, C, B, B, B, B, C, C, B, B, B,…</code></pre>
 </div>
 </div>
+<div class="cell">
+<div class="cell-output-display">
+<div class="reactable html-widget html-fill-item" id="htmlwidget-acb8a5203de2d00d0bf7" style="width:auto;height:auto;"></div>
+<script type="application/json" data-for="htmlwidget-acb8a5203de2d00d0bf7">{"x":{"tag":{"name":"Reactable","attribs":{"data":{"days_to_disposition":[72,1,41,45,16,62],"status":["ACTIVE","ACTIVE","ACTIVE","ACTIVE","ACTIVE","ACTIVE"],"year_entered":["2023","2023","2023","2023","2023","2023"],"latitude":[40.6617255187909,40.5766831381634,40.7324162651292,40.6824455145311,40.6315612421967,40.7086863136303],"longitude":[-73.9829694309664,-74.0045333973162,-73.8762986527553,-73.7936677142852,-73.9956339859427,-73.8451176772237],"borough":["Brooklyn","Brooklyn","Queens","Queens","Brooklyn","Queens"],"special_district":["None","None","None","None","None","None"],"unit":["Q-L","Q-L","SPOPS","Q-L","BKLYN","Q-L"],"community_board":["307","313","404","412","312","406"],"complaint_category":["45","45","49","45","31","45"],"complaint_priority":["B","B","C","B","C","B"]},"columns":[{"id":"days_to_disposition","name":"days_to_disposition","type":"numeric"},{"id":"status","name":"status","type":"character"},{"id":"year_entered","name":"year_entered","type":"factor"},{"id":"latitude","name":"latitude","type":"numeric"},{"id":"longitude","name":"longitude","type":"numeric"},{"id":"borough","name":"borough","type":"factor"},{"id":"special_district","name":"special_district","type":"factor"},{"id":"unit","name":"unit","type":"factor"},{"id":"community_board","name":"community_board","type":"factor"},{"id":"complaint_category","name":"complaint_category","type":"factor"},{"id":"complaint_priority","name":"complaint_priority","type":"factor"}],"compact":true,"theme":{"color":"#333333","backgroundColor":"#ffffff","borderColor":"#e7e7e7","borderWidth":"1px","stripedColor":"#e7e7e7","highlightColor":"#eeeeee","cellPadding":5,"tableStyle":{"fontSize":13},"headerStyle":{"borderWidth":"0px","padding":"5px","background":"#ffffff","borderColor":"#ffffff","color":"#999999","fontWeight":"500","textTransform":"uppercase","fontSize":11},"groupHeaderStyle":{"&:not(:empty)":{"borderWidth":"0px","backgroundColor":"#ffffff","textTransform":"uppercase","fontSize":11,"borderColor":"#ffffff","color":"#333333"}},"rowSelectedStyle":{"backgroundColor":"#e9edf0"},"inputStyle":{"backgroundColor":"#ffffff","color":"#333333"},"searchInputStyle":{"color":"#333333","fontSize":"13px"},"selectStyle":{"color":"#333333"},"paginationStyle":{"color":"#333333","fontSize":"14px"},"pageButtonStyle":{"color":"#333333","fontSize":"14px"}},"dataKey":"b18758504efec01bc358401b1af38265"},"children":[]},"class":"reactR_markup"},"evals":[],"jsHooks":[]}</script>
+</div>
+</div>
+</section>
+<section id="metrics" class="level2">
+<h2 class="anchored" data-anchor-id="metrics">Metrics</h2>
+<p>sahsahshas</p>
 
 
 
-</main> <!-- /main -->
+</section>
+
+
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" role="doc-bibliography" id="quarto-bibliography"><h2 class="anchored quarto-appendix-heading">References</h2><div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list">
+<div id="ref-clark_survival" class="csl-entry" role="listitem">
+Clark, T., M. Bradburn, S. Love, and D. Altman. 2003. <span>“Survival Analysis Part i: Basic Concepts and First Analyses.”</span> <em>British Journal of Cancer</em> 89: 232–38.
+</div>
+<div id="ref-tidymodels_survival" class="csl-entry" role="listitem">
+tidymodels. n.d. <span>“How Long Until Building Complaints Are Dispositioned? A Survival Analysis Case Study.”</span>
+</div>
+</div></section><section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes"><h2 class="anchored quarto-appendix-heading">Footnotes</h2>
+
+<ol>
+<li id="fn1"><p><a href="https://www.tidymodels.org/learn/statistics/survival-case-study/">How long until building complaints are dispositioned? A survival analysis case study</a><a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn2"><p><a href="https://www.tidymodels.org/learn/statistics/survival-metrics/">Dynamic Performance Metrics for Event Time Data</a><a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+</ol>
+</section></div></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {
@@ -269,7 +382,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   }
     var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
     var mailtoRegex = new RegExp(/^mailto:/);
-      var filterRegex = new RegExp("https:\/\/jgoliv\.github\.io\/");
+      var filterRegex = new RegExp('/' + window.location.host + '/');
     var isInternal = (href) => {
         return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
     }
@@ -283,6 +396,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
         if (link.dataset.originalHref !== undefined) {
           link.href = link.dataset.originalHref;
         }
+          // target, if specified
+          link.setAttribute("target", "_blank");
+          if (link.getAttribute("rel") === null) {
+            link.setAttribute("rel", "noopener");
+          }
+          // default icon
+          link.classList.add("external");
       }
     }
   function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
@@ -602,4 +722,5 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 
 
 
+<script src="../../site_libs/quarto-html/zenscroll-min.js"></script>
 </body></html>
