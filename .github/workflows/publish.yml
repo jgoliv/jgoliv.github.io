@@ -36,7 +36,7 @@ jobs:
 
       - name: Install Python Dependencies
         run: |
-          conda activate jgoliv.github.io
+          echo "source /home/runner/miniconda/bin/activate jgoliv.github.io" >> $GITHUB_ENV
           pip install -r requirements.txt
 
       - name: Render and Publish
