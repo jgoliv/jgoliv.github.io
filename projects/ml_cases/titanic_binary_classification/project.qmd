@@ -8,11 +8,6 @@ nocite: |
   @*
 ---
 
-```{r, include=FALSE}
-library(reticulate)
-use_condaenv("jgoliv.github.io", required = TRUE)
-```
-
 ## Introduction
 
 The ***Titanic dataset*** is one of the most well-known datasets in data science, publicly available on [Kaggle](https://www.kaggle.com/c/titanic). It has become particularly popular for binary classification tasks, allowing data scientists and enthusiasts to predict whether a passenger survived or did not survive the sinking of the ship.

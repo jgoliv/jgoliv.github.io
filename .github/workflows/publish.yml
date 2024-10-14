@@ -27,17 +27,13 @@ jobs:
         with:
           cache-version: 1
       
-      - name: Set up Miniconda
-        uses: conda-incubator/setup-miniconda@v2
+      - name: Install Python and Dependencies
+        uses: actions/setup-python@v4
         with:
           python-version: '3.12'
-          auto-update-conda: true
-          environment-file: environment.yml
-
-      - name: Install Python Dependencies
-        run: |
-          echo "source /home/runner/miniconda/bin/activate jgoliv.github.io" >> $GITHUB_ENV
-          pip install -r requirements.txt
+          cache: 'pip'
+      - run: pip install jupyter
+      - run: pip install -r requirements.txt
 
       - name: Render and Publish
         uses: quarto-dev/quarto-actions/publish@v2
