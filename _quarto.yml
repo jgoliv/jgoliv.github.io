@@ -22,6 +22,10 @@ website:
     contents:
       - index.qmd
       - section: "Projects"
+        contents:
+          - section: "Machine learning cases"
+            contents: 
+              - projects/ml_cases/titanic_binary_classification/project.qmd
       - section: "Articles"
         contents: 
           - section: "Automation"

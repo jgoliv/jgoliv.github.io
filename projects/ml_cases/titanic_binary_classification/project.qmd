@@ -1,0 +1,132 @@
+---
+title: "Binary Classification with Titanic Dataset"
+date: "2024-10-12"
+date-modified: "2024-10-14"
+image: "files/image.jpg"
+bibliography: files/references.bib
+nocite: |
+  @*
+---
+
+```{r, include=FALSE}
+library(reticulate)
+use_condaenv("jgoliv.github.io", required = TRUE)
+```
+
+## Introduction
+
+The ***Titanic dataset*** is one of the most well-known datasets in data science, publicly available on [Kaggle](https://www.kaggle.com/c/titanic). It has become particularly popular for binary classification tasks, allowing data scientists and enthusiasts to predict whether a passenger survived or did not survive the sinking of the ship.
+
+Each row in the dataset represents a passenger, with multiple features that can be used to develop a machine learning model to predict survival. Below is a brief overview of some key features in the dataset:
+
+```{r, echo=FALSE}
+
+suppressMessages({
+  library(dplyr)
+  library(reactable)
+  library(reactablefmtr)
+})
+
+titanic_features <- 
+  tribble(
+    ~Variable, ~Definition, ~Key,
+    "survival", "Survival", "0 = No, 1 = Yes",
+    "pclass", "Ticket class", "1 = 1st, 2 = 2nd, 3 = 3rd",
+    "sex", "Sex", "",
+    "Age", "Age in years", "",
+    "sibsp", "# of siblings / spouses aboard the Titanic", "",
+    "parch", "# of parents / children aboard the Titanic", "",
+    "ticket", "Ticket number", "",
+    "fare", "Passenger fare", "",
+    "cabin", "Cabin number", "",
+    "embarked", "Port of Embarkation", "C = Cherbourg, Q = Queenstown, S = Southampton"
+)
+
+titanic_features |> 
+    reactable(
+       pagination = FALSE
+      ,compact = TRUE
+      ,outlined = FALSE
+      ,bordered = FALSE
+      ,sortable = TRUE
+      ,resizable = TRUE
+      ,showPageInfo = FALSE
+      ,borderless = TRUE
+      ,highlight = TRUE
+      ,defaultColDef = colDef(style = list(fontSize = "13px"))
+      ,theme =
+        reactablefmtr::nytimes(
+          header_font_size = 17
+          ,header_font_color = "#262D3C"
+          ,font_color = "#666666"
+        )
+    )
+
+```
+
+In this article, we will explore how to use this data to build a step-by-step binary classification model to predict passenger survival on the Titanic.
+
+## Exploratory Data Analysis and Data Preprocessing
+
+In this section, we will cover these key steps:
+
+-   Take a quick look at the dataset’s structure and basic statistics;
+-   Handle missing data;
+-   Look for correlations of important categorical and numerical features;
+-   Create new features or modifying existing ones to improve model performance (*Feature engineering*);
+-   Encode categorical variables: convert categorical data into a numerical format for use in our ML models;
+-   Build a pipeline using `scikit-learn` to streamline these processes.
+
+Moreover, you can find the complete code in the accompanying [Jupyter notebook]().
+
+First of all, we'll load the `pandas` and `numpy` libraries, as well as load the train data.
+
+```{python}
+import pandas as pd, numpy as np
+
+train = pd.read_csv("files/dataset/train.csv")
+train_copy = train.copy() # good practice
+
+train_copy.head()
+```
+
+By using the `info()` method, we can see that the training data contains 890 entries along with the corresponding data types of its features:
+
+```{python}
+train_copy.info()
+```
+
+We can start by removing some features that may not contribute meaningfully to our predictive analysis. We'll have a look at some:
+
+-   **Ticket** and **PassengerId**: These features do not offer meaningful insights for predicting survival, as they serve only as unique identifiers for each passenger.
+-   **Cabin**: While the cabin number information might indicate passenger status, this column has a high variability and a high proportion of missing values. Given its unreliability, we choose to remove it.
+
+You might consider the **Name** to be an irrelevant feature since it acts as another unique identifier for each passenger. However, upon examining the names, we can see that they include various formats and titles. By extracting the title from the passenger names, we can create a new feature called **Title**. Before we proceed, let's take a look at its distribution.
+
+> Let's take the opportunity to create a generic bar plot function for categorical variables.
+
+```{python}
+import matplotlib.pyplot as plt
+import seaborn as sns
+
+def barplot(df, variable):
+    var = df[variable]
+
+    plt.figure(figsize=(9, 9))
+    sns.countplot(x=var)
+    plt.xticks(rotation=60)
+    plt.ylabel("Frequency")
+    plt.title(variable)
+
+    plt.show()
+
+```
+
+```{python}
+name = train_copy.Name
+train_copy["Title"] = [n.split(".")[0].split(",")[1].strip() for n in name]
+
+barplot(train_copy, "Title")
+```
+
+We will create a function to categorize the titles into more frequent groups, to include later in our pipeline. This function will extract the titles from the passenger names and then categorize less frequent titles. Titles like *Don*, *Dr*, *Major*, *Lady*, *Sir*, *Col*, *Capt*, *Countess*, *Rev*, *Jonkheer*, and *Dona* will be grouped under "Other". Additionally, we will standardize titles like *Mlle*, *Ms*, and *Mme* to *Miss* and *Mrs*, respectively.
