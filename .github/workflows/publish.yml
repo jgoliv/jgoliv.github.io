@@ -32,9 +32,11 @@ jobs:
         with:
           python-version: '3.12'
           auto-update-conda: true
+          environment-file: environment.yml
 
       - name: Install Python Dependencies
         run: |
+          conda activate jgoliv.github.io
           pip install -r requirements.txt
 
       - name: Render and Publish
