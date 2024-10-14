@@ -107,14 +107,12 @@ import seaborn as sns
 def barplot(df, variable):
     var = df[variable]
 
-    plt.figure(figsize=(9, 9))
+    plt.figure(figsize=(12, 6))
     sns.countplot(x=var)
-    plt.xticks(rotation=60)
+    plt.xticks(rotation=15)
     plt.ylabel("Frequency")
-    plt.title(variable)
 
     plt.show()
-
 ```
 
 ```{python}

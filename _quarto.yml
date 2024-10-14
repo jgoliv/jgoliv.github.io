@@ -48,6 +48,6 @@ format:
     toc: true
     grid:
       sidebar-width: 300px
-      body-width: 850px
+      body-width: 1050px
 
 editor: visual
