@@ -1,5 +1,5 @@
 ---
-title: "Binary Classification with Titanic Dataset"
+title: "Binary classification: titanic dataset"
 date: "2024-10-12"
 date-modified: "2024-10-14"
 image: "files/image.jpg"
