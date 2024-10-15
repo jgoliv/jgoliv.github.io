@@ -10,9 +10,9 @@ nocite: |
 
 ## Introduction
 
-The ***Titanic dataset*** is one of the most well-known datasets in data science, publicly available on [Kaggle](https://www.kaggle.com/c/titanic). It has become particularly popular for binary classification tasks, allowing data scientists and enthusiasts to predict whether a passenger survived or did not survive the sinking of the ship.
+The ***Titanic dataset*** is one of the most well-known datasets in data science publicly available on [Kaggle](https://www.kaggle.com/c/titanic). It has become particularly popular for binary classification tasks, allowing data scientists and enthusiasts to predict whether a passenger survived or did not survive the sinking of the ship.
 
-Each row in the dataset represents a passenger, with multiple features that can be used to develop a machine learning model to predict survival. Below is a brief overview of some key features in the dataset:
+Each row in the dataset represents a passenger, with multiple features. Below is a brief overview of them:
 
 ```{r, echo=FALSE}
 
@@ -72,7 +72,7 @@ In this section, we will cover these key steps:
 -   Encode categorical variables: convert categorical data into a numerical format for use in our ML models;
 -   Build a pipeline using `scikit-learn` to streamline these processes.
 
-Moreover, you can find the complete code in the accompanying [Jupyter notebook]().
+Moreover, you can find the complete code in this [repository]().
 
 First of all, we'll load the `pandas` and `numpy` libraries, as well as load the train data.
 
