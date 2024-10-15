@@ -176,37 +176,37 @@
   {
     "objectID": "projects/ml_cases/titanic_binary_classification/project.html",
     "href": "projects/ml_cases/titanic_binary_classification/project.html",
-    "title": "Binary Classification with Titanic Dataset",
+    "title": "Binary classification: titanic dataset",
     "section": "",
     "text": "The Titanic dataset is one of the most well-known datasets in data science, publicly available on Kaggle. It has become particularly popular for binary classification tasks, allowing data scientists and enthusiasts to predict whether a passenger survived or did not survive the sinking of the ship.\nEach row in the dataset represents a passenger, with multiple features that can be used to develop a machine learning model to predict survival. Below is a brief overview of some key features in the dataset:\n\n\n\n\n\n\nIn this article, we will explore how to use this data to build a step-by-step binary classification model to predict passenger survival on the Titanic.",
     "crumbs": [
       "Projects",
       "Machine learning cases",
-      "Binary Classification with Titanic Dataset"
+      "Binary classification: titanic dataset"
     ]
   },
   {
     "objectID": "projects/ml_cases/titanic_binary_classification/project.html#introduction",
     "href": "projects/ml_cases/titanic_binary_classification/project.html#introduction",
-    "title": "Binary Classification with Titanic Dataset",
+    "title": "Binary classification: titanic dataset",
     "section": "",
     "text": "The Titanic dataset is one of the most well-known datasets in data science, publicly available on Kaggle. It has become particularly popular for binary classification tasks, allowing data scientists and enthusiasts to predict whether a passenger survived or did not survive the sinking of the ship.\nEach row in the dataset represents a passenger, with multiple features that can be used to develop a machine learning model to predict survival. Below is a brief overview of some key features in the dataset:\n\n\n\n\n\n\nIn this article, we will explore how to use this data to build a step-by-step binary classification model to predict passenger survival on the Titanic.",
     "crumbs": [
       "Projects",
       "Machine learning cases",
-      "Binary Classification with Titanic Dataset"
+      "Binary classification: titanic dataset"
     ]
   },
   {
     "objectID": "projects/ml_cases/titanic_binary_classification/project.html#exploratory-data-analysis-and-data-preprocessing",
     "href": "projects/ml_cases/titanic_binary_classification/project.html#exploratory-data-analysis-and-data-preprocessing",
-    "title": "Binary Classification with Titanic Dataset",
+    "title": "Binary classification: titanic dataset",
     "section": "Exploratory Data Analysis and Data Preprocessing",
     "text": "Exploratory Data Analysis and Data Preprocessing\nIn this section, we will cover these key steps:\n\nTake a quick look at the dataset’s structure and basic statistics;\nHandle missing data;\nLook for correlations of important categorical and numerical features;\nCreate new features or modifying existing ones to improve model performance (Feature engineering);\nEncode categorical variables: convert categorical data into a numerical format for use in our ML models;\nBuild a pipeline using scikit-learn to streamline these processes.\n\nMoreover, you can find the complete code in the accompanying Jupyter notebook.\nFirst of all, we’ll load the pandas and numpy libraries, as well as load the train data.\n\nimport pandas as pd, numpy as np\n\ntrain = pd.read_csv(\"files/dataset/train.csv\")\ntrain_copy = train.copy() # good practice\n\ntrain_copy.head()\n\n   PassengerId  Survived  Pclass  ...     Fare Cabin  Embarked\n0            1         0       3  ...   7.2500   NaN         S\n1            2         1       1  ...  71.2833   C85         C\n2            3         1       3  ...   7.9250   NaN         S\n3            4         1       1  ...  53.1000  C123         S\n4            5         0       3  ...   8.0500   NaN         S\n\n[5 rows x 12 columns]\n\n\nBy using the info() method, we can see that the training data contains 890 entries along with the corresponding data types of its features:\n\ntrain_copy.info()\n\n&lt;class 'pandas.core.frame.DataFrame'&gt;\nRangeIndex: 891 entries, 0 to 890\nData columns (total 12 columns):\n #   Column       Non-Null Count  Dtype  \n---  ------       --------------  -----  \n 0   PassengerId  891 non-null    int64  \n 1   Survived     891 non-null    int64  \n 2   Pclass       891 non-null    int64  \n 3   Name         891 non-null    object \n 4   Sex          891 non-null    object \n 5   Age          714 non-null    float64\n 6   SibSp        891 non-null    int64  \n 7   Parch        891 non-null    int64  \n 8   Ticket       891 non-null    object \n 9   Fare         891 non-null    float64\n 10  Cabin        204 non-null    object \n 11  Embarked     889 non-null    object \ndtypes: float64(2), int64(5), object(5)\nmemory usage: 83.7+ KB\n\n\nWe can start by removing some features that may not contribute meaningfully to our predictive analysis. We’ll have a look at some:\n\nTicket and PassengerId: These features do not offer meaningful insights for predicting survival, as they serve only as unique identifiers for each passenger.\nCabin: While the cabin number information might indicate passenger status, this column has a high variability and a high proportion of missing values. Given its unreliability, we choose to remove it.\n\nYou might consider the Name to be an irrelevant feature since it acts as another unique identifier for each passenger. However, upon examining the names, we can see that they include various formats and titles. By extracting the title from the passenger names, we can create a new feature called Title. Before we proceed, let’s take a look at its distribution.\n\nLet’s take the opportunity to create a generic bar plot function for categorical variables.\n\n\nimport matplotlib.pyplot as plt\nimport seaborn as sns\n\ndef barplot(df, variable):\n    var = df[variable]\n\n    plt.figure(figsize=(12, 6))\n    sns.countplot(x=var)\n    plt.xticks(rotation=15)\n    plt.ylabel(\"Frequency\")\n\n    plt.show()\n\n\nname = train_copy.Name\ntrain_copy[\"Title\"] = [n.split(\".\")[0].split(\",\")[1].strip() for n in name]\n\nbarplot(train_copy, \"Title\")\n\n\n\n\n\n\n\n\nWe will create a function to categorize the titles into more frequent groups, to include later in our pipeline. This function will extract the titles from the passenger names and then categorize less frequent titles. Titles like Don, Dr, Major, Lady, Sir, Col, Capt, Countess, Rev, Jonkheer, and Dona will be grouped under “Other”. Additionally, we will standardize titles like Mlle, Ms, and Mme to Miss and Mrs, respectively.",
     "crumbs": [
       "Projects",
       "Machine learning cases",
-      "Binary Classification with Titanic Dataset"
+      "Binary classification: titanic dataset"
     ]
   }
 ]
