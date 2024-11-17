@@ -1,7 +1,7 @@
 ---
 title: "WIP - Random forest classification for survival prediction on the Titanic"
 date: "2024-10-12"
-date-modified: "2024-10-14"
+date-modified: today
 image: "files/image.jpg"
 bibliography: files/references.bib
 nocite: |
