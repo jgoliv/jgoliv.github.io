@@ -55,3 +55,9 @@ $toc-inactive-border: #4A4D6D;
     border-bottom-right-radius: 20px;
     border-left: .25rem solid #4A4D6D;
 }
+
+// summary
+.panel-default summary {
+  color: #696FDD;
+  font-weight: bold;
+}

@@ -25,7 +25,7 @@ website:
         contents:
           - section: "Machine learning cases"
             contents: 
-             # - projects/ml_cases/titanic_binary_classification/project.qmd
+              - projects/ml_cases/titanic_binary_classification/project.qmd
       - section: "Articles"
         contents: 
           - section: "Automation"
@@ -48,6 +48,6 @@ format:
     toc: true
     grid:
       sidebar-width: 300px
-      body-width: 1050px
+      body-width: 900px
 
 editor: visual
