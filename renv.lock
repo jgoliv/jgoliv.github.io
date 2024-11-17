@@ -655,6 +655,11 @@
       ],
       "Hash": "397b7b2a265bc5a7a06852524dabae20"
     },
+    "reticulate": {
+      "Package": "reticulate",
+      "Version": "1.40.0",
+      "Source": "Repository"
+    },
     "rlang": {
       "Package": "rlang",
       "Version": "1.1.4",
