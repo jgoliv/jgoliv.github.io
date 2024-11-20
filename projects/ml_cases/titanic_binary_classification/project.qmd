@@ -76,7 +76,7 @@ This dataset comes from the ***Titanic: Machine Learning from Disaster*** compet
 
 Here, we will explore how to use this data to build a step-by-step binary classification model to predict passenger survival on the Titanic.
 
-> Moreover, you can find the complete code in this [Jupyter notebook]().
+> Moreover, you can find the complete code in this [Jupyter notebook](https://github.com/jgoliv/kagglemodels/blob/master/titanic_bin_class/titanic_bin_class.ipynb).
 
 ## Exploratory Data Analysis and Data Preprocessing
 
