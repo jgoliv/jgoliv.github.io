@@ -34,9 +34,6 @@ website:
           - section: "Data visualization"
             contents:
               - articles/visualizing_proportions_with_echarts4r/article.qmd
-          - section: "ML & AI"
-            contents:
-             # - articles/survival_analysis_with_tidymodels/article.qmd
 
 format:
   html:

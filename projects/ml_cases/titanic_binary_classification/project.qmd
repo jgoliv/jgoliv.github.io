@@ -10,7 +10,7 @@ nocite: |
 
 ## Introduction
 
-The ***Titanic dataset*** is one of the most well-known datasets in data science publicly available on [*Kaggle*](https://www.kaggle.com/c/titanic). It has become particularly popular for binary classification tasks, allowing data scientists and enthusiasts to predict whether a passenger survived or not. 
+The ***Titanic dataset*** is one of the most well-known datasets in data science publicly available on [*Kaggle*](https://www.kaggle.com/c/titanic). It has become particularly popular for binary classification tasks, allowing data scientists and enthusiasts to predict whether a passenger survived or not.
 
 Each row in the dataset represents a passenger, with multiple features. Below is a brief overview of them:
 
@@ -109,8 +109,7 @@ For the `Age` column we can use an estimator to impute its missing values. To be
 
 The columns `Embarked` and `Sex` are categorical so, for a better model performance, we need to transform them into numerical features. We'll do it by using `LabelEncoder` and `OneHotEncoder`.
 
-Using the LabelEncoder in the `Sex` column will set 0 = female and 1 = male. For the `Embarked` column, the use of OneHotEncoder's will split
-the former column into four different columns: three for each value and one for missing values.
+Using the LabelEncoder in the `Sex` column will set 0 = female and 1 = male. For the `Embarked` column, the use of OneHotEncoder's will split the former column into four different columns: three for each value and one for missing values.
 
 With that in mind, we now remove some features that may not contribute meaningfully to our predictive analysis:
 
@@ -120,8 +119,9 @@ With that in mind, we now remove some features that may not contribute meaningfu
 
 Now we can make an analysis of correlation to guide our procedure of splitting the sets of training and testing. For that, we'll create a copy of our dataset and perform such changes on this copy.
 
-::: { .panel .panel-default }
+::: {.panel .panel-default}
 <details>
+
 <summary>See code</summary>
 
 ```{python}
@@ -149,7 +149,8 @@ data_copy.drop(["PassengerId", "Embarked", "Name", "Ticket", "Cabin", "Embarked_
 
 data_copy.head()
 ```
-</details> 
+
+</details>
 :::
 
 For a more intuitive view, we can plot those features histogram...
@@ -173,13 +174,13 @@ sns.heatmap(correlation, annot=True, fmt=".2f", cmap="coolwarm", cbar=True)
 plt.show()
 ```
 
-We can observe a strong positive relationship between `Sex` and `Survival` (0.543), and a moderate negative correlation between `Pclass` and `Survival` (-0.338), which highlights that women had a higher chance of survival, as well as those in higher classes. 
+We can observe a strong positive relationship between `Sex` and `Survival` (0.543), and a moderate negative correlation between `Pclass` and `Survival` (-0.338), which highlights that women had a higher chance of survival, as well as those in higher classes.
 
 You may also notice the positive correlation between `Fare` and `Survival`, which is explained by the strong negative correlation between `Pclass` and `Fare`: higher fares are associated with upper classes.
 
 With these relationships in mind, we can now move forward with splitting our data into training and testing sets, using stratified shuffle split to maintain a balanced representation.
 
-```{python}
+```{python, eval=FALSE}
 from sklearn.model_selection import StratifiedShuffleSplit
 
 split = StratifiedShuffleSplit(n_splits=1, test_size=0.2)
@@ -191,11 +192,12 @@ for train_indices, test_indices in split.split(data, data[["Survived", "Pclass",
 
 To streamline the processes described previously, we can now build a pipeline.
 
-::: { .panel .panel-default }
+::: {.panel .panel-default}
 <details>
+
 <summary>See code</summary>
 
-```{python}
+```{python, eval=FALSE}
 from sklearn.base import BaseEstimator, TransformerMixin
 from sklearn.pipeline import Pipeline
 
@@ -243,24 +245,125 @@ pipeline = Pipeline([
 ])
 ```
 
-</details> 
+</details>
 :::
 
 After applying the `pipeline` to the training set, we move on to a final preprocessing step: standardization. Here, we'll use `StandardScaler`:
 
-```{python}
+```{python, eval=FALSE}
 from sklearn.preprocessing import StandardScaler
 
 strat_train_set = pipeline.fit_transform(strat_train_set)
 
-X = strat_train_set.drop(['Survived'], axis=1)
-y = strat_train_set['Survived']
+X_data_train = strat_train_set.drop(['Survived'], axis=1)
+y_data_train = strat_train_set['Survived']
 
 scaler = StandardScaler()
-X_data = scaler.fit_transform(X)
-y_data = y.to_numpy()
+
+X_data_train = scaler.fit_transform(X_data_train)
+y_data_train = y_data_train.to_numpy()
 ```
 
-After standardization, `X_data` contains the scaled features, while `y_data` stores the target values as a NumPy array, making both compatible with Scikit-Learn models.
+After standardization, `X_data_train` contains the scaled features, while `y_data_train` stores the target values as a NumPy array, making both compatible with Scikit-Learn models.
 
 ## Training the model
+
+Now, we proceed to train our Random Forest Classifier. Our approach leverages Grid Search to fine-tune the model's hyperparameters, optimizing its performance with accuracy as the evaluation metric.
+
+```{python, eval=FALSE}
+from sklearn.ensemble import RandomForestClassifier
+from sklearn.model_selection import GridSearchCV
+
+rf = RandomForestClassifier()
+
+param_grid = [{
+        "n_estimators": [10, 100, 200, 500, 750],
+        "max_depth": [None, 5, 10, 12],
+        "min_samples_split": [2, 3, 4]
+    }]
+
+grid_search = GridSearchCV(rf, param_grid, cv=3, scoring="accuracy")
+grid_search.fit(X_data_train, y_data_train)
+```
+
+We can see the score of the classifier on the "test" set:
+
+```{python, eval=FALSE}
+best_rf = grid_search.best_estimator_
+
+strat_test_set = pipeline.fit_transform(strat_test_set)
+
+X_data_test = strat_test_set.drop(['Survived'], axis=1)
+y_data_test = strat_test_set['Survived']
+
+scaler = StandardScaler()
+
+X_data_test = scaler.fit_transform(X_data_test)
+y_data_test = y_data_test.to_numpy()
+
+best_rf.score(X_data_test, y_data_test)
+```
+
+```{python, echo=FALSE}
+print(0.7821229050279329)
+```
+
+Finally, to submit our predictions to Kaggle, we train the model again using the whole train dataset!
+
+::: {.panel .panel-default}
+<details>
+<summary>See code</summary>
+
+```{python, eval=FALSE}
+final_data = pipeline.fit_transform(data)
+
+X_final = final_data.drop(['Survived'],axis=1)
+y_final = final_data['Survived']
+
+scaler = StandardScaler()
+
+X_data_final = scaler.fit_transform(X_final)
+y_data_final = y_final.to_numpy()
+
+final_rf = RandomForestClassifier()
+
+param_grid = [{
+        "n_estimators": [10, 100, 200, 500, 750],
+        "max_depth": [None, 5, 10, 12],
+        "min_samples_split": [2, 3, 4]
+    }]
+
+grid_search = GridSearchCV(final_rf, param_grid, cv=3, scoring="accuracy")
+grid_search.fit(X_data_final, y_data_final)
+
+best_final_rf = grid_search.best_estimator_
+```
+
+</details>
+:::
+
+Loading and preparing the `test.csv` data:
+
+```{python, eval=FALSE}
+test_data = pd.read_csv("files/dataset/test.csv")
+
+scaler = StandardScaler()
+
+X_test = pipeline.fit_transform(test_data)
+X_test = scaler.fit_transform(X_test)
+```
+
+Saving the predictions:
+
+```{python, eval=FALSE}
+predictions = best_final_rf.predict(X_test)
+
+predictions_df = pd.DataFrame(test_data['PassengerId'])
+predictions_df['Survived'] = predictions
+
+predictions_df.to_csv("files/dataset/predictions.csv", index=False)
+```
+
+Results:
+
+![](files/submission.png)

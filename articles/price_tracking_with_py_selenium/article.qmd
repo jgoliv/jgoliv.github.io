@@ -133,24 +133,19 @@ move_click_fill(
 )
 
 move_click(driver=driver, by=By.ID, element="nav-search-submit-button")
-``` 
+```
 
 ### Extracting product prices
 
 Now that we've successfully navigated to the search results page, we need to extract the prices for the relevant products. Here’s a more detailed breakdown of the process:
 
-- ***Inspect the HTML structure:*** after opening the Developer Tools and navigating to the Elements tab, take a moment to examine the HTML structure. For Amazon, products are typically organized under the class name `"s-result-item"`. Upon further inspection, you'll discover that the class name for the product titles is `"a-size-medium a-color-base a-text-normal"`, while the prices consist of two distinct classes: `"a-price-whole"` for the integer part and `"a-price-fraction"` for the decimal part, as shown in the images below:
+-   ***Inspect the HTML structure:*** after opening the Developer Tools and navigating to the Elements tab, take a moment to examine the HTML structure. For Amazon, products are typically organized under the class name `"s-result-item"`. Upon further inspection, you'll discover that the class name for the product titles is `"a-size-medium a-color-base a-text-normal"`, while the prices consist of two distinct classes: `"a-price-whole"` for the integer part and `"a-price-fraction"` for the decimal part, as shown in the images below:
 
-<div style="display: flex; justify-content: space-between;">
-  <a href="files/title_class_name.png" target="_blank">
-    <img src="files/title_class_name.png" alt="Title class name" style="max-width: 48%; height: 100%; cursor: pointer; margin-right: 10px;">
-  </a>
-  <a href="files/price_class_name.png" target="_blank">
-    <img src="files/price_class_name.png" alt="Price class names" style="max-width: 48%; height: 100%; cursor: pointer;">
-  </a>
-</div>
+::: {style="display: flex; justify-content: space-between;"}
+<a href="files/title_class_name.png" target="_blank"> <img src="files/title_class_name.png" alt="Title class name" style="max-width: 48%; height: 100%; cursor: pointer; margin-right: 10px;"/> </a> <a href="files/price_class_name.png" target="_blank"> <img src="files/price_class_name.png" alt="Price class names" style="max-width: 48%; height: 100%; cursor: pointer;"/> </a>
+:::
 
-- ***Extract the title and price:*** we can loop through each `"s-result-item"` and extract the infos we want using the `find_element` method. The idea here is to organize the product titles, prices, and links into a pandas `DataFrame` object. 
+-   ***Extract the title and price:*** we can loop through each `"s-result-item"` and extract the infos we want using the `find_element` method. The idea here is to organize the product titles, prices, and links into a pandas `DataFrame` object.
 
 ``` python
 import pandas as pd
@@ -180,7 +175,7 @@ print(df)
 
 # closing the driver after collection
 driver.quit()
-``` 
+```
 
 The output would look something like this:
 
@@ -190,11 +185,11 @@ The output would look something like this:
 
 Once you have the data, the possibilities are endless:
 
-- ***Export to excel:*** you can save your DataFrame as an Excel file for easy sharing or analysis;
-- ***Email the data:*** automate sending the data via email using Python’s `smtplib` to deliver the Excel file to your inbox;
-- ***Schedule price checks:*** set up regular price checks (daily or weekly) using jobs to track changes over time;
-- ***Deploy to the cloud:*** run the script on cloud platforms to automate the process remotely;
-- ***Set price alerts:*** add conditions to notify you if prices drop below a certain point.
+-   ***Export to excel:*** you can save your DataFrame as an Excel file for easy sharing or analysis;
+-   ***Email the data:*** automate sending the data via email using Python’s `smtplib` to deliver the Excel file to your inbox;
+-   ***Schedule price checks:*** set up regular price checks (daily or weekly) using jobs to track changes over time;
+-   ***Deploy to the cloud:*** run the script on cloud platforms to automate the process remotely;
+-   ***Set price alerts:*** add conditions to notify you if prices drop below a certain point.
 
 Don't forget that you can see the full notebook [here](https://github.com/jgoliv/price_tracking_py_selenium)!
 
