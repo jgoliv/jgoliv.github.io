@@ -312,6 +312,7 @@ Finally, to submit our predictions to Kaggle, we train the model again using the
 
 ::: {.panel .panel-default}
 <details>
+
 <summary>See code</summary>
 
 ```{python, eval=FALSE}

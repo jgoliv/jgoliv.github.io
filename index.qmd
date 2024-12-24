@@ -18,7 +18,7 @@ listing:
       - "../articles/price_tracking_with_py_selenium/*.qmd"
       - "../articles/visualizing_proportions_with_echarts4r/*.qmd"
       - "../projects/ml_cases/titanic_binary_classification/*.qmd"
-    # - "../articles/survival_analysis_with_tidymodels/*.qmd"
+      - "../projects/r_shiny/japan_biodiversity_dashboard/*.qmd"
 ---
 
 Hi! I'm João Gabriel, a data scientist with a strong passion for problem-solving, currently located in São Paulo, Brazil.

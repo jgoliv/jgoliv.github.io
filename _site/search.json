@@ -274,5 +274,113 @@
       "Machine learning cases",
       "Random forest classification for survival prediction on the Titanic"
     ]
+  },
+  {
+    "objectID": "projects/r_shiny/japan_biodiversity_dashboard/project.html",
+    "href": "projects/r_shiny/japan_biodiversity_dashboard/project.html",
+    "title": "Japan biodiversity dashboard",
+    "section": "",
+    "text": "I’ve never been to Japan, but its rich culture and stunning landscapes have always amazed me. When I came across this dataset, I was curious to explore the forms of life found there, as well as those shared with other parts of the world. This dashboard offers an interactive visualization of Japan’s biodiversity from 1976 to 2024, showcasing observations of a wide variety of species.\nThe data used is the occurence dataset, from the Global Biodiversity Information Facility (GBIF), an international network and data infrastructure which provides open access to data about all types of life on Earth. More precisely, the dataset we’ll work on was obtained by observation.org.",
+    "crumbs": [
+      "Projects",
+      "R & Shiny",
+      "Japan biodiversity dashboard"
+    ]
+  },
+  {
+    "objectID": "projects/r_shiny/japan_biodiversity_dashboard/project.html#resume",
+    "href": "projects/r_shiny/japan_biodiversity_dashboard/project.html#resume",
+    "title": "Japan biodiversity dashboard",
+    "section": "Resume",
+    "text": "Resume\nIt was made using the R Shiny web application framework and it is mainly separated in four parts, detailed below:\n\nThe context card: Here an introductory text and the control selectors are displayed. There is a species selector – the default visualization is all available species, but one can choose a single species to refine the results for all dashboard elements. The species can be filtered both by its scientific name or its vernacular name, and the user may do so by typing at the search bar. Secondly, there is a year slide filter – the default goes from 1984 to 2020 but can be reduced up to a single year, which also changes the entire dashboard visualization.\nTimeline card: At the bottom left, a timeline is displayed to show how many observations occurred with the filter configurations. Additionally, there is a toolbox on the top to interchange between bar (default) and line plots, zoom in and zoom out.\nThe information cards: This part contains three cards. The first one shows an image. If a species is selected and there is a photo of it, the default image will be replaced by this photo. The second card shows general statistics about the observations: how many have occurred, and the most observed life stage, sex and locality for the species and period selected. Lastly, a ranking of the five most observed species during selected period will appear by default. If a particular species is selected, the card will swap to display all scientific information about it and a distribution box-plot of all yearly individual counts.\nThe map: This card shows cluster points of the observations occurred in each part of Poland during the selected period, for the selected species (and all of them, if that is the case). It can be zoomed in, and when a single observation is located, a pop-up appears by clicking, showing all the info of that particular observation.\n\n\nAbove there is the default view and a filtered view, respectively.",
+    "crumbs": [
+      "Projects",
+      "R & Shiny",
+      "Japan biodiversity dashboard"
+    ]
+  },
+  {
+    "objectID": "projects/r_shiny/japan_biodiversity_dashboard/project.html#project-structure",
+    "href": "projects/r_shiny/japan_biodiversity_dashboard/project.html#project-structure",
+    "title": "Japan biodiversity dashboard",
+    "section": "Project structure",
+    "text": "Project structure\nI utilized an R package structure to develop and deploy this application, managing package dependencies with the renv package.\n\nDirectories and files\n\nThere is a www directory to store static files, such as css, images and fonts;\nAlso, there is a extdata directory to store external data, including the original dataset and the processed version used in the app;\nThe data-raw folder keeps the script where I did the dataset preprocessing;\nThe R folder contains the core scripts of the app:\n\nui.R: This file sets up the page and card layouts, and includes all the necessary CSS and functionalities;\nserver.R: Handles the main server logic for the app;\nfunctions.R: Contains pre-processing functions that get the data ready for visualization;\nplots.R: Has functions that generate the plots, like echarts and reactable;\nutils.R: Holds utility functions for smaller tasks and calculations;\nvars.R: Stores various variables, including color palettes, theme settings, custom components, and JS functions;\nwidgets.R: This is where reusable UI components and input functions are stored;\nModule scripts (e.g., md_module_name.R): Contain independent shinyModules functions.\n\n\n\n\nServer logic architecture\nThe app follows a modular reactive flow:\n\nData source\n\nInitializes with the pre-processed static data loaded from an .rds file;\nServes as the foundation for all downstream operations.\n\nControl module\n\nHouses user input widgets;\nReturns a reactive list containing:\n\nSelected names (single or “All”);\nSelected year range.\n\n\nReactive data\n\nFilters the static data based on control values;\nImplements caching for performance optimization;\nSingle source of truth for all visualizations that updates when control values change.\n\nVisualization modules\n\nIndependent, self-contained modules consuming the filtered data;\nEach module handles a specific visualization in a card.\n\n\n\n\n\n\n\nflowchart LR\n    A[Static data] --&gt; B[Control module]\n    B --&gt; C[Name input]\n    B --&gt; D[Year input]\n    C --&gt; E{Reactive controls}\n    D --&gt; E\n    A --&gt; F{Reactive data}\n    E --&gt; F\n    F --&gt; G[Context module]\n    F --&gt; H[Image module]\n    F --&gt; I[Info modules]\n    F --&gt; J[Map module]\n\n    style A fill:#EBF1E4\n\n\n\n\n\n\n\n\nUnit testing\nUsing the testthat package, I implemented unit tests for the app’s most important functions:\n\nNon-reactive functions: These functions in the app fall into two categories:\n\nUtility functions that performs simple dataframe operations (located in the utils.R file);\nData transformation functions used immediately before plotting outputs, such as echarts4r plots and reactables (found in the functions.R script).\n\nFor both types, basic structural functionalities and edge cases were covered in the test files.\nReactive functions: Based on the server logic structure, unit testing for reactive functions includes:\n\nVerifying that the control module successfully returns a reactive list with the values used to filter the app’s main reactive;\nEnsuring that the main reactive effectively filters data based on inputs from the control module.\n\n\n\nFeel free to contribute to this project by visiting: https://github.com/jgoliv/japanbiodiversitydashboard",
+    "crumbs": [
+      "Projects",
+      "R & Shiny",
+      "Japan biodiversity dashboard"
+    ]
+  },
+  {
+    "objectID": "projects/r_shiny/japan_biodiversity_dashboard/project.html#preparing-the-dataset",
+    "href": "projects/r_shiny/japan_biodiversity_dashboard/project.html#preparing-the-dataset",
+    "title": "Japan biodiversity dashboard",
+    "section": "Preparing the dataset",
+    "text": "Preparing the dataset\n\nThis dataset is divided in two csv files, occurrence and multimedia data, that add up to 20GB.\nSince the interest is on Poland data, there is no need to load the full dataset. Using the data.table::fread() function to filter csv lines matching “Poland” string ensures that only the corresponding lines are output.\nThe steps involving data treatment were: selecting desired columns; removing columns of no interest or with a large amount of missing values; renaming and featuring new columns; joining occurrence data with multimedia and saving the final data on a .rds file.\n\n\n\nSee full code",
+    "crumbs": [
+      "Projects",
+      "R & Shiny",
+      "Japan biodiversity dashboard"
+    ]
+  },
+  {
+    "objectID": "projects/r_shiny/japan_biodiversity_dashboard/project.html#extras",
+    "href": "projects/r_shiny/japan_biodiversity_dashboard/project.html#extras",
+    "title": "Japan biodiversity dashboard",
+    "section": "Extras",
+    "text": "Extras\n\nThe map\n\nThe map is supposed to be the coolest UI feature here. In order to achieve that, there were the following steps below.\nThe first main strategy was to plot the circle markers using the individual_counts of each observation to scale the radius and the color palette. However, due to a large amount of data, it had some performance issues on the default view. This was tackled in two steps: first, using leaflet proxy, and then clustering markers.\nUsing the clustering markers, the performance was considerably improved. However, with the R libraries leaflet and leaflet.extras alone it wasn’t possible to customize the cluster markers, like scale radius size and cluster color palette, especially scaling markers according to individual counts: to make the cluster counting match not the observations total but the individual counts total. This was solved by creating a custom JS function (iconCreateFunction) to personalize the clustering on the markerClusterOptions argument. Here are some sources that were consulted during this process:\n\nhttps://stackoverflow.com/questions/33600021/how-to-customize-the-coloring-of-clusters\nhttps://github.com/Leaflet/Leaflet.markercluster/blob/64a2d5711521e56cac8ab863fb658beda5690600/dist/leaflet.markercluster-src.js",
+    "crumbs": [
+      "Projects",
+      "R & Shiny",
+      "Japan biodiversity dashboard"
+    ]
+  },
+  {
+    "objectID": "projects/r_shiny/japan_biodiversity_dashboard/project.html#for-the-future",
+    "href": "projects/r_shiny/japan_biodiversity_dashboard/project.html#for-the-future",
+    "title": "Japan biodiversity dashboard",
+    "section": "For the future",
+    "text": "For the future\n\nExplore a larger portion of the dataset to address performance issues, particularly with rendering points on a Leaflet map;\nEnhance interactivity by applying more JS techniques and consider deploying a more complex app to a different instance;\nFurther studies could lead to optimizations and improved infrastructure techniques.",
+    "crumbs": [
+      "Projects",
+      "R & Shiny",
+      "Japan biodiversity dashboard"
+    ]
+  },
+  {
+    "objectID": "projects/r_shiny/japan_biodiversity_dashboard/project.html#what-you-will-find-in-the-app",
+    "href": "projects/r_shiny/japan_biodiversity_dashboard/project.html#what-you-will-find-in-the-app",
+    "title": "Japan biodiversity dashboard",
+    "section": "What you will find in the app?",
+    "text": "What you will find in the app?\nThis dashboard was made using the R Shiny web application framework and it is mainly separated in four parts:\n\nThe context card: Here an introductory text and the control selectors are displayed. There is a species selector – the default visualization is all available species, but one can choose a single species to refine the results for all dashboard elements. The species can be filtered both by its scientific name or its vernacular name, and the user may do so by typing at the search bar. Secondly, there is a year slide filter – the default goes from 1984 to 2020 but can be reduced up to a single year, which also changes the entire dashboard visualization.\nTimeline card: At the bottom left, a timeline is displayed to show how many observations occurred with the filter configurations. Additionally, there is a toolbox on the top to interchange between bar (default) and line plots, zoom in and zoom out.\nThe information cards: This part contains three cards. The first one shows an image. If a species is selected and there is a photo of it, the default image will be replaced by this photo. The second card shows general statistics about the observations: how many have occurred, and the most observed life stage, sex and locality for the species and period selected. Lastly, a ranking of the five most observed species during selected period will appear by default. If a particular species is selected, the card will swap to display all scientific information about it and a distribution box-plot of all yearly individual counts.\nThe map: This card shows cluster points of the observations occurred in each part of Poland during the selected period, for the selected species (and all of them, if that is the case). It can be zoomed in, and when a single observation is located, a pop-up appears by clicking, showing all the info of that particular observation.\n\n\nAbove there is the default view and a filtered view, respectively.",
+    "crumbs": [
+      "Projects",
+      "R & Shiny",
+      "Japan biodiversity dashboard"
+    ]
+  },
+  {
+    "objectID": "projects/r_shiny/japan_biodiversity_dashboard/project.html#exploring-the-app",
+    "href": "projects/r_shiny/japan_biodiversity_dashboard/project.html#exploring-the-app",
+    "title": "Japan biodiversity dashboard",
+    "section": "Exploring the App",
+    "text": "Exploring the App\nTo display what kind of information we can obtain from this dataset, I’ve organized the dashboard into four key sections: Context, Timeline, Information, and Map. This structure allows you to explore the dataset from a broad perspective while also enabling a deeper investigation into occurrences of specific species.\nThere are two display modes: the default view, that shows data for all occurrences simultaneously; and the species-filtered view, that adjusts the app’s visualizations based on the selected species. The species can be filtered either by scientific or vernacular name, using the search bar. Besides that, there’s also a filter by time period (in years), with the default range spanning from 1976 to 2024, but it can be adjusted up to a single year, which updates the entire dashboard accordingly.\n\nDefault viewSelected species view\n\n\n\n\n\n\n\n\n\n\nThe context card: Displays an introductory text along with control selectors.\nTimeline card: At the bottom, a timeline is displayed to show how many observations occurred with the filter configurations. There is a toolbox on the top to interchange between bar (default) and line plots, zoom in and zoom out.\nThe information cards: This part contains three cards. The first one shows an image. If a species is selected and there is a photo of it, the default image will be replaced by this photo. The second card shows general statistics about the observations: how many have occurred, and the most observed life stage, sex and locality for the species and period selected. Lastly, a ranking of the five most observed species during selected period will appear by default. If a particular species is selected, the card will swap to display all scientific information about it and a distribution box-plot of all yearly individual counts.\nThe map: This card shows cluster points of the observations occurred in each part of Japan during the selected period, for the selected species (and all of them, if that is the case). It can be zoomed in, and when a single observation is located, a pop-up appears by clicking, showing all the info of that particular observation and a picture of the species.\n\n\nInterestingly, all the colors used in this project are traditional Japanese colors, as documented in the book “日本の伝統色 The Traditional Colors of Japan” by PIE BOOKS (2007). You can explore 250 of these colors at this link.",
+    "crumbs": [
+      "Projects",
+      "R & Shiny",
+      "Japan biodiversity dashboard"
+    ]
+  },
+  {
+    "objectID": "projects/r_shiny/japan_biodiversity_dashboard/project.html#wip---ideas",
+    "href": "projects/r_shiny/japan_biodiversity_dashboard/project.html#wip---ideas",
+    "title": "Japan biodiversity dashboard",
+    "section": "",
+    "text": "I’ve never been to Japan, but their culture and beautiful landscapes always amazed me. When I found out about this dataset, I was curious to know what different forms of life could be found there, but also what was common there and in other parts of the world. Now we can find out through this dashboard, which aims to provide an interactive visualization of the biodiversity found in Japan during the years of 1984 to 2020, including observations of over several different species.\nThe data used is the occurence dataset, from the Global Biodiversity Information Facility (GBIF), an international network and data infrastructure which provides open access to data about all types of life on Earth. More precisely, the dataset we’ll work on was obtained by observation.org.\nTo display what kind of information we can obtain from this dataset, I choose to divide the dashboard into four sections (context, timeline, information and the map). We’ll dive deeper into the features of this app.\n\nYou can interact with the application here!",
+    "crumbs": [
+      "Projects",
+      "R & Shiny",
+      "Japan biodiversity dashboard"
+    ]
   }
 ]

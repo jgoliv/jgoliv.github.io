@@ -26,6 +26,9 @@ website:
           - section: "Machine learning cases"
             contents: 
               - projects/ml_cases/titanic_binary_classification/project.qmd
+          - section: "R & Shiny"
+            contents: 
+              - projects/r_shiny/japan_biodiversity_dashboard/project.qmd
       - section: "Articles"
         contents: 
           - section: "Automation"
