@@ -17,6 +17,7 @@ listing:
     contents:
       - "../articles/price_tracking_with_py_selenium/*.qmd"
       - "../articles/visualizing_proportions_with_echarts4r/*.qmd"
+      - "../articles/working_with_spatial_data_in_R/*.qmd"
       - "../projects/ml_cases/titanic_binary_classification/*.qmd"
       - "../projects/r_shiny/japan_biodiversity_dashboard/*.qmd"
 ---

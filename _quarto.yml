@@ -37,6 +37,7 @@ website:
           - section: "Data visualization"
             contents:
               - articles/visualizing_proportions_with_echarts4r/article.qmd
+              - articles/working_with_spatial_data_in_R/article.qmd"
 
 format:
   html:

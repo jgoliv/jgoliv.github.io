@@ -1,0 +1,229 @@
+---
+title: "Working with spatial data in R"
+date: "2025-01-26"
+date-modified: "2025-01-26"
+image: "files/image.png"
+bibliography: files/references.bib
+nocite: |
+  @*
+---
+
+```{r, include=FALSE}
+library(dplyr)
+library(reactable)
+library(reactablefmtr)
+library(sf)
+library(htmltools)
+library(leaflet)
+library(leaflet.providers)
+library(purrr)
+```
+
+```{r, include=FALSE}
+bc <- modeldatatoo::building_complaints
+boroughs <- sf::read_sf("files/nyc-boroughs.geojson") |> select(borough = name, borough_geometry = geometry)
+neighborhoods <- sf::read_sf("files/nyc-neighborhoods.geojson") |> select(neighborhood = ntaname, neighbourhood_geometry = geometry)
+```
+
+```{r, include=FALSE}
+bc_with_boroughs <-
+  bc |> 
+  count(borough) |> 
+  inner_join(boroughs, by = "borough") |> 
+  sf::st_as_sf()
+```
+
+```{r, include=FALSE}
+bc_as_sf <- 
+  bc |> 
+  sf::st_as_sf(coords = c("longitude", "latitude"), crs = 4326)
+
+bc_with_neighborhood <- sf::st_join(bc_as_sf, neighborhoods, join = sf::st_intersects)
+bc_with_neighborhood$neighborhood_geometry <- st_geometry(neighborhoods)[match(bc_with_neighborhood$neighborhood, neighborhoods$neighborhood)]
+
+bc_with_geometry_count <-
+  bc_with_neighborhood |> 
+  count(neighborhood, neighborhood_geometry) |> 
+  sf::st_as_sf()
+```
+
+```{r, include=FALSE}
+bc_reactable <- 
+  bc |> 
+  head() |> 
+  select(days_to_disposition, status, latitude, longitude, borough) |> 
+  reactable(
+    defaultColDef = colDef(align = "left", style = list(fontSize = "11px")),
+    theme = reactablefmtr::nytimes(header_font_size = 13, header_font_color = "#262D3C", font_color = "#666666")
+  )
+```
+
+```{r, include=FALSE}
+base_map <- \(x) leaflet(x, options = leafletOptions(zoomControl = FALSE)) |> addProviderTiles(providers$CartoDB.Positron)
+highlight_opts <- highlightOptions(weight = 5, color = "#666", dashArray = "", fillOpacity = 0.7, bringToFront = TRUE, stroke = TRUE)
+label_opts <- labelOptions(style = list("font-weight" = "normal", padding = "3px 8px"), textsize = "15px", direction = "auto")
+```
+
+In R, we usually represent spatial information in separate columns for latitude and longitude in a data frame. As said in *Spatial Data Science [@sds]*,
+
+> It is often thought that spatial data boils down to having observations’ longitude and latitude in a dataset, and treating these just like any other variable. This carries the risk of missed opportunities and meaningless analyses.
+
+While this approach is intuitive, structuring spatial data as specialized objects could be more interesting. For instance, summarizing data spatially --- like aggregating observations within administrative boundaries --- becomes way easier as we can perform spatial joins with different relations, such as intersections or containment, to combine data in a more straightforward way.
+
+Let's look at some of these features.
+
+## The data
+
+The [Building Complaints Dataset](https://data.cityofnewyork.us/Housing-Development/DOB-Complaints-Received/eabe-havv/about_data) contains records of complaints received by the **Department of Buildings (DOB)** in **New York City**, related to **housing and development**. Each observation includes various attributes that provide context for the complaints. Here is a glimpse of the first rows:
+
+```{r, echo=FALSE}
+bc_reactable
+```
+
+\ 
+
+The first thing we could do is to plot the distribution of the occurrences on a map:
+
+```{r, echo=FALSE}
+bc |>
+  base_map() |> 
+  addCircles(
+    lng = ~ longitude,
+    lat = ~ latitude,
+    fill = TRUE,
+    opacity = .05,
+    fillOpacity = 1,
+    color = ~ "orange"
+  )
+``` 
+
+\
+
+You might wonder whether it's really important to plot the exact location of each occurrence. 
+
+Perhaps a broader visualization would be more effective, such as aggregating the data by the city districts. Or even better, a neighborhood-level visualization would be even more informative!
+
+::: {.grid}
+::: {.g-col-6}
+### Occurrences per borough
+```{r, echo=FALSE}
+map.boroughs_bins <- c(0, 200, 400, 600, 800, 1000, 1200, 1500)
+map.boroughs_pal <- colorBin("YlOrRd", domain = bc_with_boroughs$n, bins = map.boroughs_bins)
+
+map.boroughs_label <- 
+  sprintf(
+    "<strong>%s</strong><br/>%g </sup>",
+    bc_with_boroughs$borough,
+    bc_with_boroughs$n
+  ) |>
+  map(htmltools::HTML)
+
+map.boroughs <- 
+  base_map(bc_with_boroughs) |> 
+    addPolygons(
+      fillColor = ~map.boroughs_pal(n),
+      weight = 2,
+      opacity = 1,
+      color = "white",
+      dashArray = "3",
+      fillOpacity = 0.7,
+      highlightOptions = highlight_opts,
+      label = map.boroughs_label,
+      labelOptions = label_opts
+  ) |>
+  addLegend(
+    pal = map.boroughs_pal,
+    values = ~n,
+    opacity = 0.8,
+    title = NULL,
+    position = "topleft"
+  )
+
+map.boroughs
+``` 
+:::
+
+::: {.g-col-6}
+### Occurrences per neighborhood
+```{r, echo=FALSE}
+map.neighborhoods_bins <-  c(0, 10, 20, 30, 40, 50, 60, 70)
+map.neighborhoods_pal <- colorBin("YlOrRd", domain = bc_with_geometry_count$n, bins = map.neighborhoods_bins)
+
+map.neighborhoods_label <- 
+  sprintf(
+    "<strong>%s</strong><br/>%g </sup>",
+    bc_with_geometry_count$neighborhood,
+    bc_with_geometry_count$n
+  ) |>
+  map(htmltools::HTML)
+
+map.neighborhoods <- 
+  base_map(bc_with_geometry_count) |> 
+    addPolygons(
+      fillColor = ~map.neighborhoods_pal(n),
+      weight = 2,
+      opacity = 1,
+      color = "white",
+      dashArray = "3",
+      fillOpacity = 0.7,
+      highlightOptions = highlight_opts,
+      label = map.neighborhoods_label,
+      labelOptions = label_opts
+  ) |>
+  addLegend(
+    pal = map.neighborhoods_pal,
+    values = ~n,
+    opacity = 0.7,
+    title = NULL,
+    position = "topleft"
+  )
+
+map.neighborhoods
+``` 
+:::
+:::
+
+\
+
+However, to achieve this, we need to address some challenges. While our dataset includes New York City districts in the **borough** column, their boundaries remain unknown. Additionally, we have **no information on neighborhoods**. Even if we did, we would still need a way to determine, based on the lat long, which points fall within each neighborhood.
+
+At its core, we face two challenges:
+
+1. How to introduce boundaries in our data: what is the appropriate object to work with?
+2. How to perform spatial operations: how can we know a certain point on the map is on a determined neighborhood?
+
+## The `sf` package and the ***GeoJSON*** format
+
+Standing for **Simple Features**, the [sf package](https://r-spatial.github.io/sf/index.html) standardizes a way to encode spatial vector data, extending the concept of data frames by integrating geometry as a special column, preserving spatial relationships natively, such as points, lines, or polygons. In simple terms, a **sf object** is a data frame with an additional column that stores geometric data.
+
+[**GeoJSON**](https://geojson.org/) is a format for encoding a variety of geographic data structures, and supports the following geometry types: 
+
+```{r, echo=FALSE}
+geojson_types <- 
+  tribble(
+    ~type, ~description,
+    "POINT", "zero-dimensional geometry containing a single point",
+    "LINESTRING",	"sequence of points connected by straight, non-self intersecting line pieces",
+    "POLYGON",	"geometry with a positive area; sequence of points form a closed, non-self intersecting ring",
+    "MULTIPOINT", "set of points",
+    "MULTILINESTRING", 	"set of linestrings",
+    "MULTIPOLYGON",	"set of polygons",
+    "GEOMETRYCOLLECTION",	"set of geometries of any type except GEOMETRYCOLLECTION"
+  )
+
+geojson_types |> 
+  reactable(
+    defaultColDef = colDef(align = "left", style = list(fontSize = "11px")),
+    theme = reactablefmtr::nytimes(header_font_size = 13, header_font_color = "#262D3C", font_color = "#666666")
+  )
+```
+
+\
+
+You can load **.geojson** files in R using the function `sf::read_sf`. In our case, we downloaded a **.geojson** file containing the [NYC neighborhoods tabulation areas](https://data.cityofnewyork.us/City-Government/2020-Neighborhood-Tabulation-Areas-NTAs-/9nt8-h7nd/data) directly from the **NYC Open Data** website. Here is how it looks:
+
+```{r}
+neighborhoods <- sf::read_sf("files/nyc-neighborhoods.geojson")
+
+neighborhoods |> select(neighborhood = ntaname, geometry)
+```

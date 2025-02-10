@@ -382,5 +382,68 @@
       "R & Shiny",
       "Japan biodiversity dashboard"
     ]
+  },
+  {
+    "objectID": "articles/working_with_spatial_data_in_R/article.html",
+    "href": "articles/working_with_spatial_data_in_R/article.html",
+    "title": "Working with spatial data in R",
+    "section": "",
+    "text": "In R, we usually represent spatial information in separate columns for latitude and longitude in a data frame. As said in Spatial Data Science (Pebesma and Bivand 2023),\nWhile this approach is intuitive, structuring spatial data as specialized objects could be more interesting. For instance, summarizing data spatially — like aggregating observations within administrative boundaries — becomes way easier as we can perform spatial joins with different relations, such as intersections or containment, to combine data in a more straightforward way.\nLet’s look at some of these features."
+  },
+  {
+    "objectID": "articles/working_with_spatial_data_in_R/article.html#footnotes",
+    "href": "articles/working_with_spatial_data_in_R/article.html#footnotes",
+    "title": "Working with spacial data in R",
+    "section": "Footnotes",
+    "text": "Footnotes\n\n\nSpatial Data Science: With Applications in {R}↩︎"
+  },
+  {
+    "objectID": "articles/working_with_spatial_data_in_R/article.html#what-is-spatial-data",
+    "href": "articles/working_with_spatial_data_in_R/article.html#what-is-spatial-data",
+    "title": "Working with spacial data in R",
+    "section": "What is Spatial Data?",
+    "text": "What is Spatial Data?\nSpatial data refers to information about the location, shape, and relationships of geographic features. It is commonly represented in two formats:\n\nVector Data: Points, lines, and polygons representing discrete features such as cities, roads, or boundaries.\nRaster Data: Grid-based data representing continuous phenomena such as elevation, temperature, or land cover."
+  },
+  {
+    "objectID": "articles/working_with_spatial_data_in_R/article.html#example-data",
+    "href": "articles/working_with_spatial_data_in_R/article.html#example-data",
+    "title": "Working with spacial data in R",
+    "section": "Example data",
+    "text": "Example data\nFor this article, we will use a subset of the Building Complaints Dataset, avaliable in the modeldatatoo R package. This dataset contains georeferenced records of complaints received by the Department of Buildings (DOB) in New York City, related to housing and development.\nEach observation includes various attributes that provide context for the complaints, such as:\n\ndays_to_disposition – Days to disposition of the complaint.\nstatus – Status of the complaint.\nyear_entered – Year the complaint was entered.\nlatitude, longitude – Geographic coordinates.\nborough – Borough.\nspecial_district – Special district.\nunit – Unit dispositioning the complaint.\ncommunity_board – Community board. 3-digit identifier: Borough code = first position, last 2 = community board.\ncomplaint_category - Complaint category.\ncomplaint_priority - Complaint priority\n\nFor us, we’ll focus\n\nbc &lt;- modeldatatoo::building_complaints"
+  },
+  {
+    "objectID": "articles/working_with_spatial_data_in_R/article.html#the-sf-package",
+    "href": "articles/working_with_spatial_data_in_R/article.html#the-sf-package",
+    "title": "Working with spatial data in R",
+    "section": "The sf package",
+    "text": "The sf package\nStanding for Simple Features, the sf package standardizes a way to encode spatial vector data, extending the concept of data frames by integrating geometry as a special column, preserving spatial relationships natively, such as points, lines, or polygons."
+  },
+  {
+    "objectID": "articles/working_with_spatial_data_in_R/article.html#the-data",
+    "href": "articles/working_with_spatial_data_in_R/article.html#the-data",
+    "title": "Working with spatial data in R",
+    "section": "The data",
+    "text": "The data\nThe Building Complaints Dataset contains records of complaints received by the Department of Buildings (DOB) in New York City, related to housing and development. Each observation includes various attributes that provide context for the complaints. Here is a glimpse of the first rows:\n\n\n\n\n\n\n \nThe first thing we could do is to plot the distribution of the occurrences on a map:\n\n\n\n\n\n\n\n\nYou might wonder whether it’s really important to plot the exact location of each occurrence.\nPerhaps a broader visualization would be more effective, such as aggregating the data by the city districts. Or even better, a neighborhood-level visualization would be even more informative!\n\n\nOccurrences per borough\n\n\n\n\n\n\n\n\nOccurrences per neighborhood\n\n\n\n\n\n\n\n\n\n\nHowever, to achieve this, we need to address some challenges. While our dataset includes New York City districts in the borough column, their boundaries remain unknown. Additionally, we have no information on neighborhoods. Even if we did, we would still need a way to determine, based on the lat long, which points fall within each neighborhood.\nAt its core, we face two challenges:\n\nHow to introduce boundaries in our data: what is the appropriate object to work with?\nHow to perform spatial operations: how can we know a certain point on the map is on a determined neighborhood?"
+  },
+  {
+    "objectID": "articles/working_with_spatial_data_in_R/article.html#the-sf-package-and-.geojson-files",
+    "href": "articles/working_with_spatial_data_in_R/article.html#the-sf-package-and-.geojson-files",
+    "title": "Working with spatial data in R",
+    "section": "The sf package and .geojson files",
+    "text": "The sf package and .geojson files\nStanding for Simple Features, the sf package standardizes a way to encode spatial vector data, extending the concept of data frames by integrating geometry as a special column, preserving spatial relationships natively, such as points, lines, or polygons."
+  },
+  {
+    "objectID": "articles/working_with_spatial_data_in_R/article.html#the-sf-package-and-geojson-format",
+    "href": "articles/working_with_spatial_data_in_R/article.html#the-sf-package-and-geojson-format",
+    "title": "Working with spatial data in R",
+    "section": "The sf package and geoJSON format",
+    "text": "The sf package and geoJSON format\nStanding for Simple Features, the sf package standardizes a way to encode spatial vector data, extending the concept of data frames by integrating geometry as a special column, preserving spatial relationships natively, such as points, lines, or polygons."
+  },
+  {
+    "objectID": "articles/working_with_spatial_data_in_R/article.html#the-sf-package-and-the-geojson-format",
+    "href": "articles/working_with_spatial_data_in_R/article.html#the-sf-package-and-the-geojson-format",
+    "title": "Working with spatial data in R",
+    "section": "The sf package and the GeoJSON format",
+    "text": "The sf package and the GeoJSON format\nStanding for Simple Features, the sf package standardizes a way to encode spatial vector data, extending the concept of data frames by integrating geometry as a special column, preserving spatial relationships natively, such as points, lines, or polygons. In simple terms, a sf object is a data frame with an additional column that stores geometric data.\nGeoJSON is a format for encoding a variety of geographic data structures, and supports the following geometry types:\n\n\n\n\n\n\n\n\nYou can load .geojson files in R using the function sf::read_sf. In our case, we downloaded a .geojson file containing the NYC neighborhoods tabulation areas directly from the NYC Open Data website. Here is how it looks:\n\nneighborhoods &lt;- sf::read_sf(\"files/nyc-neighborhoods.geojson\")\n\nneighborhoods |&gt; select(neighborhood = ntaname, geometry)\n\nSimple feature collection with 262 features and 1 field\nGeometry type: MULTIPOLYGON\nDimension:     XY\nBounding box:  xmin: -74.25559 ymin: 40.49613 xmax: -73.70001 ymax: 40.91553\nGeodetic CRS:  WGS 84\n# A tibble: 262 × 2\n   neighborhood                                                         geometry\n   &lt;chr&gt;                                                      &lt;MULTIPOLYGON [°]&gt;\n 1 Greenpoint                          (((-73.93213 40.72816, -73.93238 40.7279…\n 2 Williamsburg                        (((-73.95814 40.7244, -73.95772 40.72428…\n 3 South Williamsburg                  (((-73.95024 40.70547, -73.94984 40.7052…\n 4 East Williamsburg                   (((-73.92406 40.71411, -73.92404 40.7140…\n 5 Brooklyn Heights                    (((-73.99103 40.69985, -73.99124 40.6993…\n 6 Downtown Brooklyn-DUMBO-Boerum Hill (((-73.97906 40.70595, -73.97924 40.7055…\n 7 Fort Greene                         (((-73.96284 40.69804, -73.96288 40.6978…\n 8 Clinton Hill                        (((-73.96135 40.68046, -73.96329 40.6808…\n 9 Brooklyn Navy Yard                  (((-73.97893 40.70593, -73.97893 40.7059…\n10 Bedford-Stuyvesant (West)           (((-73.94414 40.67824, -73.94691 40.6783…\n# ℹ 252 more rows"
   }
 ]
