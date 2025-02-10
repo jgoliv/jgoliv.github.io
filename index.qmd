@@ -21,24 +21,22 @@ listing:
       - "../projects/r_shiny/japan_biodiversity_dashboard/*.qmd"
 ---
 
-Hi! I'm João Gabriel, a data scientist with a strong passion for problem-solving, currently located in São Paulo, Brazil.
+Hi! I'm João Gabriel, a data scientist based in São Paulo, Brazil, with a strong passion for problem-solving and a keen interest in leveraging data to drive impactful decisions.
 
-I have a deep interest in programming, particularly in data science, machine learning, and artificial intelligence, as well as in developing interactive applications for data visualization. My strong background in mathematics and statistics enables me to ensure the consistency and optimization of my code while deepening my understanding of concepts that arise in my daily work and projects.
-
-Currently, I work as a data scientist, primarily using Python, R, SQL, Julia, and Markdown for data manipulation and the creation of analytical reports. In the field of machine learning, I utilize libraries such as `scikit-learn` (Python) and `tidymodels` (R) for model building and evaluation. I also develop applications with Shiny, focusing on data visualization through interactive dashboards and platforms for monitoring and tracking the performance of models in production.
-
-Besides that, I'm also an amateur jazz pianist and guitarist.
-
-Here, I'll share some insights into my personal projects, ranging from math and machine learning to automation, data science, and visualization.
-
-## Academic education
-
-I have a bachelor's degree in mathematics from State University of São Paulo (UNESP) and a master's degree in mathematics from State University of Campinas (UNICAMP) in the area of Algebra and Number Theory. Some of my articles are listed below, as well as my master's thesis:
+I hold a bachelor's degree in Mathematics from the State University of São Paulo (UNESP) and a master's degree in Mathematics from the State University of Campinas (UNICAMP), specializing in Algebra and Number Theory. Some of my articles are listed below, as well as my master's thesis:
 
 > -   Diagonal 2 × 2 Space-Time Block Codes with Good Normalized Densities [ ](https://biblioteca.sbrt.org.br/articles/2376)
 > -   Master's thesis [ ](https://www.repositorio.unicamp.br/acervo/detalhe/1362433?guid=1717532227060&returnUrl=/resultado/listar%3Fguid%3D1717532227060%26quantidadePaginas%3D1%26codigoRegistro%3D1362433%231362433&i=1)
 
-For further details, check my [Lattes CV](http://lattes.cnpq.br/8672515384152520) !
+For further details, check my [Lattes CV](http://lattes.cnpq.br/8672515384152520).
+
+My academic background has provided me with a strong foundation in analytical thinking and problem-solving, which I now apply to my work in data science.
+
+In my current role as a data scientist and R/Shiny developer, I utilize **R**, **Python** and **Julia** for data manipulation, statistical modeling, and the creation of automated reports with **Quarto** and **R Markdown**. I specialize in developing interactive web applications with **Shiny**, focusing in dashboards and platforms for real-time data and model monitoring. In machine learning, I work extensively with libraries such as **scikit-learn** and **tidymodels** for model development and evaluation. Additionally, I have experience in automated testing (unit testing & end-to-end testing) for R/Shiny applications and R packages to ensure realiable software solutions.
+
+Beyond my technical work, I am also an avid jazz guitarist.
+
+For more details about my career and projects, feel free to connect with me on [LinkedIn](www.linkedin.com/in/jgoliv).
 
 ## Some of my projects
 

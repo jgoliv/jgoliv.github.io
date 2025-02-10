@@ -2,8 +2,8 @@
 title: "Price tracking with Selenium"
 date: "2024-10-10"
 date-modified: "2024-10-10"
-image: "image.png"
-bibliography: references.bib
+image: "files/image.png"
+bibliography: files/references.bib
 nocite: |
   @*
 ---

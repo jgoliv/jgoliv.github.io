@@ -31,12 +31,8 @@ website:
               - projects/r_shiny/japan_biodiversity_dashboard/project.qmd
       - section: "Articles"
         contents: 
-          - section: "Automation"
-            contents: 
-              - articles/price_tracking_with_py_selenium/article.qmd
-          - section: "Data visualization"
-            contents:
-              - articles/visualizing_proportions_with_echarts4r/article.qmd
+          - articles/price_tracking_with_py_selenium/article.qmd
+          - articles/visualizing_proportions_with_echarts4r/article.qmd
 
 format:
   html:
