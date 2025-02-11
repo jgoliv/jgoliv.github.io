@@ -13,7 +13,7 @@ website:
         href: https://github.com/jgoliv
       - icon: linkedin
         href: https://linkedin.com/in/jgoliv
-    left: 
+    right: 
       - index.qmd
       - projects.qmd
       - articles.qmd
@@ -22,18 +22,21 @@ website:
     - id: projects
       style: "floating"
       logo: www/images/logo.svg
-      logo-href: /index.qmd
+      logo-href: index.qmd
       contents: 
         - projects.qmd
+        - text: "---"
         - section: "Machine learning cases"
           contents: 
             - projects/ml_cases/titanic_binary_classification/project.qmd
+        - text: "---"
         - section: "R & Shiny"
           contents: 
             - projects/r_shiny/japan_biodiversity_dashboard/project.qmd
     - id: articles
       contents: 
         - articles.qmd
+        - text: "---"
         - articles/price_tracking_with_py_selenium/article.qmd
         - articles/visualizing_proportions_with_echarts4r/article.qmd
 
@@ -44,7 +47,8 @@ format:
     code-copy: true
     smooth-scroll: true
     toc: true
-    theme: [cosmo, www/css/theme.scss]
+    theme: cosmo
+    css: www/css/theme.scss
     grid:
       sidebar-width: 300px
       body-width: 900px

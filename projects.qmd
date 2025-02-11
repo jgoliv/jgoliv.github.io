@@ -4,8 +4,7 @@ toc: true
 listing: 
   - id: project-links
     type: grid
-    contents:
-      - "../projects/**/*.qmd"
+    contents: projects
 ---
 
 ::: {#project-links}

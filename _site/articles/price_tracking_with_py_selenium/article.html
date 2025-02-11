@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.5.47">
+<meta name="generator" content="quarto-1.6.40">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -65,15 +65,17 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../../">
+<link href="../../articles/visualizing_proportions_with_echarts4r/article.html" rel="next">
+<link href="../../articles.html" rel="prev">
 <script src="../../site_libs/quarto-html/quarto.js"></script>
 <script src="../../site_libs/quarto-html/popper.min.js"></script>
 <script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-9d665ec4ce1188ed123878fa2742729a.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-e148e01186687027896875682500d1c5.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -82,8 +84,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   "type": "overlay",
   "limit": 50,
   "keyboard-shortcut": [
-    "?"
+    "f",
+    "/",
+    "s"
   ],
+  "show-item-context": false,
   "language": {
     "search-no-results-text": "No results",
     "search-matching-documents-text": "matching documents",
@@ -98,23 +103,24 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     "search-label": "Search"
   }
 }</script>
+<style>html{ scroll-behavior: smooth; }</style>
 
 
-<link rel="stylesheet" href="www/css/custom.css">
+<meta property="og:title" content="Price tracking with Selenium – jgoliv">
+<meta property="og:description" content="">
+<meta property="og:image" content="files/image.png">
+<meta property="og:site_name" content="jgoliv">
 </head>
 
-<body class="floating nav-fixed">
+<body class="nav-sidebar floating nav-fixed">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
-    <a href="../../index.html" class="navbar-brand navbar-brand-logo">
-    <img src="../../www/images/logo.svg" alt="João Gabriel Oliveira" class="navbar-logo">
-    </a>
     <a class="navbar-brand" href="../../index.html">
-    <span class="navbar-title">João Gabriel Oliveira</span>
+    <span class="navbar-title">jgoliv</span>
     </a>
   </div>
             <div id="quarto-search" class="" title="Search"></div>
@@ -123,50 +129,73 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </button>
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
-  <li class="nav-item dropdown ">
-    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-projects" role="link" data-bs-toggle="dropdown" aria-expanded="false">
- <span class="menu-text">Projects</span>
-    </a>
-    <ul class="dropdown-menu" aria-labelledby="nav-menu-projects">    
-        <li>
-    <a class="dropdown-item" href="//projects/ml_cases/titanic_binary_classification/project.html">
- <span class="dropdown-text">Machine learning cases</span></a>
+  <li class="nav-item">
+    <a class="nav-link" href="../../index.html"> 
+<span class="menu-text">About me</span></a>
   </li>  
-        <li>
-    <a class="dropdown-item" href="//projects/r_shiny/japan_biodiversity_dashboard/project.html">
- <span class="dropdown-text">R &amp; Shiny</span></a>
+  <li class="nav-item">
+    <a class="nav-link" href="../../projects.html"> 
+<span class="menu-text">Projects</span></a>
   </li>  
-    </ul>
-  </li>
-  <li class="nav-item dropdown ">
-    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-articles" role="link" data-bs-toggle="dropdown" aria-expanded="false">
- <span class="menu-text">Articles</span>
-    </a>
-    <ul class="dropdown-menu" aria-labelledby="nav-menu-articles">    
-        <li>
-    <a class="dropdown-item" href="//articles/price_tracking_with_py_selenium/article.html">
- <span class="dropdown-text">Price Tracking with Python &amp; Selenium</span></a>
+  <li class="nav-item">
+    <a class="nav-link active" href="../../articles.html" aria-current="page"> 
+<span class="menu-text">Articles</span></a>
   </li>  
-        <li>
-    <a class="dropdown-item" href="//articles/visualizing_proportions_with_echarts4r/article.html">
- <span class="dropdown-text">Visualizing Proportions with ECharts4r</span></a>
-  </li>  
-    </ul>
-  </li>
 </ul>
           </div> <!-- /navcollapse -->
             <div class="quarto-navbar-tools">
     <a href="https://github.com/jgoliv" title="" class="quarto-navigation-tool px-1" aria-label=""><i class="bi bi-github"></i></a>
-    <a href="https://linkedin.com/in/joão-gabriel-oliveira-jesus" title="" class="quarto-navigation-tool px-1" aria-label=""><i class="bi bi-linkedin"></i></a>
+    <a href="https://linkedin.com/in/jgoliv" title="" class="quarto-navigation-tool px-1" aria-label=""><i class="bi bi-linkedin"></i></a>
 </div>
       </div> <!-- /container-fluid -->
     </nav>
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../articles/price_tracking_with_py_selenium/article.html">Price tracking with Selenium</a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+    </div>
+  </nav>
 </header>
 <!-- content -->
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
   <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
-    <nav id="TOC" role="doc-toc" class="toc-active">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+      <a href="../../index.html" class="sidebar-logo-link">
+      <img src="../../www/images/logo.svg" alt="" class="sidebar-logo py-0 d-lg-inline d-none">
+      </a>
+      </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../articles.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Articles</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../articles/price_tracking_with_py_selenium/article.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">Price tracking with Selenium</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../articles/visualizing_proportions_with_echarts4r/article.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Visualizing proportions with <code>echarts4r</code></span></a>
+  </div>
+</li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
     <h2 id="toc-title">On this page</h2>
    
   <ul>
@@ -182,10 +211,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </ul></li>
   </ul>
 </nav>
-</nav>
-<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
-<!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
@@ -458,8 +483,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   });
   clipboard.on('success', onCopySuccess);
   if (window.document.getElementById('quarto-embedded-source-code-modal')) {
-    // For code content inside modals, clipBoardJS needs to be initialized with a container option
-    // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
     const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
       text: getTextToCopy,
       container: window.document.getElementById('quarto-embedded-source-code-modal')
@@ -482,6 +505,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
         if (link.dataset.originalHref !== undefined) {
           link.href = link.dataset.originalHref;
         }
+          // target, if specified
+          link.setAttribute("target", "_blank");
+          if (link.getAttribute("rel") === null) {
+            link.setAttribute("rel", "noopener");
+          }
+          // default icon
+          link.classList.add("external");
       }
     }
   function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
@@ -570,7 +600,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       if (window.Quarto?.typesetMath) {
         window.Quarto.typesetMath(note);
       }
-      // TODO in 1.5, we should make sure this works without a callout special case
       if (note.classList.contains("callout")) {
         return note.outerHTML;
       } else {
@@ -796,9 +825,22 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   }
 });
 </script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="../../articles.html" class="pagination-link" aria-label="Articles">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Articles</span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="../../articles/visualizing_proportions_with_echarts4r/article.html" class="pagination-link" aria-label="Visualizing proportions with `echarts4r`">
+        <span class="nav-page-text">Visualizing proportions with <code>echarts4r</code></span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
 </div> <!-- /content -->
 
 
 
 
+<script src="../../site_libs/quarto-html/zenscroll-min.js"></script>
 </body></html>
