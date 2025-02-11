@@ -1,0 +1,12 @@
+---
+title: "Articles"
+toc: true
+listing: 
+  - id: article-links
+    type: grid
+    contents:
+      - "../articles/**/*.qmd"
+---
+
+::: {#article-links}
+:::

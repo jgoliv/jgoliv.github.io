@@ -6,19 +6,10 @@ about:
   links:
     - icon: linkedin
       text: Linkedin
-      href: https://linkedin.com/in/joão-gabriel-oliveira-jesus
+      href: https://linkedin.com/in/jgoliv
     - icon: github
       text: Github
       href: https://github.com/jgoliv 
-listing: 
-  - id: projects-links
-    type: grid
-    page-size: 40
-    contents:
-      - "../articles/price_tracking_with_py_selenium/*.qmd"
-      - "../articles/visualizing_proportions_with_echarts4r/*.qmd"
-      - "../projects/ml_cases/titanic_binary_classification/*.qmd"
-      - "../projects/r_shiny/japan_biodiversity_dashboard/*.qmd"
 ---
 
 Hi! I'm João Gabriel, a data scientist based in São Paulo, Brazil, with a strong passion for problem-solving and a keen interest in leveraging data to drive impactful decisions.
@@ -37,8 +28,3 @@ In my current role as a data scientist and R/Shiny developer, I utilize **R**, *
 Beyond my technical work, I am also an avid jazz guitarist.
 
 For more details about my career and projects, feel free to connect with me on [LinkedIn](www.linkedin.com/in/jgoliv).
-
-## Some of my projects
-
-::: {#project-links}
-:::

@@ -4,10 +4,7 @@
     "href": "index.html",
     "title": "About me",
     "section": "",
-    "text": "Hi! I’m João Gabriel, a data scientist based in São Paulo, Brazil, with a strong passion for problem-solving and a keen interest in leveraging data to drive impactful decisions.\nI hold a bachelor’s degree in Mathematics from the State University of São Paulo (UNESP) and a master’s degree in Mathematics from the State University of Campinas (UNICAMP), specializing in Algebra and Number Theory. Some of my articles are listed below, as well as my master’s thesis:\nFor further details, check my Lattes CV.\nMy academic background has provided me with a strong foundation in analytical thinking and problem-solving, which I now apply to my work in data science.\nIn my current role as a data scientist and R/Shiny developer, I utilize R, Python and Julia for data manipulation, statistical modeling, and the creation of automated reports with Quarto and R Markdown. I specialize in developing interactive web applications with Shiny, focusing in dashboards and platforms for real-time data and model monitoring. In machine learning, I work extensively with libraries such as scikit-learn and tidymodels for model development and evaluation. Additionally, I have experience in automated testing (unit testing & end-to-end testing) for R/Shiny applications and R packages to ensure realiable software solutions.\nBeyond my technical work, I am also an avid jazz guitarist.\nFor more details about my career and projects, feel free to connect with me on LinkedIn.",
-    "crumbs": [
-      "About me"
-    ]
+    "text": "Hi! I’m João Gabriel, a data scientist based in São Paulo, Brazil, with a strong passion for problem-solving and a keen interest in leveraging data to drive impactful decisions.\nI hold a bachelor’s degree in Mathematics from the State University of São Paulo (UNESP) and a master’s degree in Mathematics from the State University of Campinas (UNICAMP), specializing in Algebra and Number Theory. Some of my articles are listed below, as well as my master’s thesis:\n\n\nDiagonal 2 × 2 Space-Time Block Codes with Good Normalized Densities \nMaster’s thesis \n\n\nFor further details, check my Lattes CV.\nMy academic background has provided me with a strong foundation in analytical thinking and problem-solving, which I now apply to my work in data science.\nIn my current role as a data scientist and R/Shiny developer, I utilize R, Python and Julia for data manipulation, statistical modeling, and the creation of automated reports with Quarto and R Markdown. I specialize in developing interactive web applications with Shiny, focusing in dashboards and platforms for real-time data and model monitoring. In machine learning, I work extensively with libraries such as scikit-learn and tidymodels for model development and evaluation. Additionally, I have experience in automated testing (unit testing & end-to-end testing) for R/Shiny applications and R packages to ensure realiable software solutions.\nBeyond my technical work, I am also an avid jazz guitarist.\nFor more details about my career and projects, feel free to connect with me on LinkedIn."
   },
   {
     "objectID": "index.html#academic-education",
@@ -24,10 +21,7 @@
     "href": "index.html#some-of-my-projects",
     "title": "About me",
     "section": "Some of my projects",
-    "text": "Some of my projects",
-    "crumbs": [
-      "About me"
-    ]
+    "text": "Some of my projects"
   },
   {
     "objectID": "articles/survival_analysis_with_tidymodels/article.html",
@@ -76,77 +70,49 @@
     "href": "articles/price_tracking_with_py_selenium/article.html",
     "title": "Price tracking with Selenium",
     "section": "",
-    "text": "Selenium is an open-source framework that enables you to write tests or scripts to control a web browser. It supports multiple programming languages, including Python. With Selenium, you can simulate user interactions like clicking buttons, entering text, and navigating through pages.\nIn Python, Selenium offers an powerful API that’s great for automating tasks. In this article, we’ll guide you through the setup process and demonstrate how to use Selenium to track prices automatically!\n\nThe jupyter notebook of this article can be found here.",
-    "crumbs": [
-      "Articles",
-      "Price tracking with Selenium"
-    ]
+    "text": "Selenium is an open-source framework that enables you to write tests or scripts to control a web browser. It supports multiple programming languages, including Python. With Selenium, you can simulate user interactions like clicking buttons, entering text, and navigating through pages.\nIn Python, Selenium offers an powerful API that’s great for automating tasks. In this article, we’ll guide you through the setup process and demonstrate how to use Selenium to track prices automatically!\n\nThe jupyter notebook of this article can be found here."
   },
   {
     "objectID": "articles/price_tracking_with_py_selenium/article.html#what-is-selenium",
     "href": "articles/price_tracking_with_py_selenium/article.html#what-is-selenium",
     "title": "Price tracking with Selenium",
     "section": "",
-    "text": "Selenium is an open-source framework that enables you to write tests or scripts to control a web browser. It supports multiple programming languages, including Python. With Selenium, you can simulate user interactions like clicking buttons, entering text, and navigating through pages.\nIn Python, Selenium offers an powerful API that’s great for automating tasks. In this article, we’ll guide you through the setup process and demonstrate how to use Selenium to track prices automatically!\n\nThe jupyter notebook of this article can be found here.",
-    "crumbs": [
-      "Articles",
-      "Price tracking with Selenium"
-    ]
+    "text": "Selenium is an open-source framework that enables you to write tests or scripts to control a web browser. It supports multiple programming languages, including Python. With Selenium, you can simulate user interactions like clicking buttons, entering text, and navigating through pages.\nIn Python, Selenium offers an powerful API that’s great for automating tasks. In this article, we’ll guide you through the setup process and demonstrate how to use Selenium to track prices automatically!\n\nThe jupyter notebook of this article can be found here."
   },
   {
     "objectID": "articles/price_tracking_with_py_selenium/article.html#the-basics",
     "href": "articles/price_tracking_with_py_selenium/article.html#the-basics",
     "title": "Price tracking with Selenium",
     "section": "The basics",
-    "text": "The basics\nSelenium is made up of several components, but we’ll focus on the Selenium WebDriver, which enables you to control the browser. To get started with Selenium, you’ll need a WebDriver for the browser you wish to automate. In this guide, we’ll be using the Chrome WebDriver.\nNormally, setting up Selenium involves downloading the ChromeDriver manually and configuring it on your system, but by using the webdriver-manager library, this process is automated: it downloads the correct version of ChromeDriver based on the version of Chrome installed on your machine.\nNow, let’s see this in action by creating a Chrome WebDriver instance, navigating to Google, print the title page and then closing the driver.\nfrom selenium import webdriver\nfrom webdriver_manager.chrome import ChromeDriverManager\nfrom selenium.webdriver.chrome.service import Service\n\ndef create_driver(url: str = None) -&gt; webdriver.Chrome:\n    driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()))\n    \n    if url:\n        driver.get(url)\n    \n    return driver\n\ndriver = create_driver(url=\"https://www.google.com\")\nprint(driver.title)\n\ndriver.quit()",
-    "crumbs": [
-      "Articles",
-      "Price tracking with Selenium"
-    ]
+    "text": "The basics\nSelenium is made up of several components, but we’ll focus on the Selenium WebDriver, which enables you to control the browser. To get started with Selenium, you’ll need a WebDriver for the browser you wish to automate. In this guide, we’ll be using the Chrome WebDriver.\nNormally, setting up Selenium involves downloading the ChromeDriver manually and configuring it on your system, but by using the webdriver-manager library, this process is automated: it downloads the correct version of ChromeDriver based on the version of Chrome installed on your machine.\nNow, let’s see this in action by creating a Chrome WebDriver instance, navigating to Google, print the title page and then closing the driver.\nfrom selenium import webdriver\nfrom webdriver_manager.chrome import ChromeDriverManager\nfrom selenium.webdriver.chrome.service import Service\n\ndef create_driver(url: str = None) -&gt; webdriver.Chrome:\n    driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()))\n    \n    if url:\n        driver.get(url)\n    \n    return driver\n\ndriver = create_driver(url=\"https://www.google.com\")\nprint(driver.title)\n\ndriver.quit()"
   },
   {
     "objectID": "articles/price_tracking_with_py_selenium/article.html#finding-elements",
     "href": "articles/price_tracking_with_py_selenium/article.html#finding-elements",
     "title": "Price tracking with Selenium",
     "section": "Finding elements",
-    "text": "Finding elements\nBefore we can perform any action, we need to locate the elements on the page. To do this, simply right-click on the desired element and select “Inspect” to open devtools, where we can find its identifier.\nThe identifier can be the element’s ID, class, or XPath. Once you have it, you can use methods to retrieve the element.\nHowever, sometimes elements may not be clickable due to various factors, such as the page still loading, which can lead to errors in automation. To adress this issue, we can use the WebDriverWait module, which allows us to pause the execution until a certain condition is met, such as an element becoming clickable.\nTo wait for an element to be clickable, we can use the following code:\nfrom selenium.webdriver.common.by import By\nfrom selenium.webdriver.support.ui import WebDriverWait\nfrom selenium.webdriver.support import expected_conditions as EC\n\nwait = WebDriverWait(driver, wait_time)\nwait.until(EC.element_to_be_clickable((by, element)))\nHere, by is the method we’re using to locate the element (like By.ID or By.XPATH), and element is the identifier of the target element. Additionally, the Expected Conditions (EC) module provides useful conditions to help us manage waiting for specific states of web elements.",
-    "crumbs": [
-      "Articles",
-      "Price tracking with Selenium"
-    ]
+    "text": "Finding elements\nBefore we can perform any action, we need to locate the elements on the page. To do this, simply right-click on the desired element and select “Inspect” to open devtools, where we can find its identifier.\nThe identifier can be the element’s ID, class, or XPath. Once you have it, you can use methods to retrieve the element.\nHowever, sometimes elements may not be clickable due to various factors, such as the page still loading, which can lead to errors in automation. To adress this issue, we can use the WebDriverWait module, which allows us to pause the execution until a certain condition is met, such as an element becoming clickable.\nTo wait for an element to be clickable, we can use the following code:\nfrom selenium.webdriver.common.by import By\nfrom selenium.webdriver.support.ui import WebDriverWait\nfrom selenium.webdriver.support import expected_conditions as EC\n\nwait = WebDriverWait(driver, wait_time)\nwait.until(EC.element_to_be_clickable((by, element)))\nHere, by is the method we’re using to locate the element (like By.ID or By.XPATH), and element is the identifier of the target element. Additionally, the Expected Conditions (EC) module provides useful conditions to help us manage waiting for specific states of web elements."
   },
   {
     "objectID": "articles/price_tracking_with_py_selenium/article.html#moving-to-and-interacting-with-elements",
     "href": "articles/price_tracking_with_py_selenium/article.html#moving-to-and-interacting-with-elements",
     "title": "Price tracking with Selenium",
     "section": "Moving to and interacting with elements",
-    "text": "Moving to and interacting with elements\nOnce we’ve located an element, we often need to interact with it. One effective way to do this is by moving the mouse to the element’s position on the page. For this, we can use the ActionChains class, which allows us to chain together various actions:\nfrom selenium.webdriver.common.action_chains import ActionChains\n\nactions = ActionChains(driver)\nactions.move_to_element(element).perform()\nBy creating an instance of ActionChains and calling the move_to_element method, we can move the mouse cursor to the specified element. The perform method is then called to execute the action.\nUsing ActionChains is particularly useful when working with dynamic elements, such as those that reveal additional options or menus upon hover. This ensures that we can interact with elements that may not be visible or clickable until we move the mouse over them.\nAfter moving to the desired element, we can click on it by adding the click() method to the actions chain, before calling perform.\nIf we want to type something into an input field, we can use the send_keys() method. It’s a good practice to use the clear() method to clear any existing text in the input field before filling it:\ninput_field.clear()\ninput_field.send_keys(\"Your text here\")",
-    "crumbs": [
-      "Articles",
-      "Price tracking with Selenium"
-    ]
+    "text": "Moving to and interacting with elements\nOnce we’ve located an element, we often need to interact with it. One effective way to do this is by moving the mouse to the element’s position on the page. For this, we can use the ActionChains class, which allows us to chain together various actions:\nfrom selenium.webdriver.common.action_chains import ActionChains\n\nactions = ActionChains(driver)\nactions.move_to_element(element).perform()\nBy creating an instance of ActionChains and calling the move_to_element method, we can move the mouse cursor to the specified element. The perform method is then called to execute the action.\nUsing ActionChains is particularly useful when working with dynamic elements, such as those that reveal additional options or menus upon hover. This ensures that we can interact with elements that may not be visible or clickable until we move the mouse over them.\nAfter moving to the desired element, we can click on it by adding the click() method to the actions chain, before calling perform.\nIf we want to type something into an input field, we can use the send_keys() method. It’s a good practice to use the clear() method to clear any existing text in the input field before filling it:\ninput_field.clear()\ninput_field.send_keys(\"Your text here\")"
   },
   {
     "objectID": "articles/price_tracking_with_py_selenium/article.html#action-functions",
     "href": "articles/price_tracking_with_py_selenium/article.html#action-functions",
     "title": "Price tracking with Selenium",
     "section": "Action functions",
-    "text": "Action functions\nTo streamline our automation process, we can create two handy functions: move_click and move_click_fill. These functions will encapsulate the actions of moving to an element and performing clicks or filling input fields, making our code more organized and reusable.\ndef move_click(driver: webdriver.Chrome, by: By, element: str, wait_time: int = 10) -&gt; None:\n        wait = WebDriverWait(driver, wait_time)\n        actions = ActionChains(driver)\n        el = wait.until(EC.element_to_be_clickable((by, element)))\n        actions.move_to_element(el).click().perform()\n\ndef move_click_and_fill(driver: webdriver.Chrome, by: By, element: str, value: str, wait_time: int = 10) -&gt; None:\n        move_click(driver, by, element, wait_time)\n        el = driver.find_element(by, element)\n        el.clear()\n        el.send_keys(value)",
-    "crumbs": [
-      "Articles",
-      "Price tracking with Selenium"
-    ]
+    "text": "Action functions\nTo streamline our automation process, we can create two handy functions: move_click and move_click_fill. These functions will encapsulate the actions of moving to an element and performing clicks or filling input fields, making our code more organized and reusable.\ndef move_click(driver: webdriver.Chrome, by: By, element: str, wait_time: int = 10) -&gt; None:\n        wait = WebDriverWait(driver, wait_time)\n        actions = ActionChains(driver)\n        el = wait.until(EC.element_to_be_clickable((by, element)))\n        actions.move_to_element(el).click().perform()\n\ndef move_click_and_fill(driver: webdriver.Chrome, by: By, element: str, value: str, wait_time: int = 10) -&gt; None:\n        move_click(driver, by, element, wait_time)\n        el = driver.find_element(by, element)\n        el.clear()\n        el.send_keys(value)"
   },
   {
     "objectID": "articles/price_tracking_with_py_selenium/article.html#price-tracking",
     "href": "articles/price_tracking_with_py_selenium/article.html#price-tracking",
     "title": "Price tracking with Selenium",
     "section": "Price tracking",
-    "text": "Price tracking\nLet’s say you’re interested in buying the book Hands-On Machine Learning with Scikit-Learn, Keras, and TensorFlow: Concepts, Tools, and Techniques to Build Intelligent Systems. You check the price on Amazon, but it’s a bit higher than you’d like.\nWe’ll first navigate to the Amazon website. Once we’re there, we’ll locate the search bar at the top of the page. Next, we’ll enter the title of the book, Hands-On Machine Learning, into the search bar to find the best prices available.\nWe need to instruct Selenium on how to perform these actions!\nFirst, we need to create a Selenium WebDriver instance to control the browser. We’ll use our create_driver function to initialize the instance and navigate to the amazon url.\ndriver = create_driver(url=\"https://www.amazon.com\")\nWith the Amazon homepage loaded, we can now use our move_click_fill and move_click functions to enter the book’s title into the search bar e trigger the search button. After inspecting the page, we retrieved the search bar’s ID, \"twotabsearchtextbox\", and the search button ID, \"nav-search-submit-button\".\nHere’s the code to handle both actions:\nmove_click_fill(\n    driver=driver\n    , by=By.ID\n    , element=\"twotabsearchtextbox\"\n    , value=\"Hands-On Machine Learning with Scikit-Learn, Keras, and TensorFlow\"\n)\n\nmove_click(driver=driver, by=By.ID, element=\"nav-search-submit-button\")\n\nExtracting product prices\nNow that we’ve successfully navigated to the search results page, we need to extract the prices for the relevant products. Here’s a more detailed breakdown of the process:\n\nInspect the HTML structure: after opening the Developer Tools and navigating to the Elements tab, take a moment to examine the HTML structure. For Amazon, products are typically organized under the class name \"s-result-item\". Upon further inspection, you’ll discover that the class name for the product titles is \"a-size-medium a-color-base a-text-normal\", while the prices consist of two distinct classes: \"a-price-whole\" for the integer part and \"a-price-fraction\" for the decimal part, as shown in the images below:\n\n\n     \n\n\nExtract the title and price: we can loop through each \"s-result-item\" and extract the infos we want using the find_element method. The idea here is to organize the product titles, prices, and links into a pandas DataFrame object.\n\nimport pandas as pd\n\n# locating all titles, prices and product links\ntitles = driver.find_elements(By.CLASS_NAME, \"a-size-medium.a-color-base.a-text-normal\")\nwhole_prices = driver.find_elements(By.CLASS_NAME, \"a-price-whole\")\nfractional_prices = driver.find_elements(By.CLASS_NAME, \"a-price-fraction\")\nlinks = driver.find_elements(By.CLASS_NAME, \"a-link-normal\")\n\n# loop to append data to the DataFrame\ndata = []\n\nfor i in range(len(titles)):\n    \n    title = titles[i].text\n    price = f\"{whole_prices[i].text}.{fractional_prices[i].text}\"\n    link = links[i].get_attribute(\"href\")  # obtaining the product link\n    \n    # appending the data to the DataFrame\n    data.append({\"title\": title, \"price\": price, \"link\": link})\n\ndf = pd.DataFrame(data)\n\n# displaying the DataFrame\nprint(df)\n\n# closing the driver after collection\ndriver.quit()\nThe output would look something like this:\n\n\n\nOutput\n\n\n\n\nWhat’s next?\nOnce you have the data, the possibilities are endless:\n\nExport to excel: you can save your DataFrame as an Excel file for easy sharing or analysis;\nEmail the data: automate sending the data via email using Python’s smtplib to deliver the Excel file to your inbox;\nSchedule price checks: set up regular price checks (daily or weekly) using jobs to track changes over time;\nDeploy to the cloud: run the script on cloud platforms to automate the process remotely;\nSet price alerts: add conditions to notify you if prices drop below a certain point.\n\nDon’t forget that you can see the full notebook here!\nHappy automating! 🤖",
-    "crumbs": [
-      "Articles",
-      "Price tracking with Selenium"
-    ]
+    "text": "Price tracking\nLet’s say you’re interested in buying the book Hands-On Machine Learning with Scikit-Learn, Keras, and TensorFlow: Concepts, Tools, and Techniques to Build Intelligent Systems. You check the price on Amazon, but it’s a bit higher than you’d like.\nWe’ll first navigate to the Amazon website. Once we’re there, we’ll locate the search bar at the top of the page. Next, we’ll enter the title of the book, Hands-On Machine Learning, into the search bar to find the best prices available.\nWe need to instruct Selenium on how to perform these actions!\nFirst, we need to create a Selenium WebDriver instance to control the browser. We’ll use our create_driver function to initialize the instance and navigate to the amazon url.\ndriver = create_driver(url=\"https://www.amazon.com\")\nWith the Amazon homepage loaded, we can now use our move_click_fill and move_click functions to enter the book’s title into the search bar e trigger the search button. After inspecting the page, we retrieved the search bar’s ID, \"twotabsearchtextbox\", and the search button ID, \"nav-search-submit-button\".\nHere’s the code to handle both actions:\nmove_click_fill(\n    driver=driver\n    , by=By.ID\n    , element=\"twotabsearchtextbox\"\n    , value=\"Hands-On Machine Learning with Scikit-Learn, Keras, and TensorFlow\"\n)\n\nmove_click(driver=driver, by=By.ID, element=\"nav-search-submit-button\")\n\nExtracting product prices\nNow that we’ve successfully navigated to the search results page, we need to extract the prices for the relevant products. Here’s a more detailed breakdown of the process:\n\nInspect the HTML structure: after opening the Developer Tools and navigating to the Elements tab, take a moment to examine the HTML structure. For Amazon, products are typically organized under the class name \"s-result-item\". Upon further inspection, you’ll discover that the class name for the product titles is \"a-size-medium a-color-base a-text-normal\", while the prices consist of two distinct classes: \"a-price-whole\" for the integer part and \"a-price-fraction\" for the decimal part, as shown in the images below:\n\n\n     \n\n\nExtract the title and price: we can loop through each \"s-result-item\" and extract the infos we want using the find_element method. The idea here is to organize the product titles, prices, and links into a pandas DataFrame object.\n\nimport pandas as pd\n\n# locating all titles, prices and product links\ntitles = driver.find_elements(By.CLASS_NAME, \"a-size-medium.a-color-base.a-text-normal\")\nwhole_prices = driver.find_elements(By.CLASS_NAME, \"a-price-whole\")\nfractional_prices = driver.find_elements(By.CLASS_NAME, \"a-price-fraction\")\nlinks = driver.find_elements(By.CLASS_NAME, \"a-link-normal\")\n\n# loop to append data to the DataFrame\ndata = []\n\nfor i in range(len(titles)):\n    \n    title = titles[i].text\n    price = f\"{whole_prices[i].text}.{fractional_prices[i].text}\"\n    link = links[i].get_attribute(\"href\")  # obtaining the product link\n    \n    # appending the data to the DataFrame\n    data.append({\"title\": title, \"price\": price, \"link\": link})\n\ndf = pd.DataFrame(data)\n\n# displaying the DataFrame\nprint(df)\n\n# closing the driver after collection\ndriver.quit()\nThe output would look something like this:\n\n\n\nOutput\n\n\n\n\nWhat’s next?\nOnce you have the data, the possibilities are endless:\n\nExport to excel: you can save your DataFrame as an Excel file for easy sharing or analysis;\nEmail the data: automate sending the data via email using Python’s smtplib to deliver the Excel file to your inbox;\nSchedule price checks: set up regular price checks (daily or weekly) using jobs to track changes over time;\nDeploy to the cloud: run the script on cloud platforms to automate the process remotely;\nSet price alerts: add conditions to notify you if prices drop below a certain point.\n\nDon’t forget that you can see the full notebook here!\nHappy automating! 🤖"
   },
   {
     "objectID": "articles/visualizing_proportions_with_echarts4r/article.html",
@@ -369,6 +335,26 @@
       "Projects",
       "R & Shiny",
       "Japan biodiversity dashboard"
+    ]
+  },
+  {
+    "objectID": "projects.html",
+    "href": "projects.html",
+    "title": "Projects",
+    "section": "",
+    "text": "Japan biodiversity dashboard\n\n\n\n\n\n\n\n\n\nDec 18, 2024\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nWIP - Random forest classification for survival prediction on the Titanic\n\n\n\n\n\n\n\n\n\nOct 12, 2024\n\n\n\n\n\n\n\n\nNo matching items",
+    "crumbs": [
+      "Projects"
+    ]
+  },
+  {
+    "objectID": "articles.html",
+    "href": "articles.html",
+    "title": "Articles",
+    "section": "",
+    "text": "Price tracking with Selenium\n\n\n\n\n\n\n\n\n\nOct 10, 2024\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nVisualizing proportions with echarts4r\n\n\n\n\n\n\n\n\n\nJun 22, 2024\n\n\n\n\n\n\n\n\nNo matching items",
+    "crumbs": [
+      "Articles"
     ]
   }
 ]

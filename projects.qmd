@@ -1,0 +1,12 @@
+---
+title: "Projects"
+toc: true
+listing: 
+  - id: project-links
+    type: grid
+    contents:
+      - "../projects/**/*.qmd"
+---
+
+::: {#project-links}
+:::
