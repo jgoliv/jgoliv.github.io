@@ -3,8 +3,9 @@ title: "Projects"
 toc: true
 listing: 
   - id: project-links
-    type: grid
+    type: default
     contents: projects
+    categories: true
 ---
 
 ::: {#project-links}

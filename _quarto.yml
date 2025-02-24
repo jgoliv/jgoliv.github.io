@@ -4,17 +4,14 @@ project:
 website:
   page-navigation: true
   open-graph: true
-  repo-url: https://github.com/quarto-dev/quarto-web
-  issue-url: https://github.com/quarto-dev/quarto-cli/issues/new/choose
+  repo-url: https://github.com/jgoliv/jgoliv.github.io
+  issue-url: https://github.com/jgoliv/jgoliv.github.io/issues/new
   repo-actions: [edit, issue]
   bread-crumbs: true
 
   navbar:
     style: "floating"
     title: false
-    logo: www/images/navbar-logo.svg
-    logo-href: index.qmd 
-    logo-alt: "Quarto logo."
     tools:
       - icon: github
         href: https://github.com/jgoliv
@@ -59,5 +56,3 @@ format:
     grid:
       sidebar-width: 300px
       body-width: 900px
-
-editor: visual

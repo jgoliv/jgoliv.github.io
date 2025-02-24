@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.6.40">
+<meta name="generator" content="quarto-1.5.57">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -37,10 +37,10 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-549806ee2085284f45b00abea8c6df48.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-d955ee2a824a5230d9f3f1ee7b650af4.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -78,9 +78,9 @@ ul.task-list li input[type="checkbox"] {
     }
 
     const options = {
-      valueNames: ['listing-title','listing-author','listing-date','listing-image','listing-description',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-file-modified-sort'] }],
+      valueNames: ['listing-date','listing-title','listing-author','listing-image','listing-description','listing-categories',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-file-modified-sort'] }],
       
-      searchColumns: ["listing-title","listing-author","listing-date","listing-image","listing-description"],
+      searchColumns: ["listing-date","listing-title","listing-author","listing-image","listing-description","listing-categories"],
     };
 
     window['quarto-listings'] = window['quarto-listings'] || {};
@@ -131,7 +131,6 @@ window.Quarto = {
 
 <link rel="stylesheet" href="www/css/theme.scss">
 <meta property="og:title" content="Projects">
-<meta property="og:image" content="./projects/r_shiny/japan_biodiversity_dashboard/files/image.svg">
 </head>
 
 <body class="nav-sidebar floating nav-fixed">
@@ -140,11 +139,6 @@ window.Quarto = {
   <header id="quarto-header" class="headroom fixed-top">
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
-      <div class="navbar-brand-container mx-auto">
-    <a href="./index.html" class="navbar-brand navbar-brand-logo">
-    <img src="./www/images/quarto.png" alt="Quarto logo." class="navbar-logo">
-    </a>
-  </div>
             <div id="quarto-search" class="" title="Search"></div>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
   <span class="navbar-toggler-icon"></span>
@@ -240,9 +234,9 @@ window.Quarto = {
 </nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
         
-    </div>
+    <h5 class="quarto-listing-category-title">Categories</h5><div class="quarto-listing-category category-default"><div class="category" data-category="">All <span class="quarto-category-count">(2)</span></div><div class="category" data-category="Data Visualization">Data Visualization <span class="quarto-category-count">(1)</span></div><div class="category" data-category="Machine Learning">Machine Learning <span class="quarto-category-count">(1)</span></div><div class="category" data-category="Python">Python <span class="quarto-category-count">(1)</span></div><div class="category" data-category="R">R <span class="quarto-category-count">(1)</span></div><div class="category" data-category="Shiny">Shiny <span class="quarto-category-count">(1)</span></div></div></div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
@@ -265,57 +259,76 @@ window.Quarto = {
 </header>
 
 
-<div id="listing-project-links" class="quarto-listing quarto-listing-container-grid">
-<div class="list grid quarto-listing-cols-3">
-<div class="g-col-1" data-index="0" data-listing-date-sort="1734490800000" data-listing-file-modified-sort="1739240902864" data-listing-date-modified-sort="1740106800000" data-listing-reading-time-sort="6" data-listing-word-count-sort="1164">
-<a href="./projects/r_shiny/japan_biodiversity_dashboard/project.html" class="quarto-grid-link">
-<div class="quarto-grid-item card h-100 card-left">
-<p class="card-img-top">
-<img loading="lazy" src="./projects/r_shiny/japan_biodiversity_dashboard/files/image.svg" class="thumbnail-image card-img" style="height: 150px;">
-</p>
-<div class="card-body post-contents">
-<h5 class="no-anchor card-title listing-title">
-Japan biodiversity dashboard
-</h5>
-<div class="card-text listing-description">
-I’ve never been to Japan, but its rich culture and stunning landscapes have always amazed me. When I came across this dataset, I was curious to explore the forms of life…
+<div id="listing-project-links" class="quarto-listing quarto-listing-container-default">
+<div class="list quarto-listing-default">
+<div class="quarto-post image-right" data-index="0" data-categories="R,Shiny,Data Visualization" data-listing-date-sort="1734490800000" data-listing-file-modified-sort="1740366695500" data-listing-date-modified-sort="1740366000000" data-listing-reading-time-sort="6" data-listing-word-count-sort="1163">
+<div class="thumbnail">
+<p><a href="./projects/r_shiny/japan_biodiversity_dashboard/project.html" class="no-external"></a></p><a href="./projects/r_shiny/japan_biodiversity_dashboard/project.html" class="no-external">
+<p><img loading="lazy" src="./projects/r_shiny/japan_biodiversity_dashboard/files/image.svg" class="thumbnail-image"></p>
+</a><p><a href="./projects/r_shiny/japan_biodiversity_dashboard/project.html" class="no-external"></a></p>
 </div>
-<div class="card-attribution card-text-small justify">
-<div class="listing-author">
-
+<div class="body">
+<h3 class="no-anchor listing-title">
+<a href="./projects/r_shiny/japan_biodiversity_dashboard/project.html" class="no-external">Japan biodiversity dashboard</a>
+</h3>
+<div class="listing-subtitle">
+<a href="./projects/r_shiny/japan_biodiversity_dashboard/project.html" class="no-external"></a>
 </div>
+<div class="listing-categories">
+<div class="listing-category" onclick="window.quartoListingCategory('R'); return false;">
+R
+</div>
+<div class="listing-category" onclick="window.quartoListingCategory('Shiny'); return false;">
+Shiny
+</div>
+<div class="listing-category" onclick="window.quartoListingCategory('Data Visualization'); return false;">
+Data Visualization
+</div>
+</div>
+<div class="listing-description">
+<a href="./projects/r_shiny/japan_biodiversity_dashboard/project.html" class="no-external">I’ve never been to Japan, but its rich culture and stunning landscapes have always amazed me. When I came across this dataset, I was curious to explore the forms of life…</a>
+</div>
+</div>
+<div class="metadata">
+<a href="./projects/r_shiny/japan_biodiversity_dashboard/project.html" class="no-external">
 <div class="listing-date">
 Dec 18, 2024
 </div>
-</div>
-</div>
-</div>
 </a>
 </div>
-<div class="g-col-1" data-index="1" data-listing-date-sort="1728702000000" data-listing-file-modified-sort="1739240902847" data-listing-date-modified-sort="1740106800000" data-listing-reading-time-sort="9" data-listing-word-count-sort="1621">
-<a href="./projects/ml_cases/titanic_binary_classification/project.html" class="quarto-grid-link">
-<div class="quarto-grid-item card h-100 card-left">
-<p class="card-img-top">
-<img loading="lazy" src="./projects/ml_cases/titanic_binary_classification/files/image.jpg" class="thumbnail-image card-img" style="height: 150px;">
-</p>
-<div class="card-body post-contents">
-<h5 class="no-anchor card-title listing-title">
-WIP - Random forest classification for survival prediction on the Titanic
-</h5>
-<div class="card-text listing-description">
-The <strong><em>Titanic dataset</em></strong> is one of the most well-known datasets in data science publicly available on <em>Kaggle</em>. It has become particularly popular for binary classification tasks…
 </div>
-<div class="card-attribution card-text-small justify">
-<div class="listing-author">
-
+<div class="quarto-post image-right" data-index="1" data-categories="Python,Machine Learning" data-listing-date-sort="1728702000000" data-listing-file-modified-sort="1740366721996" data-listing-date-modified-sort="1740366000000" data-listing-reading-time-sort="9" data-listing-word-count-sort="1621">
+<div class="thumbnail">
+<p><a href="./projects/ml_cases/titanic_binary_classification/project.html" class="no-external"></a></p><a href="./projects/ml_cases/titanic_binary_classification/project.html" class="no-external">
+<p><img loading="lazy" src="./projects/ml_cases/titanic_binary_classification/files/image.jpg" class="thumbnail-image"></p>
+</a><p><a href="./projects/ml_cases/titanic_binary_classification/project.html" class="no-external"></a></p>
 </div>
+<div class="body">
+<h3 class="no-anchor listing-title">
+<a href="./projects/ml_cases/titanic_binary_classification/project.html" class="no-external">WIP - Random forest classification for survival prediction on the Titanic</a>
+</h3>
+<div class="listing-subtitle">
+<a href="./projects/ml_cases/titanic_binary_classification/project.html" class="no-external"></a>
+</div>
+<div class="listing-categories">
+<div class="listing-category" onclick="window.quartoListingCategory('Python'); return false;">
+Python
+</div>
+<div class="listing-category" onclick="window.quartoListingCategory('Machine Learning'); return false;">
+Machine Learning
+</div>
+</div>
+<div class="listing-description">
+<a href="./projects/ml_cases/titanic_binary_classification/project.html" class="no-external">The <strong><em>Titanic dataset</em></strong> is one of the most well-known datasets in data science publicly available on <em>Kaggle</em>. It has become particularly popular for binary classification tasks…</a>
+</div>
+</div>
+<div class="metadata">
+<a href="./projects/ml_cases/titanic_binary_classification/project.html" class="no-external">
 <div class="listing-date">
 Oct 12, 2024
 </div>
-</div>
-</div>
-</div>
 </a>
+</div>
 </div>
 </div>
 <div class="listing-no-matching d-none">
@@ -409,6 +422,8 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   });
   clipboard.on('success', onCopySuccess);
   if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    // For code content inside modals, clipBoardJS needs to be initialized with a container option
+    // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
     const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
       text: getTextToCopy,
       container: window.document.getElementById('quarto-embedded-source-code-modal')
@@ -526,6 +541,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       if (window.Quarto?.typesetMath) {
         window.Quarto.typesetMath(note);
       }
+      // TODO in 1.5, we should make sure this works without a callout special case
       if (note.classList.contains("callout")) {
         return note.outerHTML;
       } else {
@@ -756,5 +772,5 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 
 
 
-<footer class="footer"><div class="nav-footer"><div class="nav-footer-center"><div class="toc-actions"><ul><li><a href="https://github.com/quarto-dev/quarto-web/edit/main/projects.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/quarto-dev/quarto-cli/issues/new/choose" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div></div></footer><script src="site_libs/quarto-html/zenscroll-min.js"></script>
+<footer class="footer"><div class="nav-footer"><div class="nav-footer-center"><div class="toc-actions"><ul><li><a href="https://github.com/jgoliv/jgoliv.github.io/edit/main/projects.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/jgoliv/jgoliv.github.io/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div></div></footer><script src="site_libs/quarto-html/zenscroll-min.js"></script>
 </body></html>
