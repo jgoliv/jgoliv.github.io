@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.6.40">
+<meta name="generator" content="quarto-1.6.41">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -91,16 +91,16 @@ div.csl-indent {
 <script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-9d665ec4ce1188ed123878fa2742729a.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-48ffa3e5b9d089919c6712c39e5b00f2.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../site_libs/bootstrap/bootstrap-f21ca8eb79345b9688e2b561ed73af7a.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-dde06c8995e4dd36a49d6d133f2a7d72.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
-  "location": "sidebar",
+  "location": "navbar",
   "copy-button": false,
   "collapse-after": 3,
-  "panel-placement": "start",
-  "type": "textbox",
+  "panel-placement": "end",
+  "type": "overlay",
   "limit": 50,
   "keyboard-shortcut": [
     "f",
@@ -138,6 +138,7 @@ div.csl-indent {
 <script src="../../site_libs/reactable-binding-0.4.4/reactable.js"></script>
 
 
+<link rel="stylesheet" href="../../www/css/theme.scss">
 <meta property="og:title" content="Visualizing proportions with echarts4r">
 <meta property="og:description" content="">
 <meta property="og:image" content="https://jgoliv.github.io/articles/visualizing_proportions_with_echarts4r/files/image.png">
@@ -145,121 +146,79 @@ div.csl-indent {
 <meta property="og:image:width" content="620">
 </head>
 
-<body class="nav-sidebar floating">
+<body class="nav-sidebar floating nav-fixed">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../index.html"> 
+<span class="menu-text">About me</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../projects.html"> 
+<span class="menu-text">Projects</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link active" href="../../articles.html" aria-current="page"> 
+<span class="menu-text">Articles</span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+    <a href="https://github.com/jgoliv" title="" class="quarto-navigation-tool px-1" aria-label=""><i class="bi bi-github"></i></a>
+    <a href="https://linkedin.com/in/jgoliv" title="" class="quarto-navigation-tool px-1" aria-label=""><i class="bi bi-linkedin"></i></a>
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
   <nav class="quarto-secondary-nav">
     <div class="container-fluid d-flex">
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../articles/price_tracking_with_py_selenium/article.html">Articles</a></li><li class="breadcrumb-item"><a href="../../articles/visualizing_proportions_with_echarts4r/article.html">Visualizing proportions with <code>echarts4r</code></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../articles/visualizing_proportions_with_echarts4r/article.html">Visualizing proportions with <code>echarts4r</code></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
-      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
-        <i class="bi bi-search"></i>
-      </button>
     </div>
   </nav>
 </header>
 <!-- content -->
-<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
   <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
-    <div class="pt-lg-2 mt-2 text-left sidebar-header sidebar-header-stacked">
-      <a href="../../index.html" class="sidebar-logo-link">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+      <a href="index.qmd" class="sidebar-logo-link">
       <img src="../../www/images/logo.svg" alt="" class="sidebar-logo py-0 d-lg-inline d-none">
       </a>
-    <div class="sidebar-title mb-0 py-0">
-      <a href="../../">João Gabriel Oliveira</a> 
-        <div class="sidebar-tools-main">
-    <a href="https://github.com/jgoliv" title="" class="quarto-navigation-tool px-1" aria-label=""><i class="bi bi-github"></i></a>
-    <a href="https://linkedin.com/in/joão-gabriel-oliveira-jesus" title="" class="quarto-navigation-tool px-1" aria-label=""><i class="bi bi-linkedin"></i></a>
-</div>
-    </div>
       </div>
-        <div class="mt-2 flex-shrink-0 align-items-center">
-        <div class="sidebar-search">
-        <div id="quarto-search" class="" title="Search"></div>
-        </div>
-        </div>
     <div class="sidebar-menu-container"> 
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../index.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">About me</span></a>
-  </div>
-</li>
-        <li class="sidebar-item sidebar-item-section">
-      <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true">
- <span class="menu-text">Projects</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
-            <i class="bi bi-chevron-right ms-2"></i>
-          </a> 
-      </div>
-      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
-          <li class="sidebar-item sidebar-item-section">
-      <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="false">
- <span class="menu-text">Machine learning cases</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="false" aria-label="Toggle section">
-            <i class="bi bi-chevron-right ms-2"></i>
-          </a> 
-      </div>
-      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth2 ">  
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../projects/ml_cases/titanic_binary_classification/project.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">WIP - Random forest classification for survival prediction on the Titanic</span></a>
-  </div>
-</li>
-      </ul>
-  </li>
-          <li class="sidebar-item sidebar-item-section">
-      <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="false">
- <span class="menu-text">R &amp; Shiny</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="false" aria-label="Toggle section">
-            <i class="bi bi-chevron-right ms-2"></i>
-          </a> 
-      </div>
-      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth2 ">  
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../projects/r_shiny/japan_biodiversity_dashboard/project.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Japan biodiversity dashboard</span></a>
-  </div>
-</li>
-      </ul>
-  </li>
-      </ul>
-  </li>
-        <li class="sidebar-item sidebar-item-section">
-      <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true">
+  <a href="../../articles.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Articles</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true" aria-label="Toggle section">
-            <i class="bi bi-chevron-right ms-2"></i>
-          </a> 
-      </div>
-      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">  
-          <li class="sidebar-item">
+  </div>
+</li>
+        <li class="px-0"><hr class="sidebar-divider hi "></li>
+        <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../articles/price_tracking_with_py_selenium/article.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Price tracking with Selenium</span></a>
   </div>
 </li>
-          <li class="sidebar-item">
+        <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../articles/visualizing_proportions_with_echarts4r/article.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text">Visualizing proportions with <code>echarts4r</code></span></a>
   </div>
 </li>
-      </ul>
-  </li>
     </ul>
     </div>
 </nav>
@@ -274,15 +233,19 @@ div.csl-indent {
   <li><a href="#bar-charts" id="toc-bar-charts" class="nav-link" data-scroll-target="#bar-charts">Bar charts</a></li>
   <li><a href="#extra-sankey-charts" id="toc-extra-sankey-charts" class="nav-link" data-scroll-target="#extra-sankey-charts">Extra: Sankey charts</a></li>
   </ul>
-</nav>
+<div class="toc-actions"><ul><li><a href="https://github.com/jgoliv/jgoliv.github.io/edit/main/articles/visualizing_proportions_with_echarts4r/article.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/jgoliv/jgoliv.github.io/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../articles/price_tracking_with_py_selenium/article.html">Articles</a></li><li class="breadcrumb-item"><a href="../../articles/visualizing_proportions_with_echarts4r/article.html">Visualizing proportions with <code>echarts4r</code></a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
 <h1 class="title">Visualizing proportions with <code>echarts4r</code></h1>
-</div>
+  <div class="quarto-categories">
+    <div class="quarto-category">R</div>
+    <div class="quarto-category">Data Visualization</div>
+  </div>
+  </div>
 
 
 
@@ -326,8 +289,8 @@ div.csl-indent {
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">e_pie</span>(Total) <span class="sc">|&gt;</span> </span>
 <span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">e_theme</span>(<span class="st">"caravan"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<div class="echarts4r html-widget html-fill-item" id="htmlwidget-315bde3c75ffc8f94423" style="width:100%;height:500px;"></div>
-<script type="application/json" data-for="htmlwidget-315bde3c75ffc8f94423">{"x":{"theme":"caravan","tl":false,"draw":true,"renderer":"canvas","events":[],"buttons":[],"opts":{"legend":{"data":["A","B","C","D","E"]},"series":[{"name":"Total","type":"pie","data":[{"value":70,"name":"A"},{"value":85,"name":"B"},{"value":50,"name":"C"},{"value":55,"name":"D"},{"value":25,"name":"E"}]}]},"dispose":true},"evals":[],"jsHooks":[]}</script>
+<div class="echarts4r html-widget html-fill-item" id="htmlwidget-c66bf0fd820826ebfb2f" style="width:100%;height:500px;"></div>
+<script type="application/json" data-for="htmlwidget-c66bf0fd820826ebfb2f">{"x":{"theme":"caravan","tl":false,"draw":true,"renderer":"canvas","events":[],"buttons":[],"opts":{"legend":{"data":["A","B","C","D","E"]},"series":[{"name":"Total","type":"pie","data":[{"value":70,"name":"A"},{"value":85,"name":"B"},{"value":50,"name":"C"},{"value":55,"name":"D"},{"value":25,"name":"E"}]}]},"dispose":true},"evals":[],"jsHooks":[]}</script>
 </div>
 </div>
 <p>In this crude form, this chart may not be that interesting. In fact, it can be misleading: Notice how the minor difference between groups “C” and “D” is hardly perceived — this is a common issue when using pie-like charts.</p>
@@ -346,16 +309,16 @@ div.csl-indent {
 <span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">e_pie</span>(Total, <span class="at">roseType =</span> <span class="st">"radius"</span>, <span class="at">label =</span> <span class="fu">list</span>(<span class="at">formatter =</span> formatter)) <span class="sc">|&gt;</span> </span>
 <span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">e_theme</span>(<span class="st">"caravan"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<div class="echarts4r html-widget html-fill-item" id="htmlwidget-092b980fbaa02871c825" style="width:100%;height:500px;"></div>
-<script type="application/json" data-for="htmlwidget-092b980fbaa02871c825">{"x":{"theme":"caravan","tl":false,"draw":true,"renderer":"canvas","events":[],"buttons":[],"opts":{"legend":{"data":["A","B","C","D","E"]},"series":[{"name":"Total","type":"pie","roseType":"radius","label":{"formatter":"function(params) {\n       return params.name + ' : ' + params.value + ' (' + params.percent + '%)';\n    }"},"data":[{"value":70,"name":"A"},{"value":85,"name":"B"},{"value":50,"name":"C"},{"value":55,"name":"D"},{"value":25,"name":"E"}]}]},"dispose":true},"evals":["opts.series.0.label.formatter"],"jsHooks":[]}</script>
+<div class="echarts4r html-widget html-fill-item" id="htmlwidget-c3543824a69e68adc786" style="width:100%;height:500px;"></div>
+<script type="application/json" data-for="htmlwidget-c3543824a69e68adc786">{"x":{"theme":"caravan","tl":false,"draw":true,"renderer":"canvas","events":[],"buttons":[],"opts":{"legend":{"data":["A","B","C","D","E"]},"series":[{"name":"Total","type":"pie","roseType":"radius","label":{"formatter":"function(params) {\n       return params.name + ' : ' + params.value + ' (' + params.percent + '%)';\n    }"},"data":[{"value":70,"name":"A"},{"value":85,"name":"B"},{"value":50,"name":"C"},{"value":55,"name":"D"},{"value":25,"name":"E"}]}]},"dispose":true},"evals":["opts.series.0.label.formatter"],"jsHooks":[]}</script>
 </div>
 </div>
 <p>With these adjustments, we can visualize the proportions more clearly, getting insights faster, while we can see more details in the label.</p>
 <p>With donut charts, we’ll have about the same issues. You can do it in <code>echarts4r</code> by passing any vector of the form <code>c("55%", "60%")</code> to the <code>radius</code> argument in the same <code>e_pie</code> function:</p>
 <div class="cell">
 <div class="cell-output-display">
-<div class="echarts4r html-widget html-fill-item" id="htmlwidget-bf71b6269caed735210c" style="width:100%;height:500px;"></div>
-<script type="application/json" data-for="htmlwidget-bf71b6269caed735210c">{"x":{"theme":"caravan","tl":false,"draw":true,"renderer":"canvas","events":[],"buttons":[],"opts":{"legend":{"data":["A","B","C","D","E"]},"series":[{"name":"Total","type":"pie","radius":["50%","70%"],"label":{"formatter":"function(params) {return params.name + ' : ' + params.value + ' (' + params.percent + '%)';}"},"itemStyle":{"borderRadius":11,"borderWidth":2,"borderColor":"#fff"},"data":[{"value":70,"name":"A"},{"value":85,"name":"B"},{"value":50,"name":"C"},{"value":55,"name":"D"},{"value":25,"name":"E"}]}]},"dispose":true},"evals":["opts.series.0.label.formatter"],"jsHooks":[]}</script>
+<div class="echarts4r html-widget html-fill-item" id="htmlwidget-912f4b6c7f01a0b8f873" style="width:100%;height:500px;"></div>
+<script type="application/json" data-for="htmlwidget-912f4b6c7f01a0b8f873">{"x":{"theme":"caravan","tl":false,"draw":true,"renderer":"canvas","events":[],"buttons":[],"opts":{"legend":{"data":["A","B","C","D","E"]},"series":[{"name":"Total","type":"pie","radius":["50%","70%"],"label":{"formatter":"function(params) {return params.name + ' : ' + params.value + ' (' + params.percent + '%)';}"},"itemStyle":{"borderRadius":11,"borderWidth":2,"borderColor":"#fff"},"data":[{"value":70,"name":"A"},{"value":85,"name":"B"},{"value":50,"name":"C"},{"value":55,"name":"D"},{"value":25,"name":"E"}]}]},"dispose":true},"evals":["opts.series.0.label.formatter"],"jsHooks":[]}</script>
 </div>
 </div>
 <p>As <em>Cole Nussbaumer</em> says in <em>Storytelling with data</em><a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a>,</p>
@@ -377,8 +340,8 @@ div.csl-indent {
 <span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">e_flip_coords</span>() <span class="sc">|&gt;</span> </span>
 <span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">e_theme</span>(<span class="st">"caravan"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<div class="echarts4r html-widget html-fill-item" id="htmlwidget-23322bc1de6975e8a349" style="width:100%;height:500px;"></div>
-<script type="application/json" data-for="htmlwidget-23322bc1de6975e8a349">{"x":{"theme":"caravan","tl":false,"draw":true,"renderer":"canvas","events":[],"buttons":[],"opts":{"xAxis":[{"show":true}],"yAxis":[{"data":["E","C","D","A","B"],"type":"category","boundaryGap":true}],"series":[{"data":[{"value":["25","E"]},{"value":["50","C"]},{"value":["55","D"]},{"value":["70","A"]},{"value":["85","B"]}],"name":"Total","type":"bar","yAxisIndex":0,"xAxisIndex":0,"coordinateSystem":"cartesian2d","label":{"show":true,"position":"right"}}]},"dispose":true},"evals":[],"jsHooks":[]}</script>
+<div class="echarts4r html-widget html-fill-item" id="htmlwidget-08c82a2303561faefb6b" style="width:100%;height:500px;"></div>
+<script type="application/json" data-for="htmlwidget-08c82a2303561faefb6b">{"x":{"theme":"caravan","tl":false,"draw":true,"renderer":"canvas","events":[],"buttons":[],"opts":{"xAxis":[{"show":true}],"yAxis":[{"data":["E","C","D","A","B"],"type":"category","boundaryGap":true}],"series":[{"data":[{"value":["25","E"]},{"value":["50","C"]},{"value":["55","D"]},{"value":["70","A"]},{"value":["85","B"]}],"name":"Total","type":"bar","yAxisIndex":0,"xAxisIndex":0,"coordinateSystem":"cartesian2d","label":{"show":true,"position":"right"}}]},"dispose":true},"evals":[],"jsHooks":[]}</script>
 </div>
 </div>
 <p>Observe that now the “how much” issue is a matter of subtracting or completing the bars to get an intuition of the difference (or the actual difference if you subtract the values on the label 😄).</p>
@@ -386,8 +349,8 @@ div.csl-indent {
 <p>So far, the simple example we dealt with contains only one layer, i.e, it had only the groups and the total of observations of each one. Bar charts also are very good at dealing with multi-layered data, for example: Consider this <code>pizza</code> dataset containing 5 pizzeria and their sales amount by flavour:</p>
 <div class="cell">
 <div class="cell-output-display">
-<div class="reactable html-widget html-fill-item" id="htmlwidget-94eb6e55c290d7b36802" style="width:auto;height:auto;"></div>
-<script type="application/json" data-for="htmlwidget-94eb6e55c290d7b36802">{"x":{"tag":{"name":"Reactable","attribs":{"data":{"Pizzeria":["A","A","A","B","B","B","C","C","C"],"Flavour":["Brocolli","Margherita","Pepperoni","Brocolli","Margherita","Pepperoni","Brocolli","Margherita","Pepperoni"],"Sales_amount":[175,65,102,110,95,80,130,88,100]},"columns":[{"id":"Pizzeria","name":"Pizzeria","type":"character"},{"id":"Flavour","name":"Flavour","type":"character"},{"id":"Sales_amount","name":"Sales_amount","type":"numeric"}],"dataKey":"a72a8afdf39b370c8b3085b45aeb428d"},"children":[]},"class":"reactR_markup"},"evals":[],"jsHooks":[]}</script>
+<div class="reactable html-widget html-fill-item" id="htmlwidget-7f5daad2a793241e9ed7" style="width:auto;height:auto;"></div>
+<script type="application/json" data-for="htmlwidget-7f5daad2a793241e9ed7">{"x":{"tag":{"name":"Reactable","attribs":{"data":{"Pizzeria":["A","A","A","B","B","B","C","C","C"],"Flavour":["Brocolli","Margherita","Pepperoni","Brocolli","Margherita","Pepperoni","Brocolli","Margherita","Pepperoni"],"Sales_amount":[175,65,102,110,95,80,130,88,100]},"columns":[{"id":"Pizzeria","name":"Pizzeria","type":"character"},{"id":"Flavour","name":"Flavour","type":"character"},{"id":"Sales_amount","name":"Sales_amount","type":"numeric"}],"dataKey":"a72a8afdf39b370c8b3085b45aeb428d"},"children":[]},"class":"reactR_markup"},"evals":[],"jsHooks":[]}</script>
 </div>
 </div>
 <p><br>
@@ -397,12 +360,12 @@ div.csl-indent {
 <div class="cell-output-display">
 <div style="display: flex; justify-content: space-between;">
 <div style="width: 48%;">
-<div class="echarts4r html-widget html-fill-item" id="htmlwidget-fa49e5fab6ea661f3b85" style="width:100%;height:500px;"></div>
-<script type="application/json" data-for="htmlwidget-fa49e5fab6ea661f3b85">{"x":{"theme":"caravan","tl":false,"draw":true,"renderer":"canvas","events":[],"buttons":[],"opts":{"yAxis":[{"show":true}],"xAxis":[{"data":["A","B","C"],"type":"category","boundaryGap":true}],"legend":{"data":["Brocolli","Margherita","Pepperoni"]},"series":[{"data":[{"value":["A","175"]},{"value":["B","110"]},{"value":["C","130"]}],"name":"Brocolli","type":"bar","yAxisIndex":0,"xAxisIndex":0,"coordinateSystem":"cartesian2d","stack":"grp","label":{"show":true}},{"data":[{"value":["A","65"]},{"value":["B","95"]},{"value":["C","88"]}],"name":"Margherita","type":"bar","yAxisIndex":0,"xAxisIndex":0,"coordinateSystem":"cartesian2d","stack":"grp","label":{"show":true}},{"data":[{"value":["A","102"]},{"value":["B"," 80"]},{"value":["C","100"]}],"name":"Pepperoni","type":"bar","yAxisIndex":0,"xAxisIndex":0,"coordinateSystem":"cartesian2d","stack":"grp","label":{"show":true}}]},"dispose":true},"evals":[],"jsHooks":[]}</script>
+<div class="echarts4r html-widget html-fill-item" id="htmlwidget-dddbf3a59a5105822ecc" style="width:100%;height:500px;"></div>
+<script type="application/json" data-for="htmlwidget-dddbf3a59a5105822ecc">{"x":{"theme":"caravan","tl":false,"draw":true,"renderer":"canvas","events":[],"buttons":[],"opts":{"yAxis":[{"show":true}],"xAxis":[{"data":["A","B","C"],"type":"category","boundaryGap":true}],"legend":{"data":["Brocolli","Margherita","Pepperoni"]},"series":[{"data":[{"value":["A","175"]},{"value":["B","110"]},{"value":["C","130"]}],"name":"Brocolli","type":"bar","yAxisIndex":0,"xAxisIndex":0,"coordinateSystem":"cartesian2d","stack":"grp","label":{"show":true}},{"data":[{"value":["A","65"]},{"value":["B","95"]},{"value":["C","88"]}],"name":"Margherita","type":"bar","yAxisIndex":0,"xAxisIndex":0,"coordinateSystem":"cartesian2d","stack":"grp","label":{"show":true}},{"data":[{"value":["A","102"]},{"value":["B"," 80"]},{"value":["C","100"]}],"name":"Pepperoni","type":"bar","yAxisIndex":0,"xAxisIndex":0,"coordinateSystem":"cartesian2d","stack":"grp","label":{"show":true}}]},"dispose":true},"evals":[],"jsHooks":[]}</script>
 </div>
 <div style="width: 48%;">
-<div class="echarts4r html-widget html-fill-item" id="htmlwidget-1ebc0b3ea4f350e2f14c" style="width:100%;height:500px;"></div>
-<script type="application/json" data-for="htmlwidget-1ebc0b3ea4f350e2f14c">{"x":{"theme":"caravan","tl":false,"draw":true,"renderer":"canvas","events":[],"buttons":[],"opts":{"xAxis":[{"show":true}],"yAxis":[{"data":["B","C","A"],"type":"category","boundaryGap":true}],"legend":{"data":["Brocolli","Margherita","Pepperoni"]},"series":[{"data":[{"value":["110","B"]},{"value":["130","C"]},{"value":["175","A"]}],"name":"Brocolli","type":"bar","yAxisIndex":0,"xAxisIndex":0,"coordinateSystem":"cartesian2d","stack":"grp","label":{"show":true}},{"data":[{"value":["95","B"]},{"value":["88","C"]},{"value":["65","A"]}],"name":"Margherita","type":"bar","yAxisIndex":0,"xAxisIndex":0,"coordinateSystem":"cartesian2d","stack":"grp","label":{"show":true}},{"data":[{"value":[" 80","B"]},{"value":["100","C"]},{"value":["102","A"]}],"name":"Pepperoni","type":"bar","yAxisIndex":0,"xAxisIndex":0,"coordinateSystem":"cartesian2d","stack":"grp","label":{"show":true}}]},"dispose":true},"evals":[],"jsHooks":[]}</script>
+<div class="echarts4r html-widget html-fill-item" id="htmlwidget-84d5c3fe6c829f3ebb84" style="width:100%;height:500px;"></div>
+<script type="application/json" data-for="htmlwidget-84d5c3fe6c829f3ebb84">{"x":{"theme":"caravan","tl":false,"draw":true,"renderer":"canvas","events":[],"buttons":[],"opts":{"xAxis":[{"show":true}],"yAxis":[{"data":["B","C","A"],"type":"category","boundaryGap":true}],"legend":{"data":["Brocolli","Margherita","Pepperoni"]},"series":[{"data":[{"value":["110","B"]},{"value":["130","C"]},{"value":["175","A"]}],"name":"Brocolli","type":"bar","yAxisIndex":0,"xAxisIndex":0,"coordinateSystem":"cartesian2d","stack":"grp","label":{"show":true}},{"data":[{"value":["95","B"]},{"value":["88","C"]},{"value":["65","A"]}],"name":"Margherita","type":"bar","yAxisIndex":0,"xAxisIndex":0,"coordinateSystem":"cartesian2d","stack":"grp","label":{"show":true}},{"data":[{"value":[" 80","B"]},{"value":["100","C"]},{"value":["102","A"]}],"name":"Pepperoni","type":"bar","yAxisIndex":0,"xAxisIndex":0,"coordinateSystem":"cartesian2d","stack":"grp","label":{"show":true}}]},"dispose":true},"evals":[],"jsHooks":[]}</script>
 </div>
 </div>
 </div>
@@ -410,8 +373,8 @@ div.csl-indent {
 <p>In some cases, it might be better to unstack the bars (usually, to see some trends in data):</p>
 <div class="cell">
 <div class="cell-output-display">
-<div class="echarts4r html-widget html-fill-item" id="htmlwidget-b071fd08d82383bcd44a" style="width:100%;height:500px;"></div>
-<script type="application/json" data-for="htmlwidget-b071fd08d82383bcd44a">{"x":{"theme":"caravan","tl":false,"draw":true,"renderer":"canvas","events":[],"buttons":[],"opts":{"yAxis":[{"show":true}],"xAxis":[{"data":["A","B","C"],"type":"category","boundaryGap":true}],"legend":{"data":["Brocolli","Margherita","Pepperoni"]},"series":[{"data":[{"value":["A","175"]},{"value":["B","110"]},{"value":["C","130"]}],"name":"Brocolli","type":"bar","yAxisIndex":0,"xAxisIndex":0,"coordinateSystem":"cartesian2d","label":{"show":true}},{"data":[{"value":["A","65"]},{"value":["B","95"]},{"value":["C","88"]}],"name":"Margherita","type":"bar","yAxisIndex":0,"xAxisIndex":0,"coordinateSystem":"cartesian2d","label":{"show":true}},{"data":[{"value":["A","102"]},{"value":["B"," 80"]},{"value":["C","100"]}],"name":"Pepperoni","type":"bar","yAxisIndex":0,"xAxisIndex":0,"coordinateSystem":"cartesian2d","label":{"show":true}}]},"dispose":true},"evals":[],"jsHooks":[]}</script>
+<div class="echarts4r html-widget html-fill-item" id="htmlwidget-c44966f3e9db1f8076e7" style="width:100%;height:500px;"></div>
+<script type="application/json" data-for="htmlwidget-c44966f3e9db1f8076e7">{"x":{"theme":"caravan","tl":false,"draw":true,"renderer":"canvas","events":[],"buttons":[],"opts":{"yAxis":[{"show":true}],"xAxis":[{"data":["A","B","C"],"type":"category","boundaryGap":true}],"legend":{"data":["Brocolli","Margherita","Pepperoni"]},"series":[{"data":[{"value":["A","175"]},{"value":["B","110"]},{"value":["C","130"]}],"name":"Brocolli","type":"bar","yAxisIndex":0,"xAxisIndex":0,"coordinateSystem":"cartesian2d","label":{"show":true}},{"data":[{"value":["A","65"]},{"value":["B","95"]},{"value":["C","88"]}],"name":"Margherita","type":"bar","yAxisIndex":0,"xAxisIndex":0,"coordinateSystem":"cartesian2d","label":{"show":true}},{"data":[{"value":["A","102"]},{"value":["B"," 80"]},{"value":["C","100"]}],"name":"Pepperoni","type":"bar","yAxisIndex":0,"xAxisIndex":0,"coordinateSystem":"cartesian2d","label":{"show":true}}]},"dispose":true},"evals":[],"jsHooks":[]}</script>
 </div>
 </div>
 </section>
@@ -421,8 +384,8 @@ div.csl-indent {
 <p>Sankey diagrams are typically used to visualize flows and the distribution of the quantities between different “stages”. In our context, they are particularly effective for illustrating proportions in data with multiple layers (more than two, especially).</p>
 <div class="cell">
 <div class="cell-output-display">
-<div class="echarts4r html-widget html-fill-item" id="htmlwidget-d1d4efac1d6fa5b918a0" style="width:100%;height:500px;"></div>
-<script type="application/json" data-for="htmlwidget-d1d4efac1d6fa5b918a0">{"x":{"theme":"caravan","tl":false,"draw":true,"renderer":"canvas","events":[],"buttons":[],"opts":{"series":[{"type":"sankey","orient":"none","data":[{"name":"A"},{"name":"B"},{"name":"C"},{"name":"D"},{"name":"E"},{"name":"F"},{"name":"G"},{"name":"H"},{"name":"I"},{"name":"J"},{"name":"K"},{"name":"L"}],"links":[{"source":"A","target":"B","value":"10"},{"source":"A","target":"C","value":"15"},{"source":"A","target":"D","value":"20"},{"source":"B","target":"E","value":"25"},{"source":"B","target":"F","value":"30"},{"source":"C","target":"G","value":"20"},{"source":"C","target":"H","value":"25"},{"source":"D","target":"I","value":"30"},{"source":"E","target":"J","value":"35"},{"source":"F","target":"J","value":"40"},{"source":"G","target":"K","value":"15"},{"source":"H","target":"K","value":"20"},{"source":"I","target":"L","value":"25"}]}]},"dispose":true},"evals":[],"jsHooks":[]}</script>
+<div class="echarts4r html-widget html-fill-item" id="htmlwidget-7ae39ef537b76454dce1" style="width:100%;height:500px;"></div>
+<script type="application/json" data-for="htmlwidget-7ae39ef537b76454dce1">{"x":{"theme":"caravan","tl":false,"draw":true,"renderer":"canvas","events":[],"buttons":[],"opts":{"series":[{"type":"sankey","orient":"none","data":[{"name":"A"},{"name":"B"},{"name":"C"},{"name":"D"},{"name":"E"},{"name":"F"},{"name":"G"},{"name":"H"},{"name":"I"},{"name":"J"},{"name":"K"},{"name":"L"}],"links":[{"source":"A","target":"B","value":"10"},{"source":"A","target":"C","value":"15"},{"source":"A","target":"D","value":"20"},{"source":"B","target":"E","value":"25"},{"source":"B","target":"F","value":"30"},{"source":"C","target":"G","value":"20"},{"source":"C","target":"H","value":"25"},{"source":"D","target":"I","value":"30"},{"source":"E","target":"J","value":"35"},{"source":"F","target":"J","value":"40"},{"source":"G","target":"K","value":"15"},{"source":"H","target":"K","value":"20"},{"source":"I","target":"L","value":"25"}]}]},"dispose":true},"evals":[],"jsHooks":[]}</script>
 </div>
 </div>
 
@@ -888,5 +851,5 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 
 
 
-<script src="../../site_libs/quarto-html/zenscroll-min.js"></script>
+<footer class="footer"><div class="nav-footer"><div class="nav-footer-center"><div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/jgoliv/jgoliv.github.io/edit/main/articles/visualizing_proportions_with_echarts4r/article.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/jgoliv/jgoliv.github.io/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div></div></footer><script src="../../site_libs/quarto-html/zenscroll-min.js"></script>
 </body></html>
