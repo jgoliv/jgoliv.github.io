@@ -91,10 +91,10 @@ div.csl-indent {
 <script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-9d665ec4ce1188ed123878fa2742729a.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-549806ee2085284f45b00abea8c6df48.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../site_libs/bootstrap/bootstrap-e148e01186687027896875682500d1c5.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-d955ee2a824a5230d9f3f1ee7b650af4.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -138,6 +138,7 @@ div.csl-indent {
 <script src="../../site_libs/reactable-binding-0.4.4/reactable.js"></script>
 
 
+<link rel="stylesheet" href="../../www/css/theme.scss">
 <meta property="og:title" content="Visualizing proportions with echarts4r – jgoliv">
 <meta property="og:description" content="">
 <meta property="og:image" content="files/image.png">
@@ -160,7 +161,7 @@ div.csl-indent {
   <span class="navbar-toggler-icon"></span>
 </button>
           <div class="collapse navbar-collapse" id="navbarCollapse">
-            <ul class="navbar-nav navbar-nav-scroll me-auto">
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
   <li class="nav-item">
     <a class="nav-link" href="../../index.html"> 
 <span class="menu-text">About me</span></a>
@@ -197,7 +198,7 @@ div.csl-indent {
 <!-- sidebar -->
   <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
     <div class="pt-lg-2 mt-2 text-left sidebar-header">
-      <a href="../../index.html" class="sidebar-logo-link">
+      <a href="index.qmd" class="sidebar-logo-link">
       <img src="../../www/images/logo.svg" alt="" class="sidebar-logo py-0 d-lg-inline d-none">
       </a>
       </div>
@@ -209,6 +210,7 @@ div.csl-indent {
  <span class="menu-text">Articles</span></a>
   </div>
 </li>
+        <li class="px-0"><hr class="sidebar-divider hi "></li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../articles/price_tracking_with_py_selenium/article.html" class="sidebar-item-text sidebar-link">
@@ -287,8 +289,8 @@ div.csl-indent {
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">e_pie</span>(Total) <span class="sc">|&gt;</span> </span>
 <span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">e_theme</span>(<span class="st">"caravan"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<div class="echarts4r html-widget html-fill-item" id="htmlwidget-8bc7033903dc98b459fb" style="width:100%;height:500px;"></div>
-<script type="application/json" data-for="htmlwidget-8bc7033903dc98b459fb">{"x":{"theme":"caravan","tl":false,"draw":true,"renderer":"canvas","events":[],"buttons":[],"opts":{"legend":{"data":["A","B","C","D","E"]},"series":[{"name":"Total","type":"pie","data":[{"value":70,"name":"A"},{"value":85,"name":"B"},{"value":50,"name":"C"},{"value":55,"name":"D"},{"value":25,"name":"E"}]}]},"dispose":true},"evals":[],"jsHooks":[]}</script>
+<div class="echarts4r html-widget html-fill-item" id="htmlwidget-2eee156a411e1bb68d23" style="width:100%;height:500px;"></div>
+<script type="application/json" data-for="htmlwidget-2eee156a411e1bb68d23">{"x":{"theme":"caravan","tl":false,"draw":true,"renderer":"canvas","events":[],"buttons":[],"opts":{"legend":{"data":["A","B","C","D","E"]},"series":[{"name":"Total","type":"pie","data":[{"value":70,"name":"A"},{"value":85,"name":"B"},{"value":50,"name":"C"},{"value":55,"name":"D"},{"value":25,"name":"E"}]}]},"dispose":true},"evals":[],"jsHooks":[]}</script>
 </div>
 </div>
 <p>In this crude form, this chart may not be that interesting. In fact, it can be misleading: Notice how the minor difference between groups “C” and “D” is hardly perceived — this is a common issue when using pie-like charts.</p>
@@ -307,16 +309,16 @@ div.csl-indent {
 <span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">e_pie</span>(Total, <span class="at">roseType =</span> <span class="st">"radius"</span>, <span class="at">label =</span> <span class="fu">list</span>(<span class="at">formatter =</span> formatter)) <span class="sc">|&gt;</span> </span>
 <span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">e_theme</span>(<span class="st">"caravan"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<div class="echarts4r html-widget html-fill-item" id="htmlwidget-e3f1725026dc430d54eb" style="width:100%;height:500px;"></div>
-<script type="application/json" data-for="htmlwidget-e3f1725026dc430d54eb">{"x":{"theme":"caravan","tl":false,"draw":true,"renderer":"canvas","events":[],"buttons":[],"opts":{"legend":{"data":["A","B","C","D","E"]},"series":[{"name":"Total","type":"pie","roseType":"radius","label":{"formatter":"function(params) {\n       return params.name + ' : ' + params.value + ' (' + params.percent + '%)';\n    }"},"data":[{"value":70,"name":"A"},{"value":85,"name":"B"},{"value":50,"name":"C"},{"value":55,"name":"D"},{"value":25,"name":"E"}]}]},"dispose":true},"evals":["opts.series.0.label.formatter"],"jsHooks":[]}</script>
+<div class="echarts4r html-widget html-fill-item" id="htmlwidget-46c18046615028d513c8" style="width:100%;height:500px;"></div>
+<script type="application/json" data-for="htmlwidget-46c18046615028d513c8">{"x":{"theme":"caravan","tl":false,"draw":true,"renderer":"canvas","events":[],"buttons":[],"opts":{"legend":{"data":["A","B","C","D","E"]},"series":[{"name":"Total","type":"pie","roseType":"radius","label":{"formatter":"function(params) {\n       return params.name + ' : ' + params.value + ' (' + params.percent + '%)';\n    }"},"data":[{"value":70,"name":"A"},{"value":85,"name":"B"},{"value":50,"name":"C"},{"value":55,"name":"D"},{"value":25,"name":"E"}]}]},"dispose":true},"evals":["opts.series.0.label.formatter"],"jsHooks":[]}</script>
 </div>
 </div>
 <p>With these adjustments, we can visualize the proportions more clearly, getting insights faster, while we can see more details in the label.</p>
 <p>With donut charts, we’ll have about the same issues. You can do it in <code>echarts4r</code> by passing any vector of the form <code>c("55%", "60%")</code> to the <code>radius</code> argument in the same <code>e_pie</code> function:</p>
 <div class="cell">
 <div class="cell-output-display">
-<div class="echarts4r html-widget html-fill-item" id="htmlwidget-ee3eb27bfd1c24600b7a" style="width:100%;height:500px;"></div>
-<script type="application/json" data-for="htmlwidget-ee3eb27bfd1c24600b7a">{"x":{"theme":"caravan","tl":false,"draw":true,"renderer":"canvas","events":[],"buttons":[],"opts":{"legend":{"data":["A","B","C","D","E"]},"series":[{"name":"Total","type":"pie","radius":["50%","70%"],"label":{"formatter":"function(params) {return params.name + ' : ' + params.value + ' (' + params.percent + '%)';}"},"itemStyle":{"borderRadius":11,"borderWidth":2,"borderColor":"#fff"},"data":[{"value":70,"name":"A"},{"value":85,"name":"B"},{"value":50,"name":"C"},{"value":55,"name":"D"},{"value":25,"name":"E"}]}]},"dispose":true},"evals":["opts.series.0.label.formatter"],"jsHooks":[]}</script>
+<div class="echarts4r html-widget html-fill-item" id="htmlwidget-f45d7f574798a2e80d09" style="width:100%;height:500px;"></div>
+<script type="application/json" data-for="htmlwidget-f45d7f574798a2e80d09">{"x":{"theme":"caravan","tl":false,"draw":true,"renderer":"canvas","events":[],"buttons":[],"opts":{"legend":{"data":["A","B","C","D","E"]},"series":[{"name":"Total","type":"pie","radius":["50%","70%"],"label":{"formatter":"function(params) {return params.name + ' : ' + params.value + ' (' + params.percent + '%)';}"},"itemStyle":{"borderRadius":11,"borderWidth":2,"borderColor":"#fff"},"data":[{"value":70,"name":"A"},{"value":85,"name":"B"},{"value":50,"name":"C"},{"value":55,"name":"D"},{"value":25,"name":"E"}]}]},"dispose":true},"evals":["opts.series.0.label.formatter"],"jsHooks":[]}</script>
 </div>
 </div>
 <p>As <em>Cole Nussbaumer</em> says in <em>Storytelling with data</em><a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a>,</p>
@@ -338,8 +340,8 @@ div.csl-indent {
 <span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">e_flip_coords</span>() <span class="sc">|&gt;</span> </span>
 <span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">e_theme</span>(<span class="st">"caravan"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<div class="echarts4r html-widget html-fill-item" id="htmlwidget-948608087b5cc5e2d2da" style="width:100%;height:500px;"></div>
-<script type="application/json" data-for="htmlwidget-948608087b5cc5e2d2da">{"x":{"theme":"caravan","tl":false,"draw":true,"renderer":"canvas","events":[],"buttons":[],"opts":{"xAxis":[{"show":true}],"yAxis":[{"data":["E","C","D","A","B"],"type":"category","boundaryGap":true}],"series":[{"data":[{"value":["25","E"]},{"value":["50","C"]},{"value":["55","D"]},{"value":["70","A"]},{"value":["85","B"]}],"name":"Total","type":"bar","yAxisIndex":0,"xAxisIndex":0,"coordinateSystem":"cartesian2d","label":{"show":true,"position":"right"}}]},"dispose":true},"evals":[],"jsHooks":[]}</script>
+<div class="echarts4r html-widget html-fill-item" id="htmlwidget-5a80102ce4ce7bb48fe6" style="width:100%;height:500px;"></div>
+<script type="application/json" data-for="htmlwidget-5a80102ce4ce7bb48fe6">{"x":{"theme":"caravan","tl":false,"draw":true,"renderer":"canvas","events":[],"buttons":[],"opts":{"xAxis":[{"show":true}],"yAxis":[{"data":["E","C","D","A","B"],"type":"category","boundaryGap":true}],"series":[{"data":[{"value":["25","E"]},{"value":["50","C"]},{"value":["55","D"]},{"value":["70","A"]},{"value":["85","B"]}],"name":"Total","type":"bar","yAxisIndex":0,"xAxisIndex":0,"coordinateSystem":"cartesian2d","label":{"show":true,"position":"right"}}]},"dispose":true},"evals":[],"jsHooks":[]}</script>
 </div>
 </div>
 <p>Observe that now the “how much” issue is a matter of subtracting or completing the bars to get an intuition of the difference (or the actual difference if you subtract the values on the label 😄).</p>
@@ -347,8 +349,8 @@ div.csl-indent {
 <p>So far, the simple example we dealt with contains only one layer, i.e, it had only the groups and the total of observations of each one. Bar charts also are very good at dealing with multi-layered data, for example: Consider this <code>pizza</code> dataset containing 5 pizzeria and their sales amount by flavour:</p>
 <div class="cell">
 <div class="cell-output-display">
-<div class="reactable html-widget html-fill-item" id="htmlwidget-8eb4c26707fcdb64a7c3" style="width:auto;height:auto;"></div>
-<script type="application/json" data-for="htmlwidget-8eb4c26707fcdb64a7c3">{"x":{"tag":{"name":"Reactable","attribs":{"data":{"Pizzeria":["A","A","A","B","B","B","C","C","C"],"Flavour":["Brocolli","Margherita","Pepperoni","Brocolli","Margherita","Pepperoni","Brocolli","Margherita","Pepperoni"],"Sales_amount":[175,65,102,110,95,80,130,88,100]},"columns":[{"id":"Pizzeria","name":"Pizzeria","type":"character"},{"id":"Flavour","name":"Flavour","type":"character"},{"id":"Sales_amount","name":"Sales_amount","type":"numeric"}],"dataKey":"a72a8afdf39b370c8b3085b45aeb428d"},"children":[]},"class":"reactR_markup"},"evals":[],"jsHooks":[]}</script>
+<div class="reactable html-widget html-fill-item" id="htmlwidget-6c306a352e9750984a48" style="width:auto;height:auto;"></div>
+<script type="application/json" data-for="htmlwidget-6c306a352e9750984a48">{"x":{"tag":{"name":"Reactable","attribs":{"data":{"Pizzeria":["A","A","A","B","B","B","C","C","C"],"Flavour":["Brocolli","Margherita","Pepperoni","Brocolli","Margherita","Pepperoni","Brocolli","Margherita","Pepperoni"],"Sales_amount":[175,65,102,110,95,80,130,88,100]},"columns":[{"id":"Pizzeria","name":"Pizzeria","type":"character"},{"id":"Flavour","name":"Flavour","type":"character"},{"id":"Sales_amount","name":"Sales_amount","type":"numeric"}],"dataKey":"a72a8afdf39b370c8b3085b45aeb428d"},"children":[]},"class":"reactR_markup"},"evals":[],"jsHooks":[]}</script>
 </div>
 </div>
 <p><br>
@@ -358,12 +360,12 @@ div.csl-indent {
 <div class="cell-output-display">
 <div style="display: flex; justify-content: space-between;">
 <div style="width: 48%;">
-<div class="echarts4r html-widget html-fill-item" id="htmlwidget-77cc5746f6f1c67a4309" style="width:100%;height:500px;"></div>
-<script type="application/json" data-for="htmlwidget-77cc5746f6f1c67a4309">{"x":{"theme":"caravan","tl":false,"draw":true,"renderer":"canvas","events":[],"buttons":[],"opts":{"yAxis":[{"show":true}],"xAxis":[{"data":["A","B","C"],"type":"category","boundaryGap":true}],"legend":{"data":["Brocolli","Margherita","Pepperoni"]},"series":[{"data":[{"value":["A","175"]},{"value":["B","110"]},{"value":["C","130"]}],"name":"Brocolli","type":"bar","yAxisIndex":0,"xAxisIndex":0,"coordinateSystem":"cartesian2d","stack":"grp","label":{"show":true}},{"data":[{"value":["A","65"]},{"value":["B","95"]},{"value":["C","88"]}],"name":"Margherita","type":"bar","yAxisIndex":0,"xAxisIndex":0,"coordinateSystem":"cartesian2d","stack":"grp","label":{"show":true}},{"data":[{"value":["A","102"]},{"value":["B"," 80"]},{"value":["C","100"]}],"name":"Pepperoni","type":"bar","yAxisIndex":0,"xAxisIndex":0,"coordinateSystem":"cartesian2d","stack":"grp","label":{"show":true}}]},"dispose":true},"evals":[],"jsHooks":[]}</script>
+<div class="echarts4r html-widget html-fill-item" id="htmlwidget-79df45f2318347182e40" style="width:100%;height:500px;"></div>
+<script type="application/json" data-for="htmlwidget-79df45f2318347182e40">{"x":{"theme":"caravan","tl":false,"draw":true,"renderer":"canvas","events":[],"buttons":[],"opts":{"yAxis":[{"show":true}],"xAxis":[{"data":["A","B","C"],"type":"category","boundaryGap":true}],"legend":{"data":["Brocolli","Margherita","Pepperoni"]},"series":[{"data":[{"value":["A","175"]},{"value":["B","110"]},{"value":["C","130"]}],"name":"Brocolli","type":"bar","yAxisIndex":0,"xAxisIndex":0,"coordinateSystem":"cartesian2d","stack":"grp","label":{"show":true}},{"data":[{"value":["A","65"]},{"value":["B","95"]},{"value":["C","88"]}],"name":"Margherita","type":"bar","yAxisIndex":0,"xAxisIndex":0,"coordinateSystem":"cartesian2d","stack":"grp","label":{"show":true}},{"data":[{"value":["A","102"]},{"value":["B"," 80"]},{"value":["C","100"]}],"name":"Pepperoni","type":"bar","yAxisIndex":0,"xAxisIndex":0,"coordinateSystem":"cartesian2d","stack":"grp","label":{"show":true}}]},"dispose":true},"evals":[],"jsHooks":[]}</script>
 </div>
 <div style="width: 48%;">
-<div class="echarts4r html-widget html-fill-item" id="htmlwidget-37bdfb6cde86b049dad7" style="width:100%;height:500px;"></div>
-<script type="application/json" data-for="htmlwidget-37bdfb6cde86b049dad7">{"x":{"theme":"caravan","tl":false,"draw":true,"renderer":"canvas","events":[],"buttons":[],"opts":{"xAxis":[{"show":true}],"yAxis":[{"data":["B","C","A"],"type":"category","boundaryGap":true}],"legend":{"data":["Brocolli","Margherita","Pepperoni"]},"series":[{"data":[{"value":["110","B"]},{"value":["130","C"]},{"value":["175","A"]}],"name":"Brocolli","type":"bar","yAxisIndex":0,"xAxisIndex":0,"coordinateSystem":"cartesian2d","stack":"grp","label":{"show":true}},{"data":[{"value":["95","B"]},{"value":["88","C"]},{"value":["65","A"]}],"name":"Margherita","type":"bar","yAxisIndex":0,"xAxisIndex":0,"coordinateSystem":"cartesian2d","stack":"grp","label":{"show":true}},{"data":[{"value":[" 80","B"]},{"value":["100","C"]},{"value":["102","A"]}],"name":"Pepperoni","type":"bar","yAxisIndex":0,"xAxisIndex":0,"coordinateSystem":"cartesian2d","stack":"grp","label":{"show":true}}]},"dispose":true},"evals":[],"jsHooks":[]}</script>
+<div class="echarts4r html-widget html-fill-item" id="htmlwidget-e8f6e20c3d57277019b6" style="width:100%;height:500px;"></div>
+<script type="application/json" data-for="htmlwidget-e8f6e20c3d57277019b6">{"x":{"theme":"caravan","tl":false,"draw":true,"renderer":"canvas","events":[],"buttons":[],"opts":{"xAxis":[{"show":true}],"yAxis":[{"data":["B","C","A"],"type":"category","boundaryGap":true}],"legend":{"data":["Brocolli","Margherita","Pepperoni"]},"series":[{"data":[{"value":["110","B"]},{"value":["130","C"]},{"value":["175","A"]}],"name":"Brocolli","type":"bar","yAxisIndex":0,"xAxisIndex":0,"coordinateSystem":"cartesian2d","stack":"grp","label":{"show":true}},{"data":[{"value":["95","B"]},{"value":["88","C"]},{"value":["65","A"]}],"name":"Margherita","type":"bar","yAxisIndex":0,"xAxisIndex":0,"coordinateSystem":"cartesian2d","stack":"grp","label":{"show":true}},{"data":[{"value":[" 80","B"]},{"value":["100","C"]},{"value":["102","A"]}],"name":"Pepperoni","type":"bar","yAxisIndex":0,"xAxisIndex":0,"coordinateSystem":"cartesian2d","stack":"grp","label":{"show":true}}]},"dispose":true},"evals":[],"jsHooks":[]}</script>
 </div>
 </div>
 </div>
@@ -371,8 +373,8 @@ div.csl-indent {
 <p>In some cases, it might be better to unstack the bars (usually, to see some trends in data):</p>
 <div class="cell">
 <div class="cell-output-display">
-<div class="echarts4r html-widget html-fill-item" id="htmlwidget-530cda36f8b773623fc4" style="width:100%;height:500px;"></div>
-<script type="application/json" data-for="htmlwidget-530cda36f8b773623fc4">{"x":{"theme":"caravan","tl":false,"draw":true,"renderer":"canvas","events":[],"buttons":[],"opts":{"yAxis":[{"show":true}],"xAxis":[{"data":["A","B","C"],"type":"category","boundaryGap":true}],"legend":{"data":["Brocolli","Margherita","Pepperoni"]},"series":[{"data":[{"value":["A","175"]},{"value":["B","110"]},{"value":["C","130"]}],"name":"Brocolli","type":"bar","yAxisIndex":0,"xAxisIndex":0,"coordinateSystem":"cartesian2d","label":{"show":true}},{"data":[{"value":["A","65"]},{"value":["B","95"]},{"value":["C","88"]}],"name":"Margherita","type":"bar","yAxisIndex":0,"xAxisIndex":0,"coordinateSystem":"cartesian2d","label":{"show":true}},{"data":[{"value":["A","102"]},{"value":["B"," 80"]},{"value":["C","100"]}],"name":"Pepperoni","type":"bar","yAxisIndex":0,"xAxisIndex":0,"coordinateSystem":"cartesian2d","label":{"show":true}}]},"dispose":true},"evals":[],"jsHooks":[]}</script>
+<div class="echarts4r html-widget html-fill-item" id="htmlwidget-669297e2304deb65cd8c" style="width:100%;height:500px;"></div>
+<script type="application/json" data-for="htmlwidget-669297e2304deb65cd8c">{"x":{"theme":"caravan","tl":false,"draw":true,"renderer":"canvas","events":[],"buttons":[],"opts":{"yAxis":[{"show":true}],"xAxis":[{"data":["A","B","C"],"type":"category","boundaryGap":true}],"legend":{"data":["Brocolli","Margherita","Pepperoni"]},"series":[{"data":[{"value":["A","175"]},{"value":["B","110"]},{"value":["C","130"]}],"name":"Brocolli","type":"bar","yAxisIndex":0,"xAxisIndex":0,"coordinateSystem":"cartesian2d","label":{"show":true}},{"data":[{"value":["A","65"]},{"value":["B","95"]},{"value":["C","88"]}],"name":"Margherita","type":"bar","yAxisIndex":0,"xAxisIndex":0,"coordinateSystem":"cartesian2d","label":{"show":true}},{"data":[{"value":["A","102"]},{"value":["B"," 80"]},{"value":["C","100"]}],"name":"Pepperoni","type":"bar","yAxisIndex":0,"xAxisIndex":0,"coordinateSystem":"cartesian2d","label":{"show":true}}]},"dispose":true},"evals":[],"jsHooks":[]}</script>
 </div>
 </div>
 </section>
@@ -382,8 +384,8 @@ div.csl-indent {
 <p>Sankey diagrams are typically used to visualize flows and the distribution of the quantities between different “stages”. In our context, they are particularly effective for illustrating proportions in data with multiple layers (more than two, especially).</p>
 <div class="cell">
 <div class="cell-output-display">
-<div class="echarts4r html-widget html-fill-item" id="htmlwidget-a4fdcf3b8325d5dde903" style="width:100%;height:500px;"></div>
-<script type="application/json" data-for="htmlwidget-a4fdcf3b8325d5dde903">{"x":{"theme":"caravan","tl":false,"draw":true,"renderer":"canvas","events":[],"buttons":[],"opts":{"series":[{"type":"sankey","orient":"none","data":[{"name":"A"},{"name":"B"},{"name":"C"},{"name":"D"},{"name":"E"},{"name":"F"},{"name":"G"},{"name":"H"},{"name":"I"},{"name":"J"},{"name":"K"},{"name":"L"}],"links":[{"source":"A","target":"B","value":"10"},{"source":"A","target":"C","value":"15"},{"source":"A","target":"D","value":"20"},{"source":"B","target":"E","value":"25"},{"source":"B","target":"F","value":"30"},{"source":"C","target":"G","value":"20"},{"source":"C","target":"H","value":"25"},{"source":"D","target":"I","value":"30"},{"source":"E","target":"J","value":"35"},{"source":"F","target":"J","value":"40"},{"source":"G","target":"K","value":"15"},{"source":"H","target":"K","value":"20"},{"source":"I","target":"L","value":"25"}]}]},"dispose":true},"evals":[],"jsHooks":[]}</script>
+<div class="echarts4r html-widget html-fill-item" id="htmlwidget-52a7ecd450724616e073" style="width:100%;height:500px;"></div>
+<script type="application/json" data-for="htmlwidget-52a7ecd450724616e073">{"x":{"theme":"caravan","tl":false,"draw":true,"renderer":"canvas","events":[],"buttons":[],"opts":{"series":[{"type":"sankey","orient":"none","data":[{"name":"A"},{"name":"B"},{"name":"C"},{"name":"D"},{"name":"E"},{"name":"F"},{"name":"G"},{"name":"H"},{"name":"I"},{"name":"J"},{"name":"K"},{"name":"L"}],"links":[{"source":"A","target":"B","value":"10"},{"source":"A","target":"C","value":"15"},{"source":"A","target":"D","value":"20"},{"source":"B","target":"E","value":"25"},{"source":"B","target":"F","value":"30"},{"source":"C","target":"G","value":"20"},{"source":"C","target":"H","value":"25"},{"source":"D","target":"I","value":"30"},{"source":"E","target":"J","value":"35"},{"source":"F","target":"J","value":"40"},{"source":"G","target":"K","value":"15"},{"source":"H","target":"K","value":"20"},{"source":"I","target":"L","value":"25"}]}]},"dispose":true},"evals":[],"jsHooks":[]}</script>
 </div>
 </div>
 
