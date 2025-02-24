@@ -4,6 +4,9 @@ date: "2024-06-22"
 date-modified: "2024-06-22"
 image: "files/image.png"
 bibliography: files/references.bib
+categories:
+  - R
+  - Data Visualization
 nocite: |
   @*
 ---

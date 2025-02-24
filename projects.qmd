@@ -1,0 +1,12 @@
+---
+title: "Projects"
+toc: true
+listing: 
+  - id: project-links
+    type: default
+    contents: projects
+    categories: true
+---
+
+::: {#project-links}
+:::

@@ -4,6 +4,9 @@ date: "2024-10-12"
 date-modified: today
 image: "files/image.jpg"
 bibliography: files/references.bib
+categories:
+  - Python
+  - Machine Learning
 nocite: |
   @*
 ---

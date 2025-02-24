@@ -1,38 +1,48 @@
 project:
   type: website
-
+  
 website:
   page-navigation: true
   open-graph: true
+  repo-url: https://github.com/jgoliv/jgoliv.github.io
+  issue-url: https://github.com/jgoliv/jgoliv.github.io/issues/new
+  repo-actions: [edit, issue]
+  bread-crumbs: true
 
-  sidebar:
+  navbar:
     style: "floating"
-    search: true
-    title: "João Gabriel Oliveira"
-    logo: www/images/logo.svg
-    logo-alt: "João Gabriel Oliveira"
-    logo-href: /index.qmd
-
+    title: false
     tools:
       - icon: github
         href: https://github.com/jgoliv
       - icon: linkedin
-        href: https://linkedin.com/in/joão-gabriel-oliveira-jesus
-
-    contents:
+        href: https://linkedin.com/in/jgoliv
+    left: 
       - index.qmd
-      - section: "Projects"
-        contents:
-          - section: "Machine learning cases"
-            contents: 
-              - projects/ml_cases/titanic_binary_classification/project.qmd
-          - section: "R & Shiny"
-            contents: 
-              - projects/r_shiny/japan_biodiversity_dashboard/project.qmd
-      - section: "Articles"
-        contents: 
-          - articles/price_tracking_with_py_selenium/article.qmd
-          - articles/visualizing_proportions_with_echarts4r/article.qmd
+      - projects.qmd
+      - articles.qmd
+
+  sidebar:
+    - id: projects
+      style: "floating"
+      logo: www/images/logo.svg
+      logo-href: index.qmd
+      contents: 
+        - projects.qmd
+        - text: "---"
+        - section: "Machine learning cases"
+          contents: 
+            - projects/ml_cases/titanic_binary_classification/project.qmd
+        - text: "---"
+        - section: "R & Shiny"
+          contents: 
+            - projects/r_shiny/japan_biodiversity_dashboard/project.qmd
+    - id: articles
+      contents: 
+        - articles.qmd
+        - text: "---"
+        - articles/price_tracking_with_py_selenium/article.qmd
+        - articles/visualizing_proportions_with_echarts4r/article.qmd
 
 format:
   html:
@@ -40,10 +50,9 @@ format:
     link-external-newwindow: true
     code-copy: true
     smooth-scroll: true
-    theme: [cosmo, www/css/theme.scss]
     toc: true
+    theme: cosmo
+    css: www/css/theme.scss
     grid:
       sidebar-width: 300px
       body-width: 900px
-
-editor: visual

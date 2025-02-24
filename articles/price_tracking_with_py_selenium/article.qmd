@@ -4,6 +4,9 @@ date: "2024-10-10"
 date-modified: "2024-10-10"
 image: "files/image.png"
 bibliography: files/references.bib
+categories:
+  - Python
+  - Automation
 nocite: |
   @*
 ---

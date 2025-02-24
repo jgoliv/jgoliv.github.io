@@ -4,6 +4,10 @@ date: "2024-12-18"
 date-modified: today
 image: "files/image.svg"
 bibliography: files/references.bib
+categories:
+  - R
+  - Shiny
+  - Data Visualization
 nocite: |
   @*
 ---
@@ -22,10 +26,12 @@ There are two display modes: the default view, that shows data for all occurrenc
 
 ::: panel-tabset
 ## Default view
+
 ![](files/app_default_view.png)
 
 ## Selected species view
-![](files/app_filtered_view.png) 
+
+![](files/app_filtered_view.png)
 :::
 
 -   **The context card:** Displays an introductory text along with control selectors.
@@ -114,4 +120,4 @@ Using the `testthat` package, I implemented unit tests for the app’s most impo
     -   Verifying that the control module successfully returns a reactive list with the values used to filter the app's main reactive;
     -   Ensuring that the main reactive effectively filters data based on inputs from the control module.
 
-> Feel free to contribute to this project by visiting: [https://github.com/jgoliv/japanbiodiversitydashboard](https://github.com/jgoliv/japanbiodiversitydashboard)
+> Feel free to contribute to this project by visiting: <https://github.com/jgoliv/japanbiodiversitydashboard>
