@@ -1,5 +1,15 @@
 [
   {
+    "objectID": "articles.html",
+    "href": "articles.html",
+    "title": "Articles",
+    "section": "",
+    "text": "Price tracking with Selenium\n\n\n\n\n\n\nPython\n\n\nAutomation\n\n\n\n\n\n\n\n\n\nOct 10, 2024\n\n\n\n\n\n\n\n\n\n\n\n\nVisualizing proportions with echarts4r\n\n\n\n\n\n\nR\n\n\nData Visualization\n\n\n\n\n\n\n\n\n\nJun 22, 2024\n\n\n\n\n\n\nNo matching items",
+    "crumbs": [
+      "Articles"
+    ]
+  },
+  {
     "objectID": "projects/ml_cases/titanic_binary_classification/project.html",
     "href": "projects/ml_cases/titanic_binary_classification/project.html",
     "title": "WIP - Random forest classification for survival prediction on the Titanic",
@@ -45,23 +55,6 @@
       "Projects",
       "Machine learning cases",
       "WIP - Random forest classification for survival prediction on the Titanic"
-    ]
-  },
-  {
-    "objectID": "index.html",
-    "href": "index.html",
-    "title": "About me",
-    "section": "",
-    "text": "Hi! I’m João Gabriel, a data scientist based in São Paulo, Brazil, with a strong passion for problem-solving and a keen interest in leveraging data to drive impactful decisions.\nI hold a bachelor’s degree in Mathematics from the State University of São Paulo (UNESP) and a master’s degree in Mathematics from the State University of Campinas (UNICAMP), specializing in Algebra and Number Theory. Some of my articles are listed below, as well as my master’s thesis:\n\n\nDiagonal 2 × 2 Space-Time Block Codes with Good Normalized Densities \nMaster’s thesis \n\n\nFor further details, check my Lattes CV.\nMy academic background has provided me with a strong foundation in analytical thinking and problem-solving, which I now apply to my work in data science.\nIn my current role as a data scientist and R/Shiny developer, I utilize R, Python and Julia for data manipulation, statistical modeling, and the creation of automated reports with Quarto and R Markdown. I specialize in developing interactive web applications with Shiny, focusing in dashboards and platforms for real-time data and model monitoring. In machine learning, I work extensively with libraries such as scikit-learn and tidymodels for model development and evaluation. Additionally, I have experience in automated testing (unit testing & end-to-end testing) for R/Shiny applications and R packages to ensure realiable software solutions.\nBeyond my technical work, I am also an avid jazz guitarist.\nFor more details about my career and projects, feel free to connect with me on LinkedIn."
-  },
-  {
-    "objectID": "articles.html",
-    "href": "articles.html",
-    "title": "Articles",
-    "section": "",
-    "text": "Price tracking with Selenium\n\n\n\n\n\n\nPython\n\n\nAutomation\n\n\n\n\n\n\n\n\n\nOct 10, 2024\n\n\n\n\n\n\n\n\n\n\n\n\nVisualizing proportions with echarts4r\n\n\n\n\n\n\nR\n\n\nData Visualization\n\n\n\n\n\n\n\n\n\nJun 22, 2024\n\n\n\n\n\n\nNo matching items",
-    "crumbs": [
-      "Articles"
     ]
   },
   {
@@ -142,6 +135,23 @@
     ]
   },
   {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "About me",
+    "section": "",
+    "text": "Hi! I’m João Gabriel, a data scientist based in São Paulo, Brazil, with a strong passion for problem-solving and a keen interest in leveraging data to drive impactful decisions.\nI hold a bachelor’s degree in Mathematics from the State University of São Paulo and a master’s degree in Mathematics from the State University of Campinas, where I specialized in Algebraic Number Theory.\nIn my current role as a data scientist, I use R, Python, SQL and Julia for data manipulation, statistical modeling, and automated reporting with Quarto. I work with machine learning using scikit-learn and tidymodels for model development and evaluation, and have experience in computer vision with YOLO and OpenCV. I also develop interactive web applications with Shiny, focusing on data visualization dashboards and platforms for monitoring models in production, as well as automation of internal processes and managing cloud computing.\nBeyond my technical work, I am also an avid jazz guitarist.\nFor more details about my career and projects, feel free to connect with me on LinkedIn."
+  },
+  {
+    "objectID": "projects.html",
+    "href": "projects.html",
+    "title": "Projects",
+    "section": "",
+    "text": "Japan biodiversity dashboard\n\n\n\n\n\n\nR\n\n\nShiny\n\n\nData Visualization\n\n\n\n\n\n\n\n\n\nDec 18, 2024\n\n\n\n\n\n\n\n\n\n\n\n\nWIP - Random forest classification for survival prediction on the Titanic\n\n\n\n\n\n\nPython\n\n\nMachine Learning\n\n\n\n\n\n\n\n\n\nOct 12, 2024\n\n\n\n\n\n\nNo matching items",
+    "crumbs": [
+      "Projects"
+    ]
+  },
+  {
     "objectID": "articles/visualizing_proportions_with_echarts4r/article.html",
     "href": "articles/visualizing_proportions_with_echarts4r/article.html",
     "title": "Visualizing proportions with echarts4r",
@@ -194,16 +204,6 @@
     "crumbs": [
       "Articles",
       "Visualizing proportions with `echarts4r`"
-    ]
-  },
-  {
-    "objectID": "projects.html",
-    "href": "projects.html",
-    "title": "Projects",
-    "section": "",
-    "text": "Japan biodiversity dashboard\n\n\n\n\n\n\nR\n\n\nShiny\n\n\nData Visualization\n\n\n\n\n\n\n\n\n\nDec 18, 2024\n\n\n\n\n\n\n\n\n\n\n\n\nWIP - Random forest classification for survival prediction on the Titanic\n\n\n\n\n\n\nPython\n\n\nMachine Learning\n\n\n\n\n\n\n\n\n\nOct 12, 2024\n\n\n\n\n\n\nNo matching items",
-    "crumbs": [
-      "Projects"
     ]
   },
   {
