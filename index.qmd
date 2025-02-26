@@ -14,16 +14,9 @@ about:
 
 Hi! I'm João Gabriel, a data scientist based in São Paulo, Brazil, with a strong passion for problem-solving and a keen interest in leveraging data to drive impactful decisions.
 
-I hold a bachelor's degree in Mathematics from the State University of São Paulo (UNESP) and a master's degree in Mathematics from the State University of Campinas (UNICAMP), specializing in Algebra and Number Theory. Some of my articles are listed below, as well as my master's thesis:
+I hold a bachelor's degree in Mathematics from the State University of São Paulo and a master's degree in Mathematics from the State University of Campinas, where I specialized in Algebraic Number Theory. 
 
-> -   Diagonal 2 × 2 Space-Time Block Codes with Good Normalized Densities [ ](https://biblioteca.sbrt.org.br/articles/2376)
-> -   Master's thesis [ ](https://www.repositorio.unicamp.br/acervo/detalhe/1362433?guid=1717532227060&returnUrl=/resultado/listar%3Fguid%3D1717532227060%26quantidadePaginas%3D1%26codigoRegistro%3D1362433%231362433&i=1)
-
-For further details, check my [Lattes CV](http://lattes.cnpq.br/8672515384152520).
-
-My academic background has provided me with a strong foundation in analytical thinking and problem-solving, which I now apply to my work in data science.
-
-In my current role as a data scientist and R/Shiny developer, I utilize **R**, **Python** and **Julia** for data manipulation, statistical modeling, and the creation of automated reports with **Quarto** and **R Markdown**. I specialize in developing interactive web applications with **Shiny**, focusing in dashboards and platforms for real-time data and model monitoring. In machine learning, I work extensively with libraries such as **scikit-learn** and **tidymodels** for model development and evaluation. Additionally, I have experience in automated testing (unit testing & end-to-end testing) for R/Shiny applications and R packages to ensure realiable software solutions.
+In my current role as a data scientist, I use **R**, **Python**, **SQL** and **Julia** for data manipulation, statistical modeling, and automated reporting with [Quarto](https://quarto.org/). I work with machine learning using **scikit-learn** and **tidymodels** for model development and evaluation, and have experience in computer vision with **YOLO** and **OpenCV**. I also develop interactive web applications with **Shiny**, focusing on data visualization dashboards and platforms for monitoring models in production, as well as automation of internal processes and managing cloud computing. 
 
 Beyond my technical work, I am also an avid jazz guitarist.
 
