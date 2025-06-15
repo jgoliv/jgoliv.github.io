@@ -9,8 +9,7 @@
   {
     "listing": "/projects.html",
     "items": [
-      "/projects/r_shiny/japan_biodiversity_dashboard/project.html",
-      "/projects/ml_cases/titanic_binary_classification/project.html"
+      "/projects/r_shiny/japan_biodiversity_dashboard/project.html"
     ]
   }
 ]

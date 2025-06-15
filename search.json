@@ -1,60 +1,120 @@
 [
   {
+    "objectID": "articles/visualizing_proportions_with_echarts4r/article.html",
+    "href": "articles/visualizing_proportions_with_echarts4r/article.html",
+    "title": "Visualizing proportions with echarts4r",
+    "section": "",
+    "text": "On this article, we’ll debate some issues of representing proportion, using some features of echarts4r, which is an R package that provides an interface to the ECharts JavaScript library, making it accessible for users to create highly configurable and interactive charts directly from R.\nFor installing instructions and learning the basic syntax, check their official website (see Coene 2024b).\nFirst, we load the packages we’ll be using.\nlibrary(echarts4r)\nlibrary(dplyr)",
+    "crumbs": [
+      "Articles",
+      "Visualizing proportions with `echarts4r`"
+    ]
+  },
+  {
+    "objectID": "articles/visualizing_proportions_with_echarts4r/article.html#pie-like-charts",
+    "href": "articles/visualizing_proportions_with_echarts4r/article.html#pie-like-charts",
+    "title": "Visualizing proportions with echarts4r",
+    "section": "Pie-like charts",
+    "text": "Pie-like charts\nThe most simple chart we can make to represent proportions is the standard pie chart. On echarts, the basic syntax goes like:\n\ndf |&gt; \n  e_chart(Group) |&gt; \n  e_pie(Total) |&gt; \n  e_theme(\"caravan\")\n\n\n\n\n\nIn this crude form, this chart may not be that interesting. In fact, it can be misleading: Notice how the minor difference between groups “C” and “D” is hardly perceived — this is a common issue when using pie-like charts.\nThe most natural way to solve this would be to include a label, that we can do using the label argument in the e_pie function, in which you can specify the label in any form you wish via the formatter argument, that accepts any javascript function.\nHowever, this doesn’t really change the appearance of the plot. We still cannot visually perceive this difference. In this aspect, we can set the roseType = \"radius\" argument to scale the radius of each slice according to its value.\n\nformatter &lt;-\n  htmlwidgets::JS(\n    \"function(params) {\n       return params.name + ' : ' + params.value + ' (' + params.percent + '%)';\n    }\"\n  )\n\ndf |&gt; \n  e_chart(Group) |&gt; \n  e_pie(Total, roseType = \"radius\", label = list(formatter = formatter)) |&gt; \n  e_theme(\"caravan\")\n\n\n\n\n\nWith these adjustments, we can visualize the proportions more clearly, getting insights faster, while we can see more details in the label.\nWith donut charts, we’ll have about the same issues. You can do it in echarts4r by passing any vector of the form c(\"55%\", \"60%\") to the radius argument in the same e_pie function:\n\n\n\n\n\n\nAs Cole Nussbaumer says in Storytelling with data1,\n\nWith pies, we are asking our audience to compare angles and areas. With a donut chart, we are asking our audience to compare one arc length to another arc length.\n\nIt may be hard for us to attribute quantitative values in two-dimensional spaces. Simply speaking, even when we can say which category has a “bigger” value based on the size of a segment, angle, arch-lenght or area, it is hard to know by “how much”.\nOne approach to solve this “how much” issue is using horizontal bar charts. However, is worth to observe that the pie-like charts do give us a notion of the “parts of a whole” kind of a thing — that we’ll lose using bar charts.\nWe discuss this now.",
+    "crumbs": [
+      "Articles",
+      "Visualizing proportions with `echarts4r`"
+    ]
+  },
+  {
+    "objectID": "articles/visualizing_proportions_with_echarts4r/article.html#bar-charts",
+    "href": "articles/visualizing_proportions_with_echarts4r/article.html#bar-charts",
+    "title": "Visualizing proportions with echarts4r",
+    "section": "Bar charts",
+    "text": "Bar charts\nFor a basic horizontal bar chart, we can use the e_bar and e_flip_coordsfunctions:\n\ndf |&gt; \n  arrange(Total) |&gt; \n  e_charts(Group) |&gt; \n  e_bar(Total, legend = FALSE, label = list(show = TRUE, position = \"right\")) |&gt; \n  e_flip_coords() |&gt; \n  e_theme(\"caravan\")\n\n\n\n\n\nObserve that now the “how much” issue is a matter of subtracting or completing the bars to get an intuition of the difference (or the actual difference if you subtract the values on the label 😄).\nHowever is not that easy to get the “parts of a whole” intuition just by looking to the bar sizes — we would have to mentally add their length.\nSo far, the simple example we dealt with contains only one layer, i.e, it had only the groups and the total of observations of each one. Bar charts also are very good at dealing with multi-layered data, for example: Consider this pizza dataset containing 5 pizzeria and their sales amount by flavour:\n\n\n\n\n\n\n\n\nHere, we got two categories represent: the Pizzeria and Flavour groups. Using the stacked bar chart, we can better visualize each layering. To do this in echarts4r, just pass the grouped data and explicit the stack = \"grp\" argument in the e_bar function. We can display it both vertically or horizontally:\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nIn some cases, it might be better to unstack the bars (usually, to see some trends in data):",
+    "crumbs": [
+      "Articles",
+      "Visualizing proportions with `echarts4r`"
+    ]
+  },
+  {
+    "objectID": "articles/visualizing_proportions_with_echarts4r/article.html#extra-sankey-charts",
+    "href": "articles/visualizing_proportions_with_echarts4r/article.html#extra-sankey-charts",
+    "title": "Visualizing proportions with echarts4r",
+    "section": "Extra: Sankey charts",
+    "text": "Extra: Sankey charts\nWhile pie and bar charts are some fundamental tools for visualizing proportions, there are other type of visualization that I want to mention.\nSankey diagrams are typically used to visualize flows and the distribution of the quantities between different “stages”. In our context, they are particularly effective for illustrating proportions in data with multiple layers (more than two, especially).",
+    "crumbs": [
+      "Articles",
+      "Visualizing proportions with `echarts4r`"
+    ]
+  },
+  {
+    "objectID": "articles/visualizing_proportions_with_echarts4r/article.html#footnotes",
+    "href": "articles/visualizing_proportions_with_echarts4r/article.html#footnotes",
+    "title": "Visualizing proportions with echarts4r",
+    "section": "Footnotes",
+    "text": "Footnotes\n\n\nStorytelling with data↩︎",
+    "crumbs": [
+      "Articles",
+      "Visualizing proportions with `echarts4r`"
+    ]
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "About me",
+    "section": "",
+    "text": "Hi! I’m João Gabriel, a data scientist based in São Paulo, Brazil, with a strong passion for problem-solving and a keen interest in leveraging data to drive impactful decisions.\nI hold a bachelor’s degree in Mathematics from the State University of São Paulo and a master’s degree in Mathematics from the State University of Campinas, where I specialized in Algebraic Number Theory.\nIn my current role as a data scientist, I use R, Python, SQL and Julia for data manipulation, statistical modeling, and automated reporting with Quarto. I work with machine learning using scikit-learn and tidymodels for model development and evaluation, and have experience in computer vision with YOLO and OpenCV. I also develop interactive web applications with Shiny, focusing on data visualization dashboards and platforms for monitoring models in production, as well as cloud-based automation and deployment using AWS (SageMaker, EC2, ECS, Bedrock, S3, rekognition).\nFor more details about my career and projects, feel free to connect with me on LinkedIn."
+  },
+  {
     "objectID": "articles.html",
     "href": "articles.html",
     "title": "Articles",
     "section": "",
-    "text": "Price tracking with Selenium\n\n\n\n\n\n\nPython\n\n\nAutomation\n\n\n\n\n\n\n\n\n\nOct 10, 2024\n\n\n\n\n\n\n\n\n\n\n\n\nVisualizing proportions with echarts4r\n\n\n\n\n\n\nR\n\n\nData Visualization\n\n\n\n\n\n\n\n\n\nJun 22, 2024\n\n\n\n\n\n\nNo matching items",
+    "text": "Price tracking with Selenium\n\n\n\nPython\n\nAutomation\n\n\n\n\n\n\n\n\n\nOct 10, 2024\n\n\n\n\n\n\n\n\n\n\n\n\nVisualizing proportions with echarts4r\n\n\n\nR\n\nData Visualization\n\n\n\n\n\n\n\n\n\nJun 22, 2024\n\n\n\n\n\nNo matching items",
     "crumbs": [
       "Articles"
     ]
   },
   {
-    "objectID": "projects/ml_cases/titanic_binary_classification/project.html",
-    "href": "projects/ml_cases/titanic_binary_classification/project.html",
-    "title": "WIP - Random forest classification for survival prediction on the Titanic",
+    "objectID": "projects.html",
+    "href": "projects.html",
+    "title": "Projects",
     "section": "",
-    "text": "The Titanic dataset is one of the most well-known datasets in data science publicly available on Kaggle. It has become particularly popular for binary classification tasks, allowing data scientists and enthusiasts to predict whether a passenger survived or not.\nEach row in the dataset represents a passenger, with multiple features. Below is a brief overview of them:\n\n\n\n\n\n\n\n\nThis dataset comes from the Titanic: Machine Learning from Disaster competition on Kaggle. When you download it, you will receive three primary files:\n\ntrain.csv, containing the training data, which includes the features of the passengers and the target variable. We will use this data to train our model;\ntest.csv, which, unlike in typical machine learning workflows (where the “test” set is used to evaluate the performance of the model), does not include the Survived column. We will use this data to generate predictions with our trained model and submit these survival outcomes to Kaggle for evaluation;\ngender_submission.csv, which provides a sample submission format, where we must include the PassengerId and Survived columns. The values in the Survived column will be the predictions from our model.\n\nHere, we will explore how to use this data to build a step-by-step binary classification model to predict passenger survival on the Titanic.\n\nMoreover, you can find the complete code in this Jupyter notebook.",
+    "text": "Japan biodiversity dashboard\n\n\n\nR\n\nShiny\n\nData Visualization\n\n\n\n\n\n\n\n\n\nDec 18, 2024\n\n\n\n\n\nNo matching items",
     "crumbs": [
-      "Projects",
-      "Machine learning cases",
-      "WIP - Random forest classification for survival prediction on the Titanic"
+      "Projects"
     ]
   },
   {
-    "objectID": "projects/ml_cases/titanic_binary_classification/project.html#introduction",
-    "href": "projects/ml_cases/titanic_binary_classification/project.html#introduction",
-    "title": "WIP - Random forest classification for survival prediction on the Titanic",
+    "objectID": "projects/r_shiny/japan_biodiversity_dashboard/project.html",
+    "href": "projects/r_shiny/japan_biodiversity_dashboard/project.html",
+    "title": "Japan biodiversity dashboard",
     "section": "",
-    "text": "The Titanic dataset is one of the most well-known datasets in data science publicly available on Kaggle. It has become particularly popular for binary classification tasks, allowing data scientists and enthusiasts to predict whether a passenger survived or not.\nEach row in the dataset represents a passenger, with multiple features. Below is a brief overview of them:\n\n\n\n\n\n\n\n\nThis dataset comes from the Titanic: Machine Learning from Disaster competition on Kaggle. When you download it, you will receive three primary files:\n\ntrain.csv, containing the training data, which includes the features of the passengers and the target variable. We will use this data to train our model;\ntest.csv, which, unlike in typical machine learning workflows (where the “test” set is used to evaluate the performance of the model), does not include the Survived column. We will use this data to generate predictions with our trained model and submit these survival outcomes to Kaggle for evaluation;\ngender_submission.csv, which provides a sample submission format, where we must include the PassengerId and Survived columns. The values in the Survived column will be the predictions from our model.\n\nHere, we will explore how to use this data to build a step-by-step binary classification model to predict passenger survival on the Titanic.\n\nMoreover, you can find the complete code in this Jupyter notebook.",
+    "text": "I’ve never been to Japan, but its rich culture and stunning landscapes have always amazed me. When I came across this dataset, I was curious to explore the forms of life found there, as well as those shared with other parts of the world. This dashboard offers an interactive visualization of Japan’s biodiversity from 1976 to 2024, showcasing observations of a wide variety of species.\nThe data used is the occurence dataset, from the Global Biodiversity Information Facility (GBIF), an international network and data infrastructure which provides open access to data about all types of life on Earth. More precisely, the dataset we’ll work on was obtained by observation.org.",
     "crumbs": [
       "Projects",
-      "Machine learning cases",
-      "WIP - Random forest classification for survival prediction on the Titanic"
+      "R & Shiny",
+      "Japan biodiversity dashboard"
     ]
   },
   {
-    "objectID": "projects/ml_cases/titanic_binary_classification/project.html#exploratory-data-analysis-and-data-preprocessing",
-    "href": "projects/ml_cases/titanic_binary_classification/project.html#exploratory-data-analysis-and-data-preprocessing",
-    "title": "WIP - Random forest classification for survival prediction on the Titanic",
-    "section": "Exploratory Data Analysis and Data Preprocessing",
-    "text": "Exploratory Data Analysis and Data Preprocessing\nIn this section, we will:\n\nHandle missing data and encode categorical variables;\nLook for correlations of important numerical features;\nSplit our data in training and test sets;\nBuild a pipeline to streamline these processes.\n\nFirst of all, we’ll load the data and take a quick glance in its firsts rows and basic statistics.\n\nimport pandas as pd\ndata = pd.read_csv(\"files/dataset/train.csv\")\n\n\n\n\n\n\n\nUsing the info() method, we find that the columns Age, Cabin and Embarked have some missing values:\n\ndata.info()\n\n&lt;class 'pandas.core.frame.DataFrame'&gt;\nRangeIndex: 891 entries, 0 to 890\nData columns (total 12 columns):\n #   Column       Non-Null Count  Dtype  \n---  ------       --------------  -----  \n 0   PassengerId  891 non-null    int64  \n 1   Survived     891 non-null    int64  \n 2   Pclass       891 non-null    int64  \n 3   Name         891 non-null    object \n 4   Sex          891 non-null    object \n 5   Age          714 non-null    float64\n 6   SibSp        891 non-null    int64  \n 7   Parch        891 non-null    int64  \n 8   Ticket       891 non-null    object \n 9   Fare         891 non-null    float64\n 10  Cabin        204 non-null    object \n 11  Embarked     889 non-null    object \ndtypes: float64(2), int64(5), object(5)\nmemory usage: 83.7+ KB\n\n\nFor the Age column we can use an estimator to impute its missing values. To be more precise, we’ll use the SimpleImputer to impute the mean.\nThe columns Embarked and Sex are categorical so, for a better model performance, we need to transform them into numerical features. We’ll do it by using LabelEncoder and OneHotEncoder.\nUsing the LabelEncoder in the Sex column will set 0 = female and 1 = male. For the Embarked column, the use of OneHotEncoder’s will split the former column into four different columns: three for each value and one for missing values.\nWith that in mind, we now remove some features that may not contribute meaningfully to our predictive analysis:\n\nTicket, PassengerId and Name: these features do not offer meaningful insights for predicting survival, as they serve only as unique identifiers for each passenger.\nCabin: while the cabin number information might indicate passenger status, this column has a high variability and a high proportion of missing values. Given its unreliability, we choose to remove it.\nEmbarked_nan: this column represent the missing values on the Embarked column, after the use of OneHotEncoder.\n\nNow we can make an analysis of correlation to guide our procedure of splitting the sets of training and testing. For that, we’ll create a copy of our dataset and perform such changes on this copy.\n\n\n\nSee code\n\n\ndata_copy = data.copy()\n\n# imputing the mean into the missing values of the sex column\nfrom sklearn.impute import SimpleImputer\nimputer = SimpleImputer(strategy=\"mean\")\ndata_copy[\"Age\"] = imputer.fit_transform(data_copy[[\"Age\"]])\n\n# encoding categorical features\nfrom sklearn.preprocessing import OneHotEncoder, LabelEncoder\n\nlabel_encoder = LabelEncoder()\ndata_copy[\"Sex\"] = label_encoder.fit_transform(data_copy[\"Sex\"])\n\none_hot_encoder = OneHotEncoder()\nmatrix = one_hot_encoder.fit_transform(data_copy[[\"Embarked\"]]).toarray()\ndf = pd.DataFrame(matrix, columns=one_hot_encoder.get_feature_names_out([\"Embarked\"]))\ndf.index = data_copy.index\ndata_copy = pd.concat([data_copy, df], axis=1)\n\n# dropping features\ndata_copy.drop([\"PassengerId\", \"Embarked\", \"Name\", \"Ticket\", \"Cabin\", \"Embarked_nan\"], axis=1, errors=\"ignore\", inplace=True)\n\ndata_copy.head()\n\n   Survived  Pclass  Sex   Age  ...     Fare  Embarked_C  Embarked_Q  Embarked_S\n0         0       3    1  22.0  ...   7.2500         0.0         0.0         1.0\n1         1       1    0  38.0  ...  71.2833         1.0         0.0         0.0\n2         1       3    0  26.0  ...   7.9250         0.0         0.0         1.0\n3         1       1    0  35.0  ...  53.1000         0.0         0.0         1.0\n4         0       3    1  35.0  ...   8.0500         0.0         0.0         1.0\n\n[5 rows x 10 columns]\n\n\n\n\nFor a more intuitive view, we can plot those features histogram…\n\n\n\n\n\n\n\n\n\n…and, for further investigation, we can look at the correlation between them:\n\n\n\n\n\n\n\n\n\nWe can observe a strong positive relationship between Sex and Survival (0.543), and a moderate negative correlation between Pclass and Survival (-0.338), which highlights that women had a higher chance of survival, as well as those in higher classes.\nYou may also notice the positive correlation between Fare and Survival, which is explained by the strong negative correlation between Pclass and Fare: higher fares are associated with upper classes.\nWith these relationships in mind, we can now move forward with splitting our data into training and testing sets, using stratified shuffle split to maintain a balanced representation.\n\nfrom sklearn.model_selection import StratifiedShuffleSplit\n\nsplit = StratifiedShuffleSplit(n_splits=1, test_size=0.2)\n\nfor train_indices, test_indices in split.split(data, data[[\"Survived\", \"Pclass\", \"Sex\"]]):\n    strat_train_set = data.loc[train_indices]\n    strat_test_set = data.loc[test_indices]\n\nTo streamline the processes described previously, we can now build a pipeline.\n\n\n\nSee code\n\n\nfrom sklearn.base import BaseEstimator, TransformerMixin\nfrom sklearn.pipeline import Pipeline\n\nclass AgeImputer(BaseEstimator, TransformerMixin):\n    \n    def fit(self, X, y=None):\n        return self\n    \n    def transform(self, X):\n        imputer = SimpleImputer(strategy=\"mean\")\n        X[\"Age\"] = imputer.fit_transform(X[[\"Age\"]])\n        return X\n\nclass FeatureEncoder(BaseEstimator, TransformerMixin):\n    \n    def fit(self, X, y=None):\n        return self\n    \n    def transform(self, X):\n        label_encoder = LabelEncoder()\n        one_hot_encoder = OneHotEncoder()\n\n        X[\"Sex\"] = label_encoder.fit_transform(X[\"Sex\"])\n\n        matrix = one_hot_encoder.fit_transform(X[[\"Embarked\"]]).toarray()\n        df = pd.DataFrame(matrix, columns=one_hot_encoder.get_feature_names_out([\"Embarked\"]))\n\n        df.index = X.index\n        X = pd.concat([X, df], axis=1)\n        \n        return X \n\nclass FeatureDropper(BaseEstimator, TransformerMixin):\n    \n    def fit(self, X, y=None):\n        return self\n    \n    def transform(self, X):\n        return X.drop([\"Embarked\", \"Name\", \"Ticket\", \"Cabin\", \"Embarked_nan\"], axis=1, errors=\"ignore\")\n      \npipeline = Pipeline([\n    (\"age_imputer\", AgeImputer()),\n    (\"feature_encoder\", FeatureEncoder()),\n    (\"feature_dropper\", FeatureDropper())\n])\n\n\n\nAfter applying the pipeline to the training set, we move on to a final preprocessing step: standardization. Here, we’ll use StandardScaler:\n\nfrom sklearn.preprocessing import StandardScaler\n\nstrat_train_set = pipeline.fit_transform(strat_train_set)\n\nX_data_train = strat_train_set.drop(['Survived'], axis=1)\ny_data_train = strat_train_set['Survived']\n\nscaler = StandardScaler()\n\nX_data_train = scaler.fit_transform(X_data_train)\ny_data_train = y_data_train.to_numpy()\n\nAfter standardization, X_data_train contains the scaled features, while y_data_train stores the target values as a NumPy array, making both compatible with Scikit-Learn models.",
+    "objectID": "projects/r_shiny/japan_biodiversity_dashboard/project.html#exploring-the-app",
+    "href": "projects/r_shiny/japan_biodiversity_dashboard/project.html#exploring-the-app",
+    "title": "Japan biodiversity dashboard",
+    "section": "Exploring the App",
+    "text": "Exploring the App\nTo display what kind of information we can obtain from this dataset, I’ve organized the dashboard into four key sections: Context, Timeline, Information, and Map. This structure allows you to explore the dataset from a broad perspective while also enabling a deeper investigation into occurrences of specific species.\nThere are two display modes: the default view, that shows data for all occurrences simultaneously; and the species-filtered view, that adjusts the app’s visualizations based on the selected species. The species can be filtered either by scientific or vernacular name, using the search bar. Besides that, there’s also a filter by time period (in years), with the default range spanning from 1976 to 2024, but it can be adjusted up to a single year, which updates the entire dashboard accordingly.\n\nDefault viewSelected species view\n\n\n\n\n\n\n\n\n\n\nThe context card: Displays an introductory text along with control selectors.\nTimeline card: At the bottom, a timeline is displayed to show how many observations occurred with the filter configurations. There is a toolbox on the top to interchange between bar (default) and line plots, zoom in and zoom out.\nThe information cards: This part contains three cards. The first one shows an image. If a species is selected and there is a photo of it, the default image will be replaced by this photo. The second card shows general statistics about the observations: how many have occurred, and the most observed life stage, sex and locality for the species and period selected. Lastly, a ranking of the five most observed species during selected period will appear by default. If a particular species is selected, the card will swap to display all scientific information about it and a distribution box-plot of all yearly individual counts.\nThe map: This card shows cluster points of the observations occurred in each part of Japan during the selected period, for the selected species (and all of them, if that is the case). It can be zoomed in, and when a single observation is located, a pop-up appears by clicking, showing all the info of that particular observation and a picture of the species.\n\n\nInterestingly, all the colors used in this project are traditional Japanese colors, as documented in the book “日本の伝統色 The Traditional Colors of Japan” by PIE BOOKS (2007). You can explore 250 of these colors at this link.",
     "crumbs": [
       "Projects",
-      "Machine learning cases",
-      "WIP - Random forest classification for survival prediction on the Titanic"
+      "R & Shiny",
+      "Japan biodiversity dashboard"
     ]
   },
   {
-    "objectID": "projects/ml_cases/titanic_binary_classification/project.html#training-the-model",
-    "href": "projects/ml_cases/titanic_binary_classification/project.html#training-the-model",
-    "title": "WIP - Random forest classification for survival prediction on the Titanic",
-    "section": "Training the model",
-    "text": "Training the model\nNow, we proceed to train our Random Forest Classifier. Our approach leverages Grid Search to fine-tune the model’s hyperparameters, optimizing its performance with accuracy as the evaluation metric.\n\nfrom sklearn.ensemble import RandomForestClassifier\nfrom sklearn.model_selection import GridSearchCV\n\nrf = RandomForestClassifier()\n\nparam_grid = [{\n        \"n_estimators\": [10, 100, 200, 500, 750],\n        \"max_depth\": [None, 5, 10, 12],\n        \"min_samples_split\": [2, 3, 4]\n    }]\n\ngrid_search = GridSearchCV(rf, param_grid, cv=3, scoring=\"accuracy\")\ngrid_search.fit(X_data_train, y_data_train)\n\nWe can see the score of the classifier on the “test” set:\n\nbest_rf = grid_search.best_estimator_\n\nstrat_test_set = pipeline.fit_transform(strat_test_set)\n\nX_data_test = strat_test_set.drop(['Survived'], axis=1)\ny_data_test = strat_test_set['Survived']\n\nscaler = StandardScaler()\n\nX_data_test = scaler.fit_transform(X_data_test)\ny_data_test = y_data_test.to_numpy()\n\nbest_rf.score(X_data_test, y_data_test)\n\n\n\n0.7821229050279329\n\n\nFinally, to submit our predictions to Kaggle, we train the model again using the whole train dataset!\n\n\n\nSee code\n\n\nfinal_data = pipeline.fit_transform(data)\n\nX_final = final_data.drop(['Survived'],axis=1)\ny_final = final_data['Survived']\n\nscaler = StandardScaler()\n\nX_data_final = scaler.fit_transform(X_final)\ny_data_final = y_final.to_numpy()\n\nfinal_rf = RandomForestClassifier()\n\nparam_grid = [{\n        \"n_estimators\": [10, 100, 200, 500, 750],\n        \"max_depth\": [None, 5, 10, 12],\n        \"min_samples_split\": [2, 3, 4]\n    }]\n\ngrid_search = GridSearchCV(final_rf, param_grid, cv=3, scoring=\"accuracy\")\ngrid_search.fit(X_data_final, y_data_final)\n\nbest_final_rf = grid_search.best_estimator_\n\n\n\nLoading and preparing the test.csv data:\n\ntest_data = pd.read_csv(\"files/dataset/test.csv\")\n\nscaler = StandardScaler()\n\nX_test = pipeline.fit_transform(test_data)\nX_test = scaler.fit_transform(X_test)\n\nSaving the predictions:\n\npredictions = best_final_rf.predict(X_test)\n\npredictions_df = pd.DataFrame(test_data['PassengerId'])\npredictions_df['Survived'] = predictions\n\npredictions_df.to_csv(\"files/dataset/predictions.csv\", index=False)\n\nResults:",
+    "objectID": "projects/r_shiny/japan_biodiversity_dashboard/project.html#project-structure",
+    "href": "projects/r_shiny/japan_biodiversity_dashboard/project.html#project-structure",
+    "title": "Japan biodiversity dashboard",
+    "section": "Project structure",
+    "text": "Project structure\nI utilized an R package structure to develop and deploy this application, managing package dependencies with the renv package.\n\nDirectories and files\n\nThere is a www directory to store static files, such as css, images and fonts;\nAlso, there is a extdata directory to store external data, including the original dataset and the processed version used in the app;\nThe data-raw folder keeps the script where I did the dataset preprocessing;\nThe R folder contains the core scripts of the app:\n\nui.R: This file sets up the page and card layouts, and includes all the necessary CSS and functionalities;\nserver.R: Handles the main server logic for the app;\nfunctions.R: Contains pre-processing functions that get the data ready for visualization;\nplots.R: Has functions that generate the plots, like echarts and reactable;\nutils.R: Holds utility functions for smaller tasks and calculations;\nvars.R: Stores various variables, including color palettes, theme settings, custom components, and JS functions;\nwidgets.R: This is where reusable UI components and input functions are stored;\nModule scripts (e.g., md_module_name.R): Contain independent shinyModules functions.\n\n\n\n\nServer logic architecture\nThe app follows a modular reactive flow:\n\nData source\n\nInitializes with the pre-processed static data loaded from an .rds file;\nServes as the foundation for all downstream operations.\n\nControl module\n\nHouses user input widgets;\nReturns a reactive list containing:\n\nSelected names (single or “All”);\nSelected year range.\n\n\nReactive data\n\nFilters the static data based on control values;\nImplements caching for performance optimization;\nSingle source of truth for all visualizations that updates when control values change.\n\nVisualization modules\n\nIndependent, self-contained modules consuming the filtered data;\nEach module handles a specific visualization in a card.\n\n\n\n\n\n\n\nflowchart LR\n    A[Static data] --&gt; B[Control module]\n    B --&gt; C[Name input]\n    B --&gt; D[Year input]\n    C --&gt; E{Reactive controls}\n    D --&gt; E\n    A --&gt; F{Reactive data}\n    E --&gt; F\n    F --&gt; G[Context module]\n    F --&gt; H[Image module]\n    F --&gt; I[Info modules]\n    F --&gt; J[Map module]\n\n    style A fill:#EBF1E4\n\n\n\n\n\n\n\n\nUnit testing\nUsing the testthat package, I implemented unit tests for the app’s most important functions:\n\nNon-reactive functions: These functions in the app fall into two categories:\n\nUtility functions that performs simple dataframe operations (located in the utils.R file);\nData transformation functions used immediately before plotting outputs, such as echarts4r plots and reactables (found in the functions.R script).\n\nFor both types, basic structural functionalities and edge cases were covered in the test files.\nReactive functions: Based on the server logic structure, unit testing for reactive functions includes:\n\nVerifying that the control module successfully returns a reactive list with the values used to filter the app’s main reactive;\nEnsuring that the main reactive effectively filters data based on inputs from the control module.\n\n\n\nFeel free to contribute to this project by visiting: https://github.com/jgoliv/japanbiodiversitydashboard",
     "crumbs": [
       "Projects",
-      "Machine learning cases",
-      "WIP - Random forest classification for survival prediction on the Titanic"
+      "R & Shiny",
+      "Japan biodiversity dashboard"
     ]
   },
   {
@@ -132,114 +192,6 @@
     "crumbs": [
       "Articles",
       "Price tracking with Selenium"
-    ]
-  },
-  {
-    "objectID": "index.html",
-    "href": "index.html",
-    "title": "About me",
-    "section": "",
-    "text": "Hi! I’m João Gabriel, a data scientist based in São Paulo, Brazil, with a strong passion for problem-solving and a keen interest in leveraging data to drive impactful decisions.\nI hold a bachelor’s degree in Mathematics from the State University of São Paulo and a master’s degree in Mathematics from the State University of Campinas, where I specialized in Algebraic Number Theory.\nIn my current role as a data scientist, I use R, Python, SQL and Julia for data manipulation, statistical modeling, and automated reporting with Quarto. I work with machine learning using scikit-learn and tidymodels for model development and evaluation, and have experience in computer vision with YOLO and OpenCV. I also develop interactive web applications with Shiny, focusing on data visualization dashboards and platforms for monitoring models in production, as well as automation of internal processes and managing cloud computing.\nBeyond my technical work, I am also an avid jazz guitarist.\nFor more details about my career and projects, feel free to connect with me on LinkedIn."
-  },
-  {
-    "objectID": "projects.html",
-    "href": "projects.html",
-    "title": "Projects",
-    "section": "",
-    "text": "Japan biodiversity dashboard\n\n\n\n\n\n\nR\n\n\nShiny\n\n\nData Visualization\n\n\n\n\n\n\n\n\n\nDec 18, 2024\n\n\n\n\n\n\n\n\n\n\n\n\nWIP - Random forest classification for survival prediction on the Titanic\n\n\n\n\n\n\nPython\n\n\nMachine Learning\n\n\n\n\n\n\n\n\n\nOct 12, 2024\n\n\n\n\n\n\nNo matching items",
-    "crumbs": [
-      "Projects"
-    ]
-  },
-  {
-    "objectID": "articles/visualizing_proportions_with_echarts4r/article.html",
-    "href": "articles/visualizing_proportions_with_echarts4r/article.html",
-    "title": "Visualizing proportions with echarts4r",
-    "section": "",
-    "text": "On this article, we’ll debate some issues of representing proportion, using some features of echarts4r, which is an R package that provides an interface to the ECharts JavaScript library, making it accessible for users to create highly configurable and interactive charts directly from R.\nFor installing instructions and learning the basic syntax, check their official website (see Coene 2024b).\nFirst, we load the packages we’ll be using.\nlibrary(echarts4r)\nlibrary(dplyr)",
-    "crumbs": [
-      "Articles",
-      "Visualizing proportions with `echarts4r`"
-    ]
-  },
-  {
-    "objectID": "articles/visualizing_proportions_with_echarts4r/article.html#pie-like-charts",
-    "href": "articles/visualizing_proportions_with_echarts4r/article.html#pie-like-charts",
-    "title": "Visualizing proportions with echarts4r",
-    "section": "Pie-like charts",
-    "text": "Pie-like charts\nThe most simple chart we can make to represent proportions is the standard pie chart. On echarts, the basic syntax goes like:\n\ndf |&gt; \n  e_chart(Group) |&gt; \n  e_pie(Total) |&gt; \n  e_theme(\"caravan\")\n\n\n\n\n\nIn this crude form, this chart may not be that interesting. In fact, it can be misleading: Notice how the minor difference between groups “C” and “D” is hardly perceived — this is a common issue when using pie-like charts.\nThe most natural way to solve this would be to include a label, that we can do using the label argument in the e_pie function, in which you can specify the label in any form you wish via the formatter argument, that accepts any javascript function.\nHowever, this doesn’t really change the appearance of the plot. We still cannot visually perceive this difference. In this aspect, we can set the roseType = \"radius\" argument to scale the radius of each slice according to its value.\n\nformatter &lt;-\n  htmlwidgets::JS(\n    \"function(params) {\n       return params.name + ' : ' + params.value + ' (' + params.percent + '%)';\n    }\"\n  )\n\ndf |&gt; \n  e_chart(Group) |&gt; \n  e_pie(Total, roseType = \"radius\", label = list(formatter = formatter)) |&gt; \n  e_theme(\"caravan\")\n\n\n\n\n\nWith these adjustments, we can visualize the proportions more clearly, getting insights faster, while we can see more details in the label.\nWith donut charts, we’ll have about the same issues. You can do it in echarts4r by passing any vector of the form c(\"55%\", \"60%\") to the radius argument in the same e_pie function:\n\n\n\n\n\n\nAs Cole Nussbaumer says in Storytelling with data1,\n\nWith pies, we are asking our audience to compare angles and areas. With a donut chart, we are asking our audience to compare one arc length to another arc length.\n\nIt may be hard for us to attribute quantitative values in two-dimensional spaces. Simply speaking, even when we can say which category has a “bigger” value based on the size of a segment, angle, arch-lenght or area, it is hard to know by “how much”.\nOne approach to solve this “how much” issue is using horizontal bar charts. However, is worth to observe that the pie-like charts do give us a notion of the “parts of a whole” kind of a thing — that we’ll lose using bar charts.\nWe discuss this now.",
-    "crumbs": [
-      "Articles",
-      "Visualizing proportions with `echarts4r`"
-    ]
-  },
-  {
-    "objectID": "articles/visualizing_proportions_with_echarts4r/article.html#bar-charts",
-    "href": "articles/visualizing_proportions_with_echarts4r/article.html#bar-charts",
-    "title": "Visualizing proportions with echarts4r",
-    "section": "Bar charts",
-    "text": "Bar charts\nFor a basic horizontal bar chart, we can use the e_bar and e_flip_coordsfunctions:\n\ndf |&gt; \n  arrange(Total) |&gt; \n  e_charts(Group) |&gt; \n  e_bar(Total, legend = FALSE, label = list(show = TRUE, position = \"right\")) |&gt; \n  e_flip_coords() |&gt; \n  e_theme(\"caravan\")\n\n\n\n\n\nObserve that now the “how much” issue is a matter of subtracting or completing the bars to get an intuition of the difference (or the actual difference if you subtract the values on the label 😄).\nHowever is not that easy to get the “parts of a whole” intuition just by looking to the bar sizes — we would have to mentally add their length.\nSo far, the simple example we dealt with contains only one layer, i.e, it had only the groups and the total of observations of each one. Bar charts also are very good at dealing with multi-layered data, for example: Consider this pizza dataset containing 5 pizzeria and their sales amount by flavour:\n\n\n\n\n\n\n\n\nHere, we got two categories represent: the Pizzeria and Flavour groups. Using the stacked bar chart, we can better visualize each layering. To do this in echarts4r, just pass the grouped data and explicit the stack = \"grp\" argument in the e_bar function. We can display it both vertically or horizontally:\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nIn some cases, it might be better to unstack the bars (usually, to see some trends in data):",
-    "crumbs": [
-      "Articles",
-      "Visualizing proportions with `echarts4r`"
-    ]
-  },
-  {
-    "objectID": "articles/visualizing_proportions_with_echarts4r/article.html#extra-sankey-charts",
-    "href": "articles/visualizing_proportions_with_echarts4r/article.html#extra-sankey-charts",
-    "title": "Visualizing proportions with echarts4r",
-    "section": "Extra: Sankey charts",
-    "text": "Extra: Sankey charts\nWhile pie and bar charts are some fundamental tools for visualizing proportions, there are other type of visualization that I want to mention.\nSankey diagrams are typically used to visualize flows and the distribution of the quantities between different “stages”. In our context, they are particularly effective for illustrating proportions in data with multiple layers (more than two, especially).",
-    "crumbs": [
-      "Articles",
-      "Visualizing proportions with `echarts4r`"
-    ]
-  },
-  {
-    "objectID": "articles/visualizing_proportions_with_echarts4r/article.html#footnotes",
-    "href": "articles/visualizing_proportions_with_echarts4r/article.html#footnotes",
-    "title": "Visualizing proportions with echarts4r",
-    "section": "Footnotes",
-    "text": "Footnotes\n\n\nStorytelling with data↩︎",
-    "crumbs": [
-      "Articles",
-      "Visualizing proportions with `echarts4r`"
-    ]
-  },
-  {
-    "objectID": "projects/r_shiny/japan_biodiversity_dashboard/project.html",
-    "href": "projects/r_shiny/japan_biodiversity_dashboard/project.html",
-    "title": "Japan biodiversity dashboard",
-    "section": "",
-    "text": "I’ve never been to Japan, but its rich culture and stunning landscapes have always amazed me. When I came across this dataset, I was curious to explore the forms of life found there, as well as those shared with other parts of the world. This dashboard offers an interactive visualization of Japan’s biodiversity from 1976 to 2024, showcasing observations of a wide variety of species.\nThe data used is the occurence dataset, from the Global Biodiversity Information Facility (GBIF), an international network and data infrastructure which provides open access to data about all types of life on Earth. More precisely, the dataset we’ll work on was obtained by observation.org.",
-    "crumbs": [
-      "Projects",
-      "R & Shiny",
-      "Japan biodiversity dashboard"
-    ]
-  },
-  {
-    "objectID": "projects/r_shiny/japan_biodiversity_dashboard/project.html#exploring-the-app",
-    "href": "projects/r_shiny/japan_biodiversity_dashboard/project.html#exploring-the-app",
-    "title": "Japan biodiversity dashboard",
-    "section": "Exploring the App",
-    "text": "Exploring the App\nTo display what kind of information we can obtain from this dataset, I’ve organized the dashboard into four key sections: Context, Timeline, Information, and Map. This structure allows you to explore the dataset from a broad perspective while also enabling a deeper investigation into occurrences of specific species.\nThere are two display modes: the default view, that shows data for all occurrences simultaneously; and the species-filtered view, that adjusts the app’s visualizations based on the selected species. The species can be filtered either by scientific or vernacular name, using the search bar. Besides that, there’s also a filter by time period (in years), with the default range spanning from 1976 to 2024, but it can be adjusted up to a single year, which updates the entire dashboard accordingly.\n\nDefault viewSelected species view\n\n\n\n\n\n\n\n\n\n\nThe context card: Displays an introductory text along with control selectors.\nTimeline card: At the bottom, a timeline is displayed to show how many observations occurred with the filter configurations. There is a toolbox on the top to interchange between bar (default) and line plots, zoom in and zoom out.\nThe information cards: This part contains three cards. The first one shows an image. If a species is selected and there is a photo of it, the default image will be replaced by this photo. The second card shows general statistics about the observations: how many have occurred, and the most observed life stage, sex and locality for the species and period selected. Lastly, a ranking of the five most observed species during selected period will appear by default. If a particular species is selected, the card will swap to display all scientific information about it and a distribution box-plot of all yearly individual counts.\nThe map: This card shows cluster points of the observations occurred in each part of Japan during the selected period, for the selected species (and all of them, if that is the case). It can be zoomed in, and when a single observation is located, a pop-up appears by clicking, showing all the info of that particular observation and a picture of the species.\n\n\nInterestingly, all the colors used in this project are traditional Japanese colors, as documented in the book “日本の伝統色 The Traditional Colors of Japan” by PIE BOOKS (2007). You can explore 250 of these colors at this link.",
-    "crumbs": [
-      "Projects",
-      "R & Shiny",
-      "Japan biodiversity dashboard"
-    ]
-  },
-  {
-    "objectID": "projects/r_shiny/japan_biodiversity_dashboard/project.html#project-structure",
-    "href": "projects/r_shiny/japan_biodiversity_dashboard/project.html#project-structure",
-    "title": "Japan biodiversity dashboard",
-    "section": "Project structure",
-    "text": "Project structure\nI utilized an R package structure to develop and deploy this application, managing package dependencies with the renv package.\n\nDirectories and files\n\nThere is a www directory to store static files, such as css, images and fonts;\nAlso, there is a extdata directory to store external data, including the original dataset and the processed version used in the app;\nThe data-raw folder keeps the script where I did the dataset preprocessing;\nThe R folder contains the core scripts of the app:\n\nui.R: This file sets up the page and card layouts, and includes all the necessary CSS and functionalities;\nserver.R: Handles the main server logic for the app;\nfunctions.R: Contains pre-processing functions that get the data ready for visualization;\nplots.R: Has functions that generate the plots, like echarts and reactable;\nutils.R: Holds utility functions for smaller tasks and calculations;\nvars.R: Stores various variables, including color palettes, theme settings, custom components, and JS functions;\nwidgets.R: This is where reusable UI components and input functions are stored;\nModule scripts (e.g., md_module_name.R): Contain independent shinyModules functions.\n\n\n\n\nServer logic architecture\nThe app follows a modular reactive flow:\n\nData source\n\nInitializes with the pre-processed static data loaded from an .rds file;\nServes as the foundation for all downstream operations.\n\nControl module\n\nHouses user input widgets;\nReturns a reactive list containing:\n\nSelected names (single or “All”);\nSelected year range.\n\n\nReactive data\n\nFilters the static data based on control values;\nImplements caching for performance optimization;\nSingle source of truth for all visualizations that updates when control values change.\n\nVisualization modules\n\nIndependent, self-contained modules consuming the filtered data;\nEach module handles a specific visualization in a card.\n\n\n\n\n\n\n\nflowchart LR\n    A[Static data] --&gt; B[Control module]\n    B --&gt; C[Name input]\n    B --&gt; D[Year input]\n    C --&gt; E{Reactive controls}\n    D --&gt; E\n    A --&gt; F{Reactive data}\n    E --&gt; F\n    F --&gt; G[Context module]\n    F --&gt; H[Image module]\n    F --&gt; I[Info modules]\n    F --&gt; J[Map module]\n\n    style A fill:#EBF1E4\n\n\n\n\n\n\n\n\nUnit testing\nUsing the testthat package, I implemented unit tests for the app’s most important functions:\n\nNon-reactive functions: These functions in the app fall into two categories:\n\nUtility functions that performs simple dataframe operations (located in the utils.R file);\nData transformation functions used immediately before plotting outputs, such as echarts4r plots and reactables (found in the functions.R script).\n\nFor both types, basic structural functionalities and edge cases were covered in the test files.\nReactive functions: Based on the server logic structure, unit testing for reactive functions includes:\n\nVerifying that the control module successfully returns a reactive list with the values used to filter the app’s main reactive;\nEnsuring that the main reactive effectively filters data based on inputs from the control module.\n\n\n\nFeel free to contribute to this project by visiting: https://github.com/jgoliv/japanbiodiversitydashboard",
-    "crumbs": [
-      "Projects",
-      "R & Shiny",
-      "Japan biodiversity dashboard"
     ]
   }
 ]
