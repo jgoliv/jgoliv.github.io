@@ -7,7 +7,6 @@ website:
   repo-url: https://github.com/jgoliv/jgoliv.github.io
   issue-url: https://github.com/jgoliv/jgoliv.github.io/issues/new
   repo-actions: [edit, issue]
-  bread-crumbs: true
 
   navbar:
     style: "floating"
@@ -31,8 +30,6 @@ website:
         - projects.qmd
         - text: "---"
         - section: "Machine learning cases"
-          contents: 
-            - projects/ml_cases/titanic_binary_classification/project.qmd
         - text: "---"
         - section: "R & Shiny"
           contents: 
@@ -46,8 +43,8 @@ website:
 
 format:
   html:
-    link-external-icon: true
-    link-external-newwindow: true
+    # link-external-icon: true
+    # link-external-newwindow: true
     code-copy: true
     smooth-scroll: true
     toc: true

@@ -16,8 +16,6 @@ Hi! I'm João Gabriel, a data scientist based in São Paulo, Brazil, with a stro
 
 I hold a bachelor's degree in Mathematics from the State University of São Paulo and a master's degree in Mathematics from the State University of Campinas, where I specialized in Algebraic Number Theory. 
 
-In my current role as a data scientist, I use **R**, **Python**, **SQL** and **Julia** for data manipulation, statistical modeling, and automated reporting with [Quarto](https://quarto.org/). I work with machine learning using **scikit-learn** and **tidymodels** for model development and evaluation, and have experience in computer vision with **YOLO** and **OpenCV**. I also develop interactive web applications with **Shiny**, focusing on data visualization dashboards and platforms for monitoring models in production, as well as automation of internal processes and managing cloud computing. 
-
-Beyond my technical work, I am also an avid jazz guitarist.
+In my current role as a data scientist, I use **R**, **Python**, **SQL** and **Julia** for data manipulation, statistical modeling, and automated reporting with [Quarto](https://quarto.org/). I work with machine learning using **scikit-learn** and **tidymodels** for model development and evaluation, and have experience in computer vision with **YOLO** and **OpenCV**. I also develop interactive web applications with **Shiny**, focusing on data visualization dashboards and platforms for monitoring models in production, as well as cloud-based automation and deployment using AWS (**SageMaker**, **EC2**, **ECS**, **Bedrock**, **S3**, **rekognition**).
 
 For more details about my career and projects, feel free to connect with me on [LinkedIn](www.linkedin.com/in/jgoliv).

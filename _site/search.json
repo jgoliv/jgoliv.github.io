@@ -1,388 +1,128 @@
 [
   {
-    "objectID": "index.html",
-    "href": "index.html",
-    "title": "About me",
-    "section": "",
-    "text": "Hi! I’m João Gabriel, a data scientist based in São Paulo, Brazil, with a strong passion for problem-solving and a keen interest in leveraging data to drive impactful decisions.\nI hold a bachelor’s degree in Mathematics from the State University of São Paulo and a master’s degree in Mathematics from the State University of Campinas, where I specialized in Algebraic Number Theory.\nIn my current role as a data scientist, I use R, Python, SQL and Julia for data manipulation, statistical modeling, and automated reporting with Quarto. I work with machine learning using scikit-learn and tidymodels for model development and evaluation, and have experience in computer vision with YOLO and OpenCV. I also develop interactive web applications with Shiny, focusing on data visualization dashboards and platforms for monitoring models in production, as well as automation of internal processes and managing cloud computing.\nBeyond my technical work, I am also an avid jazz guitarist.\nFor more details about my career and projects, feel free to connect with me on LinkedIn."
-  },
-  {
-    "objectID": "index.html#academic-education",
-    "href": "index.html#academic-education",
-    "title": "About me",
-    "section": "Academic education",
-    "text": "Academic education\nI have a bachelor’s degree in mathematics from State University of São Paulo (UNESP) and a master’s degree in mathematics from State University of Campinas (UNICAMP) in the area of Algebra and Number Theory. Some of my articles are listed below, as well as my master’s thesis:\n\n\nDiagonal 2 × 2 Space-Time Block Codes with Good Normalized Densities \nMaster’s thesis \n\n\nFor further details, check my Lattes CV !",
-    "crumbs": [
-      "About me"
-    ]
-  },
-  {
-    "objectID": "index.html#some-of-my-projects",
-    "href": "index.html#some-of-my-projects",
-    "title": "About me",
-    "section": "Some of my projects",
-    "text": "Some of my projects"
-  },
-  {
-    "objectID": "articles/survival_analysis_with_tidymodels/article.html",
-    "href": "articles/survival_analysis_with_tidymodels/article.html",
-    "title": "Survival analysis with tidymodels",
-    "section": "",
-    "text": "Survival analysis is an important field in statistics and modeling that studies the expected duration until the occurrence of one or more specified events. Although it may seem like a regular time-to-event analysis, survival methods consider observations where the event of interest may not have occurred yet, i.e, it considers censored data.\nThe key concepts in survival analysis are:\n\nevent: The occurrence of the outcome of interest, such as death or relapse of a disease.\ntime: Interval from the start of an observation period until one of the following: occurrence of an event, end of the study, or loss of contact or withdrawal from the study.\ncensoring: Occurs when a subject does not experience the event during the observation period. This implies that a censored subject may or may not experience the event after the end of the observation period.\n\nThere are two main statistics that describe survival data: survival probability and hazard probability.\nSurvival probability denotes the likelihood that an subject will not experience the event of interest from a given time origin up to a future time \\(t\\) (survive). On the other hand, hazard probability represents the likelihood that an individual under observation at time \\(t\\) will experience the event at that moment.\nUnlike survival probability, which emphasizes the absence of an event, the hazard probability focuses on the occurrence of the event. Essentially, the hazard describes the current rate of events, while survival reflects the cumulative non-occurrence over time.\nFor a more detailed approach to the basics of survival analysis, see (Clark et al. 2003)."
-  },
-  {
-    "objectID": "articles/survival_analysis_with_tidymodels/article.html#introducing-survival-analysis",
-    "href": "articles/survival_analysis_with_tidymodels/article.html#introducing-survival-analysis",
-    "title": "Survival analysis with tidymodels",
-    "section": "",
-    "text": "Survival analysis is an important field in statistics and modeling that studies the expected duration until the occurrence of one or more specified events. Although it may seem like a regular time-to-event analysis, survival methods consider observations where the event of interest may not have occurred yet, i.e, it considers censored data.\nThe key concepts in survival analysis are:\n\nevent: The occurrence of the outcome of interest, such as death or relapse of a disease.\ntime: Interval from the start of an observation period until one of the following: occurrence of an event, end of the study, or loss of contact or withdrawal from the study.\ncensoring: Occurs when a subject does not experience the event during the observation period. This implies that a censored subject may or may not experience the event after the end of the observation period.\n\nThere are two main statistics that describe survival data: survival probability and hazard probability.\nSurvival probability denotes the likelihood that an subject will not experience the event of interest from a given time origin up to a future time \\(t\\) (survive). On the other hand, hazard probability represents the likelihood that an individual under observation at time \\(t\\) will experience the event at that moment.\nUnlike survival probability, which emphasizes the absence of an event, the hazard probability focuses on the occurrence of the event. Essentially, the hazard describes the current rate of events, while survival reflects the cumulative non-occurrence over time.\nFor a more detailed approach to the basics of survival analysis, see (Clark et al. 2003)."
-  },
-  {
-    "objectID": "articles/survival_analysis_with_tidymodels/article.html#the-data",
-    "href": "articles/survival_analysis_with_tidymodels/article.html#the-data",
-    "title": "Survival analysis with tidymodels",
-    "section": "The data",
-    "text": "The data\nSurvival data are time-to-event data with distinct start time and end time. In this article, we’ll use the building complaints dataset of the modeldatatoo package. You can see more information about the data set here.\nThis is the same dataset used in the survival case study 1 and survival metrics2 tidymodels articles. It includes information about complaints received by the Department of Buildings in New York city, such as type of the complaint, the date that it was entered in their records, the date it was dispositioned, the location and the neighborhood of the building, and the status of the complaint."
-  },
-  {
-    "objectID": "articles/survival_analysis_with_tidymodels/article.html#exploratory-data-analysis",
-    "href": "articles/survival_analysis_with_tidymodels/article.html#exploratory-data-analysis",
-    "title": "Survival analysis with tidymodels",
-    "section": "Exploratory data analysis",
-    "text": "Exploratory data analysis\nFirst, we’ll have a look on the data structure and in it’s firsts rows:\n\ndata &lt;- modeldatatoo::building_complaints\n\n\n\nRows: 4,234\nColumns: 11\n$ days_to_disposition &lt;dbl&gt; 72, 1, 41, 45, 16, 62, 56, 11, 35, 38, 39, 106, 1,…\n$ status              &lt;chr&gt; \"ACTIVE\", \"ACTIVE\", \"ACTIVE\", \"ACTIVE\", \"ACTIVE\", …\n$ year_entered        &lt;fct&gt; 2023, 2023, 2023, 2023, 2023, 2023, 2023, 2023, 20…\n$ latitude            &lt;dbl&gt; 40.66173, 40.57668, 40.73242, 40.68245, 40.63156, …\n$ longitude           &lt;dbl&gt; -73.98297, -74.00453, -73.87630, -73.79367, -73.99…\n$ borough             &lt;fct&gt; Brooklyn, Brooklyn, Queens, Queens, Brooklyn, Quee…\n$ special_district    &lt;fct&gt; None, None, None, None, None, None, None, None, No…\n$ unit                &lt;fct&gt; Q-L, Q-L, SPOPS, Q-L, BKLYN, Q-L, Q-L, SPOPS, Q-L,…\n$ community_board     &lt;fct&gt; 307, 313, 404, 412, 312, 406, 306, 306, 409, 404, …\n$ complaint_category  &lt;fct&gt; 45, 45, 49, 45, 31, 45, 45, 49, 45, 45, 45, 4A, 31…\n$ complaint_priority  &lt;fct&gt; B, B, C, B, C, B, B, C, B, B, B, B, C, C, B, B, B,…"
-  },
-  {
-    "objectID": "articles/survival_analysis_with_tidymodels/article.html#metrics",
-    "href": "articles/survival_analysis_with_tidymodels/article.html#metrics",
-    "title": "Survival analysis with tidymodels",
-    "section": "Metrics",
-    "text": "Metrics\nsahsahshas"
-  },
-  {
-    "objectID": "articles/survival_analysis_with_tidymodels/article.html#footnotes",
-    "href": "articles/survival_analysis_with_tidymodels/article.html#footnotes",
-    "title": "Survival analysis with tidymodels",
-    "section": "Footnotes",
-    "text": "Footnotes\n\n\nHow long until building complaints are dispositioned? A survival analysis case study↩︎\nDynamic Performance Metrics for Event Time Data↩︎"
-  },
-  {
-    "objectID": "articles/price_tracking_with_py_selenium/article.html",
-    "href": "articles/price_tracking_with_py_selenium/article.html",
-    "title": "Price tracking with Selenium",
-    "section": "",
-    "text": "Selenium is an open-source framework that enables you to write tests or scripts to control a web browser. It supports multiple programming languages, including Python. With Selenium, you can simulate user interactions like clicking buttons, entering text, and navigating through pages.\nIn Python, Selenium offers an powerful API that’s great for automating tasks. In this article, we’ll guide you through the setup process and demonstrate how to use Selenium to track prices automatically!\n\nThe jupyter notebook of this article can be found here.",
-    "crumbs": [
-      "Articles",
-      "Price tracking with Selenium"
-    ]
-  },
-  {
-    "objectID": "articles/price_tracking_with_py_selenium/article.html#what-is-selenium",
-    "href": "articles/price_tracking_with_py_selenium/article.html#what-is-selenium",
-    "title": "Price tracking with Selenium",
-    "section": "",
-    "text": "Selenium is an open-source framework that enables you to write tests or scripts to control a web browser. It supports multiple programming languages, including Python. With Selenium, you can simulate user interactions like clicking buttons, entering text, and navigating through pages.\nIn Python, Selenium offers an powerful API that’s great for automating tasks. In this article, we’ll guide you through the setup process and demonstrate how to use Selenium to track prices automatically!\n\nThe jupyter notebook of this article can be found here.",
-    "crumbs": [
-      "Articles",
-      "Price tracking with Selenium"
-    ]
-  },
-  {
-    "objectID": "articles/price_tracking_with_py_selenium/article.html#the-basics",
-    "href": "articles/price_tracking_with_py_selenium/article.html#the-basics",
-    "title": "Price tracking with Selenium",
-    "section": "The basics",
-    "text": "The basics\nSelenium is made up of several components, but we’ll focus on the Selenium WebDriver, which enables you to control the browser. To get started with Selenium, you’ll need a WebDriver for the browser you wish to automate. In this guide, we’ll be using the Chrome WebDriver.\nNormally, setting up Selenium involves downloading the ChromeDriver manually and configuring it on your system, but by using the webdriver-manager library, this process is automated: it downloads the correct version of ChromeDriver based on the version of Chrome installed on your machine.\nNow, let’s see this in action by creating a Chrome WebDriver instance, navigating to Google, print the title page and then closing the driver.\nfrom selenium import webdriver\nfrom webdriver_manager.chrome import ChromeDriverManager\nfrom selenium.webdriver.chrome.service import Service\n\ndef create_driver(url: str = None) -&gt; webdriver.Chrome:\n    driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()))\n    \n    if url:\n        driver.get(url)\n    \n    return driver\n\ndriver = create_driver(url=\"https://www.google.com\")\nprint(driver.title)\n\ndriver.quit()",
-    "crumbs": [
-      "Articles",
-      "Price tracking with Selenium"
-    ]
-  },
-  {
-    "objectID": "articles/price_tracking_with_py_selenium/article.html#finding-elements",
-    "href": "articles/price_tracking_with_py_selenium/article.html#finding-elements",
-    "title": "Price tracking with Selenium",
-    "section": "Finding elements",
-    "text": "Finding elements\nBefore we can perform any action, we need to locate the elements on the page. To do this, simply right-click on the desired element and select “Inspect” to open devtools, where we can find its identifier.\nThe identifier can be the element’s ID, class, or XPath. Once you have it, you can use methods to retrieve the element.\nHowever, sometimes elements may not be clickable due to various factors, such as the page still loading, which can lead to errors in automation. To adress this issue, we can use the WebDriverWait module, which allows us to pause the execution until a certain condition is met, such as an element becoming clickable.\nTo wait for an element to be clickable, we can use the following code:\nfrom selenium.webdriver.common.by import By\nfrom selenium.webdriver.support.ui import WebDriverWait\nfrom selenium.webdriver.support import expected_conditions as EC\n\nwait = WebDriverWait(driver, wait_time)\nwait.until(EC.element_to_be_clickable((by, element)))\nHere, by is the method we’re using to locate the element (like By.ID or By.XPATH), and element is the identifier of the target element. Additionally, the Expected Conditions (EC) module provides useful conditions to help us manage waiting for specific states of web elements.",
-    "crumbs": [
-      "Articles",
-      "Price tracking with Selenium"
-    ]
-  },
-  {
-    "objectID": "articles/price_tracking_with_py_selenium/article.html#moving-to-and-interacting-with-elements",
-    "href": "articles/price_tracking_with_py_selenium/article.html#moving-to-and-interacting-with-elements",
-    "title": "Price tracking with Selenium",
-    "section": "Moving to and interacting with elements",
-    "text": "Moving to and interacting with elements\nOnce we’ve located an element, we often need to interact with it. One effective way to do this is by moving the mouse to the element’s position on the page. For this, we can use the ActionChains class, which allows us to chain together various actions:\nfrom selenium.webdriver.common.action_chains import ActionChains\n\nactions = ActionChains(driver)\nactions.move_to_element(element).perform()\nBy creating an instance of ActionChains and calling the move_to_element method, we can move the mouse cursor to the specified element. The perform method is then called to execute the action.\nUsing ActionChains is particularly useful when working with dynamic elements, such as those that reveal additional options or menus upon hover. This ensures that we can interact with elements that may not be visible or clickable until we move the mouse over them.\nAfter moving to the desired element, we can click on it by adding the click() method to the actions chain, before calling perform.\nIf we want to type something into an input field, we can use the send_keys() method. It’s a good practice to use the clear() method to clear any existing text in the input field before filling it:\ninput_field.clear()\ninput_field.send_keys(\"Your text here\")",
-    "crumbs": [
-      "Articles",
-      "Price tracking with Selenium"
-    ]
-  },
-  {
-    "objectID": "articles/price_tracking_with_py_selenium/article.html#action-functions",
-    "href": "articles/price_tracking_with_py_selenium/article.html#action-functions",
-    "title": "Price tracking with Selenium",
-    "section": "Action functions",
-    "text": "Action functions\nTo streamline our automation process, we can create two handy functions: move_click and move_click_fill. These functions will encapsulate the actions of moving to an element and performing clicks or filling input fields, making our code more organized and reusable.\ndef move_click(driver: webdriver.Chrome, by: By, element: str, wait_time: int = 10) -&gt; None:\n        wait = WebDriverWait(driver, wait_time)\n        actions = ActionChains(driver)\n        el = wait.until(EC.element_to_be_clickable((by, element)))\n        actions.move_to_element(el).click().perform()\n\ndef move_click_and_fill(driver: webdriver.Chrome, by: By, element: str, value: str, wait_time: int = 10) -&gt; None:\n        move_click(driver, by, element, wait_time)\n        el = driver.find_element(by, element)\n        el.clear()\n        el.send_keys(value)",
-    "crumbs": [
-      "Articles",
-      "Price tracking with Selenium"
-    ]
-  },
-  {
-    "objectID": "articles/price_tracking_with_py_selenium/article.html#price-tracking",
-    "href": "articles/price_tracking_with_py_selenium/article.html#price-tracking",
-    "title": "Price tracking with Selenium",
-    "section": "Price tracking",
-    "text": "Price tracking\nLet’s say you’re interested in buying the book Hands-On Machine Learning with Scikit-Learn, Keras, and TensorFlow: Concepts, Tools, and Techniques to Build Intelligent Systems. You check the price on Amazon, but it’s a bit higher than you’d like.\nWe’ll first navigate to the Amazon website. Once we’re there, we’ll locate the search bar at the top of the page. Next, we’ll enter the title of the book, Hands-On Machine Learning, into the search bar to find the best prices available.\nWe need to instruct Selenium on how to perform these actions!\nFirst, we need to create a Selenium WebDriver instance to control the browser. We’ll use our create_driver function to initialize the instance and navigate to the amazon url.\ndriver = create_driver(url=\"https://www.amazon.com\")\nWith the Amazon homepage loaded, we can now use our move_click_fill and move_click functions to enter the book’s title into the search bar e trigger the search button. After inspecting the page, we retrieved the search bar’s ID, \"twotabsearchtextbox\", and the search button ID, \"nav-search-submit-button\".\nHere’s the code to handle both actions:\nmove_click_fill(\n    driver=driver\n    , by=By.ID\n    , element=\"twotabsearchtextbox\"\n    , value=\"Hands-On Machine Learning with Scikit-Learn, Keras, and TensorFlow\"\n)\n\nmove_click(driver=driver, by=By.ID, element=\"nav-search-submit-button\")\n\nExtracting product prices\nNow that we’ve successfully navigated to the search results page, we need to extract the prices for the relevant products. Here’s a more detailed breakdown of the process:\n\nInspect the HTML structure: after opening the Developer Tools and navigating to the Elements tab, take a moment to examine the HTML structure. For Amazon, products are typically organized under the class name \"s-result-item\". Upon further inspection, you’ll discover that the class name for the product titles is \"a-size-medium a-color-base a-text-normal\", while the prices consist of two distinct classes: \"a-price-whole\" for the integer part and \"a-price-fraction\" for the decimal part, as shown in the images below:\n\n\n     \n\n\nExtract the title and price: we can loop through each \"s-result-item\" and extract the infos we want using the find_element method. The idea here is to organize the product titles, prices, and links into a pandas DataFrame object.\n\nimport pandas as pd\n\n# locating all titles, prices and product links\ntitles = driver.find_elements(By.CLASS_NAME, \"a-size-medium.a-color-base.a-text-normal\")\nwhole_prices = driver.find_elements(By.CLASS_NAME, \"a-price-whole\")\nfractional_prices = driver.find_elements(By.CLASS_NAME, \"a-price-fraction\")\nlinks = driver.find_elements(By.CLASS_NAME, \"a-link-normal\")\n\n# loop to append data to the DataFrame\ndata = []\n\nfor i in range(len(titles)):\n    \n    title = titles[i].text\n    price = f\"{whole_prices[i].text}.{fractional_prices[i].text}\"\n    link = links[i].get_attribute(\"href\")  # obtaining the product link\n    \n    # appending the data to the DataFrame\n    data.append({\"title\": title, \"price\": price, \"link\": link})\n\ndf = pd.DataFrame(data)\n\n# displaying the DataFrame\nprint(df)\n\n# closing the driver after collection\ndriver.quit()\nThe output would look something like this:\n\n\n\nOutput\n\n\n\n\nWhat’s next?\nOnce you have the data, the possibilities are endless:\n\nExport to excel: you can save your DataFrame as an Excel file for easy sharing or analysis;\nEmail the data: automate sending the data via email using Python’s smtplib to deliver the Excel file to your inbox;\nSchedule price checks: set up regular price checks (daily or weekly) using jobs to track changes over time;\nDeploy to the cloud: run the script on cloud platforms to automate the process remotely;\nSet price alerts: add conditions to notify you if prices drop below a certain point.\n\nDon’t forget that you can see the full notebook here!\nHappy automating! 🤖",
-    "crumbs": [
-      "Articles",
-      "Price tracking with Selenium"
-    ]
-  },
-  {
     "objectID": "articles/visualizing_proportions_with_echarts4r/article.html",
     "href": "articles/visualizing_proportions_with_echarts4r/article.html",
     "title": "Visualizing proportions with echarts4r",
     "section": "",
-    "text": "On this article, we’ll debate some issues of representing proportion, using some features of echarts4r, which is an R package that provides an interface to the ECharts JavaScript library, making it accessible for users to create highly configurable and interactive charts directly from R.\nFor installing instructions and learning the basic syntax, check their official website (see Coene 2024b).\nFirst, we load the packages we’ll be using.\nlibrary(echarts4r)\nlibrary(dplyr)",
-    "crumbs": [
-      "Articles",
-      "Visualizing proportions with `echarts4r`"
-    ]
+    "text": "On this article, we’ll debate some issues of representing proportion, using some features of echarts4r, which is an R package that provides an interface to the ECharts JavaScript library, making it accessible for users to create highly configurable and interactive charts directly from R.\nFor installing instructions and learning the basic syntax, check their official website (see Coene 2024b).\nFirst, we load the packages we’ll be using.\nlibrary(echarts4r)\nlibrary(dplyr)"
   },
   {
     "objectID": "articles/visualizing_proportions_with_echarts4r/article.html#pie-like-charts",
     "href": "articles/visualizing_proportions_with_echarts4r/article.html#pie-like-charts",
     "title": "Visualizing proportions with echarts4r",
     "section": "Pie-like charts",
-    "text": "Pie-like charts\nThe most simple chart we can make to represent proportions is the standard pie chart. On echarts, the basic syntax goes like:\n\ndf |&gt; \n  e_chart(Group) |&gt; \n  e_pie(Total) |&gt; \n  e_theme(\"caravan\")\n\n\n\n\n\nIn this crude form, this chart may not be that interesting. In fact, it can be misleading: Notice how the minor difference between groups “C” and “D” is hardly perceived — this is a common issue when using pie-like charts.\nThe most natural way to solve this would be to include a label, that we can do using the label argument in the e_pie function, in which you can specify the label in any form you wish via the formatter argument, that accepts any javascript function.\nHowever, this doesn’t really change the appearance of the plot. We still cannot visually perceive this difference. In this aspect, we can set the roseType = \"radius\" argument to scale the radius of each slice according to its value.\n\nformatter &lt;-\n  htmlwidgets::JS(\n    \"function(params) {\n       return params.name + ' : ' + params.value + ' (' + params.percent + '%)';\n    }\"\n  )\n\ndf |&gt; \n  e_chart(Group) |&gt; \n  e_pie(Total, roseType = \"radius\", label = list(formatter = formatter)) |&gt; \n  e_theme(\"caravan\")\n\n\n\n\n\nWith these adjustments, we can visualize the proportions more clearly, getting insights faster, while we can see more details in the label.\nWith donut charts, we’ll have about the same issues. You can do it in echarts4r by passing any vector of the form c(\"55%\", \"60%\") to the radius argument in the same e_pie function:\n\n\n\n\n\n\nAs Cole Nussbaumer says in Storytelling with data1,\n\nWith pies, we are asking our audience to compare angles and areas. With a donut chart, we are asking our audience to compare one arc length to another arc length.\n\nIt may be hard for us to attribute quantitative values in two-dimensional spaces. Simply speaking, even when we can say which category has a “bigger” value based on the size of a segment, angle, arch-lenght or area, it is hard to know by “how much”.\nOne approach to solve this “how much” issue is using horizontal bar charts. However, is worth to observe that the pie-like charts do give us a notion of the “parts of a whole” kind of a thing — that we’ll lose using bar charts.\nWe discuss this now.",
-    "crumbs": [
-      "Articles",
-      "Visualizing proportions with `echarts4r`"
-    ]
+    "text": "Pie-like charts\nThe most simple chart we can make to represent proportions is the standard pie chart. On echarts, the basic syntax goes like:\n\ndf |&gt; \n  e_chart(Group) |&gt; \n  e_pie(Total) |&gt; \n  e_theme(\"caravan\")\n\n\n\n\n\nIn this crude form, this chart may not be that interesting. In fact, it can be misleading: Notice how the minor difference between groups “C” and “D” is hardly perceived — this is a common issue when using pie-like charts.\nThe most natural way to solve this would be to include a label, that we can do using the label argument in the e_pie function, in which you can specify the label in any form you wish via the formatter argument, that accepts any javascript function.\nHowever, this doesn’t really change the appearance of the plot. We still cannot visually perceive this difference. In this aspect, we can set the roseType = \"radius\" argument to scale the radius of each slice according to its value.\n\nformatter &lt;-\n  htmlwidgets::JS(\n    \"function(params) {\n       return params.name + ' : ' + params.value + ' (' + params.percent + '%)';\n    }\"\n  )\n\ndf |&gt; \n  e_chart(Group) |&gt; \n  e_pie(Total, roseType = \"radius\", label = list(formatter = formatter)) |&gt; \n  e_theme(\"caravan\")\n\n\n\n\n\nWith these adjustments, we can visualize the proportions more clearly, getting insights faster, while we can see more details in the label.\nWith donut charts, we’ll have about the same issues. You can do it in echarts4r by passing any vector of the form c(\"55%\", \"60%\") to the radius argument in the same e_pie function:\n\n\n\n\n\n\nAs Cole Nussbaumer says in Storytelling with data1,\n\nWith pies, we are asking our audience to compare angles and areas. With a donut chart, we are asking our audience to compare one arc length to another arc length.\n\nIt may be hard for us to attribute quantitative values in two-dimensional spaces. Simply speaking, even when we can say which category has a “bigger” value based on the size of a segment, angle, arch-lenght or area, it is hard to know by “how much”.\nOne approach to solve this “how much” issue is using horizontal bar charts. However, is worth to observe that the pie-like charts do give us a notion of the “parts of a whole” kind of a thing — that we’ll lose using bar charts.\nWe discuss this now."
   },
   {
     "objectID": "articles/visualizing_proportions_with_echarts4r/article.html#bar-charts",
     "href": "articles/visualizing_proportions_with_echarts4r/article.html#bar-charts",
     "title": "Visualizing proportions with echarts4r",
     "section": "Bar charts",
-    "text": "Bar charts\nFor a basic horizontal bar chart, we can use the e_bar and e_flip_coordsfunctions:\n\ndf |&gt; \n  arrange(Total) |&gt; \n  e_charts(Group) |&gt; \n  e_bar(Total, legend = FALSE, label = list(show = TRUE, position = \"right\")) |&gt; \n  e_flip_coords() |&gt; \n  e_theme(\"caravan\")\n\n\n\n\n\nObserve that now the “how much” issue is a matter of subtracting or completing the bars to get an intuition of the difference (or the actual difference if you subtract the values on the label 😄).\nHowever is not that easy to get the “parts of a whole” intuition just by looking to the bar sizes — we would have to mentally add their length.\nSo far, the simple example we dealt with contains only one layer, i.e, it had only the groups and the total of observations of each one. Bar charts also are very good at dealing with multi-layered data, for example: Consider this pizza dataset containing 5 pizzeria and their sales amount by flavour:\n\n\n\n\n\n\n\n\nHere, we got two categories represent: the Pizzeria and Flavour groups. Using the stacked bar chart, we can better visualize each layering. To do this in echarts4r, just pass the grouped data and explicit the stack = \"grp\" argument in the e_bar function. We can display it both vertically or horizontally:\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nIn some cases, it might be better to unstack the bars (usually, to see some trends in data):",
-    "crumbs": [
-      "Articles",
-      "Visualizing proportions with `echarts4r`"
-    ]
+    "text": "Bar charts\nFor a basic horizontal bar chart, we can use the e_bar and e_flip_coordsfunctions:\n\ndf |&gt; \n  arrange(Total) |&gt; \n  e_charts(Group) |&gt; \n  e_bar(Total, legend = FALSE, label = list(show = TRUE, position = \"right\")) |&gt; \n  e_flip_coords() |&gt; \n  e_theme(\"caravan\")\n\n\n\n\n\nObserve that now the “how much” issue is a matter of subtracting or completing the bars to get an intuition of the difference (or the actual difference if you subtract the values on the label 😄).\nHowever is not that easy to get the “parts of a whole” intuition just by looking to the bar sizes — we would have to mentally add their length.\nSo far, the simple example we dealt with contains only one layer, i.e, it had only the groups and the total of observations of each one. Bar charts also are very good at dealing with multi-layered data, for example: Consider this pizza dataset containing 5 pizzeria and their sales amount by flavour:\n\n\n\n\n\n\n\n\n\nHere, we got two categories represent: the Pizzeria and Flavour groups. Using the stacked bar chart, we can better visualize each layering. To do this in echarts4r, just pass the grouped data and explicit the stack = \"grp\" argument in the e_bar function. We can display it both vertically or horizontally:\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nIn some cases, it might be better to unstack the bars (usually, to see some trends in data):"
   },
   {
     "objectID": "articles/visualizing_proportions_with_echarts4r/article.html#extra-sankey-charts",
     "href": "articles/visualizing_proportions_with_echarts4r/article.html#extra-sankey-charts",
     "title": "Visualizing proportions with echarts4r",
     "section": "Extra: Sankey charts",
-    "text": "Extra: Sankey charts\nWhile pie and bar charts are some fundamental tools for visualizing proportions, there are other type of visualization that I want to mention.\nSankey diagrams are typically used to visualize flows and the distribution of the quantities between different “stages”. In our context, they are particularly effective for illustrating proportions in data with multiple layers (more than two, especially).",
-    "crumbs": [
-      "Articles",
-      "Visualizing proportions with `echarts4r`"
-    ]
+    "text": "Extra: Sankey charts\nWhile pie and bar charts are some fundamental tools for visualizing proportions, there are other type of visualization that I want to mention.\nSankey diagrams are typically used to visualize flows and the distribution of the quantities between different “stages”. In our context, they are particularly effective for illustrating proportions in data with multiple layers (more than two, especially)."
   },
   {
     "objectID": "articles/visualizing_proportions_with_echarts4r/article.html#footnotes",
     "href": "articles/visualizing_proportions_with_echarts4r/article.html#footnotes",
     "title": "Visualizing proportions with echarts4r",
     "section": "Footnotes",
-    "text": "Footnotes\n\n\nStorytelling with data↩︎",
-    "crumbs": [
-      "Articles",
-      "Visualizing proportions with `echarts4r`"
-    ]
-  },
-  {
-    "objectID": "projects/ml_cases/titanic_binary_classification/project.html",
-    "href": "projects/ml_cases/titanic_binary_classification/project.html",
-    "title": "WIP - Random forest classification for survival prediction on the Titanic",
-    "section": "",
-    "text": "The Titanic dataset is one of the most well-known datasets in data science publicly available on Kaggle. It has become particularly popular for binary classification tasks, allowing data scientists and enthusiasts to predict whether a passenger survived or not.\nEach row in the dataset represents a passenger, with multiple features. Below is a brief overview of them:\n\n\n\n\n\n\n\n\nThis dataset comes from the Titanic: Machine Learning from Disaster competition on Kaggle. When you download it, you will receive three primary files:\n\ntrain.csv, containing the training data, which includes the features of the passengers and the target variable. We will use this data to train our model;\ntest.csv, which, unlike in typical machine learning workflows (where the “test” set is used to evaluate the performance of the model), does not include the Survived column. We will use this data to generate predictions with our trained model and submit these survival outcomes to Kaggle for evaluation;\ngender_submission.csv, which provides a sample submission format, where we must include the PassengerId and Survived columns. The values in the Survived column will be the predictions from our model.\n\nHere, we will explore how to use this data to build a step-by-step binary classification model to predict passenger survival on the Titanic.\n\nMoreover, you can find the complete code in this Jupyter notebook.",
-    "crumbs": [
-      "Projects",
-      "Machine learning cases",
-      "WIP - Random forest classification for survival prediction on the Titanic"
-    ]
-  },
-  {
-    "objectID": "projects/ml_cases/titanic_binary_classification/project.html#introduction",
-    "href": "projects/ml_cases/titanic_binary_classification/project.html#introduction",
-    "title": "WIP - Random forest classification for survival prediction on the Titanic",
-    "section": "",
-    "text": "The Titanic dataset is one of the most well-known datasets in data science publicly available on Kaggle. It has become particularly popular for binary classification tasks, allowing data scientists and enthusiasts to predict whether a passenger survived or not.\nEach row in the dataset represents a passenger, with multiple features. Below is a brief overview of them:\n\n\n\n\n\n\n\n\nThis dataset comes from the Titanic: Machine Learning from Disaster competition on Kaggle. When you download it, you will receive three primary files:\n\ntrain.csv, containing the training data, which includes the features of the passengers and the target variable. We will use this data to train our model;\ntest.csv, which, unlike in typical machine learning workflows (where the “test” set is used to evaluate the performance of the model), does not include the Survived column. We will use this data to generate predictions with our trained model and submit these survival outcomes to Kaggle for evaluation;\ngender_submission.csv, which provides a sample submission format, where we must include the PassengerId and Survived columns. The values in the Survived column will be the predictions from our model.\n\nHere, we will explore how to use this data to build a step-by-step binary classification model to predict passenger survival on the Titanic.\n\nMoreover, you can find the complete code in this Jupyter notebook.",
-    "crumbs": [
-      "Projects",
-      "Machine learning cases",
-      "WIP - Random forest classification for survival prediction on the Titanic"
-    ]
-  },
-  {
-    "objectID": "projects/ml_cases/titanic_binary_classification/project.html#exploratory-data-analysis-and-data-preprocessing",
-    "href": "projects/ml_cases/titanic_binary_classification/project.html#exploratory-data-analysis-and-data-preprocessing",
-    "title": "WIP - Random forest classification for survival prediction on the Titanic",
-    "section": "Exploratory Data Analysis and Data Preprocessing",
-    "text": "Exploratory Data Analysis and Data Preprocessing\nIn this section, we will:\n\nHandle missing data and encode categorical variables;\nLook for correlations of important numerical features;\nSplit our data in training and test sets;\nBuild a pipeline to streamline these processes.\n\nFirst of all, we’ll load the data and take a quick glance in its firsts rows and basic statistics.\n\nimport pandas as pd\ndata = pd.read_csv(\"files/dataset/train.csv\")\n\n\n\n\n\n\n\nUsing the info() method, we find that the columns Age, Cabin and Embarked have some missing values:\n\ndata.info()\n\n&lt;class 'pandas.core.frame.DataFrame'&gt;\nRangeIndex: 891 entries, 0 to 890\nData columns (total 12 columns):\n #   Column       Non-Null Count  Dtype  \n---  ------       --------------  -----  \n 0   PassengerId  891 non-null    int64  \n 1   Survived     891 non-null    int64  \n 2   Pclass       891 non-null    int64  \n 3   Name         891 non-null    object \n 4   Sex          891 non-null    object \n 5   Age          714 non-null    float64\n 6   SibSp        891 non-null    int64  \n 7   Parch        891 non-null    int64  \n 8   Ticket       891 non-null    object \n 9   Fare         891 non-null    float64\n 10  Cabin        204 non-null    object \n 11  Embarked     889 non-null    object \ndtypes: float64(2), int64(5), object(5)\nmemory usage: 83.7+ KB\n\n\nFor the Age column we can use an estimator to impute its missing values. To be more precise, we’ll use the SimpleImputer to impute the mean.\nThe columns Embarked and Sex are categorical so, for a better model performance, we need to transform them into numerical features. We’ll do it by using LabelEncoder and OneHotEncoder.\nUsing the LabelEncoder in the Sex column will set 0 = female and 1 = male. For the Embarked column, the use of OneHotEncoder’s will split the former column into four different columns: three for each value and one for missing values.\nWith that in mind, we now remove some features that may not contribute meaningfully to our predictive analysis:\n\nTicket, PassengerId and Name: these features do not offer meaningful insights for predicting survival, as they serve only as unique identifiers for each passenger.\nCabin: while the cabin number information might indicate passenger status, this column has a high variability and a high proportion of missing values. Given its unreliability, we choose to remove it.\nEmbarked_nan: this column represent the missing values on the Embarked column, after the use of OneHotEncoder.\n\nNow we can make an analysis of correlation to guide our procedure of splitting the sets of training and testing. For that, we’ll create a copy of our dataset and perform such changes on this copy.\n\n\n\nSee code\n\n\ndata_copy = data.copy()\n\n# imputing the mean into the missing values of the sex column\nfrom sklearn.impute import SimpleImputer\nimputer = SimpleImputer(strategy=\"mean\")\ndata_copy[\"Age\"] = imputer.fit_transform(data_copy[[\"Age\"]])\n\n# encoding categorical features\nfrom sklearn.preprocessing import OneHotEncoder, LabelEncoder\n\nlabel_encoder = LabelEncoder()\ndata_copy[\"Sex\"] = label_encoder.fit_transform(data_copy[\"Sex\"])\n\none_hot_encoder = OneHotEncoder()\nmatrix = one_hot_encoder.fit_transform(data_copy[[\"Embarked\"]]).toarray()\ndf = pd.DataFrame(matrix, columns=one_hot_encoder.get_feature_names_out([\"Embarked\"]))\ndf.index = data_copy.index\ndata_copy = pd.concat([data_copy, df], axis=1)\n\n# dropping features\ndata_copy.drop([\"PassengerId\", \"Embarked\", \"Name\", \"Ticket\", \"Cabin\", \"Embarked_nan\"], axis=1, errors=\"ignore\", inplace=True)\n\ndata_copy.head()\n\n   Survived  Pclass  Sex   Age  ...     Fare  Embarked_C  Embarked_Q  Embarked_S\n0         0       3    1  22.0  ...   7.2500         0.0         0.0         1.0\n1         1       1    0  38.0  ...  71.2833         1.0         0.0         0.0\n2         1       3    0  26.0  ...   7.9250         0.0         0.0         1.0\n3         1       1    0  35.0  ...  53.1000         0.0         0.0         1.0\n4         0       3    1  35.0  ...   8.0500         0.0         0.0         1.0\n\n[5 rows x 10 columns]\n\n\n\n\nFor a more intuitive view, we can plot those features histogram…\n\n\n\n\n\n\n\n\n\n…and, for further investigation, we can look at the correlation between them:\n\n\n\n\n\n\n\n\n\nWe can observe a strong positive relationship between Sex and Survival (0.543), and a moderate negative correlation between Pclass and Survival (-0.338), which highlights that women had a higher chance of survival, as well as those in higher classes.\nYou may also notice the positive correlation between Fare and Survival, which is explained by the strong negative correlation between Pclass and Fare: higher fares are associated with upper classes.\nWith these relationships in mind, we can now move forward with splitting our data into training and testing sets, using stratified shuffle split to maintain a balanced representation.\n\nfrom sklearn.model_selection import StratifiedShuffleSplit\n\nsplit = StratifiedShuffleSplit(n_splits=1, test_size=0.2)\n\nfor train_indices, test_indices in split.split(data, data[[\"Survived\", \"Pclass\", \"Sex\"]]):\n    strat_train_set = data.loc[train_indices]\n    strat_test_set = data.loc[test_indices]\n\nTo streamline the processes described previously, we can now build a pipeline.\n\n\n\nSee code\n\n\nfrom sklearn.base import BaseEstimator, TransformerMixin\nfrom sklearn.pipeline import Pipeline\n\nclass AgeImputer(BaseEstimator, TransformerMixin):\n    \n    def fit(self, X, y=None):\n        return self\n    \n    def transform(self, X):\n        imputer = SimpleImputer(strategy=\"mean\")\n        X[\"Age\"] = imputer.fit_transform(X[[\"Age\"]])\n        return X\n\nclass FeatureEncoder(BaseEstimator, TransformerMixin):\n    \n    def fit(self, X, y=None):\n        return self\n    \n    def transform(self, X):\n        label_encoder = LabelEncoder()\n        one_hot_encoder = OneHotEncoder()\n\n        X[\"Sex\"] = label_encoder.fit_transform(X[\"Sex\"])\n\n        matrix = one_hot_encoder.fit_transform(X[[\"Embarked\"]]).toarray()\n        df = pd.DataFrame(matrix, columns=one_hot_encoder.get_feature_names_out([\"Embarked\"]))\n\n        df.index = X.index\n        X = pd.concat([X, df], axis=1)\n        \n        return X \n\nclass FeatureDropper(BaseEstimator, TransformerMixin):\n    \n    def fit(self, X, y=None):\n        return self\n    \n    def transform(self, X):\n        return X.drop([\"Embarked\", \"Name\", \"Ticket\", \"Cabin\", \"Embarked_nan\"], axis=1, errors=\"ignore\")\n      \npipeline = Pipeline([\n    (\"age_imputer\", AgeImputer()),\n    (\"feature_encoder\", FeatureEncoder()),\n    (\"feature_dropper\", FeatureDropper())\n])\n\n\n\nAfter applying the pipeline to the training set, we move on to a final preprocessing step: standardization. Here, we’ll use StandardScaler:\n\nfrom sklearn.preprocessing import StandardScaler\n\nstrat_train_set = pipeline.fit_transform(strat_train_set)\n\nX_data_train = strat_train_set.drop(['Survived'], axis=1)\ny_data_train = strat_train_set['Survived']\n\nscaler = StandardScaler()\n\nX_data_train = scaler.fit_transform(X_data_train)\ny_data_train = y_data_train.to_numpy()\n\nAfter standardization, X_data_train contains the scaled features, while y_data_train stores the target values as a NumPy array, making both compatible with Scikit-Learn models.",
-    "crumbs": [
-      "Projects",
-      "Machine learning cases",
-      "WIP - Random forest classification for survival prediction on the Titanic"
-    ]
-  },
-  {
-    "objectID": "projects/ml_cases/titanic_binary_classification/project.html#training-the-model",
-    "href": "projects/ml_cases/titanic_binary_classification/project.html#training-the-model",
-    "title": "WIP - Random forest classification for survival prediction on the Titanic",
-    "section": "Training the model",
-    "text": "Training the model\nNow, we proceed to train our Random Forest Classifier. Our approach leverages Grid Search to fine-tune the model’s hyperparameters, optimizing its performance with accuracy as the evaluation metric.\n\nfrom sklearn.ensemble import RandomForestClassifier\nfrom sklearn.model_selection import GridSearchCV\n\nrf = RandomForestClassifier()\n\nparam_grid = [{\n        \"n_estimators\": [10, 100, 200, 500, 750],\n        \"max_depth\": [None, 5, 10, 12],\n        \"min_samples_split\": [2, 3, 4]\n    }]\n\ngrid_search = GridSearchCV(rf, param_grid, cv=3, scoring=\"accuracy\")\ngrid_search.fit(X_data_train, y_data_train)\n\nWe can see the score of the classifier on the “test” set:\n\nbest_rf = grid_search.best_estimator_\n\nstrat_test_set = pipeline.fit_transform(strat_test_set)\n\nX_data_test = strat_test_set.drop(['Survived'], axis=1)\ny_data_test = strat_test_set['Survived']\n\nscaler = StandardScaler()\n\nX_data_test = scaler.fit_transform(X_data_test)\ny_data_test = y_data_test.to_numpy()\n\nbest_rf.score(X_data_test, y_data_test)\n\n\n\n0.7821229050279329\n\n\nFinally, to submit our predictions to Kaggle, we train the model again using the whole train dataset!\n\n\n\nSee code\n\n\nfinal_data = pipeline.fit_transform(data)\n\nX_final = final_data.drop(['Survived'],axis=1)\ny_final = final_data['Survived']\n\nscaler = StandardScaler()\n\nX_data_final = scaler.fit_transform(X_final)\ny_data_final = y_final.to_numpy()\n\nfinal_rf = RandomForestClassifier()\n\nparam_grid = [{\n        \"n_estimators\": [10, 100, 200, 500, 750],\n        \"max_depth\": [None, 5, 10, 12],\n        \"min_samples_split\": [2, 3, 4]\n    }]\n\ngrid_search = GridSearchCV(final_rf, param_grid, cv=3, scoring=\"accuracy\")\ngrid_search.fit(X_data_final, y_data_final)\n\nbest_final_rf = grid_search.best_estimator_\n\n\n\nLoading and preparing the test.csv data:\n\ntest_data = pd.read_csv(\"files/dataset/test.csv\")\n\nscaler = StandardScaler()\n\nX_test = pipeline.fit_transform(test_data)\nX_test = scaler.fit_transform(X_test)\n\nSaving the predictions:\n\npredictions = best_final_rf.predict(X_test)\n\npredictions_df = pd.DataFrame(test_data['PassengerId'])\npredictions_df['Survived'] = predictions\n\npredictions_df.to_csv(\"files/dataset/predictions.csv\", index=False)\n\nResults:",
-    "crumbs": [
-      "Projects",
-      "Machine learning cases",
-      "WIP - Random forest classification for survival prediction on the Titanic"
-    ]
-  },
-  {
-    "objectID": "projects/ml_cases/titanic_binary_classification/project.html#clique-para-ver-o-código",
-    "href": "projects/ml_cases/titanic_binary_classification/project.html#clique-para-ver-o-código",
-    "title": "Random forest classification for survival prediction on the Titanic",
-    "section": "Clique para ver o código",
-    "text": "Clique para ver o código\n\n\nCódigo em Python\n\n\n# Seu código aqui\nprint(\"Hello, world!\")\n\nHello, world!",
-    "crumbs": [
-      "Projects",
-      "Machine learning cases",
-      "Random forest classification for survival prediction on the Titanic"
-    ]
+    "text": "Footnotes\n\n\nStorytelling with data↩︎"
   },
   {
     "objectID": "projects/r_shiny/japan_biodiversity_dashboard/project.html",
     "href": "projects/r_shiny/japan_biodiversity_dashboard/project.html",
     "title": "Japan biodiversity dashboard",
     "section": "",
-    "text": "I’ve never been to Japan, but its rich culture and stunning landscapes have always amazed me. When I came across this dataset, I was curious to explore the forms of life found there, as well as those shared with other parts of the world. This dashboard offers an interactive visualization of Japan’s biodiversity from 1976 to 2024, showcasing observations of a wide variety of species.\nThe data used is the occurence dataset, from the Global Biodiversity Information Facility (GBIF), an international network and data infrastructure which provides open access to data about all types of life on Earth. More precisely, the dataset we’ll work on was obtained by observation.org.",
-    "crumbs": [
-      "Projects",
-      "R & Shiny",
-      "Japan biodiversity dashboard"
-    ]
-  },
-  {
-    "objectID": "projects/r_shiny/japan_biodiversity_dashboard/project.html#resume",
-    "href": "projects/r_shiny/japan_biodiversity_dashboard/project.html#resume",
-    "title": "Japan biodiversity dashboard",
-    "section": "Resume",
-    "text": "Resume\nIt was made using the R Shiny web application framework and it is mainly separated in four parts, detailed below:\n\nThe context card: Here an introductory text and the control selectors are displayed. There is a species selector – the default visualization is all available species, but one can choose a single species to refine the results for all dashboard elements. The species can be filtered both by its scientific name or its vernacular name, and the user may do so by typing at the search bar. Secondly, there is a year slide filter – the default goes from 1984 to 2020 but can be reduced up to a single year, which also changes the entire dashboard visualization.\nTimeline card: At the bottom left, a timeline is displayed to show how many observations occurred with the filter configurations. Additionally, there is a toolbox on the top to interchange between bar (default) and line plots, zoom in and zoom out.\nThe information cards: This part contains three cards. The first one shows an image. If a species is selected and there is a photo of it, the default image will be replaced by this photo. The second card shows general statistics about the observations: how many have occurred, and the most observed life stage, sex and locality for the species and period selected. Lastly, a ranking of the five most observed species during selected period will appear by default. If a particular species is selected, the card will swap to display all scientific information about it and a distribution box-plot of all yearly individual counts.\nThe map: This card shows cluster points of the observations occurred in each part of Poland during the selected period, for the selected species (and all of them, if that is the case). It can be zoomed in, and when a single observation is located, a pop-up appears by clicking, showing all the info of that particular observation.\n\n\nAbove there is the default view and a filtered view, respectively.",
-    "crumbs": [
-      "Projects",
-      "R & Shiny",
-      "Japan biodiversity dashboard"
-    ]
-  },
-  {
-    "objectID": "projects/r_shiny/japan_biodiversity_dashboard/project.html#project-structure",
-    "href": "projects/r_shiny/japan_biodiversity_dashboard/project.html#project-structure",
-    "title": "Japan biodiversity dashboard",
-    "section": "Project structure",
-    "text": "Project structure\nI utilized an R package structure to develop and deploy this application, managing package dependencies with the renv package.\n\nDirectories and files\n\nThere is a www directory to store static files, such as css, images and fonts;\nAlso, there is a extdata directory to store external data, including the original dataset and the processed version used in the app;\nThe data-raw folder keeps the script where I did the dataset preprocessing;\nThe R folder contains the core scripts of the app:\n\nui.R: This file sets up the page and card layouts, and includes all the necessary CSS and functionalities;\nserver.R: Handles the main server logic for the app;\nfunctions.R: Contains pre-processing functions that get the data ready for visualization;\nplots.R: Has functions that generate the plots, like echarts and reactable;\nutils.R: Holds utility functions for smaller tasks and calculations;\nvars.R: Stores various variables, including color palettes, theme settings, custom components, and JS functions;\nwidgets.R: This is where reusable UI components and input functions are stored;\nModule scripts (e.g., md_module_name.R): Contain independent shinyModules functions.\n\n\n\n\nServer logic architecture\nThe app follows a modular reactive flow:\n\nData source\n\nInitializes with the pre-processed static data loaded from an .rds file;\nServes as the foundation for all downstream operations.\n\nControl module\n\nHouses user input widgets;\nReturns a reactive list containing:\n\nSelected names (single or “All”);\nSelected year range.\n\n\nReactive data\n\nFilters the static data based on control values;\nImplements caching for performance optimization;\nSingle source of truth for all visualizations that updates when control values change.\n\nVisualization modules\n\nIndependent, self-contained modules consuming the filtered data;\nEach module handles a specific visualization in a card.\n\n\n\n\n\n\n\nflowchart LR\n    A[Static data] --&gt; B[Control module]\n    B --&gt; C[Name input]\n    B --&gt; D[Year input]\n    C --&gt; E{Reactive controls}\n    D --&gt; E\n    A --&gt; F{Reactive data}\n    E --&gt; F\n    F --&gt; G[Context module]\n    F --&gt; H[Image module]\n    F --&gt; I[Info modules]\n    F --&gt; J[Map module]\n\n    style A fill:#EBF1E4\n\n\n\n\n\n\n\n\nUnit testing\nUsing the testthat package, I implemented unit tests for the app’s most important functions:\n\nNon-reactive functions: These functions in the app fall into two categories:\n\nUtility functions that performs simple dataframe operations (located in the utils.R file);\nData transformation functions used immediately before plotting outputs, such as echarts4r plots and reactables (found in the functions.R script).\n\nFor both types, basic structural functionalities and edge cases were covered in the test files.\nReactive functions: Based on the server logic structure, unit testing for reactive functions includes:\n\nVerifying that the control module successfully returns a reactive list with the values used to filter the app’s main reactive;\nEnsuring that the main reactive effectively filters data based on inputs from the control module.\n\n\n\nFeel free to contribute to this project by visiting: https://github.com/jgoliv/japanbiodiversitydashboard",
-    "crumbs": [
-      "Projects",
-      "R & Shiny",
-      "Japan biodiversity dashboard"
-    ]
-  },
-  {
-    "objectID": "projects/r_shiny/japan_biodiversity_dashboard/project.html#preparing-the-dataset",
-    "href": "projects/r_shiny/japan_biodiversity_dashboard/project.html#preparing-the-dataset",
-    "title": "Japan biodiversity dashboard",
-    "section": "Preparing the dataset",
-    "text": "Preparing the dataset\n\nThis dataset is divided in two csv files, occurrence and multimedia data, that add up to 20GB.\nSince the interest is on Poland data, there is no need to load the full dataset. Using the data.table::fread() function to filter csv lines matching “Poland” string ensures that only the corresponding lines are output.\nThe steps involving data treatment were: selecting desired columns; removing columns of no interest or with a large amount of missing values; renaming and featuring new columns; joining occurrence data with multimedia and saving the final data on a .rds file.\n\n\n\nSee full code",
-    "crumbs": [
-      "Projects",
-      "R & Shiny",
-      "Japan biodiversity dashboard"
-    ]
-  },
-  {
-    "objectID": "projects/r_shiny/japan_biodiversity_dashboard/project.html#extras",
-    "href": "projects/r_shiny/japan_biodiversity_dashboard/project.html#extras",
-    "title": "Japan biodiversity dashboard",
-    "section": "Extras",
-    "text": "Extras\n\nThe map\n\nThe map is supposed to be the coolest UI feature here. In order to achieve that, there were the following steps below.\nThe first main strategy was to plot the circle markers using the individual_counts of each observation to scale the radius and the color palette. However, due to a large amount of data, it had some performance issues on the default view. This was tackled in two steps: first, using leaflet proxy, and then clustering markers.\nUsing the clustering markers, the performance was considerably improved. However, with the R libraries leaflet and leaflet.extras alone it wasn’t possible to customize the cluster markers, like scale radius size and cluster color palette, especially scaling markers according to individual counts: to make the cluster counting match not the observations total but the individual counts total. This was solved by creating a custom JS function (iconCreateFunction) to personalize the clustering on the markerClusterOptions argument. Here are some sources that were consulted during this process:\n\nhttps://stackoverflow.com/questions/33600021/how-to-customize-the-coloring-of-clusters\nhttps://github.com/Leaflet/Leaflet.markercluster/blob/64a2d5711521e56cac8ab863fb658beda5690600/dist/leaflet.markercluster-src.js",
-    "crumbs": [
-      "Projects",
-      "R & Shiny",
-      "Japan biodiversity dashboard"
-    ]
-  },
-  {
-    "objectID": "projects/r_shiny/japan_biodiversity_dashboard/project.html#for-the-future",
-    "href": "projects/r_shiny/japan_biodiversity_dashboard/project.html#for-the-future",
-    "title": "Japan biodiversity dashboard",
-    "section": "For the future",
-    "text": "For the future\n\nExplore a larger portion of the dataset to address performance issues, particularly with rendering points on a Leaflet map;\nEnhance interactivity by applying more JS techniques and consider deploying a more complex app to a different instance;\nFurther studies could lead to optimizations and improved infrastructure techniques.",
-    "crumbs": [
-      "Projects",
-      "R & Shiny",
-      "Japan biodiversity dashboard"
-    ]
-  },
-  {
-    "objectID": "projects/r_shiny/japan_biodiversity_dashboard/project.html#what-you-will-find-in-the-app",
-    "href": "projects/r_shiny/japan_biodiversity_dashboard/project.html#what-you-will-find-in-the-app",
-    "title": "Japan biodiversity dashboard",
-    "section": "What you will find in the app?",
-    "text": "What you will find in the app?\nThis dashboard was made using the R Shiny web application framework and it is mainly separated in four parts:\n\nThe context card: Here an introductory text and the control selectors are displayed. There is a species selector – the default visualization is all available species, but one can choose a single species to refine the results for all dashboard elements. The species can be filtered both by its scientific name or its vernacular name, and the user may do so by typing at the search bar. Secondly, there is a year slide filter – the default goes from 1984 to 2020 but can be reduced up to a single year, which also changes the entire dashboard visualization.\nTimeline card: At the bottom left, a timeline is displayed to show how many observations occurred with the filter configurations. Additionally, there is a toolbox on the top to interchange between bar (default) and line plots, zoom in and zoom out.\nThe information cards: This part contains three cards. The first one shows an image. If a species is selected and there is a photo of it, the default image will be replaced by this photo. The second card shows general statistics about the observations: how many have occurred, and the most observed life stage, sex and locality for the species and period selected. Lastly, a ranking of the five most observed species during selected period will appear by default. If a particular species is selected, the card will swap to display all scientific information about it and a distribution box-plot of all yearly individual counts.\nThe map: This card shows cluster points of the observations occurred in each part of Poland during the selected period, for the selected species (and all of them, if that is the case). It can be zoomed in, and when a single observation is located, a pop-up appears by clicking, showing all the info of that particular observation.\n\n\nAbove there is the default view and a filtered view, respectively.",
-    "crumbs": [
-      "Projects",
-      "R & Shiny",
-      "Japan biodiversity dashboard"
-    ]
+    "text": "I’ve never been to Japan, but its rich culture and stunning landscapes have always amazed me. When I came across this dataset, I was curious to explore the forms of life found there, as well as those shared with other parts of the world. This dashboard offers an interactive visualization of Japan’s biodiversity from 1976 to 2024, showcasing observations of a wide variety of species.\nThe data used is the occurence dataset, from the Global Biodiversity Information Facility (GBIF), an international network and data infrastructure which provides open access to data about all types of life on Earth. More precisely, the dataset we’ll work on was obtained by observation.org."
   },
   {
     "objectID": "projects/r_shiny/japan_biodiversity_dashboard/project.html#exploring-the-app",
     "href": "projects/r_shiny/japan_biodiversity_dashboard/project.html#exploring-the-app",
     "title": "Japan biodiversity dashboard",
     "section": "Exploring the App",
-    "text": "Exploring the App\nTo display what kind of information we can obtain from this dataset, I’ve organized the dashboard into four key sections: Context, Timeline, Information, and Map. This structure allows you to explore the dataset from a broad perspective while also enabling a deeper investigation into occurrences of specific species.\nThere are two display modes: the default view, that shows data for all occurrences simultaneously; and the species-filtered view, that adjusts the app’s visualizations based on the selected species. The species can be filtered either by scientific or vernacular name, using the search bar. Besides that, there’s also a filter by time period (in years), with the default range spanning from 1976 to 2024, but it can be adjusted up to a single year, which updates the entire dashboard accordingly.\n\nDefault viewSelected species view\n\n\n\n\n\n\n\n\n\n\nThe context card: Displays an introductory text along with control selectors.\nTimeline card: At the bottom, a timeline is displayed to show how many observations occurred with the filter configurations. There is a toolbox on the top to interchange between bar (default) and line plots, zoom in and zoom out.\nThe information cards: This part contains three cards. The first one shows an image. If a species is selected and there is a photo of it, the default image will be replaced by this photo. The second card shows general statistics about the observations: how many have occurred, and the most observed life stage, sex and locality for the species and period selected. Lastly, a ranking of the five most observed species during selected period will appear by default. If a particular species is selected, the card will swap to display all scientific information about it and a distribution box-plot of all yearly individual counts.\nThe map: This card shows cluster points of the observations occurred in each part of Japan during the selected period, for the selected species (and all of them, if that is the case). It can be zoomed in, and when a single observation is located, a pop-up appears by clicking, showing all the info of that particular observation and a picture of the species.\n\n\nInterestingly, all the colors used in this project are traditional Japanese colors, as documented in the book “日本の伝統色 The Traditional Colors of Japan” by PIE BOOKS (2007). You can explore 250 of these colors at this link.",
-    "crumbs": [
-      "Projects",
-      "R & Shiny",
-      "Japan biodiversity dashboard"
-    ]
+    "text": "Exploring the App\nTo display what kind of information we can obtain from this dataset, I’ve organized the dashboard into four key sections: Context, Timeline, Information, and Map. This structure allows you to explore the dataset from a broad perspective while also enabling a deeper investigation into occurrences of specific species.\nThere are two display modes: the default view, that shows data for all occurrences simultaneously; and the species-filtered view, that adjusts the app’s visualizations based on the selected species. The species can be filtered either by scientific or vernacular name, using the search bar. Besides that, there’s also a filter by time period (in years), with the default range spanning from 1976 to 2024, but it can be adjusted up to a single year, which updates the entire dashboard accordingly.\n\nDefault viewSelected species view\n\n\n\n\n\n\n\n\n\n\nThe context card: Displays an introductory text along with control selectors.\nTimeline card: At the bottom, a timeline is displayed to show how many observations occurred with the filter configurations. There is a toolbox on the top to interchange between bar (default) and line plots, zoom in and zoom out.\nThe information cards: This part contains three cards. The first one shows an image. If a species is selected and there is a photo of it, the default image will be replaced by this photo. The second card shows general statistics about the observations: how many have occurred, and the most observed life stage, sex and locality for the species and period selected. Lastly, a ranking of the five most observed species during selected period will appear by default. If a particular species is selected, the card will swap to display all scientific information about it and a distribution box-plot of all yearly individual counts.\nThe map: This card shows cluster points of the observations occurred in each part of Japan during the selected period, for the selected species (and all of them, if that is the case). It can be zoomed in, and when a single observation is located, a pop-up appears by clicking, showing all the info of that particular observation and a picture of the species.\n\n\nInterestingly, all the colors used in this project are traditional Japanese colors, as documented in the book “日本の伝統色 The Traditional Colors of Japan” by PIE BOOKS (2007). You can explore 250 of these colors at this link."
   },
   {
-    "objectID": "projects/r_shiny/japan_biodiversity_dashboard/project.html#wip---ideas",
-    "href": "projects/r_shiny/japan_biodiversity_dashboard/project.html#wip---ideas",
+    "objectID": "projects/r_shiny/japan_biodiversity_dashboard/project.html#project-structure",
+    "href": "projects/r_shiny/japan_biodiversity_dashboard/project.html#project-structure",
     "title": "Japan biodiversity dashboard",
-    "section": "",
-    "text": "I’ve never been to Japan, but their culture and beautiful landscapes always amazed me. When I found out about this dataset, I was curious to know what different forms of life could be found there, but also what was common there and in other parts of the world. Now we can find out through this dashboard, which aims to provide an interactive visualization of the biodiversity found in Japan during the years of 1984 to 2020, including observations of over several different species.\nThe data used is the occurence dataset, from the Global Biodiversity Information Facility (GBIF), an international network and data infrastructure which provides open access to data about all types of life on Earth. More precisely, the dataset we’ll work on was obtained by observation.org.\nTo display what kind of information we can obtain from this dataset, I choose to divide the dashboard into four sections (context, timeline, information and the map). We’ll dive deeper into the features of this app.\n\nYou can interact with the application here!",
-    "crumbs": [
-      "Projects",
-      "R & Shiny",
-      "Japan biodiversity dashboard"
-    ]
-  },
-  {
-    "objectID": "projects.html",
-    "href": "projects.html",
-    "title": "Projects",
-    "section": "",
-    "text": "Japan biodiversity dashboard\n\n\n\n\n\n\nR\n\n\nShiny\n\n\nData Visualization\n\n\n\n\n\n\n\n\n\nDec 18, 2024\n\n\n\n\n\n\n\n\n\n\n\n\nWIP - Random forest classification for survival prediction on the Titanic\n\n\n\n\n\n\nPython\n\n\nMachine Learning\n\n\n\n\n\n\n\n\n\nOct 12, 2024\n\n\n\n\n\n\nNo matching items",
-    "crumbs": [
-      "Projects"
-    ]
+    "section": "Project structure",
+    "text": "Project structure\nI utilized an R package structure to develop and deploy this application, managing package dependencies with the renv package.\n\nDirectories and files\n\nThere is a www directory to store static files, such as css, images and fonts;\nAlso, there is a extdata directory to store external data, including the original dataset and the processed version used in the app;\nThe data-raw folder keeps the script where I did the dataset preprocessing;\nThe R folder contains the core scripts of the app:\n\nui.R: This file sets up the page and card layouts, and includes all the necessary CSS and functionalities;\nserver.R: Handles the main server logic for the app;\nfunctions.R: Contains pre-processing functions that get the data ready for visualization;\nplots.R: Has functions that generate the plots, like echarts and reactable;\nutils.R: Holds utility functions for smaller tasks and calculations;\nvars.R: Stores various variables, including color palettes, theme settings, custom components, and JS functions;\nwidgets.R: This is where reusable UI components and input functions are stored;\nModule scripts (e.g., md_module_name.R): Contain independent shinyModules functions.\n\n\n\n\nServer logic architecture\nThe app follows a modular reactive flow:\n\nData source\n\nInitializes with the pre-processed static data loaded from an .rds file;\nServes as the foundation for all downstream operations.\n\nControl module\n\nHouses user input widgets;\nReturns a reactive list containing:\n\nSelected names (single or “All”);\nSelected year range.\n\n\nReactive data\n\nFilters the static data based on control values;\nImplements caching for performance optimization;\nSingle source of truth for all visualizations that updates when control values change.\n\nVisualization modules\n\nIndependent, self-contained modules consuming the filtered data;\nEach module handles a specific visualization in a card.\n\n\n\n\n\n\nflowchart LR\n    A[Static data] --&gt; B[Control module]\n    B --&gt; C[Name input]\n    B --&gt; D[Year input]\n    C --&gt; E{Reactive controls}\n    D --&gt; E\n    A --&gt; F{Reactive data}\n    E --&gt; F\n    F --&gt; G[Context module]\n    F --&gt; H[Image module]\n    F --&gt; I[Info modules]\n    F --&gt; J[Map module]\n\n    style A fill:#EBF1E4\n\n\n\n\n\n\n\nUnit testing\nUsing the testthat package, I implemented unit tests for the app’s most important functions:\n\nNon-reactive functions: These functions in the app fall into two categories:\n\nUtility functions that performs simple dataframe operations (located in the utils.R file);\nData transformation functions used immediately before plotting outputs, such as echarts4r plots and reactables (found in the functions.R script).\n\nFor both types, basic structural functionalities and edge cases were covered in the test files.\nReactive functions: Based on the server logic structure, unit testing for reactive functions includes:\n\nVerifying that the control module successfully returns a reactive list with the values used to filter the app’s main reactive;\nEnsuring that the main reactive effectively filters data based on inputs from the control module.\n\n\n\nFeel free to contribute to this project by visiting: https://github.com/jgoliv/japanbiodiversitydashboard"
   },
   {
     "objectID": "articles.html",
     "href": "articles.html",
     "title": "Articles",
     "section": "",
-    "text": "Price tracking with Selenium\n\n\n\n\n\n\nPython\n\n\nAutomation\n\n\n\n\n\n\n\n\n\nOct 10, 2024\n\n\n\n\n\n\n\n\n\n\n\n\nVisualizing proportions with echarts4r\n\n\n\n\n\n\nR\n\n\nData Visualization\n\n\n\n\n\n\n\n\n\nJun 22, 2024\n\n\n\n\n\n\nNo matching items",
-    "crumbs": [
-      "Articles"
-    ]
+    "text": "Price tracking with Selenium\n\n\n\n\n\n\n\nPython\n\n\nAutomation\n\n\n\n\n\n\n\n\n\n\n\nOct 10, 2024\n\n\n\n\n\n\n  \n\n\n\n\nVisualizing proportions with echarts4r\n\n\n\n\n\n\n\nR\n\n\nData Visualization\n\n\n\n\n\n\n\n\n\n\n\nJun 22, 2024\n\n\n\n\n\n\nNo matching items"
+  },
+  {
+    "objectID": "projects.html",
+    "href": "projects.html",
+    "title": "Projects",
+    "section": "",
+    "text": "Japan biodiversity dashboard\n\n\n\n\n\n\n\nR\n\n\nShiny\n\n\nData Visualization\n\n\n\n\n\n\n\n\n\n\n\nDec 18, 2024\n\n\n\n\n\n\nNo matching items"
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "About me",
+    "section": "",
+    "text": "Hi! I’m João Gabriel, a data scientist based in São Paulo, Brazil, with a strong passion for problem-solving and a keen interest in leveraging data to drive impactful decisions.\nI hold a bachelor’s degree in Mathematics from the State University of São Paulo and a master’s degree in Mathematics from the State University of Campinas, where I specialized in Algebraic Number Theory.\nIn my current role as a data scientist, I use R, Python, SQL and Julia for data manipulation, statistical modeling, and automated reporting with Quarto. I work with machine learning using scikit-learn and tidymodels for model development and evaluation, and have experience in computer vision with YOLO and OpenCV. I also develop interactive web applications with Shiny, focusing on data visualization dashboards and platforms for monitoring models in production, as well as cloud-based automation and deployment using AWS (SageMaker, EC2, ECS, Bedrock, S3, rekognition).\nFor more details about my career and projects, feel free to connect with me on LinkedIn."
+  },
+  {
+    "objectID": "articles/price_tracking_with_py_selenium/article.html",
+    "href": "articles/price_tracking_with_py_selenium/article.html",
+    "title": "Price tracking with Selenium",
+    "section": "",
+    "text": "Selenium is an open-source framework that enables you to write tests or scripts to control a web browser. It supports multiple programming languages, including Python. With Selenium, you can simulate user interactions like clicking buttons, entering text, and navigating through pages.\nIn Python, Selenium offers an powerful API that’s great for automating tasks. In this article, we’ll guide you through the setup process and demonstrate how to use Selenium to track prices automatically!\n\nThe jupyter notebook of this article can be found here."
+  },
+  {
+    "objectID": "articles/price_tracking_with_py_selenium/article.html#what-is-selenium",
+    "href": "articles/price_tracking_with_py_selenium/article.html#what-is-selenium",
+    "title": "Price tracking with Selenium",
+    "section": "",
+    "text": "Selenium is an open-source framework that enables you to write tests or scripts to control a web browser. It supports multiple programming languages, including Python. With Selenium, you can simulate user interactions like clicking buttons, entering text, and navigating through pages.\nIn Python, Selenium offers an powerful API that’s great for automating tasks. In this article, we’ll guide you through the setup process and demonstrate how to use Selenium to track prices automatically!\n\nThe jupyter notebook of this article can be found here."
+  },
+  {
+    "objectID": "articles/price_tracking_with_py_selenium/article.html#the-basics",
+    "href": "articles/price_tracking_with_py_selenium/article.html#the-basics",
+    "title": "Price tracking with Selenium",
+    "section": "The basics",
+    "text": "The basics\nSelenium is made up of several components, but we’ll focus on the Selenium WebDriver, which enables you to control the browser. To get started with Selenium, you’ll need a WebDriver for the browser you wish to automate. In this guide, we’ll be using the Chrome WebDriver.\nNormally, setting up Selenium involves downloading the ChromeDriver manually and configuring it on your system, but by using the webdriver-manager library, this process is automated: it downloads the correct version of ChromeDriver based on the version of Chrome installed on your machine.\nNow, let’s see this in action by creating a Chrome WebDriver instance, navigating to Google, print the title page and then closing the driver.\nfrom selenium import webdriver\nfrom webdriver_manager.chrome import ChromeDriverManager\nfrom selenium.webdriver.chrome.service import Service\n\ndef create_driver(url: str = None) -&gt; webdriver.Chrome:\n    driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()))\n    \n    if url:\n        driver.get(url)\n    \n    return driver\n\ndriver = create_driver(url=\"https://www.google.com\")\nprint(driver.title)\n\ndriver.quit()"
+  },
+  {
+    "objectID": "articles/price_tracking_with_py_selenium/article.html#finding-elements",
+    "href": "articles/price_tracking_with_py_selenium/article.html#finding-elements",
+    "title": "Price tracking with Selenium",
+    "section": "Finding elements",
+    "text": "Finding elements\nBefore we can perform any action, we need to locate the elements on the page. To do this, simply right-click on the desired element and select “Inspect” to open devtools, where we can find its identifier.\nThe identifier can be the element’s ID, class, or XPath. Once you have it, you can use methods to retrieve the element.\nHowever, sometimes elements may not be clickable due to various factors, such as the page still loading, which can lead to errors in automation. To adress this issue, we can use the WebDriverWait module, which allows us to pause the execution until a certain condition is met, such as an element becoming clickable.\nTo wait for an element to be clickable, we can use the following code:\nfrom selenium.webdriver.common.by import By\nfrom selenium.webdriver.support.ui import WebDriverWait\nfrom selenium.webdriver.support import expected_conditions as EC\n\nwait = WebDriverWait(driver, wait_time)\nwait.until(EC.element_to_be_clickable((by, element)))\nHere, by is the method we’re using to locate the element (like By.ID or By.XPATH), and element is the identifier of the target element. Additionally, the Expected Conditions (EC) module provides useful conditions to help us manage waiting for specific states of web elements."
+  },
+  {
+    "objectID": "articles/price_tracking_with_py_selenium/article.html#moving-to-and-interacting-with-elements",
+    "href": "articles/price_tracking_with_py_selenium/article.html#moving-to-and-interacting-with-elements",
+    "title": "Price tracking with Selenium",
+    "section": "Moving to and interacting with elements",
+    "text": "Moving to and interacting with elements\nOnce we’ve located an element, we often need to interact with it. One effective way to do this is by moving the mouse to the element’s position on the page. For this, we can use the ActionChains class, which allows us to chain together various actions:\nfrom selenium.webdriver.common.action_chains import ActionChains\n\nactions = ActionChains(driver)\nactions.move_to_element(element).perform()\nBy creating an instance of ActionChains and calling the move_to_element method, we can move the mouse cursor to the specified element. The perform method is then called to execute the action.\nUsing ActionChains is particularly useful when working with dynamic elements, such as those that reveal additional options or menus upon hover. This ensures that we can interact with elements that may not be visible or clickable until we move the mouse over them.\nAfter moving to the desired element, we can click on it by adding the click() method to the actions chain, before calling perform.\nIf we want to type something into an input field, we can use the send_keys() method. It’s a good practice to use the clear() method to clear any existing text in the input field before filling it:\ninput_field.clear()\ninput_field.send_keys(\"Your text here\")"
+  },
+  {
+    "objectID": "articles/price_tracking_with_py_selenium/article.html#action-functions",
+    "href": "articles/price_tracking_with_py_selenium/article.html#action-functions",
+    "title": "Price tracking with Selenium",
+    "section": "Action functions",
+    "text": "Action functions\nTo streamline our automation process, we can create two handy functions: move_click and move_click_fill. These functions will encapsulate the actions of moving to an element and performing clicks or filling input fields, making our code more organized and reusable.\ndef move_click(driver: webdriver.Chrome, by: By, element: str, wait_time: int = 10) -&gt; None:\n        wait = WebDriverWait(driver, wait_time)\n        actions = ActionChains(driver)\n        el = wait.until(EC.element_to_be_clickable((by, element)))\n        actions.move_to_element(el).click().perform()\n\ndef move_click_and_fill(driver: webdriver.Chrome, by: By, element: str, value: str, wait_time: int = 10) -&gt; None:\n        move_click(driver, by, element, wait_time)\n        el = driver.find_element(by, element)\n        el.clear()\n        el.send_keys(value)"
+  },
+  {
+    "objectID": "articles/price_tracking_with_py_selenium/article.html#price-tracking",
+    "href": "articles/price_tracking_with_py_selenium/article.html#price-tracking",
+    "title": "Price tracking with Selenium",
+    "section": "Price tracking",
+    "text": "Price tracking\nLet’s say you’re interested in buying the book Hands-On Machine Learning with Scikit-Learn, Keras, and TensorFlow: Concepts, Tools, and Techniques to Build Intelligent Systems. You check the price on Amazon, but it’s a bit higher than you’d like.\nWe’ll first navigate to the Amazon website. Once we’re there, we’ll locate the search bar at the top of the page. Next, we’ll enter the title of the book, Hands-On Machine Learning, into the search bar to find the best prices available.\nWe need to instruct Selenium on how to perform these actions!\nFirst, we need to create a Selenium WebDriver instance to control the browser. We’ll use our create_driver function to initialize the instance and navigate to the amazon url.\ndriver = create_driver(url=\"https://www.amazon.com\")\nWith the Amazon homepage loaded, we can now use our move_click_fill and move_click functions to enter the book’s title into the search bar e trigger the search button. After inspecting the page, we retrieved the search bar’s ID, \"twotabsearchtextbox\", and the search button ID, \"nav-search-submit-button\".\nHere’s the code to handle both actions:\nmove_click_fill(\n    driver=driver\n    , by=By.ID\n    , element=\"twotabsearchtextbox\"\n    , value=\"Hands-On Machine Learning with Scikit-Learn, Keras, and TensorFlow\"\n)\n\nmove_click(driver=driver, by=By.ID, element=\"nav-search-submit-button\")\n\nExtracting product prices\nNow that we’ve successfully navigated to the search results page, we need to extract the prices for the relevant products. Here’s a more detailed breakdown of the process:\n\nInspect the HTML structure: after opening the Developer Tools and navigating to the Elements tab, take a moment to examine the HTML structure. For Amazon, products are typically organized under the class name \"s-result-item\". Upon further inspection, you’ll discover that the class name for the product titles is \"a-size-medium a-color-base a-text-normal\", while the prices consist of two distinct classes: \"a-price-whole\" for the integer part and \"a-price-fraction\" for the decimal part, as shown in the images below:\n\n\n     \n\n\nExtract the title and price: we can loop through each \"s-result-item\" and extract the infos we want using the find_element method. The idea here is to organize the product titles, prices, and links into a pandas DataFrame object.\n\nimport pandas as pd\n\n# locating all titles, prices and product links\ntitles = driver.find_elements(By.CLASS_NAME, \"a-size-medium.a-color-base.a-text-normal\")\nwhole_prices = driver.find_elements(By.CLASS_NAME, \"a-price-whole\")\nfractional_prices = driver.find_elements(By.CLASS_NAME, \"a-price-fraction\")\nlinks = driver.find_elements(By.CLASS_NAME, \"a-link-normal\")\n\n# loop to append data to the DataFrame\ndata = []\n\nfor i in range(len(titles)):\n    \n    title = titles[i].text\n    price = f\"{whole_prices[i].text}.{fractional_prices[i].text}\"\n    link = links[i].get_attribute(\"href\")  # obtaining the product link\n    \n    # appending the data to the DataFrame\n    data.append({\"title\": title, \"price\": price, \"link\": link})\n\ndf = pd.DataFrame(data)\n\n# displaying the DataFrame\nprint(df)\n\n# closing the driver after collection\ndriver.quit()\nThe output would look something like this:\n\n\n\nOutput\n\n\n\n\nWhat’s next?\nOnce you have the data, the possibilities are endless:\n\nExport to excel: you can save your DataFrame as an Excel file for easy sharing or analysis;\nEmail the data: automate sending the data via email using Python’s smtplib to deliver the Excel file to your inbox;\nSchedule price checks: set up regular price checks (daily or weekly) using jobs to track changes over time;\nDeploy to the cloud: run the script on cloud platforms to automate the process remotely;\nSet price alerts: add conditions to notify you if prices drop below a certain point.\n\nDon’t forget that you can see the full notebook here!\nHappy automating! 🤖"
   }
 ]
