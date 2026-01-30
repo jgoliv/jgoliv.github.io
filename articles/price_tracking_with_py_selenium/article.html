@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.7.31">
+<meta name="generator" content="quarto-1.8.27">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -69,14 +69,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="../../articles/visualizing_proportions_with_echarts4r/article.html" rel="next">
 <script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
 <script src="../../site_libs/quarto-html/popper.min.js"></script>
 <script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-e1a5c8363afafaef2c763b6775fbf3ca.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-093453698b1a97f74514113868440e10.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../site_libs/bootstrap/bootstrap-76bd360fa7d5057fd04f0c8a81990870.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-166604717797af2e8c2e7a59b893d1d2.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -107,7 +108,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <style>html{ scroll-behavior: smooth; }</style>
 
 
-<link rel="stylesheet" href="../../www/css/theme.scss">
 <meta property="og:title" content="Price tracking with Selenium">
 <meta property="og:description" content="">
 <meta property="og:image" content="https://jgoliv.github.io/articles/price_tracking_with_py_selenium/files/image.png">
@@ -132,12 +132,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span class="menu-text">About me</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../../projects.html"> 
-<span class="menu-text">Projects</span></a>
-  </li>  
-  <li class="nav-item">
-    <a class="nav-link active" href="../../articles.html" aria-current="page"> 
-<span class="menu-text">Articles</span></a>
+    <a class="nav-link" href="../../notes.html"> 
+<span class="menu-text">Notes</span></a>
   </li>  
 </ul>
           </div> <!-- /navcollapse -->
@@ -164,7 +160,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
     <div class="pt-lg-2 mt-2 text-left sidebar-header">
       <a href="index.qmd" class="sidebar-logo-link">
-      <img src="../../www/images/logo.svg" alt="" class="sidebar-logo py-0 d-lg-inline d-none">
+      <img src="../../www/images/logo.svg" alt="" class="sidebar-logo light-content py-0 d-lg-inline d-none">
+      <img src="../../www/images/logo.svg" alt="" class="sidebar-logo dark-content py-0 d-lg-inline d-none">
       </a>
       </div>
     <div class="sidebar-menu-container"> 
@@ -262,7 +259,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>Selenium is made up of several components, but we’ll focus on the <em>Selenium WebDriver</em>, which enables you to control the browser. To get started with Selenium, you’ll need a <em>WebDriver</em> for the browser you wish to automate. In this guide, we’ll be using the <em>Chrome WebDriver.</em></p>
 <p>Normally, setting up Selenium involves downloading the <em>ChromeDriver</em> manually and configuring it on your system, but by using the <code>webdriver-manager</code> library, this process is automated: it downloads the correct version of <em>ChromeDriver</em> based on the version of Chrome installed on your machine.</p>
 <p>Now, let’s see this in action by creating a <em>Chrome WebDriver</em> instance, navigating to Google, print the title page and then closing the driver.</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> selenium <span class="im">import</span> webdriver</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> selenium <span class="im">import</span> webdriver</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> webdriver_manager.chrome <span class="im">import</span> ChromeDriverManager</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> selenium.webdriver.chrome.service <span class="im">import</span> Service</span>
 <span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a></span>
@@ -277,7 +274,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>driver <span class="op">=</span> create_driver(url<span class="op">=</span><span class="st">"https://www.google.com"</span>)</span>
 <span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(driver.title)</span>
 <span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>driver.quit()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>driver.quit()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </section>
 <section id="finding-elements" class="level2">
 <h2 class="anchored" data-anchor-id="finding-elements">Finding elements</h2>
@@ -285,32 +282,32 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>The identifier can be the element’s <strong>ID</strong>, <strong>class</strong>, or <strong>XPath</strong>. Once you have it, you can use methods to retrieve the element.</p>
 <p>However, sometimes elements may not be clickable due to various factors, such as the page still loading, which can lead to errors in automation. To adress this issue, we can use the <code>WebDriverWait</code> module, which allows us to pause the execution until a certain condition is met, such as an element becoming clickable.</p>
 <p>To wait for an element to be clickable, we can use the following code:</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> selenium.webdriver.common.by <span class="im">import</span> By</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> selenium.webdriver.common.by <span class="im">import</span> By</span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> selenium.webdriver.support.ui <span class="im">import</span> WebDriverWait</span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> selenium.webdriver.support <span class="im">import</span> expected_conditions <span class="im">as</span> EC</span>
 <span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>wait <span class="op">=</span> WebDriverWait(driver, wait_time)</span>
-<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>wait.until(EC.element_to_be_clickable((by, element)))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>wait.until(EC.element_to_be_clickable((by, element)))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>Here, <code>by</code> is the method we’re using to locate the element (like <code>By.ID</code> or <code>By.XPATH</code>), and <code>element</code> is the identifier of the target element. Additionally, the <code>Expected Conditions</code> (EC) module provides useful conditions to help us manage waiting for specific states of web elements.</p>
 </section>
 <section id="moving-to-and-interacting-with-elements" class="level2">
 <h2 class="anchored" data-anchor-id="moving-to-and-interacting-with-elements">Moving to and interacting with elements</h2>
 <p>Once we’ve located an element, we often need to interact with it. One effective way to do this is by moving the mouse to the element’s position on the page. For this, we can use the <code>ActionChains</code> class, which allows us to chain together various actions:</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> selenium.webdriver.common.action_chains <span class="im">import</span> ActionChains</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> selenium.webdriver.common.action_chains <span class="im">import</span> ActionChains</span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>actions <span class="op">=</span> ActionChains(driver)</span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>actions.move_to_element(element).perform()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>actions.move_to_element(element).perform()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>By creating an instance of <code>ActionChains</code> and calling the <code>move_to_element</code> method, we can move the mouse cursor to the specified element. The <code>perform</code> method is then called to execute the action.</p>
 <p>Using <code>ActionChains</code> is particularly useful when working with dynamic elements, such as those that reveal additional options or menus upon hover. This ensures that we can interact with elements that may not be visible or clickable until we move the mouse over them.</p>
 <p>After moving to the desired element, we can click on it by adding the <code>click()</code> method to the actions chain, before calling <code>perform</code>.</p>
 <p>If we want to type something into an input field, we can use the <code>send_keys()</code> method. It’s a good practice to use the <code>clear()</code> method to clear any existing text in the input field before filling it:</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>input_field.clear()</span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>input_field.send_keys(<span class="st">"Your text here"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>input_field.clear()</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>input_field.send_keys(<span class="st">"Your text here"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </section>
 <section id="action-functions" class="level2">
 <h2 class="anchored" data-anchor-id="action-functions">Action functions</h2>
 <p>To streamline our automation process, we can create two handy functions: <code>move_click</code> and <code>move_click_fill</code>. These functions will encapsulate the actions of moving to an element and performing clicks or filling input fields, making our code more organized and reusable.</p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> move_click(driver: webdriver.Chrome, by: By, element: <span class="bu">str</span>, wait_time: <span class="bu">int</span> <span class="op">=</span> <span class="dv">10</span>) <span class="op">-&gt;</span> <span class="va">None</span>:</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> move_click(driver: webdriver.Chrome, by: By, element: <span class="bu">str</span>, wait_time: <span class="bu">int</span> <span class="op">=</span> <span class="dv">10</span>) <span class="op">-&gt;</span> <span class="va">None</span>:</span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>        wait <span class="op">=</span> WebDriverWait(driver, wait_time)</span>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>        actions <span class="op">=</span> ActionChains(driver)</span>
 <span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>        el <span class="op">=</span> wait.until(EC.element_to_be_clickable((by, element)))</span>
@@ -320,7 +317,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>        move_click(driver, by, element, wait_time)</span>
 <span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>        el <span class="op">=</span> driver.find_element(by, element)</span>
 <span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>        el.clear()</span>
-<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a>        el.send_keys(value)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a>        el.send_keys(value)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </section>
 <section id="price-tracking" class="level2">
 <h2 class="anchored" data-anchor-id="price-tracking">Price tracking</h2>
@@ -328,17 +325,17 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>We’ll first navigate to the Amazon website. Once we’re there, we’ll locate the search bar at the top of the page. Next, we’ll enter the title of the book, Hands-On Machine Learning, into the search bar to find the best prices available.</p>
 <p>We need to instruct Selenium on how to perform these actions!</p>
 <p>First, we need to create a <em>Selenium WebDriver</em> instance to control the browser. We’ll use our <code>create_driver</code> function to initialize the instance and navigate to the amazon url.</p>
-<div class="sourceCode" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>driver <span class="op">=</span> create_driver(url<span class="op">=</span><span class="st">"https://www.amazon.com"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>driver <span class="op">=</span> create_driver(url<span class="op">=</span><span class="st">"https://www.amazon.com"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>With the Amazon homepage loaded, we can now use our <code>move_click_fill</code> and <code>move_click</code> functions to enter the book’s title into the search bar e trigger the search button. After inspecting the page, we retrieved the search bar’s <strong>ID</strong>, <code>"twotabsearchtextbox"</code>, and the search button <strong>ID</strong>, <code>"nav-search-submit-button"</code>.</p>
 <p>Here’s the code to handle both actions:</p>
-<div class="sourceCode" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>move_click_fill(</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>move_click_fill(</span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>    driver<span class="op">=</span>driver</span>
 <span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>    , by<span class="op">=</span>By.ID</span>
 <span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>    , element<span class="op">=</span><span class="st">"twotabsearchtextbox"</span></span>
 <span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>    , value<span class="op">=</span><span class="st">"Hands-On Machine Learning with Scikit-Learn, Keras, and TensorFlow"</span></span>
 <span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>)</span>
 <span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>move_click(driver<span class="op">=</span>driver, by<span class="op">=</span>By.ID, element<span class="op">=</span><span class="st">"nav-search-submit-button"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>move_click(driver<span class="op">=</span>driver, by<span class="op">=</span>By.ID, element<span class="op">=</span><span class="st">"nav-search-submit-button"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <section id="extracting-product-prices" class="level3">
 <h3 class="anchored" data-anchor-id="extracting-product-prices">Extracting product prices</h3>
 <p>Now that we’ve successfully navigated to the search results page, we need to extract the prices for the relevant products. Here’s a more detailed breakdown of the process:</p>
@@ -351,7 +348,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <ul>
 <li><strong><em>Extract the title and price:</em></strong> we can loop through each <code>"s-result-item"</code> and extract the infos we want using the <code>find_element</code> method. The idea here is to organize the product titles, prices, and links into a pandas <code>DataFrame</code> object.</li>
 </ul>
-<div class="sourceCode" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="co"># locating all titles, prices and product links</span></span>
 <span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>titles <span class="op">=</span> driver.find_elements(By.CLASS_NAME, <span class="st">"a-size-medium.a-color-base.a-text-normal"</span>)</span>
@@ -377,7 +374,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb8-24"><a href="#cb8-24" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(df)</span>
 <span id="cb8-25"><a href="#cb8-25" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb8-26"><a href="#cb8-26" aria-hidden="true" tabindex="-1"></a><span class="co"># closing the driver after collection</span></span>
-<span id="cb8-27"><a href="#cb8-27" aria-hidden="true" tabindex="-1"></a>driver.quit()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb8-27"><a href="#cb8-27" aria-hidden="true" tabindex="-1"></a>driver.quit()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>The output would look something like this:</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
@@ -455,13 +452,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       e.clearSelection();
     }
     const getTextToCopy = function(trigger) {
-        const codeEl = trigger.previousElementSibling.cloneNode(true);
-        for (const childEl of codeEl.children) {
-          if (isCodeAnnotation(childEl)) {
-            childEl.remove();
-          }
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
         }
-        return codeEl.innerText;
+      }
+      return codeEl.innerText;
     }
     const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
       text: getTextToCopy

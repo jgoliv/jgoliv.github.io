@@ -6,8 +6,9 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
+<meta name="dcterms.date" content="2024-12-18">
 
-<title>Articles</title>
+<title>Japan biodiversity dashboard</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -23,26 +24,24 @@ ul.task-list li input[type="checkbox"] {
 </style>
 
 
-<script src="site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="site_libs/quarto-nav/headroom.min.js"></script>
-<script src="site_libs/clipboard/clipboard.min.js"></script>
-<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="site_libs/quarto-search/fuse.min.js"></script>
-<script src="site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="./">
-<script src="site_libs/quarto-listing/list.min.js"></script>
-<script src="site_libs/quarto-listing/quarto-listing.js"></script>
-<script src="site_libs/quarto-html/quarto.js" type="module"></script>
-<script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
-<script src="site_libs/quarto-html/axe/axe-check.js" type="module"></script>
-<script src="site_libs/quarto-html/popper.min.js"></script>
-<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="site_libs/quarto-html/anchor.min.js"></script>
-<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-093453698b1a97f74514113868440e10.css" rel="stylesheet" id="quarto-text-highlighting-styles">
-<script src="site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-166604717797af2e8c2e7a59b893d1d2.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script src="../../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../../">
+<script src="../../../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../../../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
+<script src="../../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../../site_libs/quarto-html/quarto-syntax-highlighting-093453698b1a97f74514113868440e10.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../../site_libs/bootstrap/bootstrap-166604717797af2e8c2e7a59b893d1d2.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -70,71 +69,15 @@ ul.task-list li input[type="checkbox"] {
     "search-label": "Search"
   }
 }</script>
-<script>
-
-  window.document.addEventListener("DOMContentLoaded", function (_event) {
-    const listingTargetEl = window.document.querySelector('#listing-article-links .list');
-    if (!listingTargetEl) {
-      // No listing discovered, do not attach.
-      return; 
-    }
-
-    const options = {
-      valueNames: ['listing-date','listing-title','listing-author','listing-image','listing-description','listing-categories',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-file-modified-sort'] }],
-      
-      searchColumns: ["listing-date","listing-title","listing-author","listing-image","listing-description","listing-categories"],
-    };
-
-    window['quarto-listings'] = window['quarto-listings'] || {};
-    window['quarto-listings']['listing-article-links'] = new List('listing-article-links', options);
-
-    if (window['quarto-listing-loaded']) {
-      window['quarto-listing-loaded']();
-    }
-  });
-
-  window.addEventListener('hashchange',() => {
-    if (window['quarto-listing-loaded']) {
-      window['quarto-listing-loaded']();
-    }
-  })
-  </script>
 <style>html{ scroll-behavior: smooth; }</style>
+<script src="../../../site_libs/quarto-diagram/mermaid.min.js"></script>
+<script src="../../../site_libs/quarto-diagram/mermaid-init.js"></script>
+<link href="../../../site_libs/quarto-diagram/mermaid.css" rel="stylesheet">
 
-  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
-  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
-<script type="text/javascript">
-const typesetMath = (el) => {
-  if (window.MathJax) {
-    // MathJax Typeset
-    window.MathJax.typeset([el]);
-  } else if (window.katex) {
-    // KaTeX Render
-    var mathElements = el.getElementsByClassName("math");
-    var macros = [];
-    for (var i = 0; i < mathElements.length; i++) {
-      var texText = mathElements[i].firstChild;
-      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
-        window.katex.render(texText.data, mathElements[i], {
-          displayMode: mathElements[i].classList.contains('display'),
-          throwOnError: false,
-          macros: macros,
-          fleqn: false
-        });
-      }
-    }
-  }
-}
-window.Quarto = {
-  typesetMath
-};
-</script>
-
-<meta property="og:title" content="Articles">
-<meta property="og:image" content="https://jgoliv.github.io/articles/price_tracking_with_py_selenium/files/image.png">
-<meta property="og:image:height" content="512">
-<meta property="og:image:width" content="512">
+<meta property="og:title" content="Japan biodiversity dashboard">
+<meta property="og:description" content="">
+<meta property="og:image" content="https://jgoliv.github.io/notes/r_shiny/japan_biodiversity_dashboard/files/image.svg">
 </head>
 
 <body class="nav-sidebar floating nav-fixed quarto-light">
@@ -150,11 +93,11 @@ window.Quarto = {
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link" href="./index.html"> 
+    <a class="nav-link" href="../../../index.html"> 
 <span class="menu-text">About me</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./notes.html"> 
+    <a class="nav-link active" href="../../../notes.html" aria-current="page"> 
 <span class="menu-text">Notes</span></a>
   </li>  
 </ul>
@@ -170,7 +113,7 @@ window.Quarto = {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./articles.html">Articles</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../../notes/r_shiny/japan_biodiversity_dashboard/project.html">R &amp; Shiny</a></li><li class="breadcrumb-item"><a href="../../../notes/r_shiny/japan_biodiversity_dashboard/project.html">Japan biodiversity dashboard</a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
     </div>
@@ -181,54 +124,88 @@ window.Quarto = {
 <!-- sidebar -->
   <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
     <div class="pt-lg-2 mt-2 text-left sidebar-header">
-      <a href="./index.html" class="sidebar-logo-link">
-      <img src="./www/images/logo.svg" alt="" class="sidebar-logo light-content py-0 d-lg-inline d-none">
-      <img src="./www/images/logo.svg" alt="" class="sidebar-logo dark-content py-0 d-lg-inline d-none">
+      <a href="index.qmd" class="sidebar-logo-link">
+      <img src="../../../www/images/logo.svg" alt="" class="sidebar-logo light-content py-0 d-lg-inline d-none">
+      <img src="../../../www/images/logo.svg" alt="" class="sidebar-logo dark-content py-0 d-lg-inline d-none">
       </a>
       </div>
     <div class="sidebar-menu-container"> 
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./articles.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text">Articles</span></a>
+  <a href="../../../notes.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Notes</span></a>
   </div>
 </li>
         <li class="px-0"><hr class="sidebar-divider hi "></li>
-        <li class="sidebar-item">
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true">
+ <span class="menu-text">R &amp; Shiny</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./articles/price_tracking_with_py_selenium/article.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Price tracking with Selenium</span></a>
+  <a href="../../../notes/r_shiny/japan_biodiversity_dashboard/project.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">Japan biodiversity dashboard</span></a>
   </div>
 </li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./articles/visualizing_proportions_with_echarts4r/article.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Visualizing proportions with <code>echarts4r</code></span></a>
-  </div>
-</li>
+      </ul>
+  </li>
     </ul>
     </div>
 </nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        
-    <h5 class="quarto-listing-category-title">Categories</h5><div class="quarto-listing-category category-default"><div class="category" data-category="">All <span class="quarto-category-count">(2)</span></div><div class="category" data-category="QXV0b21hdGlvbg==">Automation <span class="quarto-category-count">(1)</span></div><div class="category" data-category="RGF0YSUyMFZpc3VhbGl6YXRpb24=">Data Visualization <span class="quarto-category-count">(1)</span></div><div class="category" data-category="UHl0aG9u">Python <span class="quarto-category-count">(1)</span></div><div class="category" data-category="Ug==">R <span class="quarto-category-count">(1)</span></div></div></div>
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#exploring-the-app" id="toc-exploring-the-app" class="nav-link active" data-scroll-target="#exploring-the-app">Exploring the App</a></li>
+  <li><a href="#project-structure" id="toc-project-structure" class="nav-link" data-scroll-target="#project-structure">Project structure</a>
+  <ul class="collapse">
+  <li><a href="#directories-and-files" id="toc-directories-and-files" class="nav-link" data-scroll-target="#directories-and-files">Directories and files</a></li>
+  <li><a href="#server-logic-architecture" id="toc-server-logic-architecture" class="nav-link" data-scroll-target="#server-logic-architecture">Server logic architecture</a></li>
+  <li><a href="#unit-testing" id="toc-unit-testing" class="nav-link" data-scroll-target="#unit-testing">Unit testing</a></li>
+  </ul></li>
+  </ul>
+<div class="toc-actions"><ul><li><a href="https://github.com/jgoliv/jgoliv.github.io/edit/main/notes/r_shiny/japan_biodiversity_dashboard/project.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/jgoliv/jgoliv.github.io/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
+    </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default">
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../../notes/r_shiny/japan_biodiversity_dashboard/project.html">R &amp; Shiny</a></li><li class="breadcrumb-item"><a href="../../../notes/r_shiny/japan_biodiversity_dashboard/project.html">Japan biodiversity dashboard</a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title">Articles</h1>
-</div>
+<h1 class="title">Japan biodiversity dashboard</h1>
+  <div class="quarto-categories">
+    <div class="quarto-category">R</div>
+    <div class="quarto-category">Shiny</div>
+    <div class="quarto-category">Data Visualization</div>
+  </div>
+  </div>
 
 
 
 <div class="quarto-title-meta">
 
     
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">December 18, 2024</p>
+    </div>
+  </div>
   
+    <div>
+    <div class="quarto-title-meta-heading">Modified</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date-modified">January 30, 2026</p>
+    </div>
+  </div>
     
   </div>
   
@@ -237,72 +214,125 @@ window.Quarto = {
 </header>
 
 
-<div id="listing-article-links" class="quarto-listing quarto-listing-container-default">
-<div class="list quarto-listing-default">
-<div class="quarto-post image-right" data-index="0" data-categories="UHl0aG9uJTJDQXV0b21hdGlvbg==" data-listing-date-sort="1728518400000" data-listing-file-modified-sort="1769809876755" data-listing-date-modified-sort="1728518400000" data-listing-reading-time-sort="7" data-listing-word-count-sort="1360">
-<div class="thumbnail"><a href="./articles/price_tracking_with_py_selenium/article.html" class="no-external">
-
-<img loading="lazy" src="./articles/price_tracking_with_py_selenium/files/image.png" class="thumbnail-image">
-
-</a></div>
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="./articles/price_tracking_with_py_selenium/article.html" class="no-external">Price tracking with Selenium</a>
-</h3>
-<div class="listing-categories">
-
-<div class="listing-category" onclick="window.quartoListingCategory('UHl0aG9u'); return false;">Python</div>
-
-<div class="listing-category" onclick="window.quartoListingCategory('QXV0b21hdGlvbg=='); return false;">Automation</div>
-
+<p>Japan never gets old to me. This dashboard offers an interactive look at its biodiversity from 1976 to 2024, exploring species found there and those shared with other parts of the world.</p>
+<p>Data comes from the <a href="https://www.gbif.org/occurrence/search?dataset_key=8a863029-f435-446a-821e-275f4f641165">occurence dataset</a> on <em>GBIF</em>, an open-access network for biodiversity data worldwide, collected by <a href="https://observation.org/">observation.org</a>.</p>
+<blockquote class="blockquote">
+<p>You can interact with the application <a href="https://jgoliv.shinyapps.io/japanbiodiversitydashboard/">here!</a></p>
+</blockquote>
+<section id="exploring-the-app" class="level2">
+<h2 class="anchored" data-anchor-id="exploring-the-app">Exploring the App</h2>
+<p>The dashboard is split into four sections: Context, Timeline, Information, and Map. You can explore the full dataset or drill down into specific species.</p>
+<p>Two display modes: a default view showing all occurrences, and a species-filtered view. Filter by scientific or vernacular name via the search bar. A year range filter (1976–2024 by default) updates the entire dashboard.</p>
+<div class="tabset-margin-container"></div><div class="panel-tabset">
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-1-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-1" role="tab" aria-controls="tabset-1-1" aria-selected="true" href="">Default view</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-2" role="tab" aria-controls="tabset-1-2" aria-selected="false" href="">Selected species view</a></li></ul>
+<div class="tab-content">
+<div id="tabset-1-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-1-1-tab">
+<p><img src="files/app_default_view.png" class="img-fluid"></p>
 </div>
-<div class="delink listing-description"><a href="./articles/price_tracking_with_py_selenium/article.html" class="no-external">
-Selenium is an open-source framework that enables you to write tests or scripts to control a web browser. It supports multiple programming languages, including Python. With…
-</a></div>
-</div>
-<div class="metadata">
-<a href="./articles/price_tracking_with_py_selenium/article.html" class="no-external">
-<div class="listing-date">
-Oct 10, 2024
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="1" data-categories="UiUyQ0RhdGElMjBWaXN1YWxpemF0aW9u" data-listing-date-sort="1719014400000" data-listing-file-modified-sort="1769809876758" data-listing-date-modified-sort="1719014400000" data-listing-reading-time-sort="7" data-listing-word-count-sort="1220">
-<div class="thumbnail"><a href="./articles/visualizing_proportions_with_echarts4r/article.html" class="no-external">
-
-<img loading="lazy" src="./articles/visualizing_proportions_with_echarts4r/files/image.png" class="thumbnail-image">
-
-</a></div>
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="./articles/visualizing_proportions_with_echarts4r/article.html" class="no-external">Visualizing proportions with <code>echarts4r</code></a>
-</h3>
-<div class="listing-categories">
-
-<div class="listing-category" onclick="window.quartoListingCategory('Ug=='); return false;">R</div>
-
-<div class="listing-category" onclick="window.quartoListingCategory('RGF0YSUyMFZpc3VhbGl6YXRpb24='); return false;">Data Visualization</div>
-
-</div>
-<div class="delink listing-description"><a href="./articles/visualizing_proportions_with_echarts4r/article.html" class="no-external">
-On this article, we’ll debate some issues of representing proportion, using some features of <code>echarts4r</code>, which is an R package that provides an interface to the ECharts…
-</a></div>
-</div>
-<div class="metadata">
-<a href="./articles/visualizing_proportions_with_echarts4r/article.html" class="no-external">
-<div class="listing-date">
-Jun 22, 2024
-</div>
-</a>
+<div id="tabset-1-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-2-tab">
+<p><img src="files/app_filtered_view.png" class="img-fluid"></p>
 </div>
 </div>
 </div>
-<div class="listing-no-matching d-none">No matching items</div>
+<ul>
+<li><p><strong>Context card:</strong> Introductory text and control selectors.</p></li>
+<li><p><strong>Timeline card:</strong> Observation count over time. Toggle between bar and line plots, zoom in/out.</p></li>
+<li><p><strong>Information cards:</strong> Three cards. One shows a species photo (if available). Another shows stats: observation count, most observed life stage, sex, and locality. The third ranks the top five species by default, or swaps to scientific details and a yearly count box-plot when a species is selected.</p></li>
+<li><p><strong>Map card:</strong> Clustered observation points across Japan. Click into a single observation for its full info and species photo.</p></li>
+</ul>
+<blockquote class="blockquote">
+<p>Fun fact: all colors in this project are traditional Japanese colors, from “日本の伝統色 The Traditional Colors of Japan” by PIE BOOKS (2007). Explore 250 of them <a href="https://color-term.com/traditional-color-of-japan/">here</a>.</p>
+</blockquote>
+</section>
+<section id="project-structure" class="level2">
+<h2 class="anchored" data-anchor-id="project-structure">Project structure</h2>
+<p>Built as an R package, with dependencies managed by <code>renv</code>.</p>
+<section id="directories-and-files" class="level3">
+<h3 class="anchored" data-anchor-id="directories-and-files">Directories and files</h3>
+<ul>
+<li><p>There is a <strong>www</strong> directory to store static files, such as css, images and fonts;</p></li>
+<li><p>Also, there is a <strong>extdata</strong> directory to store external data, including the original dataset and the processed version used in the app;</p></li>
+<li><p>The <strong>data-raw</strong> folder keeps the script where I did the dataset preprocessing;</p></li>
+<li><p>The <strong>R</strong> folder contains the core scripts of the app:</p>
+<ul>
+<li><strong>ui.R</strong>: This file sets up the page and card layouts, and includes all the necessary CSS and functionalities;</li>
+<li><strong>server.R</strong>: Handles the main server logic for the app;</li>
+<li><strong>functions.R</strong>: Contains pre-processing functions that get the data ready for visualization;</li>
+<li><strong>plots.R</strong>: Has functions that generate the plots, like <code>echarts</code> and <code>reactable</code>;</li>
+<li><strong>utils.R</strong>: Holds utility functions for smaller tasks and calculations;</li>
+<li><strong>vars.R</strong>: Stores various variables, including color palettes, theme settings, custom components, and JS functions;</li>
+<li><strong>widgets.R</strong>: This is where reusable UI components and input functions are stored;</li>
+<li><strong>Module scripts</strong> (e.g., md_module_name.R): Contain independent shinyModules functions.</li>
+</ul></li>
+</ul>
+</section>
+<section id="server-logic-architecture" class="level3">
+<h3 class="anchored" data-anchor-id="server-logic-architecture">Server logic architecture</h3>
+<p>The app follows a modular reactive flow:</p>
+<ul>
+<li><strong>Data source</strong>
+<ul>
+<li>Initializes with the pre-processed static data loaded from an .rds file;</li>
+<li>Serves as the foundation for all downstream operations.</li>
+</ul></li>
+<li><strong>Control module</strong>
+<ul>
+<li>Houses user input widgets;</li>
+<li>Returns a reactive list containing:
+<ul>
+<li>Selected names (single or “All”);</li>
+<li>Selected year range.</li>
+</ul></li>
+</ul></li>
+<li><strong>Reactive data</strong>
+<ul>
+<li>Filters the static data based on control values;</li>
+<li>Implements caching for performance optimization;</li>
+<li>Single source of truth for all visualizations that updates when control values change.</li>
+</ul></li>
+<li><strong>Visualization modules</strong>
+<ul>
+<li>Independent, self-contained modules consuming the filtered data;</li>
+<li>Each module handles a specific visualization in a card.</li>
+</ul></li>
+</ul>
+<div class="cell" data-layout-align="default">
+<div class="cell-output-display">
+<div>
+<p></p><figure class="figure"><p></p>
+<div>
+<pre class="mermaid mermaid-js">flowchart LR
+    A[Static data] --&gt; B[Control module]
+    B --&gt; C[Name input]
+    B --&gt; D[Year input]
+    C --&gt; E{Reactive controls}
+    D --&gt; E
+    A --&gt; F{Reactive data}
+    E --&gt; F
+    F --&gt; G[Context module]
+    F --&gt; H[Image module]
+    F --&gt; I[Info modules]
+    F --&gt; J[Map module]
+
+    style A fill:#EBF1E4
+</pre>
 </div>
+<p></p></figure><p></p>
+</div>
+</div>
+</div>
+</section>
+<section id="unit-testing" class="level3">
+<h3 class="anchored" data-anchor-id="unit-testing">Unit testing</h3>
+<p>Unit tests via <code>testthat</code> cover the app’s core functions:</p>
+<ul>
+<li><p><strong>Non-reactive:</strong> Utility functions (<code>utils.R</code>) and data transformation functions (<code>functions.R</code>). Tests cover basic structure and edge cases.</p></li>
+<li><p><strong>Reactive:</strong> Tests verify that the control module returns the correct reactive list, and that the main reactive filters data accordingly.</p></li>
+</ul>
 
 
-
+</section>
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
@@ -710,5 +740,5 @@ Jun 22, 2024
 
 
 
-<footer class="footer"><div class="nav-footer"><div class="nav-footer-center"><div class="toc-actions"><ul><li><a href="https://github.com/jgoliv/jgoliv.github.io/edit/main/articles.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/jgoliv/jgoliv.github.io/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div></div></footer><script src="site_libs/quarto-html/zenscroll-min.js"></script>
+<footer class="footer"><div class="nav-footer"><div class="nav-footer-center"><div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/jgoliv/jgoliv.github.io/edit/main/notes/r_shiny/japan_biodiversity_dashboard/project.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/jgoliv/jgoliv.github.io/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div></div></footer><script src="../../../site_libs/quarto-html/zenscroll-min.js"></script>
 </body></html>

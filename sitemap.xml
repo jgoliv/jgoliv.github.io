@@ -1,27 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://jgoliv.github.io/articles/visualizing_proportions_with_echarts4r/article.html</loc>
-    <lastmod>2025-06-15T23:33:41.488Z</lastmod>
-  </url>
-  <url>
-    <loc>https://jgoliv.github.io/index.html</loc>
-    <lastmod>2025-06-15T23:33:41.488Z</lastmod>
-  </url>
-  <url>
-    <loc>https://jgoliv.github.io/articles.html</loc>
-    <lastmod>2025-06-15T23:33:41.484Z</lastmod>
-  </url>
-  <url>
-    <loc>https://jgoliv.github.io/projects.html</loc>
-    <lastmod>2025-06-15T23:33:41.488Z</lastmod>
-  </url>
-  <url>
-    <loc>https://jgoliv.github.io/projects/r_shiny/japan_biodiversity_dashboard/project.html</loc>
-    <lastmod>2025-06-15T23:33:41.498Z</lastmod>
+    <loc>https://jgoliv.github.io/notes/r_shiny/japan_biodiversity_dashboard/project.html</loc>
+    <lastmod>2026-01-30T21:51:16.768Z</lastmod>
   </url>
   <url>
     <loc>https://jgoliv.github.io/articles/price_tracking_with_py_selenium/article.html</loc>
-    <lastmod>2025-06-15T23:33:41.484Z</lastmod>
+    <lastmod>2026-01-30T21:51:16.755Z</lastmod>
+  </url>
+  <url>
+    <loc>https://jgoliv.github.io/index.html</loc>
+    <lastmod>2026-01-30T21:51:16.758Z</lastmod>
+  </url>
+  <url>
+    <loc>https://jgoliv.github.io/notes.html</loc>
+    <lastmod>2026-01-30T21:51:16.758Z</lastmod>
+  </url>
+  <url>
+    <loc>https://jgoliv.github.io/articles.html</loc>
+    <lastmod>2026-01-30T21:51:16.755Z</lastmod>
+  </url>
+  <url>
+    <loc>https://jgoliv.github.io/articles/visualizing_proportions_with_echarts4r/article.html</loc>
+    <lastmod>2026-01-30T21:51:16.758Z</lastmod>
   </url>
 </urlset>

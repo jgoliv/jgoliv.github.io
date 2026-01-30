@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.7.31">
+<meta name="generator" content="quarto-1.8.27">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -32,13 +32,14 @@ ul.task-list li input[type="checkbox"] {
 <meta name="quarto:offset" content="./">
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="site_libs/quarto-html/axe/axe-check.js" type="module"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-e1a5c8363afafaef2c763b6775fbf3ca.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-093453698b1a97f74514113868440e10.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-76bd360fa7d5057fd04f0c8a81990870.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-166604717797af2e8c2e7a59b893d1d2.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -69,7 +70,6 @@ ul.task-list li input[type="checkbox"] {
 <style>html{ scroll-behavior: smooth; }</style>
 
 
-<link rel="stylesheet" href="www/css/theme.scss">
 <meta property="og:title" content="About me">
 <meta property="og:description" content="">
 <meta property="og:image" content="https://jgoliv.github.io/www/images/profile.jpeg">
@@ -92,12 +92,8 @@ ul.task-list li input[type="checkbox"] {
 <span class="menu-text">About me</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./projects.html"> 
-<span class="menu-text">Projects</span></a>
-  </li>  
-  <li class="nav-item">
-    <a class="nav-link" href="./articles.html"> 
-<span class="menu-text">Articles</span></a>
+    <a class="nav-link" href="./notes.html"> 
+<span class="menu-text">Notes</span></a>
   </li>  
 </ul>
           </div> <!-- /navcollapse -->
@@ -124,10 +120,10 @@ ul.task-list li input[type="checkbox"] {
 <div class="quarto-title-meta">
   </div>
 </header><main class="content" id="quarto-document-content">
-<p>Hi! I’m João Gabriel, a data scientist based in São Paulo, Brazil, with a strong passion for problem-solving and a keen interest in leveraging data to drive impactful decisions.</p>
-<p>I hold a bachelor’s degree in Mathematics from the State University of São Paulo and a master’s degree in Mathematics from the State University of Campinas, where I specialized in Algebraic Number Theory.</p>
-<p>In my current role as a data scientist, I use <strong>R</strong>, <strong>Python</strong>, <strong>SQL</strong> and <strong>Julia</strong> for data manipulation, statistical modeling, and automated reporting with <a href="https://quarto.org/">Quarto</a>. I work with machine learning using <strong>scikit-learn</strong> and <strong>tidymodels</strong> for model development and evaluation, and have experience in computer vision with <strong>YOLO</strong> and <strong>OpenCV</strong>. I also develop interactive web applications with <strong>Shiny</strong>, focusing on data visualization dashboards and platforms for monitoring models in production, as well as cloud-based automation and deployment using AWS (<strong>SageMaker</strong>, <strong>EC2</strong>, <strong>ECS</strong>, <strong>Bedrock</strong>, <strong>S3</strong>, <strong>rekognition</strong>).</p>
-<p>For more details about my career and projects, feel free to connect with me on <a href="www.linkedin.com/in/jgoliv">LinkedIn</a>.</p>
+<p>Data scientist with a pure math background.</p>
+<p>Applied machine learning to fleet safety, building drowsiness prediction models and computer vision systems to detect risky driving behaviors. Built <code>Shiny</code> dashboards and automated reporting pipelines with <code>Quarto</code> used daily by hundreds of clients.</p>
+<p>Now working on data-driven personalized education, tracking student progress and measuring learning outcomes in mastery-based models where students learn independently at their own pace.</p>
+<p>More on my work and projects on <a href="https://linkedin.com/in/jgoliv">LinkedIn</a>.</p>
 
 
 </main> 
@@ -188,13 +184,14 @@ ul.task-list li input[type="checkbox"] {
       e.clearSelection();
     }
     const getTextToCopy = function(trigger) {
-        const codeEl = trigger.previousElementSibling.cloneNode(true);
-        for (const childEl of codeEl.children) {
-          if (isCodeAnnotation(childEl)) {
-            childEl.remove();
-          }
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
         }
-        return codeEl.innerText;
+      }
+      return codeEl.innerText;
     }
     const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
       text: getTextToCopy

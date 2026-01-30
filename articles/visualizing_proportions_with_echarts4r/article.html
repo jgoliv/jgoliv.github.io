@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.7.31">
+<meta name="generator" content="quarto-1.8.27">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -89,14 +89,15 @@ div.csl-indent {
 <link href="../../articles/price_tracking_with_py_selenium/article.html" rel="prev">
 <script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
 <script src="../../site_libs/quarto-html/popper.min.js"></script>
 <script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-e1a5c8363afafaef2c763b6775fbf3ca.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-093453698b1a97f74514113868440e10.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../site_libs/bootstrap/bootstrap-76bd360fa7d5057fd04f0c8a81990870.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-166604717797af2e8c2e7a59b893d1d2.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -140,7 +141,6 @@ div.csl-indent {
 <script src="../../site_libs/reactable-binding-0.4.4/reactable.js"></script>
 
 
-<link rel="stylesheet" href="../../www/css/theme.scss">
 <meta property="og:title" content="Visualizing proportions with echarts4r">
 <meta property="og:description" content="">
 <meta property="og:image" content="https://jgoliv.github.io/articles/visualizing_proportions_with_echarts4r/files/image.png">
@@ -165,12 +165,8 @@ div.csl-indent {
 <span class="menu-text">About me</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../../projects.html"> 
-<span class="menu-text">Projects</span></a>
-  </li>  
-  <li class="nav-item">
-    <a class="nav-link active" href="../../articles.html" aria-current="page"> 
-<span class="menu-text">Articles</span></a>
+    <a class="nav-link" href="../../notes.html"> 
+<span class="menu-text">Notes</span></a>
   </li>  
 </ul>
           </div> <!-- /navcollapse -->
@@ -197,7 +193,8 @@ div.csl-indent {
   <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
     <div class="pt-lg-2 mt-2 text-left sidebar-header">
       <a href="index.qmd" class="sidebar-logo-link">
-      <img src="../../www/images/logo.svg" alt="" class="sidebar-logo py-0 d-lg-inline d-none">
+      <img src="../../www/images/logo.svg" alt="" class="sidebar-logo light-content py-0 d-lg-inline d-none">
+      <img src="../../www/images/logo.svg" alt="" class="sidebar-logo dark-content py-0 d-lg-inline d-none">
       </a>
       </div>
     <div class="sidebar-menu-container"> 
@@ -279,27 +276,27 @@ div.csl-indent {
 <p>For installing instructions and learning the basic syntax, check their official website <span class="citation" data-cites="echarts4r_get_started">(see <a href="#ref-echarts4r_get_started" role="doc-biblioref">Coene 2024b</a>)</span>.</p>
 <p>First, we load the packages we’ll be using.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(echarts4r)</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(echarts4r)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <section id="pie-like-charts" class="level2">
 <h2 class="anchored" data-anchor-id="pie-like-charts">Pie-like charts</h2>
 <p>The most simple chart we can make to represent proportions is the standard pie chart. On echarts, the basic syntax goes like:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>df <span class="sc">|&gt;</span> </span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>df <span class="sc">|&gt;</span> </span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">e_chart</span>(Group) <span class="sc">|&gt;</span> </span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">e_pie</span>(Total) <span class="sc">|&gt;</span> </span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">e_theme</span>(<span class="st">"caravan"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">e_theme</span>(<span class="st">"caravan"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
-<div class="echarts4r html-widget html-fill-item" id="htmlwidget-cd6e9a30849d9c18e38a" style="width:100%;height:500px;"></div>
-<script type="application/json" data-for="htmlwidget-cd6e9a30849d9c18e38a">{"x":{"theme":"caravan","tl":false,"draw":true,"renderer":"canvas","events":[],"buttons":[],"opts":{"legend":{"data":["A","B","C","D","E"]},"series":[{"name":"Total","type":"pie","data":[{"value":70,"name":"A"},{"value":85,"name":"B"},{"value":50,"name":"C"},{"value":55,"name":"D"},{"value":25,"name":"E"}]}]},"dispose":true},"evals":[],"jsHooks":[]}</script>
+<div class="echarts4r html-widget html-fill-item" id="htmlwidget-9aab42f0fc49562e341c" style="width:100%;height:500px;"></div>
+<script type="application/json" data-for="htmlwidget-9aab42f0fc49562e341c">{"x":{"theme":"caravan","tl":false,"draw":true,"renderer":"canvas","events":[],"buttons":[],"opts":{"legend":{"data":["A","B","C","D","E"]},"series":[{"name":"Total","type":"pie","data":[{"value":70,"name":"A"},{"value":85,"name":"B"},{"value":50,"name":"C"},{"value":55,"name":"D"},{"value":25,"name":"E"}]}]},"dispose":true},"evals":[],"jsHooks":[]}</script>
 </div>
 </div>
 <p>In this crude form, this chart may not be that interesting. In fact, it can be misleading: Notice how the minor difference between groups “C” and “D” is hardly perceived — this is a common issue when using pie-like charts.</p>
 <p>The most natural way to solve this would be to include a label, that we can do using the <code>label</code> argument in the <code>e_pie</code> function, in which you can specify the label in any form you wish via the <code>formatter</code> argument, that accepts any javascript function.</p>
 <p>However, this doesn’t really change the appearance of the plot. We still cannot visually perceive this difference. In this aspect, we can set the <code>roseType = "radius"</code> argument to scale the radius of each slice according to its value.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>formatter <span class="ot">&lt;-</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>formatter <span class="ot">&lt;-</span></span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>  htmlwidgets<span class="sc">::</span><span class="fu">JS</span>(</span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>    <span class="st">"function(params) {</span></span>
 <span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="st">       return params.name + ' : ' + params.value + ' (' + params.percent + '%)';</span></span>
@@ -309,18 +306,18 @@ div.csl-indent {
 <span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>df <span class="sc">|&gt;</span> </span>
 <span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">e_chart</span>(Group) <span class="sc">|&gt;</span> </span>
 <span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">e_pie</span>(Total, <span class="at">roseType =</span> <span class="st">"radius"</span>, <span class="at">label =</span> <span class="fu">list</span>(<span class="at">formatter =</span> formatter)) <span class="sc">|&gt;</span> </span>
-<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">e_theme</span>(<span class="st">"caravan"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">e_theme</span>(<span class="st">"caravan"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
-<div class="echarts4r html-widget html-fill-item" id="htmlwidget-c3d7d1711171a33571fe" style="width:100%;height:500px;"></div>
-<script type="application/json" data-for="htmlwidget-c3d7d1711171a33571fe">{"x":{"theme":"caravan","tl":false,"draw":true,"renderer":"canvas","events":[],"buttons":[],"opts":{"legend":{"data":["A","B","C","D","E"]},"series":[{"name":"Total","type":"pie","roseType":"radius","label":{"formatter":"function(params) {\n       return params.name + ' : ' + params.value + ' (' + params.percent + '%)';\n    }"},"data":[{"value":70,"name":"A"},{"value":85,"name":"B"},{"value":50,"name":"C"},{"value":55,"name":"D"},{"value":25,"name":"E"}]}]},"dispose":true},"evals":["opts.series.0.label.formatter"],"jsHooks":[]}</script>
+<div class="echarts4r html-widget html-fill-item" id="htmlwidget-35056c81dc96b47745c8" style="width:100%;height:500px;"></div>
+<script type="application/json" data-for="htmlwidget-35056c81dc96b47745c8">{"x":{"theme":"caravan","tl":false,"draw":true,"renderer":"canvas","events":[],"buttons":[],"opts":{"legend":{"data":["A","B","C","D","E"]},"series":[{"name":"Total","type":"pie","roseType":"radius","label":{"formatter":"function(params) {\n       return params.name + ' : ' + params.value + ' (' + params.percent + '%)';\n    }"},"data":[{"value":70,"name":"A"},{"value":85,"name":"B"},{"value":50,"name":"C"},{"value":55,"name":"D"},{"value":25,"name":"E"}]}]},"dispose":true},"evals":["opts.series.0.label.formatter"],"jsHooks":[]}</script>
 </div>
 </div>
 <p>With these adjustments, we can visualize the proportions more clearly, getting insights faster, while we can see more details in the label.</p>
 <p>With donut charts, we’ll have about the same issues. You can do it in <code>echarts4r</code> by passing any vector of the form <code>c("55%", "60%")</code> to the <code>radius</code> argument in the same <code>e_pie</code> function:</p>
 <div class="cell">
 <div class="cell-output-display">
-<div class="echarts4r html-widget html-fill-item" id="htmlwidget-2c800647355b9990b917" style="width:100%;height:500px;"></div>
-<script type="application/json" data-for="htmlwidget-2c800647355b9990b917">{"x":{"theme":"caravan","tl":false,"draw":true,"renderer":"canvas","events":[],"buttons":[],"opts":{"legend":{"data":["A","B","C","D","E"]},"series":[{"name":"Total","type":"pie","radius":["50%","70%"],"label":{"formatter":"function(params) {return params.name + ' : ' + params.value + ' (' + params.percent + '%)';}"},"itemStyle":{"borderRadius":11,"borderWidth":2,"borderColor":"#fff"},"data":[{"value":70,"name":"A"},{"value":85,"name":"B"},{"value":50,"name":"C"},{"value":55,"name":"D"},{"value":25,"name":"E"}]}]},"dispose":true},"evals":["opts.series.0.label.formatter"],"jsHooks":[]}</script>
+<div class="echarts4r html-widget html-fill-item" id="htmlwidget-56ec6083b476765adb49" style="width:100%;height:500px;"></div>
+<script type="application/json" data-for="htmlwidget-56ec6083b476765adb49">{"x":{"theme":"caravan","tl":false,"draw":true,"renderer":"canvas","events":[],"buttons":[],"opts":{"legend":{"data":["A","B","C","D","E"]},"series":[{"name":"Total","type":"pie","radius":["50%","70%"],"label":{"formatter":"function(params) {return params.name + ' : ' + params.value + ' (' + params.percent + '%)';}"},"itemStyle":{"borderRadius":11,"borderWidth":2,"borderColor":"#fff"},"data":[{"value":70,"name":"A"},{"value":85,"name":"B"},{"value":50,"name":"C"},{"value":55,"name":"D"},{"value":25,"name":"E"}]}]},"dispose":true},"evals":["opts.series.0.label.formatter"],"jsHooks":[]}</script>
 </div>
 </div>
 <p>As <em>Cole Nussbaumer</em> says in <em>Storytelling with data</em><a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a>,</p>
@@ -335,15 +332,15 @@ div.csl-indent {
 <h2 class="anchored" data-anchor-id="bar-charts">Bar charts</h2>
 <p>For a basic horizontal bar chart, we can use the <code>e_bar</code> and <code>e_flip_coords</code>functions:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>df <span class="sc">|&gt;</span> </span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>df <span class="sc">|&gt;</span> </span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(Total) <span class="sc">|&gt;</span> </span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">e_charts</span>(Group) <span class="sc">|&gt;</span> </span>
 <span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">e_bar</span>(Total, <span class="at">legend =</span> <span class="cn">FALSE</span>, <span class="at">label =</span> <span class="fu">list</span>(<span class="at">show =</span> <span class="cn">TRUE</span>, <span class="at">position =</span> <span class="st">"right"</span>)) <span class="sc">|&gt;</span> </span>
 <span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">e_flip_coords</span>() <span class="sc">|&gt;</span> </span>
-<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">e_theme</span>(<span class="st">"caravan"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">e_theme</span>(<span class="st">"caravan"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
-<div class="echarts4r html-widget html-fill-item" id="htmlwidget-941b79eda59a199af15f" style="width:100%;height:500px;"></div>
-<script type="application/json" data-for="htmlwidget-941b79eda59a199af15f">{"x":{"theme":"caravan","tl":false,"draw":true,"renderer":"canvas","events":[],"buttons":[],"opts":{"xAxis":[{"show":true}],"yAxis":[{"data":["E","C","D","A","B"],"type":"category","boundaryGap":true}],"series":[{"data":[{"value":["25","E"]},{"value":["50","C"]},{"value":["55","D"]},{"value":["70","A"]},{"value":["85","B"]}],"name":"Total","type":"bar","yAxisIndex":0,"xAxisIndex":0,"coordinateSystem":"cartesian2d","label":{"show":true,"position":"right"}}]},"dispose":true},"evals":[],"jsHooks":[]}</script>
+<div class="echarts4r html-widget html-fill-item" id="htmlwidget-a199a0fc223023e31674" style="width:100%;height:500px;"></div>
+<script type="application/json" data-for="htmlwidget-a199a0fc223023e31674">{"x":{"theme":"caravan","tl":false,"draw":true,"renderer":"canvas","events":[],"buttons":[],"opts":{"xAxis":[{"show":true}],"yAxis":[{"data":["E","C","D","A","B"],"type":"category","boundaryGap":true}],"series":[{"data":[{"value":["25","E"]},{"value":["50","C"]},{"value":["55","D"]},{"value":["70","A"]},{"value":["85","B"]}],"name":"Total","type":"bar","yAxisIndex":0,"xAxisIndex":0,"coordinateSystem":"cartesian2d","label":{"show":true,"position":"right"}}]},"dispose":true},"evals":[],"jsHooks":[]}</script>
 </div>
 </div>
 <p>Observe that now the “how much” issue is a matter of subtracting or completing the bars to get an intuition of the difference (or the actual difference if you subtract the values on the label 😄).</p>
@@ -351,8 +348,8 @@ div.csl-indent {
 <p>So far, the simple example we dealt with contains only one layer, i.e, it had only the groups and the total of observations of each one. Bar charts also are very good at dealing with multi-layered data, for example: Consider this <code>pizza</code> dataset containing 5 pizzeria and their sales amount by flavour:</p>
 <div class="cell">
 <div class="cell-output-display">
-<div class="reactable html-widget html-fill-item" id="htmlwidget-009cfe3ecb26046c36ee" style="width:auto;height:auto;"></div>
-<script type="application/json" data-for="htmlwidget-009cfe3ecb26046c36ee">{"x":{"tag":{"name":"Reactable","attribs":{"data":{"Pizzeria":["A","A","A","B","B","B","C","C","C"],"Flavour":["Brocolli","Margherita","Pepperoni","Brocolli","Margherita","Pepperoni","Brocolli","Margherita","Pepperoni"],"Sales_amount":[175,65,102,110,95,80,130,88,100]},"columns":[{"id":"Pizzeria","name":"Pizzeria","type":"character"},{"id":"Flavour","name":"Flavour","type":"character"},{"id":"Sales_amount","name":"Sales_amount","type":"numeric"}],"dataKey":"a72a8afdf39b370c8b3085b45aeb428d"},"children":[]},"class":"reactR_markup"},"evals":[],"jsHooks":[]}</script>
+<div class="reactable html-widget html-fill-item" id="htmlwidget-6fe7689a6ad04773a981" style="width:auto;height:auto;"></div>
+<script type="application/json" data-for="htmlwidget-6fe7689a6ad04773a981">{"x":{"tag":{"name":"Reactable","attribs":{"data":{"Pizzeria":["A","A","A","B","B","B","C","C","C"],"Flavour":["Brocolli","Margherita","Pepperoni","Brocolli","Margherita","Pepperoni","Brocolli","Margherita","Pepperoni"],"Sales_amount":[175,65,102,110,95,80,130,88,100]},"columns":[{"id":"Pizzeria","name":"Pizzeria","type":"character"},{"id":"Flavour","name":"Flavour","type":"character"},{"id":"Sales_amount","name":"Sales_amount","type":"numeric"}],"dataKey":"a72a8afdf39b370c8b3085b45aeb428d"},"children":[]},"class":"reactR_markup"},"evals":[],"jsHooks":[]}</script>
 </div>
 </div>
 <p><br>
@@ -362,12 +359,12 @@ div.csl-indent {
 <div class="cell-output-display">
 <div style="display: flex; justify-content: space-between;">
 <div style="width: 48%;">
-<div class="echarts4r html-widget html-fill-item" id="htmlwidget-75e4696ac6745dd0f96f" style="width:100%;height:500px;"></div>
-<script type="application/json" data-for="htmlwidget-75e4696ac6745dd0f96f">{"x":{"theme":"caravan","tl":false,"draw":true,"renderer":"canvas","events":[],"buttons":[],"opts":{"yAxis":[{"show":true}],"xAxis":[{"data":["A","B","C"],"type":"category","boundaryGap":true}],"legend":{"data":["Brocolli","Margherita","Pepperoni"]},"series":[{"data":[{"value":["A","175"]},{"value":["B","110"]},{"value":["C","130"]}],"name":"Brocolli","type":"bar","yAxisIndex":0,"xAxisIndex":0,"coordinateSystem":"cartesian2d","stack":"grp","label":{"show":true}},{"data":[{"value":["A","65"]},{"value":["B","95"]},{"value":["C","88"]}],"name":"Margherita","type":"bar","yAxisIndex":0,"xAxisIndex":0,"coordinateSystem":"cartesian2d","stack":"grp","label":{"show":true}},{"data":[{"value":["A","102"]},{"value":["B"," 80"]},{"value":["C","100"]}],"name":"Pepperoni","type":"bar","yAxisIndex":0,"xAxisIndex":0,"coordinateSystem":"cartesian2d","stack":"grp","label":{"show":true}}]},"dispose":true},"evals":[],"jsHooks":[]}</script>
+<div class="echarts4r html-widget html-fill-item" id="htmlwidget-2db18594e83fc41880dd" style="width:100%;height:500px;"></div>
+<script type="application/json" data-for="htmlwidget-2db18594e83fc41880dd">{"x":{"theme":"caravan","tl":false,"draw":true,"renderer":"canvas","events":[],"buttons":[],"opts":{"yAxis":[{"show":true}],"xAxis":[{"data":["A","B","C"],"type":"category","boundaryGap":true}],"legend":{"data":["Brocolli","Margherita","Pepperoni"]},"series":[{"data":[{"value":["A","175"]},{"value":["B","110"]},{"value":["C","130"]}],"name":"Brocolli","type":"bar","yAxisIndex":0,"xAxisIndex":0,"coordinateSystem":"cartesian2d","stack":"grp","label":{"show":true}},{"data":[{"value":["A","65"]},{"value":["B","95"]},{"value":["C","88"]}],"name":"Margherita","type":"bar","yAxisIndex":0,"xAxisIndex":0,"coordinateSystem":"cartesian2d","stack":"grp","label":{"show":true}},{"data":[{"value":["A","102"]},{"value":["B"," 80"]},{"value":["C","100"]}],"name":"Pepperoni","type":"bar","yAxisIndex":0,"xAxisIndex":0,"coordinateSystem":"cartesian2d","stack":"grp","label":{"show":true}}]},"dispose":true},"evals":[],"jsHooks":[]}</script>
 </div>
 <div style="width: 48%;">
-<div class="echarts4r html-widget html-fill-item" id="htmlwidget-53b132cc8002bfb305a4" style="width:100%;height:500px;"></div>
-<script type="application/json" data-for="htmlwidget-53b132cc8002bfb305a4">{"x":{"theme":"caravan","tl":false,"draw":true,"renderer":"canvas","events":[],"buttons":[],"opts":{"xAxis":[{"show":true}],"yAxis":[{"data":["B","C","A"],"type":"category","boundaryGap":true}],"legend":{"data":["Brocolli","Margherita","Pepperoni"]},"series":[{"data":[{"value":["110","B"]},{"value":["130","C"]},{"value":["175","A"]}],"name":"Brocolli","type":"bar","yAxisIndex":0,"xAxisIndex":0,"coordinateSystem":"cartesian2d","stack":"grp","label":{"show":true}},{"data":[{"value":["95","B"]},{"value":["88","C"]},{"value":["65","A"]}],"name":"Margherita","type":"bar","yAxisIndex":0,"xAxisIndex":0,"coordinateSystem":"cartesian2d","stack":"grp","label":{"show":true}},{"data":[{"value":[" 80","B"]},{"value":["100","C"]},{"value":["102","A"]}],"name":"Pepperoni","type":"bar","yAxisIndex":0,"xAxisIndex":0,"coordinateSystem":"cartesian2d","stack":"grp","label":{"show":true}}]},"dispose":true},"evals":[],"jsHooks":[]}</script>
+<div class="echarts4r html-widget html-fill-item" id="htmlwidget-8e8fab0028e804d5a009" style="width:100%;height:500px;"></div>
+<script type="application/json" data-for="htmlwidget-8e8fab0028e804d5a009">{"x":{"theme":"caravan","tl":false,"draw":true,"renderer":"canvas","events":[],"buttons":[],"opts":{"xAxis":[{"show":true}],"yAxis":[{"data":["B","C","A"],"type":"category","boundaryGap":true}],"legend":{"data":["Brocolli","Margherita","Pepperoni"]},"series":[{"data":[{"value":["110","B"]},{"value":["130","C"]},{"value":["175","A"]}],"name":"Brocolli","type":"bar","yAxisIndex":0,"xAxisIndex":0,"coordinateSystem":"cartesian2d","stack":"grp","label":{"show":true}},{"data":[{"value":["95","B"]},{"value":["88","C"]},{"value":["65","A"]}],"name":"Margherita","type":"bar","yAxisIndex":0,"xAxisIndex":0,"coordinateSystem":"cartesian2d","stack":"grp","label":{"show":true}},{"data":[{"value":[" 80","B"]},{"value":["100","C"]},{"value":["102","A"]}],"name":"Pepperoni","type":"bar","yAxisIndex":0,"xAxisIndex":0,"coordinateSystem":"cartesian2d","stack":"grp","label":{"show":true}}]},"dispose":true},"evals":[],"jsHooks":[]}</script>
 </div>
 </div>
 </div>
@@ -375,8 +372,8 @@ div.csl-indent {
 <p>In some cases, it might be better to unstack the bars (usually, to see some trends in data):</p>
 <div class="cell">
 <div class="cell-output-display">
-<div class="echarts4r html-widget html-fill-item" id="htmlwidget-225181371d1c5ed8d3c6" style="width:100%;height:500px;"></div>
-<script type="application/json" data-for="htmlwidget-225181371d1c5ed8d3c6">{"x":{"theme":"caravan","tl":false,"draw":true,"renderer":"canvas","events":[],"buttons":[],"opts":{"yAxis":[{"show":true}],"xAxis":[{"data":["A","B","C"],"type":"category","boundaryGap":true}],"legend":{"data":["Brocolli","Margherita","Pepperoni"]},"series":[{"data":[{"value":["A","175"]},{"value":["B","110"]},{"value":["C","130"]}],"name":"Brocolli","type":"bar","yAxisIndex":0,"xAxisIndex":0,"coordinateSystem":"cartesian2d","label":{"show":true}},{"data":[{"value":["A","65"]},{"value":["B","95"]},{"value":["C","88"]}],"name":"Margherita","type":"bar","yAxisIndex":0,"xAxisIndex":0,"coordinateSystem":"cartesian2d","label":{"show":true}},{"data":[{"value":["A","102"]},{"value":["B"," 80"]},{"value":["C","100"]}],"name":"Pepperoni","type":"bar","yAxisIndex":0,"xAxisIndex":0,"coordinateSystem":"cartesian2d","label":{"show":true}}]},"dispose":true},"evals":[],"jsHooks":[]}</script>
+<div class="echarts4r html-widget html-fill-item" id="htmlwidget-ac855b37d6630ed16398" style="width:100%;height:500px;"></div>
+<script type="application/json" data-for="htmlwidget-ac855b37d6630ed16398">{"x":{"theme":"caravan","tl":false,"draw":true,"renderer":"canvas","events":[],"buttons":[],"opts":{"yAxis":[{"show":true}],"xAxis":[{"data":["A","B","C"],"type":"category","boundaryGap":true}],"legend":{"data":["Brocolli","Margherita","Pepperoni"]},"series":[{"data":[{"value":["A","175"]},{"value":["B","110"]},{"value":["C","130"]}],"name":"Brocolli","type":"bar","yAxisIndex":0,"xAxisIndex":0,"coordinateSystem":"cartesian2d","label":{"show":true}},{"data":[{"value":["A","65"]},{"value":["B","95"]},{"value":["C","88"]}],"name":"Margherita","type":"bar","yAxisIndex":0,"xAxisIndex":0,"coordinateSystem":"cartesian2d","label":{"show":true}},{"data":[{"value":["A","102"]},{"value":["B"," 80"]},{"value":["C","100"]}],"name":"Pepperoni","type":"bar","yAxisIndex":0,"xAxisIndex":0,"coordinateSystem":"cartesian2d","label":{"show":true}}]},"dispose":true},"evals":[],"jsHooks":[]}</script>
 </div>
 </div>
 </section>
@@ -386,8 +383,8 @@ div.csl-indent {
 <p>Sankey diagrams are typically used to visualize flows and the distribution of the quantities between different “stages”. In our context, they are particularly effective for illustrating proportions in data with multiple layers (more than two, especially).</p>
 <div class="cell">
 <div class="cell-output-display">
-<div class="echarts4r html-widget html-fill-item" id="htmlwidget-bf076ccb07b5c8841169" style="width:100%;height:500px;"></div>
-<script type="application/json" data-for="htmlwidget-bf076ccb07b5c8841169">{"x":{"theme":"caravan","tl":false,"draw":true,"renderer":"canvas","events":[],"buttons":[],"opts":{"series":[{"type":"sankey","orient":"none","data":[{"name":"A"},{"name":"B"},{"name":"C"},{"name":"D"},{"name":"E"},{"name":"F"},{"name":"G"},{"name":"H"},{"name":"I"},{"name":"J"},{"name":"K"},{"name":"L"}],"links":[{"source":"A","target":"B","value":"10"},{"source":"A","target":"C","value":"15"},{"source":"A","target":"D","value":"20"},{"source":"B","target":"E","value":"25"},{"source":"B","target":"F","value":"30"},{"source":"C","target":"G","value":"20"},{"source":"C","target":"H","value":"25"},{"source":"D","target":"I","value":"30"},{"source":"E","target":"J","value":"35"},{"source":"F","target":"J","value":"40"},{"source":"G","target":"K","value":"15"},{"source":"H","target":"K","value":"20"},{"source":"I","target":"L","value":"25"}]}]},"dispose":true},"evals":[],"jsHooks":[]}</script>
+<div class="echarts4r html-widget html-fill-item" id="htmlwidget-e9ab122d4120da3a38fd" style="width:100%;height:500px;"></div>
+<script type="application/json" data-for="htmlwidget-e9ab122d4120da3a38fd">{"x":{"theme":"caravan","tl":false,"draw":true,"renderer":"canvas","events":[],"buttons":[],"opts":{"series":[{"type":"sankey","orient":"none","data":[{"name":"A"},{"name":"B"},{"name":"C"},{"name":"D"},{"name":"E"},{"name":"F"},{"name":"G"},{"name":"H"},{"name":"I"},{"name":"J"},{"name":"K"},{"name":"L"}],"links":[{"source":"A","target":"B","value":"10"},{"source":"A","target":"C","value":"15"},{"source":"A","target":"D","value":"20"},{"source":"B","target":"E","value":"25"},{"source":"B","target":"F","value":"30"},{"source":"C","target":"G","value":"20"},{"source":"C","target":"H","value":"25"},{"source":"D","target":"I","value":"30"},{"source":"E","target":"J","value":"35"},{"source":"F","target":"J","value":"40"},{"source":"G","target":"K","value":"15"},{"source":"H","target":"K","value":"20"},{"source":"I","target":"L","value":"25"}]}]},"dispose":true},"evals":[],"jsHooks":[]}</script>
 </div>
 </div>
 
@@ -466,13 +463,14 @@ Wilke, Claus O. 2019. <em>Fundamentals of Data Visualization: A Primer on Making
       e.clearSelection();
     }
     const getTextToCopy = function(trigger) {
-        const codeEl = trigger.previousElementSibling.cloneNode(true);
-        for (const childEl of codeEl.children) {
-          if (isCodeAnnotation(childEl)) {
-            childEl.remove();
-          }
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
         }
-        return codeEl.innerText;
+      }
+      return codeEl.innerText;
     }
     const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
       text: getTextToCopy

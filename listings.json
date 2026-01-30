@@ -1,15 +1,15 @@
 [
   {
+    "listing": "/notes.html",
+    "items": [
+      "/notes/r_shiny/japan_biodiversity_dashboard/project.html"
+    ]
+  },
+  {
     "listing": "/articles.html",
     "items": [
       "/articles/price_tracking_with_py_selenium/article.html",
       "/articles/visualizing_proportions_with_echarts4r/article.html"
-    ]
-  },
-  {
-    "listing": "/projects.html",
-    "items": [
-      "/projects/r_shiny/japan_biodiversity_dashboard/project.html"
     ]
   }
 ]
