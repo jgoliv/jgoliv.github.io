@@ -1,0 +1,114 @@
+---
+title: "Japan biodiversity dashboard"
+date: "2024-12-18"
+date-modified: today
+image: "files/image.svg"
+bibliography: files/references.bib
+categories:
+  - R
+  - Shiny
+  - Data Visualization
+nocite: |
+  @*
+---
+
+Japan never gets old to me. This dashboard offers an interactive look at its biodiversity from 1976 to 2024, exploring species found there and those shared with other parts of the world.
+
+Data comes from the [occurence dataset](https://www.gbif.org/occurrence/search?dataset_key=8a863029-f435-446a-821e-275f4f641165) on *GBIF*, an open-access network for biodiversity data worldwide, collected by [observation.org](https://observation.org/).
+
+> You can interact with the application [here!](https://jgoliv.shinyapps.io/japanbiodiversitydashboard/)
+
+## Exploring the App
+
+The dashboard is split into four sections: Context, Timeline, Information, and Map. You can explore the full dataset or drill down into specific species.
+
+Two display modes: a default view showing all occurrences, and a species-filtered view. Filter by scientific or vernacular name via the search bar. A year range filter (1976–2024 by default) updates the entire dashboard.
+
+::: panel-tabset
+## Default view
+
+![](files/app_default_view.png)
+
+## Selected species view
+
+![](files/app_filtered_view.png)
+:::
+
+-   **Context card:** Introductory text and control selectors.
+
+-   **Timeline card:** Observation count over time. Toggle between bar and line plots, zoom in/out.
+
+-   **Information cards:** Three cards. One shows a species photo (if available). Another shows stats: observation count, most observed life stage, sex, and locality. The third ranks the top five species by default, or swaps to scientific details and a yearly count box-plot when a species is selected.
+
+-   **Map card:** Clustered observation points across Japan. Click into a single observation for its full info and species photo.
+
+> Fun fact: all colors in this project are traditional Japanese colors, from "日本の伝統色 The Traditional Colors of Japan" by PIE BOOKS (2007). Explore 250 of them [here](https://color-term.com/traditional-color-of-japan/).
+
+## Project structure
+
+Built as an R package, with dependencies managed by `renv`.
+
+### Directories and files
+
+-   There is a **www** directory to store static files, such as css, images and fonts;
+
+-   Also, there is a **extdata** directory to store external data, including the original dataset and the processed version used in the app;
+
+-   The **data-raw** folder keeps the script where I did the dataset preprocessing;
+
+-   The **R** folder contains the core scripts of the app:
+
+    -   **ui.R**: This file sets up the page and card layouts, and includes all the necessary CSS and functionalities;
+    -   **server.R**: Handles the main server logic for the app;
+    -   **functions.R**: Contains pre-processing functions that get the data ready for visualization;
+    -   **plots.R**: Has functions that generate the plots, like `echarts` and `reactable`;
+    -   **utils.R**: Holds utility functions for smaller tasks and calculations;
+    -   **vars.R**: Stores various variables, including color palettes, theme settings, custom components, and JS functions;
+    -   **widgets.R**: This is where reusable UI components and input functions are stored;
+    -   **Module scripts** (e.g., md_module_name.R): Contain independent shinyModules functions.
+
+### Server logic architecture
+
+The app follows a modular reactive flow:
+
+-   **Data source**
+    -   Initializes with the pre-processed static data loaded from an .rds file;
+    -   Serves as the foundation for all downstream operations.
+-   **Control module**
+    -   Houses user input widgets;
+    -   Returns a reactive list containing:
+        -   Selected names (single or "All");
+        -   Selected year range.
+-   **Reactive data**
+    -   Filters the static data based on control values;
+    -   Implements caching for performance optimization;
+    -   Single source of truth for all visualizations that updates when control values change.
+-   **Visualization modules**
+    -   Independent, self-contained modules consuming the filtered data;
+    -   Each module handles a specific visualization in a card.
+
+```{mermaid}
+flowchart LR
+    A[Static data] --> B[Control module]
+    B --> C[Name input]
+    B --> D[Year input]
+    C --> E{Reactive controls}
+    D --> E
+    A --> F{Reactive data}
+    E --> F
+    F --> G[Context module]
+    F --> H[Image module]
+    F --> I[Info modules]
+    F --> J[Map module]
+
+    style A fill:#EBF1E4
+```
+
+### Unit testing
+
+Unit tests via `testthat` cover the app's core functions:
+
+-   **Non-reactive:** Utility functions (`utils.R`) and data transformation functions (`functions.R`). Tests cover basic structure and edge cases.
+
+-   **Reactive:** Tests verify that the control module returns the correct reactive list, and that the main reactive filters data accordingly.
+

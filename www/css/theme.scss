@@ -1,22 +1,24 @@
-/*-- scss:defaults --*/
+/*-- scss:rules --*/
 
 // importing fonts
 @font-face {
-  font-family: 'FiraSans-Regular';
-  src: url('../jgoliv.github.io/www/fonts/FiraSans-Regular.ttf') format('truetype'); 
+  font-family: 'Space Grotesk';
+  src: url('www/fonts/SpaceGrotesk-Regular.ttf') format('truetype');
   font-weight: normal;
   font-style: normal;
 }
 
 @font-face {
   font-family: 'JetBrains Mono NL';
-  src: url('../jgoliv.github.io/www/fonts/JetBrainsMonoNL-Regular.ttf') format('truetype');
+  src: url('www/fonts/JetBrainsMonoNL-Regular.ttf') format('truetype');
   font-weight: normal;
   font-style: normal;
 }
 
+/*-- scss:defaults --*/
+
 // base document font specs
-$font-family-sans-serif: 'FiraSans-Regular', sans-serif;
+$font-family-sans-serif: 'Space Grotesk', sans-serif;
 $font-size-root: 16px;
 $font-family-monospace: 'JetBrains Mono NL', monospace;
 

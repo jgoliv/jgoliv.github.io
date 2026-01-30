@@ -1,0 +1,12 @@
+---
+title: "Notes"
+toc: true
+listing: 
+  - id: note-links
+    type: default
+    contents: notes
+    categories: true
+---
+
+::: {#note-links}
+:::

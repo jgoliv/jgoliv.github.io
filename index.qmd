@@ -9,13 +9,13 @@ about:
       href: https://linkedin.com/in/jgoliv
     - icon: github
       text: Github
-      href: https://github.com/jgoliv 
+      href: https://github.com/jgoliv
 ---
 
-Hi! I'm João Gabriel, a data scientist based in São Paulo, Brazil, with a strong passion for problem-solving and a keen interest in leveraging data to drive impactful decisions.
+Data scientist with a pure math background.
 
-I hold a bachelor's degree in Mathematics from the State University of São Paulo and a master's degree in Mathematics from the State University of Campinas, where I specialized in Algebraic Number Theory. 
+Applied machine learning to fleet safety, building drowsiness prediction models and computer vision systems to detect risky driving behaviors. Built `Shiny` dashboards and automated reporting pipelines with `Quarto` used daily by hundreds of clients.
 
-In my current role as a data scientist, I use **R**, **Python**, **SQL** and **Julia** for data manipulation, statistical modeling, and automated reporting with [Quarto](https://quarto.org/). I work with machine learning using **scikit-learn** and **tidymodels** for model development and evaluation, and have experience in computer vision with **YOLO** and **OpenCV**. I also develop interactive web applications with **Shiny**, focusing on data visualization dashboards and platforms for monitoring models in production, as well as cloud-based automation and deployment using AWS (**SageMaker**, **EC2**, **ECS**, **Bedrock**, **S3**, **rekognition**).
+Now working on data-driven personalized education, tracking student progress and measuring learning outcomes in mastery-based models where students learn independently at their own pace.
 
-For more details about my career and projects, feel free to connect with me on [LinkedIn](www.linkedin.com/in/jgoliv).
+More on my work and projects on [LinkedIn](https://linkedin.com/in/jgoliv).

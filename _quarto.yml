@@ -1,5 +1,7 @@
 project:
   type: website
+  resources:
+    - www/fonts/*
   
 website:
   page-navigation: true
@@ -18,8 +20,8 @@ website:
         href: https://linkedin.com/in/jgoliv
     left: 
       - index.qmd
-      - projects.qmd
-      - articles.qmd
+      - notes.qmd
+     #  - articles.qmd
 
   sidebar:
     - id: projects
@@ -27,13 +29,11 @@ website:
       logo: www/images/logo.svg
       logo-href: index.qmd
       contents: 
-        - projects.qmd
-        - text: "---"
-        - section: "Machine learning cases"
+        - notes.qmd
         - text: "---"
         - section: "R & Shiny"
           contents: 
-            - projects/r_shiny/japan_biodiversity_dashboard/project.qmd
+            - notes/r_shiny/japan_biodiversity_dashboard/project.qmd
     - id: articles
       contents: 
         - articles.qmd
@@ -48,8 +48,9 @@ format:
     code-copy: true
     smooth-scroll: true
     toc: true
-    theme: cosmo
-    css: www/css/theme.scss
+    theme:
+      - cosmo
+      - www/css/theme.scss
     grid:
       sidebar-width: 300px
       body-width: 900px
