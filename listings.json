@@ -1,15 +1,9 @@
 [
   {
-    "listing": "/notes.html",
+    "listing": "/portfolio.html",
     "items": [
-      "/notes/r_shiny/japan_biodiversity_dashboard/project.html"
-    ]
-  },
-  {
-    "listing": "/articles.html",
-    "items": [
-      "/articles/price_tracking_with_py_selenium/article.html",
-      "/articles/visualizing_proportions_with_echarts4r/article.html"
+      "/portfolio/r-shiny/japan-biodiversity-dashboard/article.html",
+      "/portfolio/data-viz/math-series/kuratowski-closure-complement/article.html"
     ]
   }
 ]
