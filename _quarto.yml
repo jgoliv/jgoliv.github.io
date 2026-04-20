@@ -7,8 +7,7 @@ website:
   page-navigation: true
   open-graph: true
   repo-url: https://github.com/jgoliv/jgoliv.github.io
-  issue-url: https://github.com/jgoliv/jgoliv.github.io/issues/new
-  repo-actions: [edit, issue]
+  repo-actions: [source]
 
   navbar:
     style: "floating"
@@ -18,10 +17,11 @@ website:
         href: https://github.com/jgoliv
       - icon: linkedin
         href: https://linkedin.com/in/jgoliv
-    left: 
-      - index.qmd
-      - notes.qmd
-     #  - articles.qmd
+    left:
+      - text: "About"
+        href: index.qmd
+      - text: "Portfolio"
+        href: portfolio.qmd
 
   sidebar:
     - id: projects
@@ -29,22 +29,21 @@ website:
       logo: www/images/logo.svg
       logo-href: index.qmd
       contents: 
-        - notes.qmd
+        - portfolio.qmd
         - text: "---"
         - section: "R & Shiny"
-          contents: 
-            - notes/r_shiny/japan_biodiversity_dashboard/project.qmd
-    - id: articles
-      contents: 
-        - articles.qmd
-        - text: "---"
-        - articles/price_tracking_with_py_selenium/article.qmd
-        - articles/visualizing_proportions_with_echarts4r/article.qmd
+          contents:
+            - portfolio/r-shiny/japan-biodiversity-dashboard/article.qmd
+        - section: "Data Viz"
+          contents:
+            - section: "Math Series"
+              contents:
+                - portfolio/data-viz/math-series/kuratowski-closure-complement/article.qmd
 
 format:
   html:
-    # link-external-icon: true
-    # link-external-newwindow: true
+    link-external-icon: true
+    link-external-newwindow: true
     code-copy: true
     smooth-scroll: true
     toc: true

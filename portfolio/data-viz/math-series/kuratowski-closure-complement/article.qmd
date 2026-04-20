@@ -1,0 +1,31 @@
+---
+title: "Kuratowski Closure-Complement Theorem"
+date: "2026-04-14"
+date-modified: today
+categories:
+  - Data Visualization
+  - Math
+---
+
+Pick any subset of any topological space, apply **closure** and **complement** in every order you like, and you will never generate more than 14 distinct sets. [Kuratowski](https://en.wikipedia.org/wiki/Kuratowski%27s_closure-complement_problem) proved this astounding fact in 1922.
+
+Most subsets fall well short of that bound. Reaching exactly 14 demands a starting set where every operation breaks new ground. The canonical choice on $\mathbb{R}$ is:
+
+$$A = (0,1) \cup (1,2) \cup \{3\} \cup \bigl([4,5] \cap \mathbb{Q}\bigr)$$
+
+**Each piece does specific topological work:**
+
+- **$(0,1) \cup (1,2)$** --- two open intervals separated by a missing point at $1$; closure fills it.
+- **$\{3\}$** --- an isolated point; complement erases it, closure keeps it.
+- **$[4,5] \cap \mathbb{Q}$** --- rationals dense in $[4,5]$; closure fills in the irrationals, but complement exposes them.
+
+The chart traces the full orbit of $A$ — and the pattern only becomes clear when you see them all at once.
+
+## The Chart
+
+```{r}
+#| echo: false
+#| out-width: "100%"
+#| lightbox: true
+knitr::include_graphics("files/plot.png")
+```

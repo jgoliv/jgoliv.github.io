@@ -12,7 +12,7 @@ about:
       href: https://github.com/jgoliv
 ---
 
-Data scientist with a pure math background.
+Data scientist with a pure math background and a design eye for data viz.
 
 Applied machine learning to fleet safety, building drowsiness prediction models and computer vision systems to detect risky driving behaviors. Built `Shiny` dashboards and automated reporting pipelines with `Quarto` used daily by hundreds of clients.
 

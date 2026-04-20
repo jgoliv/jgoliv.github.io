@@ -1,5 +1,8 @@
 /.quarto/
+/_site/
 .Rproj.user
 
 **/*.quarto_ipynb
 .claude/
+CLAUDE.md
+.playwright-mcp/
