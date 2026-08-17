@@ -1,46 +1,38 @@
 [
   {
-    "objectID": "index.html",
-    "href": "index.html",
-    "title": "About me",
+    "objectID": "misc/visualizing-proportions-with-echarts4r/article.html",
+    "href": "misc/visualizing-proportions-with-echarts4r/article.html",
+    "title": "Visualizing proportions with echarts4r",
     "section": "",
-    "text": "Data scientist with a pure math background and a design eye for data viz.\nApplied machine learning to fleet safety, building drowsiness prediction models and computer vision systems to detect risky driving behaviors. Built Shiny dashboards and automated reporting pipelines with Quarto used daily by hundreds of clients.\nNow working on data-driven personalized education, tracking student progress and measuring learning outcomes in mastery-based models where students learn independently at their own pace.\nMore on my work and projects on LinkedIn."
+    "text": "On this article, we’ll debate some issues of representing proportion, using some features of echarts4r, which is an R package that provides an interface to the ECharts JavaScript library, making it accessible for users to create highly configurable and interactive charts directly from R.\nFor installing instructions and learning the basic syntax, check their official website (see Coene 2024b).\nFirst, we load the packages we’ll be using.\nlibrary(echarts4r)\nlibrary(dplyr)"
   },
   {
-    "objectID": "portfolio/r-shiny/japan-biodiversity-dashboard/article.html",
-    "href": "portfolio/r-shiny/japan-biodiversity-dashboard/article.html",
-    "title": "Japan biodiversity dashboard",
-    "section": "",
-    "text": "Japan never gets old to me. This dashboard offers an interactive look at its biodiversity from 1976 to 2024, exploring species found there and those shared with other parts of the world.\nData comes from the occurence dataset on GBIF, an open-access network for biodiversity data worldwide, collected by observation.org.",
-    "crumbs": [
-      "Portfolio",
-      "R & Shiny",
-      "Japan biodiversity dashboard"
-    ]
+    "objectID": "misc/visualizing-proportions-with-echarts4r/article.html#pie-like-charts",
+    "href": "misc/visualizing-proportions-with-echarts4r/article.html#pie-like-charts",
+    "title": "Visualizing proportions with echarts4r",
+    "section": "Pie-like charts",
+    "text": "Pie-like charts\nThe most simple chart we can make to represent proportions is the standard pie chart. On echarts, the basic syntax goes like:\n\ndf |&gt; \n  e_chart(Group) |&gt; \n  e_pie(Total) |&gt; \n  e_theme(\"caravan\")\n\n\n\n\n\nIn this crude form, this chart may not be that interesting. In fact, it can be misleading: Notice how the minor difference between groups “C” and “D” is hardly perceived — this is a common issue when using pie-like charts.\nThe most natural way to solve this would be to include a label, that we can do using the label argument in the e_pie function, in which you can specify the label in any form you wish via the formatter argument, that accepts any javascript function.\nHowever, this doesn’t really change the appearance of the plot. We still cannot visually perceive this difference. In this aspect, we can set the roseType = \"radius\" argument to scale the radius of each slice according to its value.\n\nformatter &lt;-\n  htmlwidgets::JS(\n    \"function(params) {\n       return params.name + ' : ' + params.value + ' (' + params.percent + '%)';\n    }\"\n  )\n\ndf |&gt; \n  e_chart(Group) |&gt; \n  e_pie(Total, roseType = \"radius\", label = list(formatter = formatter)) |&gt; \n  e_theme(\"caravan\")\n\n\n\n\n\nWith these adjustments, we can visualize the proportions more clearly, getting insights faster, while we can see more details in the label.\nWith donut charts, we’ll have about the same issues. You can do it in echarts4r by passing any vector of the form c(\"55%\", \"60%\") to the radius argument in the same e_pie function:\n\n\n\n\n\n\nAs Cole Nussbaumer says in Storytelling with data1,\n\nWith pies, we are asking our audience to compare angles and areas. With a donut chart, we are asking our audience to compare one arc length to another arc length.\n\nIt may be hard for us to attribute quantitative values in two-dimensional spaces. Simply speaking, even when we can say which category has a “bigger” value based on the size of a segment, angle, arch-lenght or area, it is hard to know by “how much”.\nOne approach to solve this “how much” issue is using horizontal bar charts. However, is worth to observe that the pie-like charts do give us a notion of the “parts of a whole” kind of a thing — that we’ll lose using bar charts.\nWe discuss this now."
   },
   {
-    "objectID": "portfolio/r-shiny/japan-biodiversity-dashboard/article.html#exploring-the-app",
-    "href": "portfolio/r-shiny/japan-biodiversity-dashboard/article.html#exploring-the-app",
-    "title": "Japan biodiversity dashboard",
-    "section": "Exploring the App",
-    "text": "Exploring the App\nThe dashboard is split into four sections: Context, Timeline, Information, and Map. You can explore the full dataset or drill down into specific species.\nTwo display modes: a default view showing all occurrences, and a species-filtered view. Filter by scientific or vernacular name via the search bar. A year range filter (1976–2024 by default) updates the entire dashboard.\n\nDefault viewSelected species view\n\n\n\n\n\n\n\n\n\n\nContext card: Introductory text and control selectors.\nTimeline card: Observation count over time. Toggle between bar and line plots, zoom in/out.\nInformation cards: Three cards. One shows a species photo (if available). Another shows stats: observation count, most observed life stage, sex, and locality. The third ranks the top five species by default, or swaps to scientific details and a yearly count box-plot when a species is selected.\nMap card: Clustered observation points across Japan. Click into a single observation for its full info and species photo.\n\n\nFun fact: all colors in this project are traditional Japanese colors, from “日本の伝統色 The Traditional Colors of Japan” by PIE BOOKS (2007). Explore 250 of them here.",
-    "crumbs": [
-      "Portfolio",
-      "R & Shiny",
-      "Japan biodiversity dashboard"
-    ]
+    "objectID": "misc/visualizing-proportions-with-echarts4r/article.html#bar-charts",
+    "href": "misc/visualizing-proportions-with-echarts4r/article.html#bar-charts",
+    "title": "Visualizing proportions with echarts4r",
+    "section": "Bar charts",
+    "text": "Bar charts\nFor a basic horizontal bar chart, we can use the e_bar and e_flip_coordsfunctions:\n\ndf |&gt; \n  arrange(Total) |&gt; \n  e_charts(Group) |&gt; \n  e_bar(Total, legend = FALSE, label = list(show = TRUE, position = \"right\")) |&gt; \n  e_flip_coords() |&gt; \n  e_theme(\"caravan\")\n\n\n\n\n\nObserve that now the “how much” issue is a matter of subtracting or completing the bars to get an intuition of the difference (or the actual difference if you subtract the values on the label 😄).\nHowever is not that easy to get the “parts of a whole” intuition just by looking to the bar sizes — we would have to mentally add their length.\nSo far, the simple example we dealt with contains only one layer, i.e, it had only the groups and the total of observations of each one. Bar charts also are very good at dealing with multi-layered data, for example: Consider this pizza dataset containing 5 pizzeria and their sales amount by flavour:\n\n\n\n\n\n\n\n\nHere, we got two categories represent: the Pizzeria and Flavour groups. Using the stacked bar chart, we can better visualize each layering. To do this in echarts4r, just pass the grouped data and explicit the stack = \"grp\" argument in the e_bar function. We can display it both vertically or horizontally:\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nIn some cases, it might be better to unstack the bars (usually, to see some trends in data):"
   },
   {
-    "objectID": "portfolio/r-shiny/japan-biodiversity-dashboard/article.html#project-structure",
-    "href": "portfolio/r-shiny/japan-biodiversity-dashboard/article.html#project-structure",
-    "title": "Japan biodiversity dashboard",
-    "section": "Project structure",
-    "text": "Project structure\nBuilt as an R package, with dependencies managed by renv.\n\nDirectories and files\n\nThere is a www directory to store static files, such as css, images and fonts;\nAlso, there is a extdata directory to store external data, including the original dataset and the processed version used in the app;\nThe data-raw folder keeps the script where I did the dataset preprocessing;\nThe R folder contains the core scripts of the app:\n\nui.R: This file sets up the page and card layouts, and includes all the necessary CSS and functionalities;\nserver.R: Handles the main server logic for the app;\nfunctions.R: Contains pre-processing functions that get the data ready for visualization;\nplots.R: Has functions that generate the plots, like echarts and reactable;\nutils.R: Holds utility functions for smaller tasks and calculations;\nvars.R: Stores various variables, including color palettes, theme settings, custom components, and JS functions;\nwidgets.R: This is where reusable UI components and input functions are stored;\nModule scripts (e.g., md_module_name.R): Contain independent shinyModules functions.\n\n\n\n\nServer logic architecture\nThe app follows a modular reactive flow:\n\nData source\n\nInitializes with the pre-processed static data loaded from an .rds file;\nServes as the foundation for all downstream operations.\n\nControl module\n\nHouses user input widgets;\nReturns a reactive list containing:\n\nSelected names (single or “All”);\nSelected year range.\n\n\nReactive data\n\nFilters the static data based on control values;\nImplements caching for performance optimization;\nSingle source of truth for all visualizations that updates when control values change.\n\nVisualization modules\n\nIndependent, self-contained modules consuming the filtered data;\nEach module handles a specific visualization in a card.\n\n\n\n\n\n\n\nflowchart LR\n    A[Static data] --&gt; B[Control module]\n    B --&gt; C[Name input]\n    B --&gt; D[Year input]\n    C --&gt; E{Reactive controls}\n    D --&gt; E\n    A --&gt; F{Reactive data}\n    E --&gt; F\n    F --&gt; G[Context module]\n    F --&gt; H[Image module]\n    F --&gt; I[Info modules]\n    F --&gt; J[Map module]\n\n    style A fill:#EBF1E4\n\n\n\n\n\n\n\n\nUnit testing\nUnit tests via testthat cover the app’s core functions:\n\nNon-reactive: Utility functions (utils.R) and data transformation functions (functions.R). Tests cover basic structure and edge cases.\nReactive: Tests verify that the control module returns the correct reactive list, and that the main reactive filters data accordingly.",
-    "crumbs": [
-      "Portfolio",
-      "R & Shiny",
-      "Japan biodiversity dashboard"
-    ]
+    "objectID": "misc/visualizing-proportions-with-echarts4r/article.html#extra-sankey-charts",
+    "href": "misc/visualizing-proportions-with-echarts4r/article.html#extra-sankey-charts",
+    "title": "Visualizing proportions with echarts4r",
+    "section": "Extra: Sankey charts",
+    "text": "Extra: Sankey charts\nWhile pie and bar charts are some fundamental tools for visualizing proportions, there are other type of visualization that I want to mention.\nSankey diagrams are typically used to visualize flows and the distribution of the quantities between different “stages”. In our context, they are particularly effective for illustrating proportions in data with multiple layers (more than two, especially)."
+  },
+  {
+    "objectID": "misc/visualizing-proportions-with-echarts4r/article.html#footnotes",
+    "href": "misc/visualizing-proportions-with-echarts4r/article.html#footnotes",
+    "title": "Visualizing proportions with echarts4r",
+    "section": "Footnotes",
+    "text": "Footnotes\n\n\nStorytelling with data↩︎"
   },
   {
     "objectID": "portfolio.html",
@@ -79,38 +71,46 @@
     ]
   },
   {
-    "objectID": "misc/visualizing-proportions-with-echarts4r/article.html",
-    "href": "misc/visualizing-proportions-with-echarts4r/article.html",
-    "title": "Visualizing proportions with echarts4r",
+    "objectID": "portfolio/r-shiny/japan-biodiversity-dashboard/article.html",
+    "href": "portfolio/r-shiny/japan-biodiversity-dashboard/article.html",
+    "title": "Japan biodiversity dashboard",
     "section": "",
-    "text": "On this article, we’ll debate some issues of representing proportion, using some features of echarts4r, which is an R package that provides an interface to the ECharts JavaScript library, making it accessible for users to create highly configurable and interactive charts directly from R.\nFor installing instructions and learning the basic syntax, check their official website (see Coene 2024b).\nFirst, we load the packages we’ll be using.\nlibrary(echarts4r)\nlibrary(dplyr)"
+    "text": "Japan never gets old to me. This dashboard offers an interactive look at its biodiversity from 1976 to 2024, exploring species found there and those shared with other parts of the world.\nData comes from the occurence dataset on GBIF, an open-access network for biodiversity data worldwide, collected by observation.org.",
+    "crumbs": [
+      "Portfolio",
+      "R & Shiny",
+      "Japan biodiversity dashboard"
+    ]
   },
   {
-    "objectID": "misc/visualizing-proportions-with-echarts4r/article.html#pie-like-charts",
-    "href": "misc/visualizing-proportions-with-echarts4r/article.html#pie-like-charts",
-    "title": "Visualizing proportions with echarts4r",
-    "section": "Pie-like charts",
-    "text": "Pie-like charts\nThe most simple chart we can make to represent proportions is the standard pie chart. On echarts, the basic syntax goes like:\n\ndf |&gt; \n  e_chart(Group) |&gt; \n  e_pie(Total) |&gt; \n  e_theme(\"caravan\")\n\n\n\n\n\nIn this crude form, this chart may not be that interesting. In fact, it can be misleading: Notice how the minor difference between groups “C” and “D” is hardly perceived — this is a common issue when using pie-like charts.\nThe most natural way to solve this would be to include a label, that we can do using the label argument in the e_pie function, in which you can specify the label in any form you wish via the formatter argument, that accepts any javascript function.\nHowever, this doesn’t really change the appearance of the plot. We still cannot visually perceive this difference. In this aspect, we can set the roseType = \"radius\" argument to scale the radius of each slice according to its value.\n\nformatter &lt;-\n  htmlwidgets::JS(\n    \"function(params) {\n       return params.name + ' : ' + params.value + ' (' + params.percent + '%)';\n    }\"\n  )\n\ndf |&gt; \n  e_chart(Group) |&gt; \n  e_pie(Total, roseType = \"radius\", label = list(formatter = formatter)) |&gt; \n  e_theme(\"caravan\")\n\n\n\n\n\nWith these adjustments, we can visualize the proportions more clearly, getting insights faster, while we can see more details in the label.\nWith donut charts, we’ll have about the same issues. You can do it in echarts4r by passing any vector of the form c(\"55%\", \"60%\") to the radius argument in the same e_pie function:\n\n\n\n\n\n\nAs Cole Nussbaumer says in Storytelling with data1,\n\nWith pies, we are asking our audience to compare angles and areas. With a donut chart, we are asking our audience to compare one arc length to another arc length.\n\nIt may be hard for us to attribute quantitative values in two-dimensional spaces. Simply speaking, even when we can say which category has a “bigger” value based on the size of a segment, angle, arch-lenght or area, it is hard to know by “how much”.\nOne approach to solve this “how much” issue is using horizontal bar charts. However, is worth to observe that the pie-like charts do give us a notion of the “parts of a whole” kind of a thing — that we’ll lose using bar charts.\nWe discuss this now."
+    "objectID": "portfolio/r-shiny/japan-biodiversity-dashboard/article.html#exploring-the-app",
+    "href": "portfolio/r-shiny/japan-biodiversity-dashboard/article.html#exploring-the-app",
+    "title": "Japan biodiversity dashboard",
+    "section": "Exploring the App",
+    "text": "Exploring the App\nThe dashboard is split into four sections: Context, Timeline, Information, and Map. You can explore the full dataset or drill down into specific species.\nTwo display modes: a default view showing all occurrences, and a species-filtered view. Filter by scientific or vernacular name via the search bar. A year range filter (1976–2024 by default) updates the entire dashboard.\n\nDefault viewSelected species view\n\n\n\n\n\n\n\n\n\n\nContext card: Introductory text and control selectors.\nTimeline card: Observation count over time. Toggle between bar and line plots, zoom in/out.\nInformation cards: Three cards. One shows a species photo (if available). Another shows stats: observation count, most observed life stage, sex, and locality. The third ranks the top five species by default, or swaps to scientific details and a yearly count box-plot when a species is selected.\nMap card: Clustered observation points across Japan. Click into a single observation for its full info and species photo.\n\n\nFun fact: all colors in this project are traditional Japanese colors, from “日本の伝統色 The Traditional Colors of Japan” by PIE BOOKS (2007). Explore 250 of them here.",
+    "crumbs": [
+      "Portfolio",
+      "R & Shiny",
+      "Japan biodiversity dashboard"
+    ]
   },
   {
-    "objectID": "misc/visualizing-proportions-with-echarts4r/article.html#bar-charts",
-    "href": "misc/visualizing-proportions-with-echarts4r/article.html#bar-charts",
-    "title": "Visualizing proportions with echarts4r",
-    "section": "Bar charts",
-    "text": "Bar charts\nFor a basic horizontal bar chart, we can use the e_bar and e_flip_coordsfunctions:\n\ndf |&gt; \n  arrange(Total) |&gt; \n  e_charts(Group) |&gt; \n  e_bar(Total, legend = FALSE, label = list(show = TRUE, position = \"right\")) |&gt; \n  e_flip_coords() |&gt; \n  e_theme(\"caravan\")\n\n\n\n\n\nObserve that now the “how much” issue is a matter of subtracting or completing the bars to get an intuition of the difference (or the actual difference if you subtract the values on the label 😄).\nHowever is not that easy to get the “parts of a whole” intuition just by looking to the bar sizes — we would have to mentally add their length.\nSo far, the simple example we dealt with contains only one layer, i.e, it had only the groups and the total of observations of each one. Bar charts also are very good at dealing with multi-layered data, for example: Consider this pizza dataset containing 5 pizzeria and their sales amount by flavour:\n\n\n\n\n\n\n\n\nHere, we got two categories represent: the Pizzeria and Flavour groups. Using the stacked bar chart, we can better visualize each layering. To do this in echarts4r, just pass the grouped data and explicit the stack = \"grp\" argument in the e_bar function. We can display it both vertically or horizontally:\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nIn some cases, it might be better to unstack the bars (usually, to see some trends in data):"
+    "objectID": "portfolio/r-shiny/japan-biodiversity-dashboard/article.html#project-structure",
+    "href": "portfolio/r-shiny/japan-biodiversity-dashboard/article.html#project-structure",
+    "title": "Japan biodiversity dashboard",
+    "section": "Project structure",
+    "text": "Project structure\nBuilt as an R package, with dependencies managed by renv.\n\nDirectories and files\n\nThere is a www directory to store static files, such as css, images and fonts;\nAlso, there is a extdata directory to store external data, including the original dataset and the processed version used in the app;\nThe data-raw folder keeps the script where I did the dataset preprocessing;\nThe R folder contains the core scripts of the app:\n\nui.R: This file sets up the page and card layouts, and includes all the necessary CSS and functionalities;\nserver.R: Handles the main server logic for the app;\nfunctions.R: Contains pre-processing functions that get the data ready for visualization;\nplots.R: Has functions that generate the plots, like echarts and reactable;\nutils.R: Holds utility functions for smaller tasks and calculations;\nvars.R: Stores various variables, including color palettes, theme settings, custom components, and JS functions;\nwidgets.R: This is where reusable UI components and input functions are stored;\nModule scripts (e.g., md_module_name.R): Contain independent shinyModules functions.\n\n\n\n\nServer logic architecture\nThe app follows a modular reactive flow:\n\nData source\n\nInitializes with the pre-processed static data loaded from an .rds file;\nServes as the foundation for all downstream operations.\n\nControl module\n\nHouses user input widgets;\nReturns a reactive list containing:\n\nSelected names (single or “All”);\nSelected year range.\n\n\nReactive data\n\nFilters the static data based on control values;\nImplements caching for performance optimization;\nSingle source of truth for all visualizations that updates when control values change.\n\nVisualization modules\n\nIndependent, self-contained modules consuming the filtered data;\nEach module handles a specific visualization in a card.\n\n\n\n\n\n\n\nflowchart LR\n    A[Static data] --&gt; B[Control module]\n    B --&gt; C[Name input]\n    B --&gt; D[Year input]\n    C --&gt; E{Reactive controls}\n    D --&gt; E\n    A --&gt; F{Reactive data}\n    E --&gt; F\n    F --&gt; G[Context module]\n    F --&gt; H[Image module]\n    F --&gt; I[Info modules]\n    F --&gt; J[Map module]\n\n    style A fill:#EBF1E4\n\n\n\n\n\n\n\n\nUnit testing\nUnit tests via testthat cover the app’s core functions:\n\nNon-reactive: Utility functions (utils.R) and data transformation functions (functions.R). Tests cover basic structure and edge cases.\nReactive: Tests verify that the control module returns the correct reactive list, and that the main reactive filters data accordingly.",
+    "crumbs": [
+      "Portfolio",
+      "R & Shiny",
+      "Japan biodiversity dashboard"
+    ]
   },
   {
-    "objectID": "misc/visualizing-proportions-with-echarts4r/article.html#extra-sankey-charts",
-    "href": "misc/visualizing-proportions-with-echarts4r/article.html#extra-sankey-charts",
-    "title": "Visualizing proportions with echarts4r",
-    "section": "Extra: Sankey charts",
-    "text": "Extra: Sankey charts\nWhile pie and bar charts are some fundamental tools for visualizing proportions, there are other type of visualization that I want to mention.\nSankey diagrams are typically used to visualize flows and the distribution of the quantities between different “stages”. In our context, they are particularly effective for illustrating proportions in data with multiple layers (more than two, especially)."
-  },
-  {
-    "objectID": "misc/visualizing-proportions-with-echarts4r/article.html#footnotes",
-    "href": "misc/visualizing-proportions-with-echarts4r/article.html#footnotes",
-    "title": "Visualizing proportions with echarts4r",
-    "section": "Footnotes",
-    "text": "Footnotes\n\n\nStorytelling with data↩︎"
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "About me",
+    "section": "",
+    "text": "Data scientist with a pure math background and a design eye for data viz.\nApplied machine learning to fleet safety, building drowsiness prediction models and computer vision systems to detect risky driving behaviors. Built Shiny dashboards and automated reporting pipelines with Quarto used daily by hundreds of clients.\nNow working on data-driven personalized education, tracking student progress and measuring learning outcomes in mastery-based models where students learn independently at their own pace.\nMore on my work and projects on LinkedIn."
   }
 ]
