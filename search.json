@@ -4,7 +4,7 @@
     "href": "index.html",
     "title": "About me",
     "section": "",
-    "text": "Data scientist with a pure math background and a design eye for data viz.\nApplied machine learning to fleet safety, building drowsiness prediction models and computer vision systems to detect risky driving behaviors. Built Shiny dashboards and automated reporting pipelines with Quarto used daily by hundreds of clients.\nNow working on data-driven personalized education, tracking student progress and measuring learning outcomes in mastery-based models where students learn independently at their own pace.\nMore on my work and projects on LinkedIn."
+    "text": "I am a data scientist with a pure math background, working across forecasting, deep learning, and computer vision.\nBuilt fatigue-prediction and risky-behavior-detection machine learning models for fleet safety, used daily by hundreds of clients.\nNow in data-driven education: models that turn learning-app performance into a system that sets targets, flags at-risk students early, and tracks academic growth.\nMore on my work and projects on LinkedIn."
   },
   {
     "objectID": "portfolio/r-shiny/japan-biodiversity-dashboard/article.html",
