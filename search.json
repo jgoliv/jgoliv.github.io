@@ -1,74 +1,10 @@
 [
   {
-    "objectID": "misc/visualizing-proportions-with-echarts4r/article.html",
-    "href": "misc/visualizing-proportions-with-echarts4r/article.html",
-    "title": "Visualizing proportions with echarts4r",
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "About me",
     "section": "",
-    "text": "On this article, we’ll debate some issues of representing proportion, using some features of echarts4r, which is an R package that provides an interface to the ECharts JavaScript library, making it accessible for users to create highly configurable and interactive charts directly from R.\nFor installing instructions and learning the basic syntax, check their official website (see Coene 2024b).\nFirst, we load the packages we’ll be using.\nlibrary(echarts4r)\nlibrary(dplyr)"
-  },
-  {
-    "objectID": "misc/visualizing-proportions-with-echarts4r/article.html#pie-like-charts",
-    "href": "misc/visualizing-proportions-with-echarts4r/article.html#pie-like-charts",
-    "title": "Visualizing proportions with echarts4r",
-    "section": "Pie-like charts",
-    "text": "Pie-like charts\nThe most simple chart we can make to represent proportions is the standard pie chart. On echarts, the basic syntax goes like:\n\ndf |&gt; \n  e_chart(Group) |&gt; \n  e_pie(Total) |&gt; \n  e_theme(\"caravan\")\n\n\n\n\n\nIn this crude form, this chart may not be that interesting. In fact, it can be misleading: Notice how the minor difference between groups “C” and “D” is hardly perceived — this is a common issue when using pie-like charts.\nThe most natural way to solve this would be to include a label, that we can do using the label argument in the e_pie function, in which you can specify the label in any form you wish via the formatter argument, that accepts any javascript function.\nHowever, this doesn’t really change the appearance of the plot. We still cannot visually perceive this difference. In this aspect, we can set the roseType = \"radius\" argument to scale the radius of each slice according to its value.\n\nformatter &lt;-\n  htmlwidgets::JS(\n    \"function(params) {\n       return params.name + ' : ' + params.value + ' (' + params.percent + '%)';\n    }\"\n  )\n\ndf |&gt; \n  e_chart(Group) |&gt; \n  e_pie(Total, roseType = \"radius\", label = list(formatter = formatter)) |&gt; \n  e_theme(\"caravan\")\n\n\n\n\n\nWith these adjustments, we can visualize the proportions more clearly, getting insights faster, while we can see more details in the label.\nWith donut charts, we’ll have about the same issues. You can do it in echarts4r by passing any vector of the form c(\"55%\", \"60%\") to the radius argument in the same e_pie function:\n\n\n\n\n\n\nAs Cole Nussbaumer says in Storytelling with data1,\n\nWith pies, we are asking our audience to compare angles and areas. With a donut chart, we are asking our audience to compare one arc length to another arc length.\n\nIt may be hard for us to attribute quantitative values in two-dimensional spaces. Simply speaking, even when we can say which category has a “bigger” value based on the size of a segment, angle, arch-lenght or area, it is hard to know by “how much”.\nOne approach to solve this “how much” issue is using horizontal bar charts. However, is worth to observe that the pie-like charts do give us a notion of the “parts of a whole” kind of a thing — that we’ll lose using bar charts.\nWe discuss this now."
-  },
-  {
-    "objectID": "misc/visualizing-proportions-with-echarts4r/article.html#bar-charts",
-    "href": "misc/visualizing-proportions-with-echarts4r/article.html#bar-charts",
-    "title": "Visualizing proportions with echarts4r",
-    "section": "Bar charts",
-    "text": "Bar charts\nFor a basic horizontal bar chart, we can use the e_bar and e_flip_coordsfunctions:\n\ndf |&gt; \n  arrange(Total) |&gt; \n  e_charts(Group) |&gt; \n  e_bar(Total, legend = FALSE, label = list(show = TRUE, position = \"right\")) |&gt; \n  e_flip_coords() |&gt; \n  e_theme(\"caravan\")\n\n\n\n\n\nObserve that now the “how much” issue is a matter of subtracting or completing the bars to get an intuition of the difference (or the actual difference if you subtract the values on the label 😄).\nHowever is not that easy to get the “parts of a whole” intuition just by looking to the bar sizes — we would have to mentally add their length.\nSo far, the simple example we dealt with contains only one layer, i.e, it had only the groups and the total of observations of each one. Bar charts also are very good at dealing with multi-layered data, for example: Consider this pizza dataset containing 5 pizzeria and their sales amount by flavour:\n\n\n\n\n\n\n\n\nHere, we got two categories represent: the Pizzeria and Flavour groups. Using the stacked bar chart, we can better visualize each layering. To do this in echarts4r, just pass the grouped data and explicit the stack = \"grp\" argument in the e_bar function. We can display it both vertically or horizontally:\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nIn some cases, it might be better to unstack the bars (usually, to see some trends in data):"
-  },
-  {
-    "objectID": "misc/visualizing-proportions-with-echarts4r/article.html#extra-sankey-charts",
-    "href": "misc/visualizing-proportions-with-echarts4r/article.html#extra-sankey-charts",
-    "title": "Visualizing proportions with echarts4r",
-    "section": "Extra: Sankey charts",
-    "text": "Extra: Sankey charts\nWhile pie and bar charts are some fundamental tools for visualizing proportions, there are other type of visualization that I want to mention.\nSankey diagrams are typically used to visualize flows and the distribution of the quantities between different “stages”. In our context, they are particularly effective for illustrating proportions in data with multiple layers (more than two, especially)."
-  },
-  {
-    "objectID": "misc/visualizing-proportions-with-echarts4r/article.html#footnotes",
-    "href": "misc/visualizing-proportions-with-echarts4r/article.html#footnotes",
-    "title": "Visualizing proportions with echarts4r",
-    "section": "Footnotes",
-    "text": "Footnotes\n\n\nStorytelling with data↩︎"
-  },
-  {
-    "objectID": "portfolio.html",
-    "href": "portfolio.html",
-    "title": "Portfolio",
-    "section": "",
-    "text": "Japan biodiversity dashboard\n\n\n\nR\n\nShiny\n\nData Visualization\n\n\n\n\n\n\n\n\n\nDec 18, 2024\n\n\n\n\n\n\n\n\n\n\n\n\nKuratowski Closure-Complement Theorem\n\n\n\nData Visualization\n\nMath\n\n\n\n\n\n\n\n\n\nApr 14, 2026\n\n\n\n\n\nNo matching items",
-    "crumbs": [
-      "Portfolio"
-    ]
-  },
-  {
-    "objectID": "portfolio/data-viz/math-series/kuratowski-closure-complement/article.html",
-    "href": "portfolio/data-viz/math-series/kuratowski-closure-complement/article.html",
-    "title": "Kuratowski Closure-Complement Theorem",
-    "section": "",
-    "text": "Pick any subset of any topological space, apply closure and complement in every order you like, and you will never generate more than 14 distinct sets. Kuratowski proved this astounding fact in 1922.\nMost subsets fall well short of that bound. Reaching exactly 14 demands a starting set where every operation breaks new ground. The canonical choice on \\(\\mathbb{R}\\) is:\n\\[A = (0,1) \\cup (1,2) \\cup \\{3\\} \\cup \\bigl([4,5] \\cap \\mathbb{Q}\\bigr)\\]\nEach piece does specific topological work:\nThe chart traces the full orbit of \\(A\\) — and the pattern only becomes clear when you see them all at once.",
-    "crumbs": [
-      "Portfolio",
-      "Data Viz",
-      "Math Series",
-      "Kuratowski Closure-Complement Theorem"
-    ]
-  },
-  {
-    "objectID": "portfolio/data-viz/math-series/kuratowski-closure-complement/article.html#the-chart",
-    "href": "portfolio/data-viz/math-series/kuratowski-closure-complement/article.html#the-chart",
-    "title": "Kuratowski Closure-Complement Theorem",
-    "section": "The Chart",
-    "text": "The Chart",
-    "crumbs": [
-      "Portfolio",
-      "Data Viz",
-      "Math Series",
-      "Kuratowski Closure-Complement Theorem"
-    ]
+    "text": "Data scientist with a pure math background and a design eye for data viz.\nApplied machine learning to fleet safety, building drowsiness prediction models and computer vision systems to detect risky driving behaviors. Built Shiny dashboards and automated reporting pipelines with Quarto used daily by hundreds of clients.\nNow working on data-driven personalized education, tracking student progress and measuring learning outcomes in mastery-based models where students learn independently at their own pace.\nMore on my work and projects on LinkedIn."
   },
   {
     "objectID": "portfolio/r-shiny/japan-biodiversity-dashboard/article.html",
@@ -107,10 +43,39 @@
     ]
   },
   {
-    "objectID": "index.html",
-    "href": "index.html",
-    "title": "About me",
+    "objectID": "portfolio/data-viz/math-series/kuratowski-closure-complement/article.html",
+    "href": "portfolio/data-viz/math-series/kuratowski-closure-complement/article.html",
+    "title": "Kuratowski Closure-Complement Theorem",
     "section": "",
-    "text": "Data scientist with a pure math background and a design eye for data viz.\nApplied machine learning to fleet safety, building drowsiness prediction models and computer vision systems to detect risky driving behaviors. Built Shiny dashboards and automated reporting pipelines with Quarto used daily by hundreds of clients.\nNow working on data-driven personalized education, tracking student progress and measuring learning outcomes in mastery-based models where students learn independently at their own pace.\nMore on my work and projects on LinkedIn."
+    "text": "Pick any subset of any topological space, apply closure and complement in every order you like, and you will never generate more than 14 distinct sets. Kuratowski proved this astounding fact in 1922.\nMost subsets fall well short of that bound. Reaching exactly 14 demands a starting set where every operation breaks new ground. The canonical choice on \\(\\mathbb{R}\\) is:\n\\[A = (0,1) \\cup (1,2) \\cup \\{3\\} \\cup \\bigl([4,5] \\cap \\mathbb{Q}\\bigr)\\]\nEach piece does specific topological work:\nThe chart traces the full orbit of \\(A\\) — and the pattern only becomes clear when you see them all at once.",
+    "crumbs": [
+      "Portfolio",
+      "Data Viz",
+      "Math Series",
+      "Kuratowski Closure-Complement Theorem"
+    ]
+  },
+  {
+    "objectID": "portfolio/data-viz/math-series/kuratowski-closure-complement/article.html#the-chart",
+    "href": "portfolio/data-viz/math-series/kuratowski-closure-complement/article.html#the-chart",
+    "title": "Kuratowski Closure-Complement Theorem",
+    "section": "The Chart",
+    "text": "The Chart",
+    "crumbs": [
+      "Portfolio",
+      "Data Viz",
+      "Math Series",
+      "Kuratowski Closure-Complement Theorem"
+    ]
+  },
+  {
+    "objectID": "portfolio.html",
+    "href": "portfolio.html",
+    "title": "Portfolio",
+    "section": "",
+    "text": "Japan biodiversity dashboard\n\n\n\nR\n\nShiny\n\nData Visualization\n\n\n\n\n\n\n\n\n\nDec 18, 2024\n\n\n\n\n\n\n\n\n\n\n\n\nKuratowski Closure-Complement Theorem\n\n\n\nData Visualization\n\nMath\n\n\n\n\n\n\n\n\n\nApr 14, 2026\n\n\n\n\n\nNo matching items",
+    "crumbs": [
+      "Portfolio"
+    ]
   }
 ]

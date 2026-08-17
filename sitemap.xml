@@ -1,23 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://jgoliv.github.io/misc/visualizing-proportions-with-echarts4r/article.html</loc>
-    <lastmod>2026-08-17T00:42:45.386Z</lastmod>
-  </url>
-  <url>
-    <loc>https://jgoliv.github.io/portfolio.html</loc>
-    <lastmod>2026-08-17T00:42:45.387Z</lastmod>
-  </url>
-  <url>
-    <loc>https://jgoliv.github.io/portfolio/data-viz/math-series/kuratowski-closure-complement/article.html</loc>
-    <lastmod>2026-08-17T00:42:45.387Z</lastmod>
+    <loc>https://jgoliv.github.io/index.html</loc>
+    <lastmod>2026-08-17T00:44:11.891Z</lastmod>
   </url>
   <url>
     <loc>https://jgoliv.github.io/portfolio/r-shiny/japan-biodiversity-dashboard/article.html</loc>
-    <lastmod>2026-08-17T00:42:45.393Z</lastmod>
+    <lastmod>2026-08-17T00:44:11.897Z</lastmod>
   </url>
   <url>
-    <loc>https://jgoliv.github.io/index.html</loc>
-    <lastmod>2026-08-17T00:42:45.386Z</lastmod>
+    <loc>https://jgoliv.github.io/portfolio/data-viz/math-series/kuratowski-closure-complement/article.html</loc>
+    <lastmod>2026-08-17T00:44:11.891Z</lastmod>
+  </url>
+  <url>
+    <loc>https://jgoliv.github.io/portfolio.html</loc>
+    <lastmod>2026-08-17T00:44:11.891Z</lastmod>
   </url>
 </urlset>
