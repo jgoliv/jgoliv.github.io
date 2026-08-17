@@ -6,3 +6,9 @@
 .claude/
 CLAUDE.md
 .playwright-mcp/
+
+# OS / R junk
+**/.DS_Store
+.Rhistory
+.Rprofile
+.Rprofile.backup
