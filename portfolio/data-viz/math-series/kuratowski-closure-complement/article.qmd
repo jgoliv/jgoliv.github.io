@@ -2,6 +2,7 @@
 title: "Kuratowski Closure-Complement Theorem"
 date: "2026-04-14"
 date-modified: today
+image: "files/plot.png"
 categories:
   - Data Visualization
   - Math
