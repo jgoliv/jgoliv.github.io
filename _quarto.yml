@@ -31,9 +31,9 @@ website:
       contents: 
         - portfolio.qmd
         - text: "---"
-        - section: "R & Shiny"
-          contents:
-            - portfolio/r-shiny/japan-biodiversity-dashboard/article.qmd
+       # - section: "R & Shiny"
+        #  contents:
+          #  - portfolio/r-shiny/japan-biodiversity-dashboard/article.qmd
         - section: "Data Viz"
           contents:
             - section: "Math Series"
@@ -48,8 +48,9 @@ format:
     smooth-scroll: true
     toc: true
     theme:
-      - cosmo
       - www/css/theme.scss
+    highlight-style: www/custom-highlight.theme
+    fontsize: 16px
     grid:
       sidebar-width: 300px
-      body-width: 900px
+      body-width: 720px

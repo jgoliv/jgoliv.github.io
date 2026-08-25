@@ -12,10 +12,6 @@ about:
       href: https://github.com/jgoliv
 ---
 
-I am a data scientist with a pure math background, working across forecasting, deep learning, and computer vision.
-
-Built fatigue-prediction and risky-behavior-detection machine learning models for fleet safety, used daily by hundreds of clients.
-
-Now in data-driven education: models that turn learning-app performance into a system that sets targets, flags at-risk students early, and tracks academic growth.
+I am a data scientist with a pure math background and experience in machine learning, predictive modeling, and statistics.
 
 More on my work and projects on [LinkedIn](https://linkedin.com/in/jgoliv).

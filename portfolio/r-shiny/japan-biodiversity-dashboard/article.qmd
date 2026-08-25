@@ -1,5 +1,6 @@
 ---
 title: "Japan biodiversity dashboard"
+draft: true
 date: "2024-12-18"
 date-modified: today
 image: "files/image.svg"
