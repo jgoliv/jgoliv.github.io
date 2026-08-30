@@ -2,44 +2,22 @@
   {
     "objectID": "index.html",
     "href": "index.html",
-    "title": "About me",
+    "title": "João Gabriel Oliveira de Jesus",
     "section": "",
-    "text": "I am a data scientist with a pure math background and experience in machine learning, predictive modeling, and statistics.\nMore on my work and projects on LinkedIn."
+    "text": "João Gabriel Oliveira de Jesus\n  Glad you’re here. This is a collection of things I’ve explored in my spare time.\n\n\n\n\n\n  \n    \n  \n  \n    Kuratowski Closure-Complement Theorem\n    Run any subset through closure and complement, in any order, and you never get more than 14 distinct sets — Kuratowski proved it in 1922.\n    April 14, 2026\n  \n\n\n\n\n\n\n\n  \n    \n  \n  \n    About me\n    I'm a data scientist coming from a pure mathematics background, who likes taking abstract problems and turning them into something people can see and actually work with."
   },
   {
-    "objectID": "portfolio/data-viz/math-series/kuratowski-closure-complement/article.html",
-    "href": "portfolio/data-viz/math-series/kuratowski-closure-complement/article.html",
+    "objectID": "portfolio/data-viz/kuratowski-closure-complement/article.html",
+    "href": "portfolio/data-viz/kuratowski-closure-complement/article.html",
     "title": "Kuratowski Closure-Complement Theorem",
     "section": "",
-    "text": "Pick any subset of any topological space, apply closure and complement in every order you like, and you will never generate more than 14 distinct sets. Kuratowski proved this astounding fact in 1922.\nMost subsets fall well short of that bound. Reaching exactly 14 demands a starting set where every operation breaks new ground. The canonical choice on \\(\\mathbb{R}\\) is:\n\\[A = (0,1) \\cup (1,2) \\cup \\{3\\} \\cup \\bigl([4,5] \\cap \\mathbb{Q}\\bigr)\\]\nEach piece does specific topological work:\nThe chart traces the full orbit of \\(A\\) — and the pattern only becomes clear when you see them all at once.",
-    "crumbs": [
-      "Portfolio",
-      "Data Viz",
-      "Math Series",
-      "Kuratowski Closure-Complement Theorem"
-    ]
+    "text": "Pick any subset of any topological space, apply closure and complement in every order you like, and you will never generate more than 14 distinct sets. Kuratowski proved this astounding fact in 1922.\nMost subsets fall well short of that bound. Reaching exactly 14 demands a starting set where every operation breaks new ground. The canonical choice on \\(\\mathbb{R}\\) is:\n\\[A = (0,1) \\cup (1,2) \\cup \\{3\\} \\cup \\bigl([4,5] \\cap \\mathbb{Q}\\bigr)\\]\nEach piece does specific topological work:\nThe chart traces the full orbit of \\(A\\) — and the pattern only becomes clear when you see them all at once."
   },
   {
-    "objectID": "portfolio/data-viz/math-series/kuratowski-closure-complement/article.html#the-chart",
-    "href": "portfolio/data-viz/math-series/kuratowski-closure-complement/article.html#the-chart",
+    "objectID": "portfolio/data-viz/kuratowski-closure-complement/article.html#the-chart",
+    "href": "portfolio/data-viz/kuratowski-closure-complement/article.html#the-chart",
     "title": "Kuratowski Closure-Complement Theorem",
     "section": "The Chart",
-    "text": "The Chart",
-    "crumbs": [
-      "Portfolio",
-      "Data Viz",
-      "Math Series",
-      "Kuratowski Closure-Complement Theorem"
-    ]
-  },
-  {
-    "objectID": "portfolio.html",
-    "href": "portfolio.html",
-    "title": "Portfolio",
-    "section": "",
-    "text": "Kuratowski Closure-Complement Theorem\n\n\n\nData Visualization\n\nMath\n\n\n\n\n\n\n\n\n\nApr 14, 2026\n\n\n\n\n\nNo matching items",
-    "crumbs": [
-      "Portfolio"
-    ]
+    "text": "The Chart\n\nCode and data: kuratowski-theorem-visualization on GitHub."
   }
 ]
