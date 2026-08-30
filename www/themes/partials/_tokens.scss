@@ -1,0 +1,121 @@
+$font-family-sans-serif: "Space Grotesk", sans-serif;
+$font-family-monospace: "JetBrains Mono NL", monospace;
+$font-family-serif: "Fraunces", serif;
+
+$type-display-xl-size: 42px;
+$type-display-xl-weight: 500;
+$type-display-xl-line: 1.11;
+
+$type-display-lg-size: 30px;
+$type-display-lg-weight: 500;
+$type-display-lg-line: 1.2;
+
+$type-heading-lg-size: 24px;
+$type-heading-lg-weight: 600;
+$type-heading-lg-line: 1.33;
+
+$type-heading-md-size: 20px;
+$type-heading-md-weight: 500;
+$type-heading-md-line: 1.4;
+
+$type-heading-sm-size: 18px;
+$type-heading-sm-weight: 500;
+$type-heading-sm-line: 1.56;
+
+$type-body-md-size: 16px;
+$type-body-md-weight: 400;
+$type-body-md-line: 1.5;
+
+$type-body-strong-size: 16px;
+$type-body-strong-weight: 500;
+$type-body-strong-line: 1.5;
+
+$type-body-sm-size: 14px;
+$type-body-sm-weight: 400;
+$type-body-sm-line: 1.43;
+
+$type-body-sm-strong-size: 14px;
+$type-body-sm-strong-weight: 500;
+$type-body-sm-strong-line: 1.43;
+
+$type-caption-sm-size: 12px;
+$type-caption-sm-weight: 400;
+$type-caption-sm-line: 1.33;
+
+$type-code-md-size: 16px;
+$type-code-md-weight: 400;
+$type-code-md-line: 1.5;
+
+$type-code-sm-size: 14px;
+$type-code-sm-weight: 400;
+$type-code-sm-line: 1.43;
+
+$type-button-md-size: 14px;
+$type-button-md-weight: 500;
+$type-button-md-line: 1;
+
+$h1-font-size: $type-display-xl-size;
+$h2-font-size: $type-display-lg-size;
+$h3-font-size: $type-heading-lg-size;
+$h4-font-size: $type-heading-md-size;
+$h5-font-size: $type-heading-sm-size;
+
+$font-size-base: $type-body-md-size;
+$line-height-base: $type-body-md-line;
+$font-weight-base: 350;
+$code-font-size: $type-code-sm-size;
+
+$spacing-xxs: 2px;
+$spacing-xs: 4px;
+$spacing-sm: 8px;
+$spacing-md: 12px;
+$spacing-lg: 16px;
+$spacing-xl: 24px;
+$spacing-xxl: 32px;
+$spacing-section: 64px;
+
+$radius-sm: 6px;
+$radius-lg: 12px;
+$radius-full: 9999px;
+
+$brand-primary: #161517;
+$surface-canvas: #ffffff;
+$surface-soft: #fbf9f6;
+$surface-button: #aba6a2;
+$surface-hairline: #ddd4c9;
+$surface-hairline-strong: #c9beb0;
+$text-ink: #161517;
+$text-charcoal: #4a4643;
+$text-body: #6e6864;
+$text-mute: #9c948b;
+$color-link-mute: #6e6864;
+$color-terminal-red: #ff5f56;
+$color-terminal-yellow: #ffbd2e;
+$color-terminal-green: #27c93f;
+$surface-dark: #2a2a2a;
+$text-on-dark: #e5e5e5;
+
+$primary: $text-ink;
+$secondary: $text-charcoal;
+
+$navbar-bg: $surface-canvas;
+$navbar-fg: $text-ink;
+
+$navbar-padding-y: 6px;
+$nav-link-padding-y: 4px;
+
+$body-bg: $surface-canvas !default;
+$body-color: $text-body;
+$headings-color: $text-ink;
+$link-color: $text-ink;
+
+$code-bg: $surface-soft;
+$code-color: $text-body;
+
+$code-block-bg: #3a3a3a;
+$btn-code-copy-color: $text-on-dark;
+$btn-code-copy-color-active: $surface-canvas;
+
+$toc-color: $text-ink;
+$toc-active-border: $text-ink;
+$toc-inactive-border: $text-mute;

@@ -3,9 +3,6 @@
 .Rproj.user
 
 **/*.quarto_ipynb
-.claude/
-CLAUDE.md
-.playwright-mcp/
 
 # OS / R junk
 **/.DS_Store

@@ -1,0 +1,130 @@
+body.quarto-dark {
+  $dm-canvas: #171717;
+  $dm-soft: #202020;
+  $dm-hairline: #2a2a2a;
+  $dm-hairline-strong: #3d3d3d;
+  $dm-ink: #f5f5f0;
+  $dm-charcoal: #d4d0c9;
+  $dm-body: #a39d95;
+  $dm-mute: #6f6a64;
+
+  background-color: $dm-canvas;
+  color: $dm-body;
+
+  a {
+    color: $dm-ink;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    color: $dm-ink;
+  }
+
+  .navbar {
+    background-color: $dm-canvas;
+    color: $dm-ink;
+  }
+
+  .navbar-nav .nav-link {
+    color: $dm-ink !important;
+  }
+
+  .quarto-color-scheme-toggle .bi::before,
+  .quarto-color-scheme-toggle.alternate .bi::before {
+    background-color: $dm-ink !important;
+  }
+
+  .aa-DetachedSearchButton,
+  .navbar .aa-DetachedSearchButton .aa-DetachedSearchButtonIcon {
+    color: $dm-ink;
+  }
+
+  .aa-SubmitIcon {
+    color: $dm-ink !important;
+  }
+
+  a.external::after {
+    background-image: url('www/icons/external-link-dark.svg') !important;
+  }
+
+  :not(pre) > code {
+    background: $dm-soft;
+    color: $dm-ink;
+  }
+
+  .hero__name {
+    color: $dm-ink;
+  }
+
+  .hero__tagline {
+    color: $dm-charcoal;
+  }
+
+  .intro__body p {
+    color: $dm-body;
+  }
+
+  .project-card {
+    background-color: $dm-soft;
+    border-color: $dm-hairline;
+
+    &:hover {
+      border-color: $dm-hairline-strong;
+    }
+
+    .project-card__media {
+      background-color: $dm-soft;
+    }
+
+    .project-card__title {
+      color: $dm-ink;
+    }
+
+    .project-card__desc {
+      color: $dm-body;
+    }
+
+    .project-card__date {
+      color: $dm-mute;
+    }
+  }
+
+  .about-icon {
+    color: $dm-ink;
+
+    &:hover {
+      color: $dm-mute;
+    }
+  }
+
+  .cell-output-stdout::before,
+  .cell-output-display:has(table)::before {
+    color: $dm-mute;
+  }
+
+  .cell-output-stdout pre,
+  .cell-output-display:has(table) > div {
+    background: $dm-canvas;
+    color: $dm-body;
+    box-shadow: inset 0 0 0 1px $dm-hairline-strong;
+  }
+
+  .cell-output-display:has(table) table th,
+  .cell-output-display:has(table) table td {
+    border-bottom-color: $dm-hairline;
+  }
+
+  .cell-output-display:has(table) table thead th {
+    color: $dm-ink;
+    border-bottom-color: $dm-hairline-strong;
+  }
+
+  .blockquote {
+    color: $dm-charcoal !important;
+    background-color: $dm-soft;
+    border-left-color: $dm-hairline-strong;
+  }
+
+  .panel-default summary {
+    color: $dm-ink;
+  }
+}

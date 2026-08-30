@@ -1,11 +1,13 @@
 ---
 title: "Kuratowski Closure-Complement Theorem"
+description: "Run any subset through closure and complement, in any order, and you never get more than 14 distinct sets — Kuratowski proved it in 1922."
 date: "2026-04-14"
 date-modified: today
 image: "files/plot.png"
 categories:
   - Data Visualization
   - Math
+repo-actions: false
 ---
 
 Pick any subset of any topological space, apply **closure** and **complement** in every order you like, and you will never generate more than 14 distinct sets. [Kuratowski](https://en.wikipedia.org/wiki/Kuratowski%27s_closure-complement_problem) proved this astounding fact in 1922.
@@ -24,9 +26,6 @@ The chart traces the full orbit of $A$ — and the pattern only becomes clear wh
 
 ## The Chart
 
-```{r}
-#| echo: false
-#| out-width: "100%"
-#| lightbox: true
-knitr::include_graphics("files/plot.png")
-```
+![](files/plot.png){.lightbox width="100%"}
+
+Code and data: [kuratowski-theorem-visualization](https://github.com/jgoliv/kuratowski-theorem-visualization) on GitHub.

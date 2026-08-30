@@ -2,43 +2,24 @@ project:
   type: website
   resources:
     - www/fonts/*
+    - www/icons/*
   
 website:
+  search: false
   page-navigation: true
   open-graph: true
   repo-url: https://github.com/jgoliv/jgoliv.github.io
   repo-actions: [source]
 
   navbar:
-    style: "floating"
     title: false
-    tools:
-      - icon: github
-        href: https://github.com/jgoliv
-      - icon: linkedin
-        href: https://linkedin.com/in/jgoliv
     left:
-      - text: "About"
+      - icon: house
+        text: " "
         href: index.qmd
-      - text: "Portfolio"
-        href: portfolio.qmd
-
-  sidebar:
-    - id: projects
-      style: "floating"
-      logo: www/images/logo.svg
-      logo-href: index.qmd
-      contents: 
-        - portfolio.qmd
-        - text: "---"
-       # - section: "R & Shiny"
-        #  contents:
-          #  - portfolio/r-shiny/japan-biodiversity-dashboard/article.qmd
-        - section: "Data Viz"
-          contents:
-            - section: "Math Series"
-              contents:
-                - portfolio/data-viz/math-series/kuratowski-closure-complement/article.qmd
+        aria-label: Home
+      - text: "About"
+        href: index.qmd#about-me
 
 format:
   html:
@@ -48,9 +29,9 @@ format:
     smooth-scroll: true
     toc: true
     theme:
-      - www/css/theme.scss
-    highlight-style: www/custom-highlight.theme
+      dark: [www/themes/theme-light.scss, www/themes/theme-dark.scss]
+      light: www/themes/theme-light.scss
+    highlight-style: www/themes/custom-highlight.theme
     fontsize: 16px
     grid:
-      sidebar-width: 300px
-      body-width: 720px
+      body-width: 900px

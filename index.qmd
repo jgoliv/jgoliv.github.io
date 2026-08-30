@@ -1,17 +1,62 @@
 ---
-title: "About me"
+pagetitle: "João Gabriel Oliveira"
 image: www/images/profile.jpeg
-about:
-  template: jolla
-  links:
-    - icon: linkedin
-      text: Linkedin
-      href: https://linkedin.com/in/jgoliv
-    - icon: github
-      text: Github
-      href: https://github.com/jgoliv
+toc: false
+sidebar: false
+repo-actions: false
+grid:
+  body-width: 1200px
 ---
 
-I am a data scientist with a pure math background and experience in machine learning, predictive modeling, and statistics.
+```{=html}
+<section class="hero">
+  <h1 class="hero__name">João Gabriel Oliveira de Jesus</h1>
+  <p class="hero__tagline">Glad you’re here. This is a collection of things I’ve explored in my spare time.</p>
+</section>
 
-More on my work and projects on [LinkedIn](https://linkedin.com/in/jgoliv).
+<section class="projects-section">
+```
+
+::: {.project-grid}
+
+```{=html}
+<a class="project-card" href="portfolio/data-viz/kuratowski-closure-complement/article.html">
+  <div class="project-card__media">
+    <img class="project-card__img" src="portfolio/data-viz/kuratowski-closure-complement/files/plot.png" alt="Kuratowski Closure-Complement Theorem" loading="lazy">
+  </div>
+  <div class="project-card__body">
+    <h3 class="project-card__title no-anchor">Kuratowski Closure-Complement Theorem</h3>
+    <p class="project-card__desc">Run any subset through closure and complement, in any order, and you never get more than 14 distinct sets — Kuratowski proved it in 1922.</p>
+    <time class="project-card__date">April 14, 2026</time>
+  </div>
+</a>
+```
+
+:::
+
+```{=html}
+</section>
+
+<hr class="section-divider">
+
+<section id="about-me" class="intro">
+  <div class="intro__media">
+    <img src="www/images/profile.jpeg" alt="João Gabriel Oliveira">
+  </div>
+  <div class="intro__body">
+    <h2 class="section-heading">About me</h2>
+    <p>I'm a data scientist coming from a pure mathematics background, who likes taking abstract problems and turning them into something people can see and actually work with.</p>
+    <div id="contact" class="about-icons">
+      <a class="about-icon" href="https://linkedin.com/in/jgoliv" aria-label="LinkedIn">
+        <svg><use href="www/icons/linkedin.svg#icon"></use></svg>
+      </a>
+      <a class="about-icon" href="https://github.com/jgoliv" aria-label="GitHub">
+        <svg><use href="www/icons/github.svg#icon"></use></svg>
+      </a>
+      <a class="about-icon" href="mailto:jgolivjesus@gmail.com" aria-label="Email">
+        <svg><use href="www/icons/email.svg#icon"></use></svg>
+      </a>
+    </div>
+  </div>
+</section>
+```
