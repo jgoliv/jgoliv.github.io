@@ -3,7 +3,10 @@ project:
   resources:
     - www/fonts/*
     - www/icons/*
-  
+
+execute:
+  freeze: true
+
 website:
   search: false
   page-navigation: true

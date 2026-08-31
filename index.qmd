@@ -30,6 +30,17 @@ grid:
     <time class="project-card__date">April 14, 2026</time>
   </div>
 </a>
+
+<a class="project-card project-card--wip" href="portfolio/machine-learning/midi-to-tablature/midi-to-tablature.html">
+  <div class="project-card__media">
+    <svg class="project-card__placeholder-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg>
+  </div>
+  <div class="project-card__body">
+    <h3 class="project-card__title no-anchor">MIDI to Guitar Tablature</h3>
+    <p class="project-card__desc">Reimplementing a 2025 paper end to end: a neural net that decides where a MIDI note should land on the fretboard. Work in progress.</p>
+    <time class="project-card__date">—</time>
+  </div>
+</a>
 ```
 
 :::

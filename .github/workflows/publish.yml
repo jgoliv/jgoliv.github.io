@@ -17,6 +17,37 @@ jobs:
       - name: Set up Quarto
         uses: quarto-dev/quarto-actions/setup@v2
 
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.x"
+
+      - name: Register minimal Jupyter kernel
+        run: |
+          pip install jupyter
+          python -m ipykernel install --user --name python3 --display-name "Python 3"
+
+      - name: Fetch midi-to-tablature article
+        env:
+          MIDI_TO_TAB_REPO_PAT: ${{ secrets.MIDI_TO_TAB_REPO_PAT }}
+        run: |
+          set -e
+          DEST="portfolio/machine-learning/midi-to-tablature"
+          git clone --depth 1 "https://x-access-token:${MIDI_TO_TAB_REPO_PAT}@github.com/jgoliv/midi-to-tablature-nn-model.git" /tmp/midi-to-tablature-nn-model
+
+          mkdir -p "$DEST/assets/animations" "$DEST/assets/references"
+          cp /tmp/midi-to-tablature-nn-model/article/midi-to-tablature.qmd "$DEST/"
+          cp /tmp/midi-to-tablature-nn-model/article/assets/animations/TrackTokenization.mp4 "$DEST/assets/animations/"
+          cp /tmp/midi-to-tablature-nn-model/article/assets/references/references.bib "$DEST/assets/references/"
+
+          SRC_FREEZE=/tmp/midi-to-tablature-nn-model/article/_freeze/midi-to-tablature
+          if [ -d "$SRC_FREEZE" ]; then
+            mkdir -p "_freeze/$DEST"
+            cp -r "$SRC_FREEZE" "_freeze/$DEST/midi-to-tablature"
+          fi
+
+          rm -rf /tmp/midi-to-tablature-nn-model
+
       - name: Render and Publish
         uses: quarto-dev/quarto-actions/publish@v2
         with:

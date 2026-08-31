@@ -88,6 +88,10 @@ body.quarto-dark {
     }
   }
 
+  .project-card--wip:hover {
+    border-color: $dm-hairline;
+  }
+
   .about-icon {
     color: $dm-ink;
 

@@ -74,6 +74,31 @@
   }
 }
 
+.project-card--wip {
+  border-style: dashed;
+
+  &:hover {
+    border-color: $surface-hairline;
+  }
+
+  .project-card__media {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .project-card__placeholder-icon {
+    width: 32px;
+    height: 32px;
+    color: $text-mute;
+  }
+
+  .project-card__title,
+  .project-card__desc {
+    color: $text-mute;
+  }
+}
+
 .projects-section {
   padding-top: $spacing-xl;
 }
