@@ -31,9 +31,7 @@ format:
     code-copy: true
     smooth-scroll: true
     toc: true
-    theme:
-      dark: [www/themes/theme-light.scss, www/themes/theme-dark.scss]
-      light: www/themes/theme-light.scss
+    theme: www/themes/theme-light.scss
     highlight-style: www/themes/custom-highlight.theme
     fontsize: 16px
     grid:

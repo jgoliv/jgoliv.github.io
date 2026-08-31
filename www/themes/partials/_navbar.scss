@@ -10,7 +10,6 @@
 .navbar-nav .nav-link {
   display: inline-flex;
   align-items: center;
-  transition: none;
 }
 
 .navbar-nav .nav-link .menu-text {
@@ -18,24 +17,6 @@
   font-weight: $type-body-sm-strong-weight;
   letter-spacing: 0.06em;
   text-transform: uppercase;
-}
-
-.quarto-color-scheme-toggle .bi::before {
-  width: 20px !important;
-  height: 20px !important;
-  background-image: none !important;
-  -webkit-mask-image: url('www/icons/toggle-left.svg') !important;
-  mask-image: url('www/icons/toggle-left.svg') !important;
-  -webkit-mask-repeat: no-repeat !important;
-  mask-repeat: no-repeat !important;
-  -webkit-mask-size: 20px 20px !important;
-  mask-size: 20px 20px !important;
-  background-color: $text-ink !important;
-}
-
-.quarto-color-scheme-toggle.alternate .bi::before {
-  -webkit-mask-image: url('www/icons/toggle-right.svg') !important;
-  mask-image: url('www/icons/toggle-right.svg') !important;
 }
 
 .navbar-nav .nav-link .bi-house {
