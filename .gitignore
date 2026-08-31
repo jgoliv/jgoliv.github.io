@@ -1,12 +1,7 @@
 /.quarto/
 /_site/
-.Rproj.user
 
 **/*.quarto_ipynb
 
-# OS / R junk
+# OS junk
 **/.DS_Store
-.Rhistory
-.Rprofile
-.Rprofile.backup
-*.Rproj

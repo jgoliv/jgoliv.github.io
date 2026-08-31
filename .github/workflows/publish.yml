@@ -27,6 +27,18 @@ jobs:
           pip install jupyter
           python -m ipykernel install --user --name python3 --display-name "Python 3"
 
+      - name: Fetch kuratowski article
+        run: |
+          set -e
+          DEST="portfolio/data-viz/kuratowski-closure-complement"
+          git clone --depth 1 "https://github.com/jgoliv/kuratowski-theorem-visualization.git" /tmp/kuratowski-theorem-visualization
+
+          mkdir -p "$DEST/files"
+          cp /tmp/kuratowski-theorem-visualization/article.qmd "$DEST/"
+          cp /tmp/kuratowski-theorem-visualization/files/plot.png "$DEST/files/"
+
+          rm -rf /tmp/kuratowski-theorem-visualization
+
       - name: Fetch midi-to-tablature article
         env:
           MIDI_TO_TAB_REPO_PAT: ${{ secrets.MIDI_TO_TAB_REPO_PAT }}
