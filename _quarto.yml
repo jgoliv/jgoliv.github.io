@@ -24,6 +24,10 @@ website:
       - text: "About"
         href: index.qmd#about-me
 
+  page-footer:
+    border: false
+    left: Website made with <a href="https://quarto.org"><span class="footer-quarto-icon" aria-hidden="true"></span>Quarto</a> v.{{< version >}}
+
 format:
   html:
     link-external-icon: true
