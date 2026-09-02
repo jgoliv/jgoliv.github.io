@@ -22,7 +22,7 @@ grid:
 ```{=html}
 <a class="project-card" href="portfolio/data-viz/kuratowski-closure-complement/article.html" data-cursor="VIEW">
   <div class="project-card__media">
-    <img class="project-card__img" src="portfolio/data-viz/kuratowski-closure-complement/files/plot.png" alt="Kuratowski Closure-Complement Theorem" loading="lazy">
+    <img class="project-card__img" src="www/thumbnails/kuratowski-closure-complement.png" alt="Kuratowski Closure-Complement Theorem" loading="lazy">
   </div>
   <div class="project-card__body">
     <h3 class="project-card__title no-anchor">Kuratowski Closure-Complement Theorem</h3>
