@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>https://jgoliv.github.io/portfolio/machine-learning/midi-to-tablature/midi-to-tablature.html</loc>
+    <lastmod>2026-09-02T15:40:41.163Z</lastmod>
+  </url>
+  <url>
     <loc>https://jgoliv.github.io/index.html</loc>
-    <lastmod>2026-09-02T13:31:00.655Z</lastmod>
+    <lastmod>2026-09-02T15:40:09.073Z</lastmod>
   </url>
   <url>
     <loc>https://jgoliv.github.io/portfolio/data-viz/kuratowski-closure-complement/article.html</loc>
-    <lastmod>2026-09-02T13:31:31.527Z</lastmod>
-  </url>
-  <url>
-    <loc>https://jgoliv.github.io/portfolio/machine-learning/midi-to-tablature/midi-to-tablature.html</loc>
-    <lastmod>2026-09-02T13:31:33.134Z</lastmod>
+    <lastmod>2026-09-02T15:40:40.307Z</lastmod>
   </url>
 </urlset>

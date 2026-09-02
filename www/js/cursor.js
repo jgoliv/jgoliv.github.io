@@ -13,7 +13,7 @@
   var label = document.createElement('div');
   label.className = 'cur__label';
   label.innerHTML = '<svg viewBox="0 0 72 72" width="72" height="72">' +
-    '<defs><path id="cur-arc" d="M 8,36 A 28,28 0 0 1 64,36" /></defs>' +
+    '<defs><path id="cur-arc" d="M 8,36 A 28,28 0 0 0 64,36" /></defs>' +
     '<text text-anchor="middle"><textPath href="#cur-arc" startOffset="50%"></textPath></text>' +
     '</svg>';
   document.body.appendChild(label);
@@ -70,6 +70,21 @@
     } else {
       ensureRunning();
     }
+  });
+
+  function ariaLabelOf(link) {
+    var el = link.hasAttribute('aria-label') ? link : link.querySelector('[aria-label]');
+    return el ? el.getAttribute('aria-label') : '';
+  }
+
+  var navCursorLabels = [
+    { match: function (link) { return ariaLabelOf(link) === 'Home'; }, label: 'HOME' },
+    { match: function (link) { return (link.getAttribute('href') || '').indexOf('about-me') !== -1; }, label: 'ABOUT ME' }
+  ];
+
+  document.querySelectorAll('.navbar-nav .nav-link').forEach(function (link) {
+    var found = navCursorLabels.filter(function (n) { return n.match(link); })[0];
+    if (found) { link.setAttribute('data-cursor', found.label); }
   });
 
   document.querySelectorAll('[data-cursor]').forEach(function (el) {
