@@ -32,21 +32,31 @@
   }
   place(x, y);
 
-  window.addEventListener('mousemove', function (e) {
-    tx = e.clientX;
-    ty = e.clientY;
-    if (reduced) { x = tx; y = ty; place(x, y); }
-  });
+  var running = false;
 
   function loop() {
-    if (!reduced) {
-      x += (tx - x) * 0.18;
-      y += (ty - y) * 0.18;
-      place(x, y);
+    x += (tx - x) * 0.18;
+    y += (ty - y) * 0.18;
+    place(x, y);
+
+    if (Math.abs(tx - x) < 0.05 && Math.abs(ty - y) < 0.05) {
+      running = false;
+      return;
     }
     requestAnimationFrame(loop);
   }
-  requestAnimationFrame(loop);
+
+  window.addEventListener('mousemove', function (e) {
+    tx = e.clientX;
+    ty = e.clientY;
+    if (reduced) {
+      x = tx; y = ty;
+      place(x, y);
+    } else if (!running) {
+      running = true;
+      requestAnimationFrame(loop);
+    }
+  });
 
   document.querySelectorAll('[data-cursor]').forEach(function (el) {
     el.addEventListener('mouseenter', function () {
