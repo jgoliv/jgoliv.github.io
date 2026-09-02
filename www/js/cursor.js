@@ -21,29 +21,44 @@
 
   document.documentElement.classList.add('pointer-fine');
 
+  var IDLE_SCALE = 14 / 72;
+
   var tx = window.innerWidth / 2, ty = window.innerHeight / 2;
   var x = tx, y = ty;
+  var targetScale = IDLE_SCALE, scale = IDLE_SCALE;
 
-  function place(px, py) {
+  function place(px, py, s) {
     var t = 'translate3d(' + px + 'px,' + py + 'px,0)';
-    cur.style.transform = t;
+    cur.style.transform = t + ' scale(' + s + ')';
     dot.style.transform = t;
     label.style.transform = t;
   }
-  place(x, y);
+  place(x, y, scale);
 
   var running = false;
+
+  function settled() {
+    return Math.abs(tx - x) < 0.05 && Math.abs(ty - y) < 0.05 && Math.abs(targetScale - scale) < 0.002;
+  }
 
   function loop() {
     x += (tx - x) * 0.18;
     y += (ty - y) * 0.18;
-    place(x, y);
+    scale += (targetScale - scale) * 0.2;
+    place(x, y, scale);
 
-    if (Math.abs(tx - x) < 0.05 && Math.abs(ty - y) < 0.05) {
+    if (settled()) {
       running = false;
       return;
     }
     requestAnimationFrame(loop);
+  }
+
+  function ensureRunning() {
+    if (!running) {
+      running = true;
+      requestAnimationFrame(loop);
+    }
   }
 
   window.addEventListener('mousemove', function (e) {
@@ -51,24 +66,25 @@
     ty = e.clientY;
     if (reduced) {
       x = tx; y = ty;
-      place(x, y);
-    } else if (!running) {
-      running = true;
-      requestAnimationFrame(loop);
+      place(x, y, scale);
+    } else {
+      ensureRunning();
     }
   });
 
   document.querySelectorAll('[data-cursor]').forEach(function (el) {
     el.addEventListener('mouseenter', function () {
-      cur.classList.add('cur--hover');
       dot.classList.add('cur__dot--on');
       labelPath.textContent = el.getAttribute('data-cursor') || '';
       label.classList.add('cur__label--on');
+      targetScale = 1;
+      if (reduced) { scale = 1; place(x, y, scale); } else { ensureRunning(); }
     });
     el.addEventListener('mouseleave', function () {
-      cur.classList.remove('cur--hover');
       dot.classList.remove('cur__dot--on');
       label.classList.remove('cur__label--on');
+      targetScale = IDLE_SCALE;
+      if (reduced) { scale = IDLE_SCALE; place(x, y, scale); } else { ensureRunning(); }
     });
   });
 })();
