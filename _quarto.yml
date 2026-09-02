@@ -42,4 +42,4 @@ format:
     grid:
       body-width: 900px
     include-after-body:
-      text: <script src="www/js/cursor.js"></script>
+      text: <script src="/www/js/cursor.js"></script>
