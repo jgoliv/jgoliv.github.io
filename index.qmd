@@ -20,7 +20,7 @@ grid:
 ::: {.project-grid}
 
 ```{=html}
-<a class="project-card" href="portfolio/data-viz/kuratowski-closure-complement/article.html">
+<a class="project-card" href="portfolio/data-viz/kuratowski-closure-complement/article.html" data-cursor="VIEW">
   <div class="project-card__media">
     <img class="project-card__img" src="portfolio/data-viz/kuratowski-closure-complement/files/plot.png" alt="Kuratowski Closure-Complement Theorem" loading="lazy">
   </div>
@@ -31,7 +31,7 @@ grid:
   </div>
 </a>
 
-<a class="project-card project-card--wip" href="portfolio/machine-learning/midi-to-tablature/midi-to-tablature.html">
+<a class="project-card project-card--wip" href="portfolio/machine-learning/midi-to-tablature/midi-to-tablature.html" data-cursor="VIEW">
   <div class="project-card__media">
     <svg class="project-card__placeholder-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg>
   </div>

@@ -41,6 +41,14 @@ b {
   font-weight: $type-body-strong-weight;
 }
 
+a {
+  transition: color 0.15s ease;
+
+  &:hover {
+    color: $color-terminal-red;
+  }
+}
+
 :not(pre) > code {
   background: $surface-soft;
   color: $text-ink;
