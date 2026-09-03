@@ -12,6 +12,10 @@
   align-items: center;
 }
 
+.navbar-nav .nav-link:hover {
+  color: $color-terminal-red;
+}
+
 .navbar-nav .nav-link .menu-text {
   font-size: $type-caption-sm-size;
   font-weight: $type-body-sm-strong-weight;

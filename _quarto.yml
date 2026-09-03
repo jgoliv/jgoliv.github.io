@@ -3,7 +3,6 @@ project:
   resources:
     - www/fonts/*
     - www/icons/*
-    - www/js/*
 
 execute:
   freeze: true
@@ -41,5 +40,3 @@ format:
     fontsize: 16px
     grid:
       body-width: 900px
-    include-after-body:
-      text: <script src="/www/js/cursor.js"></script>
