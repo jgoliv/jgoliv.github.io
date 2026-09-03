@@ -27,7 +27,7 @@ grid:
   <div class="project-card__body">
     <h3 class="project-card__title no-anchor">Kuratowski Closure-Complement Theorem</h3>
     <p class="project-card__desc">Run any subset through closure and complement, in any order, and you never get more than 14 distinct sets — Kuratowski proved it in 1922.</p>
-    <time class="project-card__date">April 14, 2026</time>
+    <time class="project-card__date">April, 2026</time>
   </div>
 </a>
 
