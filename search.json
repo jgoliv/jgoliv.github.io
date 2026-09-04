@@ -1,26 +1,5 @@
 [
   {
-    "objectID": "index.html",
-    "href": "index.html",
-    "title": "João Gabriel Oliveira de Jesus",
-    "section": "",
-    "text": "João Gabriel Oliveira de Jesus\n  Glad you’re here. This is a collection of things I’ve explored in my spare time.\n\n\n\n\n\n  \n    \n  \n  \n    Kuratowski Closure-Complement Theorem\n    Run any subset through closure and complement, in any order, and you never get more than 14 distinct sets — Kuratowski proved it in 1922.\n    April, 2026\n  \n\n\n\n  \n    \n  \n  \n    MIDI to Guitar Tablature\n    Reimplementing a 2025 paper end to end: a neural net that decides where a MIDI note should land on the fretboard. Work in progress.\n    —\n  \n\n\n\n\n\n\n\n  \n    \n  \n  \n    About me\n    I'm a data scientist coming from a pure mathematics background, who likes taking abstract problems and turning them into something people can see and actually work with."
-  },
-  {
-    "objectID": "portfolio/data-viz/kuratowski-closure-complement/article.html",
-    "href": "portfolio/data-viz/kuratowski-closure-complement/article.html",
-    "title": "Kuratowski Closure-Complement Theorem",
-    "section": "",
-    "text": "Pick any subset of any topological space, apply closure and complement in every order you like, and you will never generate more than 14 distinct sets. Kuratowski proved this astounding fact in 1922.\nMost subsets fall well short of that bound. Reaching exactly 14 demands a starting set where every operation breaks new ground. The canonical choice on \\(\\mathbb{R}\\) is:\n\\[A = (0,1) \\cup (1,2) \\cup \\{3\\} \\cup \\bigl([4,5] \\cap \\mathbb{Q}\\bigr)\\]\nEach piece does specific topological work:\nThe chart traces the full orbit of \\(A\\) — and the pattern only becomes clear when you see them all at once."
-  },
-  {
-    "objectID": "portfolio/data-viz/kuratowski-closure-complement/article.html#the-chart",
-    "href": "portfolio/data-viz/kuratowski-closure-complement/article.html#the-chart",
-    "title": "Kuratowski Closure-Complement Theorem",
-    "section": "The Chart",
-    "text": "The Chart\n\nCode and data: kuratowski-theorem-visualization on GitHub."
-  },
-  {
     "objectID": "portfolio/machine-learning/midi-to-tablature/midi-to-tablature.html",
     "href": "portfolio/machine-learning/midi-to-tablature/midi-to-tablature.html",
     "title": "[MIDI to Tablature model: WIP]",
@@ -54,5 +33,26 @@
     "title": "[MIDI to Tablature model: WIP]",
     "section": "Training pairs",
     "text": "Training pairs\nOur model’s input is:\n\nthe last four tablature frames, for context (4x150 = 600 binary digits);\nthe current frame’s midi pitches, derived directly from its tab positions (128 binary digits),\n\nflattened into one 728-element vector. The target is the current tablature frame itself, the 150-element vector the model has to predict.\n\nfrom src.transform import convert_tab_frames_to_input_and_target\n\nx, y = convert_tab_frames_to_input_and_target(tab_frames, 10)\nprint(len(x), len(y))\n\n728 150\n\n\n\nThe network itself is feedforward, so it can only see one frame plus its 4-frame context per prediction, never a whole track at once. Context doesn’t leak between tracks either, each one starts counting its own frames from zero, and the earliest frames just get all-zero padding in place of the missing history.\nThe animation below plays this out frame by frame across the whole track, rebuilding the 600, 128, and 728-element trio at each step:\n\nfrom src.plot import animate_training_pair_construction\nanimate_training_pair_construction(tab_frames)\n\n\n\n\n\n\nThe current position never reaches the network, it’s the label we’re trying to predict. What actually enters the network is pitches (128), the notes extracted from that same position. Zoomed out, the pipeline looks like this:\n\n\n\n\n\n\n%%{\n    init: {\n        'themeVariables': {\n            'fontFamily': 'Space Grotesk', \n            'fontSize': '15px'\n        },\n        'flowchart': {\n            'curve': 'stepBefore', \n            'nodeSpacing': 30,\n            'rankSpacing': 30\n        }\n    }\n}%%\n\nflowchart LR\n    dataset[(\"dataset row\")]\n\n    subgraph trackstack[\" \"]\n        direction TB\n        dotsTop[\"&lt;span style=font-size:28px&gt;⋮&lt;/span&gt;\"]\n        trackJPlus1(\"track j+1\")\n        trackJ(\"track j\")\n        trackJMinus1(\"track j-1\")\n        dotsBottom[\"&lt;span style=font-size:28px&gt;⋮&lt;/span&gt;\"]\n    end\n\n    frames(\"tab_frames\")\n\n    tabi(\"positions at i (150)\")\n\n    subgraph positionsGroup[\" \"]\n        direction TB\n        tabi1(\"positions at i-1 (150)\")\n        tabi2(\"positions at i-2 (150)\")\n        tabi3(\"positions at i-3 (150)\")\n        tabi4(\"positions at i-4 (150)\")\n    end\n\n    context(\"context (600)\")\n    pitches(\"pitches (128)\")\n    input(\"input (728)\")\n    network(\"network\")\n    output(\"output (150)\")\n\n    dataset --- trackJ\n    trackJ --- frames\n    frames --- tabi\n    frames --- positionsGroup\n    tabi1 ~~~ tabi2\n    tabi2 ~~~ tabi3\n    tabi3 ~~~ tabi4\n    positionsGroup --- context\n    tabi -- \"extract pitches from current position\" --- pitches\n    pitches --- input\n    context --- input\n    input --- network\n    network --- output\n\n    class dataset,frames,trackJ,tabi1,tabi2,tabi3,tabi4,tabi,network,output neutral\n    class trackJPlus1,trackJMinus1 unused\n    class dotsTop,dotsBottom dots\n    class context,pitches,input current\n\n    style positionsGroup fill:#ffffff,stroke:#525252\n\n    style trackstack fill:none,stroke:none\n\n    classDef current fill:#ffe8e6,stroke:#FF160A,color:#FF160A\n    classDef history fill:#f5f5f5,stroke:#525252,color:#525252\n    classDef unused fill:#ffffff,stroke:#a3a3a3,color:#a3a3a3\n    classDef neutral fill:#ffffff,stroke:#525252,color:#525252\n    classDef dots fill:none,stroke:none,color:#a3a3a3"
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "João Gabriel Oliveira de Jesus",
+    "section": "",
+    "text": "João Gabriel Oliveira de Jesus\n  Glad you’re here. This is a collection of things I’ve explored in my spare time.\n\n\n\n\n\n  \n    \n  \n  \n    Kuratowski Closure-Complement Theorem\n    Run any subset through closure and complement, in any order, and you never get more than 14 distinct sets — Kuratowski proved it in 1922.\n    April, 2026\n  \n\n\n\n  \n    \n  \n  \n    MIDI to Guitar Tablature\n    Reimplementing a 2025 paper end to end: a neural net that decides where a MIDI note should land on the fretboard. Work in progress.\n    —\n  \n\n\n\n\n\n\n\n  \n    \n  \n  \n    About me\n    I'm a data scientist coming from a pure mathematics background, who likes taking abstract problems and turning them into something people can see and actually work with."
+  },
+  {
+    "objectID": "portfolio/data-viz/kuratowski-closure-complement/article.html",
+    "href": "portfolio/data-viz/kuratowski-closure-complement/article.html",
+    "title": "Kuratowski Closure-Complement Theorem",
+    "section": "",
+    "text": "Pick any subset of any topological space, apply closure and complement in every order you like, and you will never generate more than 14 distinct sets. Kuratowski proved this astounding fact in 1922.\nMost subsets fall well short of that bound. Reaching exactly 14 demands a starting set where every operation breaks new ground. The canonical choice on \\(\\mathbb{R}\\) is:\n\\[A = (0,1) \\cup (1,2) \\cup \\{3\\} \\cup \\bigl([4,5] \\cap \\mathbb{Q}\\bigr)\\]\nEach piece does specific topological work:\nThe chart traces the full orbit of \\(A\\) — and the pattern only becomes clear when you see them all at once."
+  },
+  {
+    "objectID": "portfolio/data-viz/kuratowski-closure-complement/article.html#the-chart",
+    "href": "portfolio/data-viz/kuratowski-closure-complement/article.html#the-chart",
+    "title": "Kuratowski Closure-Complement Theorem",
+    "section": "The Chart",
+    "text": "The Chart\n\nCode and data: kuratowski-theorem-visualization on GitHub."
   }
 ]
