@@ -35,8 +35,8 @@ format:
     code-copy: true
     smooth-scroll: true
     toc: true
-    theme: www/themes/theme-light.scss
-    highlight-style: www/themes/custom-highlight.theme
+    theme: www/css/theme.scss
+    highlight-style: monokai
     fontsize: 16px
     grid:
       body-width: 900px
