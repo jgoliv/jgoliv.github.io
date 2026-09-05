@@ -36,7 +36,7 @@ format:
     smooth-scroll: true
     toc: true
     theme: www/css/theme.scss
-    highlight-style: monokai
+    highlight-style: github-dark
     fontsize: 16px
     grid:
       body-width: 900px
