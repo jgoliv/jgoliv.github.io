@@ -46,7 +46,7 @@
     "href": "index.html",
     "title": "João Gabriel Oliveira de Jesus",
     "section": "",
-    "text": "João Gabriel Oliveira de Jesus\n  Glad you’re here. This is a collection of things I’ve explored in my spare time.\n\n\n\n\n\n  \n    \n  \n  \n    Kuratowski Closure-Complement Theorem\n    Run any subset through closure and complement, in any order, and you never get more than 14 distinct sets — Kuratowski proved it in 1922.\n    April, 2026\n  \n\n\n\n  \n    \n  \n  \n    MIDI to Guitar Tablature\n    Reimplementing a 2025 paper end to end: a neural net that decides where a MIDI note should land on the fretboard. Work in progress.\n    —\n  \n\n\n\n\n\n\n\n  \n    \n  \n  \n    About me\n    I'm a data scientist coming from a pure mathematics background, who likes taking abstract problems and turning them into something people can see and actually work with."
+    "text": "João Gabriel Oliveira de Jesus\n  Glad you’re here. This is a collection of things I’ve explored in my spare time.\n\n\n\n\n\n  \n    \n  \n  \n    Kuratowski Closure-Complement Theorem\n    Run any subset through closure and complement, in any order, and you never get more than 14 distinct sets — Kuratowski proved it in 1922.\n    April, 2026\n  \n\n\n\n  \n    \n  \n  \n    MIDI to Guitar Tablature\n    Reimplementing a 2025 paper on guitar tablature conversion, with the playability search folded into the network as an output mask.\n    September, 2026\n  \n\n\n\n\n\n\n\n  \n    \n  \n  \n    About me\n    I'm a data scientist coming from a pure mathematics background, who likes taking abstract problems and turning them into something people can see and actually work with."
   },
   {
     "objectID": "portfolio/data-viz/kuratowski-closure-complement/article.html",
