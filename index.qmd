@@ -20,17 +20,6 @@ grid:
 ::: {.project-grid}
 
 ```{=html}
-<a class="project-card" href="portfolio/data-viz/kuratowski-closure-complement/article.html">
-  <div class="project-card__media">
-    <img class="project-card__img" src="www/thumbnails/kuratowski-closure-complement.png" alt="Kuratowski Closure-Complement Theorem" loading="lazy">
-  </div>
-  <div class="project-card__body">
-    <h3 class="project-card__title no-anchor">Kuratowski Closure-Complement Theorem</h3>
-    <p class="project-card__desc">Run any subset through closure and complement, in any order, and you never get more than 14 distinct sets — Kuratowski proved it in 1922.</p>
-    <time class="project-card__date">April, 2026</time>
-  </div>
-</a>
-
 <a class="project-card" href="portfolio/machine-learning/guitar-tab-masked-nn-model/article.html">
   <div class="project-card__media">
     <img class="project-card__img" src="www/thumbnails/midi-to-tab.png" alt="Output Mask in a Guitar Tablature Neural Network" loading="lazy">
@@ -39,6 +28,17 @@ grid:
     <h3 class="project-card__title no-anchor">Output Mask in a Guitar Tablature Neural Network</h3>
     <p class="project-card__desc">Reimplementing a 2025 paper on guitar tablature conversion, with the playability search folded into the network as an output mask.</p>
     <time class="project-card__date">September, 2026</time>
+  </div>
+</a>
+
+<a class="project-card" href="portfolio/data-viz/kuratowski-closure-complement/article.html">
+  <div class="project-card__media">
+    <img class="project-card__img" src="www/thumbnails/kuratowski-closure-complement.png" alt="Kuratowski Closure-Complement Theorem" loading="lazy">
+  </div>
+  <div class="project-card__body">
+    <h3 class="project-card__title no-anchor">Kuratowski Closure-Complement Theorem</h3>
+    <p class="project-card__desc">Run any subset through closure and complement, in any order, and you never get more than 14 distinct sets — Kuratowski proved it in 1922.</p>
+    <time class="project-card__date">April, 2026</time>
   </div>
 </a>
 ```
