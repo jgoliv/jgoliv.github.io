@@ -39,10 +39,10 @@ jobs:
 
           rm -rf /tmp/kuratowski-theorem-visualization
 
-      - name: Fetch midi-to-tablature article
+      - name: Fetch guitar tablature article
         run: |
           set -e
-          DEST="portfolio/machine-learning/midi-to-tablature"
+          DEST="portfolio/machine-learning/guitar-tab-masked-nn-model"
           git clone --depth 1 "https://github.com/jgoliv/guitar-tab-masked-nn-model.git" /tmp/guitar-tab-masked-nn-model
 
           mkdir -p "$DEST/assets/animations" "$DEST/assets/references"
